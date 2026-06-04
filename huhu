@@ -1,0 +1,307 @@
+<h5>📘 Chapter 1: Number Systems</h5>
+
+<p>
+A Number System is one of the most fundamental concepts in Mathematics.
+Every calculation, measurement, scientific formula, engineering design,
+computer program, and financial transaction is based on numbers.
+The study of number systems helps us understand different types of numbers,
+their properties, and how they are related to each other.
+</p>
+
+<p>
+From counting objects in daily life to solving complex mathematical
+equations, numbers play a crucial role. Number systems provide a
+structured way to represent, classify, compare, and perform operations
+on numbers.
+</p>
+
+<h5>🌍 Real-Life Importance of Number Systems</h5>
+
+<ul>
+<li>Used in counting and measuring quantities.</li>
+<li>Forms the foundation of Algebra and Geometry.</li>
+<li>Essential for Physics, Chemistry, and Engineering.</li>
+<li>Used in Computer Science and Programming.</li>
+<li>Helps in solving real-world mathematical problems.</li>
+<li>Important for competitive examinations and higher studies.</li>
+</ul>
+
+<h5>🎯 Learning Objectives</h5>
+
+<p>
+After studying this chapter, students will be able to:
+</p>
+
+<ul>
+<li>Understand different categories of numbers.</li>
+<li>Differentiate between rational and irrational numbers.</li>
+<li>Represent numbers on a number line.</li>
+<li>Understand decimal representations.</li>
+<li>Apply laws of exponents.</li>
+<li>Solve mathematical problems involving real numbers.</li>
+</ul>
+
+<h5>📚 Introduction to Number Systems</h5>
+
+<p>
+Over time, mathematicians developed various sets of numbers to solve
+different kinds of problems. Each set includes the previous one and
+extends it further.
+</p>
+
+<div class="formula-card">
+Natural Numbers ⊂ Whole Numbers ⊂ Integers ⊂ Rational Numbers ⊂ Real Numbers
+</div>
+
+<p>
+Understanding this hierarchy makes it easier to classify any given number.
+</p>
+
+<h5>1️⃣ Natural Numbers (N)</h5>
+
+<p>
+Natural Numbers are the counting numbers used in everyday life.
+Whenever we count objects such as books, pens, students, or cars,
+we use natural numbers.
+</p>
+
+<div class="formula-card">
+N = {1, 2, 3, 4, 5, 6, 7, ...}
+</div>
+
+<h5>Examples</h5>
+
+<ul>
+<li>1 student</li>
+<li>5 apples</li>
+<li>20 books</li>
+<li>100 people</li>
+</ul>
+
+<p>
+Natural numbers begin with 1 and continue infinitely.
+There is no largest natural number because we can always add 1 to obtain a larger number.
+</p>
+
+<h5>Key Properties of Natural Numbers</h5>
+
+<ul>
+<li>Smallest Natural Number = 1</li>
+<li>No largest Natural Number exists.</li>
+<li>All Natural Numbers are positive.</li>
+<li>0 is not considered a Natural Number.</li>
+</ul>
+
+<h5>2️⃣ Whole Numbers (W)</h5>
+
+<p>
+Whole Numbers are obtained by adding zero to the set of Natural Numbers.
+They are used when counting can include nothing or zero quantity.
+</p>
+
+<div class="formula-card">
+W = {0, 1, 2, 3, 4, 5, 6, ...}
+</div>
+
+<p>
+For example, if a basket contains no apples, the number of apples is represented by 0.
+</p>
+
+<h5>Examples</h5>
+
+<div class="formula-card">
+0, 4, 15, 100, 500
+</div>
+
+<h5>Properties of Whole Numbers</h5>
+
+<ul>
+<li>Smallest Whole Number = 0</li>
+<li>No largest Whole Number exists.</li>
+<li>Every Natural Number is a Whole Number.</li>
+<li>0 belongs only to Whole Numbers and higher sets.</li>
+</ul>
+
+<h5>3️⃣ Integers (Z)</h5>
+
+<p>
+Integers include positive numbers, negative numbers, and zero.
+They are useful in representing gains, losses, temperatures,
+elevations, and many real-life situations.
+</p>
+
+<div class="formula-card">
+Z = {..., -3, -2, -1, 0, 1, 2, 3, ...}
+</div>
+
+<h5>Types of Integers</h5>
+
+<ul>
+<li>Positive Integers → 1, 2, 3, 4...</li>
+<li>Negative Integers → -1, -2, -3, -4...</li>
+<li>Zero → 0</li>
+</ul>
+
+<h5>Real-Life Examples</h5>
+
+<ul>
+<li>Temperature below 0°C → -5°C</li>
+<li>Bank debt → -₹500</li>
+<li>Profit → +₹500</li>
+<li>Sea level reference → +50m, -20m</li>
+</ul>
+
+<h5>4️⃣ Rational Numbers (Q)</h5>
+
+<p>
+A Rational Number is any number that can be expressed in the form p/q,
+where p and q are integers and q ≠ 0.
+</p>
+
+<div class="formula-card">
+p/q , q ≠ 0
+</div>
+
+<p>
+The word "rational" comes from the word "ratio."
+</p>
+
+<h5>Examples</h5>
+
+<div class="formula-card">
+1/2
+
+3/5
+
+-7/8
+
+5 = 5/1
+
+0 = 0/1
+</div>
+
+<p>
+Every integer can be written in the form p/q and is therefore a rational number.
+</p>
+
+<h5>Decimal Representation of Rational Numbers</h5>
+
+<p>
+The decimal expansion of rational numbers is always either terminating
+or non-terminating recurring (repeating).
+</p>
+
+<div class="formula-card">
+1/2 = 0.5
+
+3/4 = 0.75
+
+1/8 = 0.125
+
+1/3 = 0.333333...
+
+2/11 = 0.181818...
+</div>
+
+<h5>5️⃣ Irrational Numbers</h5>
+
+<p>
+Numbers that cannot be expressed in the form p/q are called irrational numbers.
+Their decimal expansion is non-terminating and non-repeating.
+</p>
+
+<div class="formula-card">
+√2
+
+√3
+
+√5
+
+π
+</div>
+
+<p>
+No matter how far the decimal expansion continues,
+it never ends and never follows a repeating pattern.
+</p>
+
+<div class="formula-card">
+π = 3.14159265358979323846...
+</div>
+
+<h5>Interesting Fact</h5>
+
+<p>
+The value of π has been calculated to trillions of decimal places,
+yet no repeating pattern has been discovered.
+</p>
+
+<h5>6️⃣ Real Numbers (R)</h5>
+
+<p>
+The collection of all rational and irrational numbers is called the set of Real Numbers.
+Every point on the number line represents a real number.
+</p>
+
+<div class="formula-card">
+Real Numbers = Rational Numbers + Irrational Numbers
+</div>
+
+<h5>Relationship Between Number Sets</h5>
+
+<div class="formula-card">
+Natural Numbers ⊂ Whole Numbers
+
+Whole Numbers ⊂ Integers
+
+Integers ⊂ Rational Numbers
+
+Rational Numbers ⊂ Real Numbers
+</div>
+
+<h5>📏 Number Line</h5>
+
+<p>
+A number line is a straight horizontal line used to represent numbers visually.
+Numbers increase as we move towards the right and decrease as we move towards the left.
+</p>
+
+<div class="formula-card">
+← -5 -4 -3 -2 -1 0 1 2 3 4 5 →
+</div>
+
+<ul>
+<li>0 is called the origin.</li>
+<li>Positive numbers lie on the right side.</li>
+<li>Negative numbers lie on the left side.</li>
+</ul>
+
+<h5>🔍 Comparing Numbers</h5>
+
+<p>
+On a number line, the number located farther to the right is always greater.
+</p>
+
+<div class="formula-card">
+8 > 5
+
+0 > -1
+
+-2 > -5
+
+15 > 7
+</div>
+
+<h5>📝 Quick Summary</h5>
+
+<ul>
+<li>Natural Numbers start from 1.</li>
+<li>Whole Numbers start from 0.</li>
+<li>Integers include negative numbers.</li>
+<li>Rational Numbers can be written as p/q.</li>
+<li>Irrational Numbers cannot be written as p/q.</li>
+<li>Real Numbers include both Rational and Irrational Numbers.</li>
+<li>π and √2 are Irrational Numbers.</li>
+<li>Every Integer is Rational.</li>
+<li>Every Rational Number is Real.</li>
+</ul>

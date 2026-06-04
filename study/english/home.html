@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>English Hub - BrainHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.08);
+            --shadow: 0 20px 40px rgba(31, 45, 61, 0.06);
+            --soft: 0 8px 20px rgba(31, 45, 61, 0.04);
+            --radius: 20px;
+            --radius-sm: 14px;
+            --nav-h: 72px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.12);
+            --shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+            --soft: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 5% 10%, rgba(37, 99, 235, 0.05), transparent 400px),
+                radial-gradient(circle at 95% 80%, rgba(96, 165, 250, 0.05), transparent 500px);
+            z-index: -1;
+        }
+
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 max(20px, 4vw);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Fixed Navigation Filter Controllers */
+        .controls-sticky-hub {
+            position: sticky;
+            top: var(--nav-h);
+            z-index: 90;
+            padding: 10px 0;
+            background: color-mix(in srgb, var(--bg) 92%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 6px;
+            background: var(--panel-solid);
+            padding: 5px;
+            border-radius: var(--radius);
+            box-shadow: var(--soft);
+            border: 1px solid var(--line);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 85px;
+            background: none;
+            border: none;
+            padding: 10px 14px;
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Nested Category Filters (Prose, Poetry, Supplementary) */
+        .category-filter-bar {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 2px 0;
+        }
+
+        .category-filter-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: var(--soft);
+            transition: all 0.2s ease;
+        }
+
+        .cat-btn.active {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Core Dual Column Layout Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 10px;
+            align-items: start;
+        }
+
+        @media (min-width: 900px) {
+            .grid {
+                grid-template-columns: 480px 1fr;
+                gap: 24px;
+            }
+        }
+
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+        }
+
+        .panel-head {
+            margin-bottom: 20px;
+        }
+
+        .panel-title h3 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .panel-title p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* Chapter Card Component Nodes */
+        .chapter-card-item {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: var(--panel-2);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chapter-card-item:active {
+            transform: scale(0.98);
+        }
+
+        .chapter-info-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .chapter-index {
+            width: 44px;
+            height: 44px;
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--primary);
+            box-shadow: var(--soft);
+            transition: all 0.2s;
+        }
+
+        .chapter-titles h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .chapter-titles p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .action-arrow {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            box-shadow: var(--soft);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Active Card States */
+        .chapter-card-item.selected-active {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .chapter-card-item.selected-active .chapter-index {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .chapter-card-item.selected-active .action-arrow {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            transform: rotate(-45deg);
+        }
+
+        @media (min-width: 900px) {
+            .chapter-card-item:hover:not(.selected-active) {
+                background: var(--panel-solid);
+                transform: translateY(-2px);
+                box-shadow: var(--soft);
+                border-color: var(--muted);
+            }
+
+            .chapter-card-item:hover:not(.selected-active) .action-arrow {
+                transform: translateX(3px);
+            }
+        }
+
+        /* Workspace Desktop Pane View */
+        .desktop-pane-view {
+            position: sticky;
+            top: calc(var(--nav-h) + 120px);
+            min-height: 480px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 900px) {
+            .desktop-pane-view {
+                display: block;
+            }
+        }
+
+        .placeholder-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+            min-height: 400px;
+        }
+
+        .placeholder-box i {
+            font-size: 36px;
+            color: var(--primary);
+            background: var(--primary-light);
+            width: 80px;
+            height: 80px;
+            display: grid;
+            place-items: center;
+            border-radius: 24px;
+            margin-bottom: 20px;
+        }
+
+        .placeholder-box h4 {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .placeholder-box p {
+            font-size: 14px;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        /* Workspace Active Preview Layouts */
+        .preview-workspace {
+            animation: paneFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+        }
+
+        .preview-header-meta h2 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text);
+        }
+
+        .preview-badges-holder {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .preview-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-transform: capitalize;
+        }
+
+        .preview-body-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .preview-stat-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            padding: 16px;
+            border-radius: var(--radius-sm);
+        }
+
+        .preview-stat-card i {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .preview-stat-card h5 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .preview-stat-card p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .launch-hub-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .launch-hub-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.3);
+        }
+
+        @keyframes paneFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Text selection disable */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            -webkit-touch-callout: none;
+        }
+
+        /* Mobile tap highlight remove */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Images drag disable */
+        img {
+            -webkit-user-drag: none;
+            /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Hub</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Controls Matrix containing Class Hub and Nested Category Filters -->
+        <div class="controls-sticky-hub">
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="filterClassSelection(9, this)">Class 9</button>
+                <button class="tab-btn" onclick="filterClassSelection(10, this)">Class 10</button>
+                <button class="tab-btn" onclick="filterClassSelection(11, this)">Class 11</button>
+                <button class="tab-btn" onclick="filterClassSelection(12, this)">Class 12</button>
+            </div>
+
+            <div class="category-filter-bar">
+                <button class="cat-btn active" onclick="filterCategorySelection('all', this)">All Content</button>
+                <button class="cat-btn" onclick="filterCategorySelection('prose', this)">Prose</button>
+                <button class="cat-btn" onclick="filterCategorySelection('poetry', this)">Poetry</button>
+                <button class="cat-btn" onclick="filterCategorySelection('supplementary', this)">Supplementary</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Left Side Control Panel Sheet -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div class="panel-title">
+                        <h3 id="panelClassTitle">Class 9 Chapters</h3>
+                        <p id="panelClassSub">Showing all materials</p>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:column;" id="chaptersContainerList">
+                    <!-- Dynamic Rows Insertion Node -->
+                </div>
+            </div>
+
+            <!-- Right Side Workspace Area Desktop Layout View -->
+            <div class="panel desktop-pane-view" id="desktopInteractivePane">
+                <div class="placeholder-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h4>Interactive Studio</h4>
+                    <p>Select any structural chapter framework profile from the menu list matrix to reveal dynamic
+                        modules layout control tools.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORE_KEY = "brainhub.app.v2";
+
+        function applySavedTheme() {
+            try {
+                const state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+                document.documentElement.dataset.theme = state.theme || "light";
+            } catch (err) {
+                document.documentElement.dataset.theme = "light";
+            }
+        }
+
+        // Expanded Database with explicitly defined Types mapping to the new UI Filters
+        const chaptersDatabase = [
+            // --- CLASS 9 ---
+            { class: 9, ch: 1, type: "prose", title: "The Fun They Had", desc: "Future computerized schooling vs traditional classrooms", url: "class 9/Prose/the_fun_they_had.html" },
+            { class: 9, ch: 2, type: "prose", title: "The Sound of Music", desc: "Inspirational stories of Evelyn Glennie and Bismillah Khan", url: "class 9/Prose/the_sound_of_music.html" },
+            { class: 9, ch: 3, type: "prose", title: "The Little Girl", desc: "A touching story about fear, love, and understanding", url: "class 9/Prose/the_little_girl.html" },
+            { class: 9, ch: 4, type: "prose", title: "A Truly Beautiful Mind", desc: "The life and achievements of Albert Einstein", url: "class 9/Prose/a_truly_beautiful_mind.html" },
+            { class: 9, ch: 5, type: "prose", title: "The Snake and the Mirror", desc: "A humorous encounter between a doctor and a snake", url: "class 9/Prose/the_snake_and_the_mirror.html" },
+            { class: 9, ch: 6, type: "prose", title: "My Childhood", desc: "A.P.J. Abdul Kalam's memories and early life lessons", url: "class 9/Prose/my_childhood.html" },
+            { class: 9, ch: 7, type: "prose", title: "Reach for the Top", desc: "Success stories of Santosh Yadav and Maria Sharapova", url: "class 9/Prose/reach_for_the_top.html" },
+            { class: 9, ch: 8, type: "prose", title: "Kathmandu", desc: "A travelogue exploring the culture of Kathmandu", url: "class 9/Prose/kathmandu.html" },
+            { class: 9, ch: 9, type: "prose", title: "If I Were You", desc: "A suspenseful play about wit and self-confidence", url: "class 9/Prose/if_i_were_you.html" },
+
+            { class: 9, ch: 10, type: "poetry", title: "The Road Not Taken", desc: "Robert Frost's famous poem about choices in life", url: "class 9/Poetry/the_road_not_taken.html" },
+            { class: 9, ch: 11, type: "poetry", title: "Wind", desc: "A motivational poem emphasizing strength and resilience", url: "class 9/Poetry/wind.html" },
+            { class: 9, ch: 12, type: "poetry", title: "Rain on the Roof", desc: "Memories and emotions evoked by the sound of rain", url: "class 9/Poetry/rain_on_the_roof.html" },
+            { class: 9, ch: 13, type: "poetry", title: "The Lake Isle of Innisfree", desc: "A dream of peace and harmony in nature", url: "class 9/Poetry/the_lake_isle_of_innisfree.html" },
+            { class: 9, ch: 14, type: "poetry", title: "A Legend of the Northland", desc: "A folktale teaching generosity and kindness", url: "class 9/Poetry/a_legend_of_the_northland.html" },
+            { class: 9, ch: 15, type: "poetry", title: "No Men Are Foreign", desc: "A powerful message of universal brotherhood", url: "class 9/Poetry/no_men_are_foreign.html" },
+            { class: 9, ch: 16, type: "poetry", title: "On Killing a Tree", desc: "A symbolic poem about nature's strength and survival", url: "class 9/Poetry/on_killing_a_tree.html" },
+            { class: 9, ch: 17, type: "poetry", title: "A Slumber Did My Spirit Seal", desc: "Wordsworth's reflection on loss and mortality", url: "class 9/Poetry/a_slumber_did_my_spirit_seal.html" },
+
+            { class: 9, ch: 18, type: "supplementary", title: "The Lost Child", desc: "A child's emotional journey and love for parents", url: "class 9/Supplementary/the_lost_child.html" },
+            { class: 9, ch: 19, type: "supplementary", title: "The Adventures of Toto", desc: "Humorous incidents involving a mischievous monkey", url: "class 9/Supplementary/the_adventures_of_toto.html" },
+            { class: 9, ch: 20, type: "supplementary", title: "Iswaran the Storyteller", desc: "An entertaining tale of imagination and storytelling", url: "class 9/Supplementary/iswaran_the_storyteller.html" },
+            { class: 9, ch: 21, type: "supplementary", title: "In the Kingdom of Fools", desc: "A witty folktale about foolish rulers and justice", url: "class 9/Supplementary/in_the_kingdom_of_fools.html" },
+            { class: 9, ch: 22, type: "supplementary", title: "The Happy Prince", desc: "A moving story of sacrifice and compassion", url: "class 9/Supplementary/the_happy_prince.html" },
+            { class: 9, ch: 23, type: "supplementary", title: "The Last Leaf", desc: "A touching story of hope, friendship, and art", url: "class 9/Supplementary/the_last_leaf.html" },
+            { class: 9, ch: 24, type: "supplementary", title: "A House Is Not a Home", desc: "A story about loss, recovery, and belonging", url: "class 9/Supplementary/a_house_is_not_a_home.html" },
+            { class: 9, ch: 25, type: "supplementary", title: "The Beggar", desc: "A lesson on dignity, kindness, and transformation", url: "class 9/Supplementary/the_beggar.html" },
+
+            // --- CLASS 10 ---
+            { class: 10, ch: 1, type: "prose", title: "A Letter to God", desc: "A farmer's unwavering faith in God during a crisis", url: "chapters/class10/a-letter-to-god.html" },
+            { class: 10, ch: 2, type: "prose", title: "Nelson Mandela: Long Walk to Freedom", desc: "Mandela's journey and South Africa's struggle for equality", url: "chapters/class10/nelson-mandela-long-walk-to-freedom.html" },
+            { class: 10, ch: 3, type: "prose", title: "Two Stories About Flying", desc: "Inspirational tales of courage, confidence, and determination", url: "chapters/class10/two-stories-about-flying.html" },
+            { class: 10, ch: 4, type: "prose", title: "From the Diary of Anne Frank", desc: "Anne Frank's thoughts, experiences, and observations", url: "chapters/class10/from-the-diary-of-anne-frank.html" },
+            { class: 10, ch: 5, type: "prose", title: "Glimpses of India", desc: "Exploring India's culture, traditions, and landscapes", url: "chapters/class10/glimpses-of-india.html" },
+            { class: 10, ch: 6, type: "prose", title: "Mijbil the Otter", desc: "A heartwarming account of friendship with a pet otter", url: "chapters/class10/mijbil-the-otter.html" },
+            { class: 10, ch: 7, type: "prose", title: "Madam Rides the Bus", desc: "A young girl's adventurous bus journey", url: "chapters/class10/madam-rides-the-bus.html" },
+            { class: 10, ch: 8, type: "prose", title: "The Sermon at Benares", desc: "Buddha's teachings on life, death, and wisdom", url: "chapters/class10/the-sermon-at-benares.html" },
+            { class: 10, ch: 9, type: "prose", title: "The Proposal", desc: "A humorous play about marriage and misunderstandings", url: "chapters/class10/the-proposal.html" },
+
+            { class: 10, ch: 10, type: "poetry", title: "Dust of Snow", desc: "A simple incident that transforms the poet's mood", url: "chapters/class10/dust-of-snow.html" },
+            { class: 10, ch: 11, type: "poetry", title: "Fire and Ice", desc: "Robert Frost's view on the possible end of the world", url: "chapters/class10/fire-and-ice.html" },
+            { class: 10, ch: 12, type: "poetry", title: "A Tiger in the Zoo", desc: "The contrast between freedom and captivity", url: "chapters/class10/a-tiger-in-the-zoo.html" },
+            { class: 10, ch: 13, type: "poetry", title: "How to Tell Wild Animals", desc: "A humorous guide to identifying wild animals", url: "chapters/class10/how-to-tell-wild-animals.html" },
+            { class: 10, ch: 14, type: "poetry", title: "The Ball Poem", desc: "A lesson about loss and growing up", url: "chapters/class10/the-ball-poem.html" },
+            { class: 10, ch: 15, type: "poetry", title: "Amanda!", desc: "A child's desire for freedom and imagination", url: "chapters/class10/amanda.html" },
+            { class: 10, ch: 16, type: "poetry", title: "The Trees", desc: "The symbolic struggle of trees seeking freedom", url: "chapters/class10/the-trees.html" },
+            { class: 10, ch: 17, type: "poetry", title: "Fog", desc: "A brief poem comparing fog to a cat", url: "chapters/class10/fog.html" },
+            { class: 10, ch: 18, type: "poetry", title: "The Tale of Custard the Dragon", desc: "A humorous ballad about courage and bravery", url: "chapters/class10/the-tale-of-custard-the-dragon.html" },
+            { class: 10, ch: 19, type: "poetry", title: "For Anne Gregory", desc: "A reflection on beauty, love, and inner qualities", url: "chapters/class10/for-anne-gregory.html" },
+
+            { class: 10, ch: 20, type: "supplementary", title: "A Triumph of Surgery", desc: "A veterinary surgeon helps an overfed dog recover", url: "chapters/class10/a-triumph-of-surgery.html" },
+            { class: 10, ch: 21, type: "supplementary", title: "The Thief's Story", desc: "A young thief learns the value of trust and kindness", url: "chapters/class10/the-thiefs-story.html" },
+            { class: 10, ch: 22, type: "supplementary", title: "The Midnight Visitor", desc: "A suspenseful story involving intelligence and wit", url: "chapters/class10/the-midnight-visitor.html" },
+            { class: 10, ch: 23, type: "supplementary", title: "A Question of Trust", desc: "A clever thief's confidence leads to unexpected events", url: "chapters/class10/a-question-of-trust.html" },
+            { class: 10, ch: 24, type: "supplementary", title: "Footprints Without Feet", desc: "A science-fiction tale about an invisible man", url: "chapters/class10/footprints-without-feet.html" },
+            { class: 10, ch: 25, type: "supplementary", title: "The Making of a Scientist", desc: "Richard Ebright's inspiring journey into science", url: "chapters/class10/the-making-of-a-scientist.html" },
+            { class: 10, ch: 26, type: "supplementary", title: "The Necklace", desc: "A story about pride, greed, and unexpected consequences", url: "chapters/class10/the-necklace.html" },
+            { class: 10, ch: 27, type: "supplementary", title: "Bholi", desc: "A girl's transformation through education and self-respect", url: "chapters/class10/bholi.html" },
+            { class: 10, ch: 28, type: "supplementary", title: "The Book That Saved the Earth", desc: "A humorous science-fiction play about books and humanity", url: "chapters/class10/the-book-that-saved-the-earth.html" },
+
+            // --- CLASS 11 ---
+            // HORNBILL - PROSE
+
+            { class: 11, ch: 1, type: "prose", title: "The Portrait of a Lady", desc: "A touching account of the author's relationship with his grandmother", url: "chapters/class11/the-portrait-of-a-lady.html" },
+            { class: 11, ch: 2, type: "prose", title: "We're Not Afraid to Die... If We Can All Be Together", desc: "A family's struggle for survival during a dangerous sea voyage", url: "chapters/class11/were-not-afraid-to-die.html" },
+            { class: 11, ch: 3, type: "prose", title: "Discovering Tut: The Saga Continues", desc: "The mystery and scientific investigation of Tutankhamun", url: "chapters/class11/discovering-tut.html" },
+            { class: 11, ch: 4, type: "prose", title: "Landscape of the Soul", desc: "A comparison between Eastern and Western artistic traditions", url: "chapters/class11/landscape-of-the-soul.html" },
+            { class: 11, ch: 5, type: "prose", title: "The Ailing Planet: The Green Movement's Role", desc: "Environmental concerns and sustainable development", url: "chapters/class11/the-ailing-planet.html" },
+            { class: 11, ch: 6, type: "prose", title: "The Browning Version", desc: "A moving play about a strict teacher's emotional transformation", url: "chapters/class11/the-browning-version.html" },
+            { class: 11, ch: 7, type: "prose", title: "Adventure", desc: "A fascinating story involving alternate history and reality", url: "chapters/class11/adventure.html" },
+            { class: 11, ch: 8, type: "prose", title: "Silk Road", desc: "A travel narrative through the Himalayas and Tibet", url: "chapters/class11/silk-road.html" },
+
+            // HORNBILL - POETRY
+
+            { class: 11, ch: 9, type: "poetry", title: "A Photograph", desc: "Memories, loss, and the passage of time", url: "chapters/class11/a-photograph.html" },
+            { class: 11, ch: 10, type: "poetry", title: "The Laburnum Top", desc: "Nature's beauty and the vitality brought by a goldfinch", url: "chapters/class11/the-laburnum-top.html" },
+            { class: 11, ch: 11, type: "poetry", title: "The Voice of the Rain", desc: "A conversation between the poet and rain", url: "chapters/class11/the-voice-of-the-rain.html" },
+            { class: 11, ch: 12, type: "poetry", title: "Childhood", desc: "A reflection on the loss of innocence and growing up", url: "chapters/class11/childhood.html" },
+            { class: 11, ch: 13, type: "poetry", title: "Father to Son", desc: "The emotional gap between a father and his son", url: "chapters/class11/father-to-son.html" },
+
+            // SNAPSHOTS - SUPPLEMENTARY
+
+            { class: 11, ch: 14, type: "supplementary", title: "The Summer of the Beautiful White Horse", desc: "A story about honesty, family values, and childhood adventures", url: "chapters/class11/the-summer-of-the-beautiful-white-horse.html" },
+            { class: 11, ch: 15, type: "supplementary", title: "The Address", desc: "A daughter's search for memories after World War II", url: "chapters/class11/the-address.html" },
+            { class: 11, ch: 16, type: "supplementary", title: "Ranga's Marriage", desc: "A humorous tale about tradition and matchmaking", url: "chapters/class11/rangas-marriage.html" },
+            { class: 11, ch: 17, type: "supplementary", title: "Albert Einstein at School", desc: "Einstein's student life and independent thinking", url: "chapters/class11/albert-einstein-at-school.html" },
+            { class: 11, ch: 18, type: "supplementary", title: "Mother's Day", desc: "A humorous play centered on family relationships", url: "chapters/class11/mothers-day.html" },
+            { class: 11, ch: 19, type: "supplementary", title: "The Ghat of the Only World", desc: "A tribute to poet Agha Shahid Ali and his legacy", url: "chapters/class11/the-ghat-of-the-only-world.html" },
+            { class: 11, ch: 20, type: "supplementary", title: "Birth", desc: "A doctor's experience during a critical childbirth", url: "chapters/class11/birth.html" },
+            { class: 11, ch: 21, type: "supplementary", title: "The Tale of Melon City", desc: "A satirical story about absurd governance and justice", url: "chapters/class11/the-tale-of-melon-city.html" },
+
+            // --- CLASS 12 ---
+            // FLAMINGO - PROSE
+
+            { class: 12, ch: 1, type: "prose", title: "The Last Lesson", desc: "A moving story about language, patriotism, and the value of education", url: "chapters/class12/the-last-lesson.html" },
+            { class: 12, ch: 2, type: "prose", title: "Lost Spring", desc: "The harsh realities of child labor and poverty in India", url: "chapters/class12/lost-spring.html" },
+            { class: 12, ch: 3, type: "prose", title: "Deep Water", desc: "Overcoming fear and gaining confidence through determination", url: "chapters/class12/deep-water.html" },
+            { class: 12, ch: 4, type: "prose", title: "The Rattrap", desc: "A tale of kindness, redemption, and human goodness", url: "chapters/class12/the-rattrap.html" },
+            { class: 12, ch: 5, type: "prose", title: "Indigo", desc: "Mahatma Gandhi's role in the Champaran movement", url: "chapters/class12/indigo.html" },
+            { class: 12, ch: 6, type: "prose", title: "Poets and Pancakes", desc: "An entertaining account of life inside a film studio", url: "chapters/class12/poets-and-pancakes.html" },
+            { class: 12, ch: 7, type: "prose", title: "The Interview", desc: "Exploring the significance and impact of interviews", url: "chapters/class12/the-interview.html" },
+            { class: 12, ch: 8, type: "prose", title: "Going Places", desc: "A young girl's dreams, ambitions, and imagination", url: "chapters/class12/going-places.html" },
+
+            // FLAMINGO - POETRY
+
+            { class: 12, ch: 9, type: "poetry", title: "My Mother at Sixty-Six", desc: "A daughter's concern and love for her aging mother", url: "chapters/class12/my-mother-at-sixty-six.html" },
+            { class: 12, ch: 10, type: "poetry", title: "Keeping Quiet", desc: "A call for introspection, peace, and self-awareness", url: "chapters/class12/keeping-quiet.html" },
+            { class: 12, ch: 11, type: "poetry", title: "A Thing of Beauty", desc: "The everlasting joy and inspiration of beautiful things", url: "chapters/class12/a-thing-of-beauty.html" },
+            { class: 12, ch: 12, type: "poetry", title: "A Roadside Stand", desc: "The struggles of rural people in a modern economy", url: "chapters/class12/a-roadside-stand.html" },
+            { class: 12, ch: 13, type: "poetry", title: "Aunt Jennifer's Tigers", desc: "A symbolic poem about freedom, strength, and oppression", url: "chapters/class12/aunt-jennifers-tigers.html" },
+
+            // VISTAS - SUPPLEMENTARY
+
+            { class: 12, ch: 14, type: "supplementary", title: "The Third Level", desc: "A fascinating blend of fantasy, escape, and reality", url: "chapters/class12/the-third-level.html" },
+            { class: 12, ch: 15, type: "supplementary", title: "The Tiger King", desc: "A satirical tale about fate, power, and arrogance", url: "chapters/class12/the-tiger-king.html" },
+            { class: 12, ch: 16, type: "supplementary", title: "Journey to the End of the Earth", desc: "An educational journey to Antarctica and its significance", url: "chapters/class12/journey-to-the-end-of-the-earth.html" },
+            { class: 12, ch: 17, type: "supplementary", title: "The Enemy", desc: "A story of humanity beyond national boundaries", url: "chapters/class12/the-enemy.html" },
+            { class: 12, ch: 18, type: "supplementary", title: "On the Face of It", desc: "A touching play about friendship and self-acceptance", url: "chapters/class12/on-the-face-of-it.html" },
+            { class: 12, ch: 19, type: "supplementary", title: "Memories of Childhood", desc: "Accounts of discrimination and the struggle for equality", url: "chapters/class12/memories-of-childhood.html" }
+        ];
+
+        let selectedActiveClass = 9;
+        let selectedActiveCategory = "all";
+
+        const listContainer = document.getElementById("chaptersContainerList");
+        const rightPane = document.getElementById("desktopInteractivePane");
+
+        function renderChapters() {
+            listContainer.innerHTML = "";
+            document.getElementById("panelClassTitle").textContent = `Class ${selectedActiveClass} Chapters`;
+            document.getElementById("panelClassSub").textContent = `Showing context: ${selectedActiveCategory.toUpperCase()}`;
+
+            // Multi-tier Sorting Query Engine (Class Match + Category Filter Logic)
+            const filteredChapters = chaptersDatabase.filter(item => {
+                const classMatch = item.class === selectedActiveClass;
+                const categoryMatch = selectedActiveCategory === "all" || item.type === selectedActiveCategory;
+                return classMatch && categoryMatch;
+            });
+
+            if (filteredChapters.length === 0) {
+                listContainer.innerHTML = `
+                    <div class='placeholder-box' style='min-height: 250px;'>
+                        <i class="fa-solid fa-folder-open" style="width:50px; height:50px; font-size:20px;"></i>
+                        <h4>No Chapters Found</h4>
+                        <p>No item types matching "${selectedActiveCategory}" are indexed here.</p>
+                    </div>`;
+                resetWorkspacePlaceholder();
+                return;
+            }
+
+            filteredChapters.forEach((chapter) => {
+                const card = document.createElement("div");
+                card.className = "chapter-card-item";
+                card.id = `card-node-${chapter.class}-${chapter.ch}`;
+                card.onclick = () => handleRowSelectionTrigger(chapter);
+
+                card.innerHTML = `
+                    <div class="chapter-info-box">
+                        <div class="chapter-index">${chapter.ch}</div>
+                        <div class="chapter-titles">
+                            <h4>${chapter.title}</h4>
+                            <p>${chapter.desc}</p>
+                        </div>
+                    </div>
+                    <div class="action-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                `;
+
+                listContainer.appendChild(card);
+            });
+
+            if (window.innerWidth >= 900 && filteredChapters.length > 0) {
+                handleRowSelectionTrigger(filteredChapters[0]);
+            } else {
+                resetWorkspacePlaceholder();
+            }
+        }
+
+        function handleRowSelectionTrigger(chapterObj) {
+            const isDesktop = window.innerWidth >= 900;
+
+            if (isDesktop) {
+                document.querySelectorAll(".chapter-card-item").forEach(el => el.classList.remove("selected-active"));
+
+                const selectedNode = document.getElementById(`card-node-${chapterObj.class}-${chapterObj.ch}`);
+                if (selectedNode) selectedNode.classList.add("selected-active");
+
+                rightPane.innerHTML = `
+                    <div class="preview-workspace">
+                        <div class="preview-header">
+                            <div class="preview-header-meta">
+                                <h2>${chapterObj.title}</h2>
+                                <div class="preview-badges-holder">
+                                    <span class="preview-badge">Class ${chapterObj.class} • Ch ${chapterObj.ch}</span>
+                                    <span class="preview-badge" style="background:rgba(16,185,129,0.1); color:#10b981;">${chapterObj.type}</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-compass" style="font-size: 24px; color: var(--primary);"></i>
+                        </div>
+
+                        <div style="font-size:14px; color:var(--muted); margin-bottom:20px; line-height:1.6;">
+                            ${chapterObj.desc}. Access full text references, detailed notes trackers, reference interpretations, and layout guidelines.
+                        </div>
+
+                        <div class="preview-body-grid">
+                            <div class="preview-stat-card">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <h5>Summary Sheets</h5>
+                                <p>Core thematic explanations</p>
+                            </div>
+                            <div class="preview-stat-card">
+                                <i class="fa-solid fa-feather-pointed"></i>
+                                <h5>Literary Devices</h5>
+                                <p>Quick reference figures</p>
+                            </div>
+                            <div class="preview-stat-card">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <h5>Assignment Sets</h5>
+                                <p>Classwork testing matrices</p>
+                            </div>
+                            <div class="preview-stat-card">
+                                <i class="fa-solid fa-bolt"></i>
+                                <h5>PYQ Tracking</h5>
+                                <p>Board exam priority sets</p>
+                            </div>
+                        </div>
+
+                        <a href="${chapterObj.url}" class="launch-hub-btn">
+                            <span>Open Learning Dashboard</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+                `;
+            } else {
+                window.location.href = chapterObj.url;
+            }
+        }
+
+        function resetWorkspacePlaceholder() {
+            rightPane.innerHTML = `
+                <div class="placeholder-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h4>Interactive Studio</h4>
+                    <p>Select any structural chapter framework profile from the menu list matrix to reveal dynamic modules layout control tools.</p>
+                </div>
+            `;
+        }
+
+        function filterClassSelection(classNumberValue, tabButtonReference) {
+            selectedActiveClass = classNumberValue;
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            tabButtonReference.classList.add("active");
+            renderChapters();
+        }
+
+        function filterCategorySelection(categoryStringKey, categoryButtonReference) {
+            selectedActiveCategory = categoryStringKey;
+            document.querySelectorAll(".cat-btn").forEach(btn => btn.classList.remove("active"));
+            categoryButtonReference.classList.add("active");
+            renderChapters();
+        }
+
+        window.addEventListener('resize', () => {
+            const isDesktop = window.innerWidth >= 900;
+            const hasActiveSelection = document.querySelector(".chapter-card-item.selected-active");
+
+            if (isDesktop && !hasActiveSelection) {
+                const filtered = chaptersDatabase.filter(item => {
+                    return item.class === selectedActiveClass && (selectedActiveCategory === "all" || item.type === selectedActiveCategory);
+                });
+                if (filtered.length > 0) handleRowSelectionTrigger(filtered[0]);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applySavedTheme();
+            renderChapters();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg: #eef3f8;
@@ -307,6 +309,7 @@
                 opacity: 0;
                 transform: translateY(8px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -481,11 +484,25 @@
             flex: 0 0 auto;
         }
 
-        .feature[data-color="green"] .tile-icon { background: var(--green); }
-        .feature[data-color="rose"] .tile-icon { background: var(--rose); }
-        .feature[data-color="amber"] .tile-icon { background: var(--amber); }
-        .feature[data-color="violet"] .tile-icon { background: var(--violet); }
-        .feature[data-color="teal"] .tile-icon { background: var(--primary-2); }
+        .feature[data-color="green"] .tile-icon {
+            background: var(--green);
+        }
+
+        .feature[data-color="rose"] .tile-icon {
+            background: var(--rose);
+        }
+
+        .feature[data-color="amber"] .tile-icon {
+            background: var(--amber);
+        }
+
+        .feature[data-color="violet"] .tile-icon {
+            background: var(--violet);
+        }
+
+        .feature[data-color="teal"] .tile-icon {
+            background: var(--primary-2);
+        }
 
         .feature h4 {
             font-size: 15px;
@@ -847,6 +864,7 @@
                 opacity: 0.9;
                 transform: scale(0.72);
             }
+
             100% {
                 opacity: 0;
                 transform: scale(1.22);
@@ -886,10 +904,25 @@
             opacity: 1;
         }
 
-        .fab-menu.show .fab-action:nth-child(1) { transform: translate(-4px, -78px) scale(1); background: var(--rose); }
-        .fab-menu.show .fab-action:nth-child(2) { transform: translate(-64px, -58px) scale(1); background: var(--green); }
-        .fab-menu.show .fab-action:nth-child(3) { transform: translate(-84px, 0) scale(1); background: var(--amber); }
-        .fab-menu.show .fab-action:nth-child(4) { transform: translate(-42px, 48px) scale(1); background: var(--violet); }
+        .fab-menu.show .fab-action:nth-child(1) {
+            transform: translate(-4px, -78px) scale(1);
+            background: var(--rose);
+        }
+
+        .fab-menu.show .fab-action:nth-child(2) {
+            transform: translate(-64px, -58px) scale(1);
+            background: var(--green);
+        }
+
+        .fab-menu.show .fab-action:nth-child(3) {
+            transform: translate(-84px, 0) scale(1);
+            background: var(--amber);
+        }
+
+        .fab-menu.show .fab-action:nth-child(4) {
+            transform: translate(-42px, 48px) scale(1);
+            background: var(--violet);
+        }
 
         .toast {
             position: fixed;
@@ -1073,8 +1106,31 @@
                 height: 58px;
             }
         }
+
+        /* Text selection disable */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            -webkit-touch-callout: none;
+        }
+
+        /* Mobile tap highlight remove */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Images drag disable */
+        img {
+            -webkit-user-drag: none;
+            /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
+            pointer-events: none;
+        }
     </style>
 </head>
+
 <body>
     <div class="drawer-backdrop" id="backdrop"></div>
     <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile sidebar">
@@ -1093,7 +1149,9 @@
         <div class="nav" id="mobileNav"></div>
         <div class="side-card">
             <strong>Today's Progress</strong>
-            <div class="progress-line"><div class="progress-fill" id="mobileProgress"></div></div>
+            <div class="progress-line">
+                <div class="progress-fill" id="mobileProgress"></div>
+            </div>
             <p class="muted" id="mobileProgressText">0 tasks completed</p>
         </div>
     </aside>
@@ -1110,7 +1168,9 @@
             <div class="nav" id="desktopNav"></div>
             <div class="side-card">
                 <strong>Today's Progress</strong>
-                <div class="progress-line"><div class="progress-fill" id="desktopProgress"></div></div>
+                <div class="progress-line">
+                    <div class="progress-fill" id="desktopProgress"></div>
+                </div>
                 <p class="muted" id="desktopProgressText">0 tasks completed</p>
             </div>
         </aside>
@@ -1139,7 +1199,8 @@
                     <div class="hero-content">
                         <span class="eyebrow"><i class="fa-solid fa-bolt"></i> Smart learning dashboard</span>
                         <h2 id="heroTitle">BrainHub</h2>
-                        <p id="heroSub">Study notes, GK quiz, shayari, stories, tools, and your daily planner in one fast local app.</p>
+                        <p id="heroSub">Study notes, GK quiz, shayari, stories, tools, and your daily planner in one
+                            fast local app.</p>
                     </div>
                 </div>
 
@@ -1201,7 +1262,8 @@
                             <label for="noteBody">Note</label>
                             <textarea class="textarea" id="noteBody" placeholder="Important points"></textarea>
                         </div>
-                        <button class="primary-btn" id="saveNote"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+                        <button class="primary-btn" id="saveNote"><i class="fa-solid fa-floppy-disk"></i> Save
+                            Note</button>
                     </div>
                     <div class="panel">
                         <div class="panel-head">
@@ -1238,9 +1300,12 @@
                             <strong id="quizQuestion"></strong>
                             <div class="options" id="quizOptions"></div>
                             <p class="muted" id="quizFeedback"></p>
-                            <button class="primary-btn" id="nextQuestion"><i class="fa-solid fa-forward"></i> Next</button>
+                            <button class="primary-btn" id="nextQuestion"><i class="fa-solid fa-forward"></i>
+                                Next</button>
                         </div>
+
                     </div>
+
                     <div class="panel">
                         <div class="panel-head">
                             <div class="panel-title">
@@ -1248,11 +1313,23 @@
                                 <p>Progress is remembered locally.</p>
                             </div>
                         </div>
+
                         <div class="stats">
                             <div class="stat"><span>CORRECT</span><strong id="quizCorrect">0</strong></div>
                             <div class="stat"><span>ATTEMPTS</span><strong id="quizAttempts">0</strong></div>
                         </div>
                         <div class="list" id="factsList"></div>
+
+                    </div>
+                    <div class="panel wide">
+                        <div class="panel-head">
+                            <div class="panel-title">
+                                <h3>General knownledge</h3>
+                                <p>Chose any Topic</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-grid" id="quizSubjects"></div>
                     </div>
                 </div>
             </section>
@@ -1292,9 +1369,12 @@
                             </div>
                         </div>
                         <div class="tool-tabs">
-                            <button class="chip active" data-tool="calculator"><i class="fa-solid fa-calculator"></i> Calculator</button>
-                            <button class="chip" data-tool="converter"><i class="fa-solid fa-right-left"></i> Converter</button>
-                            <button class="chip" data-tool="planner"><i class="fa-solid fa-list-check"></i> Planner</button>
+                            <button class="chip active" data-tool="calculator"><i class="fa-solid fa-calculator"></i>
+                                Calculator</button>
+                            <button class="chip" data-tool="converter"><i class="fa-solid fa-right-left"></i>
+                                Converter</button>
+                            <button class="chip" data-tool="planner"><i class="fa-solid fa-list-check"></i>
+                                Planner</button>
                         </div>
 
                         <div class="tool-view active" data-tool-view="calculator">
@@ -1308,7 +1388,8 @@
                                 <input class="input" id="convertValue" type="number" placeholder="Enter cm">
                             </div>
                             <div class="item">
-                                <div class="item-row"><strong>Result</strong><strong id="convertResult">0 m</strong></div>
+                                <div class="item-row"><strong>Result</strong><strong id="convertResult">0 m</strong>
+                                </div>
                             </div>
                             <div class="field">
                                 <label for="percentValue">Percentage</label>
@@ -1319,7 +1400,8 @@
                                 <input class="input" id="percentTotal" type="number" placeholder="Total marks">
                             </div>
                             <div class="item">
-                                <div class="item-row"><strong>Percentage</strong><strong id="percentResult">0%</strong></div>
+                                <div class="item-row"><strong>Percentage</strong><strong id="percentResult">0%</strong>
+                                </div>
                             </div>
                         </div>
 
@@ -1341,6 +1423,16 @@
                             <button class="ghost-btn" id="clearDone"><i class="fa-solid fa-broom"></i></button>
                         </div>
                         <div class="list" id="taskList"></div>
+                    </div>
+                    <div class="panel wide">
+                        <div class="panel-head">
+                            <div class="panel-title">
+                                <h3>Quick Tools</h3>
+                                <p>Choose a utility</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-grid" id="toolCards"></div>
                     </div>
                 </div>
             </section>
@@ -1371,7 +1463,8 @@
                                 <p>All app data is stored locally.</p>
                             </div>
                         </div>
-                        <button class="ghost-btn" id="exportData"><i class="fa-solid fa-file-export"></i> Export Data</button>
+                        <button class="ghost-btn" id="exportData"><i class="fa-solid fa-file-export"></i> Export
+                            Data</button>
                         <button class="ghost-btn" id="resetData"><i class="fa-solid fa-trash"></i> Reset Data</button>
                         <textarea class="textarea" id="exportBox" readonly placeholder="Export appears here"></textarea>
                     </div>
@@ -1420,22 +1513,256 @@
         ];
 
         const studyCards = [
-            { title: "Math Formula", body: "Area of circle = pi x r x r", icon: "fa-square-root-variable", color: "blue" },
-            { title: "English", body: "Active voice is direct and strong.", icon: "fa-pen-nib", color: "green" },
-            { title: "Science", body: "Photosynthesis uses light, water and CO2.", icon: "fa-flask", color: "violet" },
-            { title: "History", body: "Make timelines for faster revision.", icon: "fa-landmark", color: "amber" },
-            { title: "Exam Tip", body: "Revise small parts daily for retention.", icon: "fa-lightbulb", color: "rose" },
-            { title: "Memory", body: "Use examples with every definition.", icon: "fa-layer-group", color: "teal" }
+            {
+                title: "Mathematics",
+                body: "Formulas, Algebra, Geometry & Calculus",
+                icon: "fa-square-root-variable",
+                color: "blue",
+                link: "study/study-maths/home.html"
+            },
+            {
+                title: "Physics",
+                body: "Laws, Numericals & Concepts",
+                icon: "fa-atom",
+                color: "violet",
+                link: "physics.html"
+            },
+            {
+                title: "Chemistry",
+                body: "Reactions, Elements & Equations",
+                icon: "fa-flask",
+                color: "green",
+                link: "chemistry.html"
+            },
+            {
+                title: "Biology",
+                body: "Human Body, Plants & Life Science",
+                icon: "fa-dna",
+                color: "teal",
+                link: "biology.html"
+            },
+            {
+                title: "English",
+                body: "Grammar, Writing & Literature",
+                icon: "fa-book-open",
+                color: "amber",
+                link: "study/english/home.html"
+            },
+            {
+                title: "Hindi",
+                body: "Vyakaran, Kavya & Gadya",
+                icon: "fa-language",
+                color: "rose",
+                link: "hindi.html"
+            },
+            {
+                title: "History",
+                body: "Ancient, Medieval & Modern India",
+                icon: "fa-landmark",
+                color: "blue",
+                link: "history.html"
+            },
+            {
+                title: "Geography",
+                body: "Maps, Climate & Resources",
+                icon: "fa-earth-asia",
+                color: "green",
+                link: "geography.html"
+            },
+            {
+                title: "Political Science",
+                body: "Constitution & Democracy",
+                icon: "fa-building-columns",
+                color: "violet",
+                link: "political-science.html"
+            },
+            {
+                title: "Economics",
+                body: "Markets, Banking & Economy",
+                icon: "fa-indian-rupee-sign",
+                color: "amber",
+                link: "economics.html"
+            },
+            {
+                title: "Computer Science",
+                body: "Programming & Technology",
+                icon: "fa-laptop-code",
+                color: "teal",
+                link: "computer-science.html"
+            },
+            {
+                title: "General Science",
+                body: "Important Scientific Facts",
+                icon: "fa-microscope",
+                color: "rose",
+                link: "general-science.html"
+            }
         ];
-
         const quiz = [
             { q: "Which is the largest planet in our solar system?", a: "Jupiter", o: ["Earth", "Jupiter", "Mars", "Venus"] },
             { q: "Who wrote the Indian national anthem?", a: "Rabindranath Tagore", o: ["Mahatma Gandhi", "Rabindranath Tagore", "Premchand", "Sarojini Naidu"] },
             { q: "What is the capital of Rajasthan?", a: "Jaipur", o: ["Jodhpur", "Udaipur", "Jaipur", "Ajmer"] },
             { q: "Which gas do plants absorb for photosynthesis?", a: "Carbon dioxide", o: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon dioxide"] },
-            { q: "How many sides does a hexagon have?", a: "6", o: ["5", "6", "7", "8"] }
+            { q: "How many sides does a hexagon have?", a: "6", o: ["5", "6", "7", "8"] },
+
+            { q: "Which is the smallest continent?", a: "Australia", o: ["Europe", "Australia", "Antarctica", "South America"] },
+            { q: "Who is known as the Father of the Nation in India?", a: "Mahatma Gandhi", o: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Mahatma Gandhi", "Sardar Patel"] },
+            { q: "What is the boiling point of water at sea level?", a: "100°C", o: ["90°C", "95°C", "100°C", "110°C"] },
+            { q: "Which planet is called the Red Planet?", a: "Mars", o: ["Venus", "Jupiter", "Mars", "Mercury"] },
+            { q: "How many players are there in a cricket team?", a: "11", o: ["9", "10", "11", "12"] },
+
+            { q: "Which is the longest river in the world?", a: "Nile", o: ["Amazon", "Nile", "Yangtze", "Ganga"] },
+            { q: "What is the national animal of India?", a: "Tiger", o: ["Lion", "Elephant", "Tiger", "Leopard"] },
+            { q: "Which metal is liquid at room temperature?", a: "Mercury", o: ["Iron", "Mercury", "Copper", "Silver"] },
+            { q: "Who invented the telephone?", a: "Alexander Graham Bell", o: ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "Newton"] },
+            { q: "Which is the largest ocean on Earth?", a: "Pacific Ocean", o: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"] },
+
+            { q: "How many colors are there in a rainbow?", a: "7", o: ["5", "6", "7", "8"] },
+            { q: "Which is the fastest land animal?", a: "Cheetah", o: ["Tiger", "Lion", "Horse", "Cheetah"] },
+            { q: "What is the square root of 144?", a: "12", o: ["10", "11", "12", "13"] },
+            { q: "Which country is known as the Land of the Rising Sun?", a: "Japan", o: ["China", "Thailand", "Japan", "South Korea"] },
+            { q: "Who painted the Mona Lisa?", a: "Leonardo da Vinci", o: ["Pablo Picasso", "Leonardo da Vinci", "Van Gogh", "Michelangelo"] },
+
+            { q: "Which is the hardest natural substance?", a: "Diamond", o: ["Gold", "Iron", "Diamond", "Silver"] },
+            { q: "How many continents are there on Earth?", a: "7", o: ["5", "6", "7", "8"] },
+            { q: "Which organ pumps blood throughout the body?", a: "Heart", o: ["Liver", "Brain", "Heart", "Lungs"] },
+            { q: "Who was the first President of India?", a: "Dr. Rajendra Prasad", o: ["Jawaharlal Nehru", "Dr. Rajendra Prasad", "Sardar Patel", "B. R. Ambedkar"] },
+            { q: "Which is the largest desert in the world?", a: "Sahara Desert", o: ["Gobi Desert", "Kalahari Desert", "Sahara Desert", "Thar Desert"] },
+            { q: "What is the capital of Japan?", a: "Tokyo", o: ["Osaka", "Tokyo", "Kyoto", "Nagoya"] },
+            { q: "Which planet is closest to the Sun?", a: "Mercury", o: ["Venus", "Mercury", "Earth", "Mars"] },
+            { q: "How many bones are there in an adult human body?", a: "206", o: ["206", "208", "210", "212"] },
+            { q: "Who discovered gravity?", a: "Isaac Newton", o: ["Albert Einstein", "Galileo", "Isaac Newton", "Nikola Tesla"] },
+            { q: "Which is the national bird of India?", a: "Peacock", o: ["Parrot", "Peacock", "Sparrow", "Eagle"] },
+
+            { q: "What is the largest mammal in the world?", a: "Blue Whale", o: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"] },
+            { q: "Which country gifted the Statue of Liberty to the USA?", a: "France", o: ["Germany", "France", "Italy", "Spain"] },
+            { q: "What is the chemical symbol of Gold?", a: "Au", o: ["Ag", "Au", "Gd", "Go"] },
+            { q: "Which is the longest bone in the human body?", a: "Femur", o: ["Femur", "Tibia", "Humerus", "Radius"] },
+            { q: "How many days are there in a leap year?", a: "366", o: ["365", "366", "367", "364"] },
+
+            { q: "Which instrument is used to measure temperature?", a: "Thermometer", o: ["Barometer", "Thermometer", "Hygrometer", "Ammeter"] },
+            { q: "Who is known as the Missile Man of India?", a: "A.P.J. Abdul Kalam", o: ["A.P.J. Abdul Kalam", "Vikram Sarabhai", "Homi Bhabha", "Rakesh Sharma"] },
+            { q: "What is the currency of the United Kingdom?", a: "Pound Sterling", o: ["Euro", "Dollar", "Pound Sterling", "Yen"] },
+            { q: "Which is the tallest mountain in the world?", a: "Mount Everest", o: ["K2", "Mount Everest", "Kangchenjunga", "Makalu"] },
+            { q: "How many players are there in a football team on the field?", a: "11", o: ["9", "10", "11", "12"] },
+
+            { q: "Which gas is most abundant in Earth's atmosphere?", a: "Nitrogen", o: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"] },
+            { q: "Who wrote 'Romeo and Juliet'?", a: "William Shakespeare", o: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"] },
+            { q: "Which blood group is known as the universal donor?", a: "O Negative", o: ["A Positive", "B Positive", "AB Positive", "O Negative"] },
+            { q: "Which continent is known as the Dark Continent?", a: "Africa", o: ["Asia", "Europe", "Africa", "Australia"] },
+            { q: "How many teeth does an adult human usually have?", a: "32", o: ["28", "30", "32", "34"] },
+
+            { q: "Which Indian city is known as the Pink City?", a: "Jaipur", o: ["Udaipur", "Jodhpur", "Jaipur", "Ajmer"] },
+            { q: "What is the SI unit of force?", a: "Newton", o: ["Joule", "Pascal", "Newton", "Watt"] },
+            { q: "Which ocean lies between Africa and Australia?", a: "Indian Ocean", o: ["Pacific Ocean", "Indian Ocean", "Atlantic Ocean", "Arctic Ocean"] },
+            { q: "Who was the first man to walk on the Moon?", a: "Neil Armstrong", o: ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "Michael Collins"] },
+            { q: "Which part of the plant absorbs water from the soil?", a: "Roots", o: ["Stem", "Leaves", "Roots", "Flowers"] },
+
+            { q: "What is the capital of Canada?", a: "Ottawa", o: ["Toronto", "Ottawa", "Vancouver", "Montreal"] },
+            { q: "Which vitamin is produced when skin is exposed to sunlight?", a: "Vitamin D", o: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"] },
+            { q: "How many planets are there in the Solar System?", a: "8", o: ["7", "8", "9", "10"] },
+            { q: "Which is the largest island in the world?", a: "Greenland", o: ["Australia", "Greenland", "Madagascar", "Borneo"] },
+            { q: "What is the national flower of India?", a: "Lotus", o: ["Rose", "Lily", "Lotus", "Sunflower"] }
         ];
 
+        const quizSubjects = [
+            {
+                id: "india-gk",
+                title: "India GK",
+                body: "States, Capitals & Facts",
+                icon: "fa-flag",
+                color: "blue",
+                link: "india-gk.html"
+            },
+            {
+                id: "world-gk",
+                title: "World GK",
+                body: "Countries & Capitals",
+                icon: "fa-earth-americas",
+                color: "green",
+                link: "world-gk.html"
+            },
+            {
+                id: "history-gk",
+                title: "History GK",
+                body: "Historical Events",
+                icon: "fa-landmark",
+                color: "amber",
+                link: "history-gk.html"
+            },
+            {
+                id: "science-gk",
+                title: "Science GK",
+                body: "General Science Facts",
+                icon: "fa-flask",
+                color: "violet",
+                link: "science-gk.html"
+            },
+            {
+                id: "sports-gk",
+                title: "Sports GK",
+                body: "Games & Records",
+                icon: "fa-trophy",
+                color: "rose",
+                link: "sports-gk.html"
+            },
+            {
+                id: "current-affairs",
+                title: "Current Affairs",
+                body: "Latest Important Events",
+                icon: "fa-newspaper",
+                color: "teal",
+                link: "current-affairs.html"
+            },
+            {
+                id: "politics-gk",
+                title: "Polity GK",
+                body: "Constitution & Government",
+                icon: "fa-building-columns",
+                color: "blue",
+                link: "polity-gk.html"
+            },
+            {
+                id: "geography-gk",
+                title: "Geography GK",
+                body: "Maps, Rivers & Mountains",
+                icon: "fa-mountain",
+                color: "green",
+                link: "geography-gk.html"
+            },
+            {
+                id: "economy-gk",
+                title: "Economy GK",
+                body: "Banking & Economics",
+                icon: "fa-indian-rupee-sign",
+                color: "amber",
+                link: "economy-gk.html"
+            },
+            {
+                id: "computer-gk",
+                title: "Computer GK",
+                body: "Technology & Internet",
+                icon: "fa-laptop-code",
+                color: "violet",
+                link: "computer-gk.html"
+            },
+            {
+                id: "space-gk",
+                title: "Space GK",
+                body: "Planets & Space Missions",
+                icon: "fa-rocket",
+                color: "rose",
+                link: "space-gk.html"
+            },
+            {
+                id: "mixed-gk",
+                title: "Mixed Quiz",
+                body: "Questions From All Categories",
+                icon: "fa-brain",
+                color: "teal",
+                link: "mixed-gk.html"
+            }
+        ];
         const facts = [
             "A day on Venus is longer than its year.",
             "India has 28 states and 8 union territories.",
@@ -1457,7 +1784,92 @@
             { id: "story3", title: "The Quiet Helper", body: "A classmate shared notes without asking for credit. Later, everyone remembered the kindness more than the marks.", icon: "fa-hands-helping", color: "rose" },
             { id: "story4", title: "The Late Start", body: "He began revision late but stayed steady. A focused mind did in weeks what fear could not do in months.", icon: "fa-clock", color: "amber" }
         ];
-
+        const toolCards = [
+            {
+                title: "Calculator",
+                body: "Basic calculations",
+                icon: "fa-calculator",
+                color: "blue",
+                link: "https://google.com/"
+            },
+            {
+                title: "Percentage",
+                body: "Marks percentage calculator",
+                icon: "fa-percent",
+                color: "green",
+                link: "percentage.html"
+            },
+            {
+                title: "BMI Calculator",
+                body: "Body mass index",
+                icon: "fa-heart-pulse",
+                color: "rose",
+                link: "bmi.html"
+            },
+            {
+                title: "Age Calculator",
+                body: "Calculate exact age",
+                icon: "fa-cake-candles",
+                color: "amber",
+                link: "age-calculator.html"
+            },
+            {
+                title: "CGPA Calculator",
+                body: "Student grade calculator",
+                icon: "fa-graduation-cap",
+                color: "violet",
+                link: "cgpa.html"
+            },
+            {
+                title: "Unit Converter",
+                body: "CM, Meter, KM etc",
+                icon: "fa-ruler",
+                color: "teal",
+                link: "converter.html"
+            },
+            {
+                title: "Study Timer",
+                body: "Pomodoro timer",
+                icon: "fa-clock",
+                color: "blue",
+                link: "study-timer.html"
+            },
+            {
+                title: "Stopwatch",
+                body: "Track time",
+                icon: "fa-stopwatch",
+                color: "green",
+                link: "stopwatch.html"
+            },
+            {
+                title: "Random Number",
+                body: "Generate random numbers",
+                icon: "fa-dice",
+                color: "rose",
+                link: "random-number.html"
+            },
+            {
+                title: "Password Generator",
+                body: "Strong passwords",
+                icon: "fa-key",
+                color: "amber",
+                link: "password-generator.html"
+            },
+            {
+                title: "Notes Counter",
+                body: "Word & character count",
+                icon: "fa-file-lines",
+                color: "violet",
+                link: "notes-counter.html"
+            },
+            {
+                title: "Daily Planner",
+                body: "Task management",
+                icon: "fa-list-check",
+                color: "teal",
+                link: "planner.html"
+            }
+        ];
         const defaultState = {
             theme: "light",
             active: "home",
@@ -1659,7 +2071,73 @@
                 `;
             }).join("");
         }
+        function renderQuizSubjects() {
+            document.getElementById("quizSubjects").innerHTML =
+                quizSubjects.map(subject => `
+            <button
+                class="feature"
+                data-link="${subject.link}"
+                data-color="${subject.color}">
+                
+                <div class="feature-top">
+                    <span class="tile-icon">
+                        <i class="fa-solid ${subject.icon}"></i>
+                    </span>
+                    <i class="fa-solid fa-play"></i>
+                </div>
 
+                <div>
+                    <h4>${subject.title}</h4>
+                    <p>${subject.body}</p>
+                </div>
+            </button>
+        `).join("");
+        }
+        function renderToolCards() {
+            document.getElementById("toolCards").innerHTML =
+                toolCards.map(tool => `
+        <button
+            class="feature"
+            data-link="${tool.link}"
+            data-color="${tool.color}">
+
+            <div class="feature-top">
+                <span class="tile-icon">
+                    <i class="fa-solid ${tool.icon}"></i>
+                </span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+            <div>
+                <h4>${tool.title}</h4>
+                <p>${tool.body}</p>
+            </div>
+
+        </button>
+    `).join("");
+        }
+        function renderStudyCards() {
+            document.getElementById("studyCards").innerHTML =
+                studyCards.map(subject => `
+            <button
+                class="feature"
+                data-link="${subject.link}"
+                data-color="${subject.color}">
+                
+                <div class="feature-top">
+                    <span class="tile-icon">
+                        <i class="fa-solid ${subject.icon}"></i>
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div>
+                    <h4>${subject.title}</h4>
+                    <p>${subject.body}</p>
+                </div>
+            </button>
+        `).join("");
+        }
         function renderCalculator() {
             const keys = ["C", "DEL", "%", "/", "7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "=", ""];
             $("#calcGrid").innerHTML = keys.map(key => {
@@ -1787,9 +2265,21 @@
                 const tool = event.target.closest("[data-tool]");
                 const key = event.target.closest("[data-key]");
                 const fab = event.target.closest("[data-fab]");
+                const linkCard = event.target.closest("[data-link]");
+                const quizSubject = event.target.closest("[data-quiz-subject]");
 
                 if (nav) setScreen(nav.dataset.nav);
                 if (jump) setScreen(jump.dataset.jump);
+                if (linkCard?.dataset.link) {
+                    window.location.href = linkCard.dataset.link;
+                }
+                if (quizSubject) {
+                    const subject = quizSubject.dataset.quizSubject;
+
+                    showToast(`${subject} quiz loaded`);
+
+                    // yahan future me subject wise questions load kar sakta hai
+                }
                 if (bottom) setScreen(bottom.dataset.bottom);
                 if (answer) answerQuiz(answer.dataset.answer, answer);
                 if (deleteNote) {
@@ -1931,6 +2421,7 @@
             $("#percentResult").textContent = `${result}%`;
         }
 
+
         function init() {
             applyTheme();
             makeNav($("#desktopNav"));
@@ -1946,10 +2437,18 @@
             renderStats();
             setScreen(state.active || "home");
             addIconFallbacks();
+            renderQuizSubjects();
+            renderToolCards();
+            renderStudyCards();
         }
 
         initEvents();
         init();
+
+
+
+
     </script>
 </body>
+
 </html>

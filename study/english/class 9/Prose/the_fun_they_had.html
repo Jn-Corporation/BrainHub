@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Fun They Had - Study Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.08);
+            --shadow: 0 20px 40px rgba(31, 45, 61, 0.06);
+            --soft: 0 8px 20px rgba(31, 45, 61, 0.04);
+            --radius: 20px;
+            --radius-sm: 14px;
+            --nav-h: 64px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.12);
+            --shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+            --soft: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 40px;
+        }
+
+        /* Nav Layout Structure */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Responsive Container */
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Hero Element Styling */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Card Panels Framework */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 12px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-title i {
+            font-size: 16px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Grid */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 3px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Content Engine Typography */
+        .summary-content-area {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 12px;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Q&A Component Rows */
+        .qa-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .qa-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+
+        .qa-question {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 8px;
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--muted);
+            padding-left: 18px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* Writer Meta Section */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .writer-avatar-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* --- Desktop Specific Fine-Tuning Viewport Media Overrides --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 72px;
+            }
+
+            nav {
+                padding: 0 max(24px, 4vw);
+            }
+
+            .nav-left h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 24px 20px;
+                gap: 24px;
+            }
+
+            .chapter-hero {
+                padding: 36px 32px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 32px;
+            }
+
+            .chapter-hero p {
+                font-size: 15px;
+            }
+
+            .panel {
+                padding: 28px;
+            }
+
+            .panel-title h3 {
+                font-size: 18px;
+            }
+
+            .summary-content-area {
+                font-size: 15.5px;
+                line-height: 1.75;
+            }
+
+            .qa-card {
+                padding: 20px;
+            }
+
+            .qa-question {
+                font-size: 15.5px;
+            }
+
+            .qa-answer {
+                font-size: 14.5px;
+                padding-left: 24px;
+            }
+
+            .writer-profile-box {
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .writer-avatar-circle {
+                width: 64px;
+                height: 64px;
+                font-size: 24px;
+            }
+
+            .writer-bio-text h4 {
+                font-size: 16px;
+            }
+
+            .writer-bio-text p {
+                font-size: 14px;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(3px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Text selection disable */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            -webkit-touch-callout: none;
+        }
+
+        /* Mobile tap highlight remove */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Images drag disable */
+        img {
+            -webkit-user-drag: none;
+            /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Chapter Title Card Node -->
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 1 • Prose</span>
+            <h2>The Fun They Had</h2>
+            <p>A futuristic insight into computerized mechanics versus the nostalgia of traditional real schooling
+                assets.</p>
+        </div>
+
+        <!-- Section: Dynamic Translation Summary Module -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+                <!-- Data Stream Injection Target Node -->
+            </div>
+        </div>
+
+        <!-- Section: Question Answer Structural Database Grid -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> What kind of schools did Margie and Tommy have in the
+                        story?</div>
+                    <div class="qa-answer">Margie and Tommy had highly personalized mechanical schools right inside
+                        their homes. They didn't have regular human teachers; instead, they were taught by complex
+                        mechanical robotic monitors customized to their individual learning metrics.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Why did Margie hate her mechanical school setups?</div>
+                    <div class="qa-answer">Margie hated her school because it was dull, automated, and lonely. The
+                        geography sector of her mechanical teacher was running too fast, repeatedly giving her bad test
+                        marks, and she despised the slot where she had to punch in her homework every day.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> What was strange or unique about the "real book" Tommy
+                        found?</div>
+                    <div class="qa-answer">The most unique thing about the real paper book was that its words stood
+                        perfectly still instead of moving like the text on a telebook screen. Also, the pages turned
+                        yellow and crinkly, and reading the same words again yielded the exact same result.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Writer Biography Row Profile -->
+        <div class="panel">
+            <div class="panel-header" style="margin-bottom: 14px; padding-bottom: 10px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Isaac Asimov</h4>
+                    <p>Isaac Asimov (1920–1992) was an exceptionally prolific American writer and professor of
+                        biochemistry, famously recognized as one of the founding pillars of hard science fiction
+                        literature. His stories elegantly speculate on technological paradigms, robotic controls, and
+                        future human adaptations.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const STORE_KEY = "brainhub.app.v2";
+
+        const summaryDataAsset = {
+            en: `
+                <div class="summary-paragraph">The story is set in the deep future, precisely in the year 2157, where individual human teaching institutions have been entirely replaced by fully automated, mechanical tele-screens located right inside the student's house.</div>
+                <div class="summary-paragraph">The narrative begins when thirteen-year-old Tommy discovers a real, physical paper book in the attic of his house. He shares his finding with eleven-year-old Margie. Both children find it astonishingly odd that the words inside the physical book are fixed and static, unlike the dynamic digital text streaming across their computerized system boards.</div>
+                <div class="summary-paragraph">As they read deeper, Margie learns about the ancient school systems that existed centuries ago, where children from nearby neighborhoods walked down together to a shared physical building to be taught the exact same lessons by real human teachers. Margie reflects deeply on the loneliness of her mechanical routine and nostalgically imagines "the fun they had" in those old days.</div>
+            `,
+            hi: `
+                <div class="summary-paragraph">यह कहानी भविष्य की पृष्ठभूमि पर आधारित है, जो विशेष रूप से वर्ष 2157 को दर्शाती है, जहाँ पारंपरिक मानवीय शिक्षण संस्थानों को पूरी तरह से घरों के भीतर मौजूद स्वचालित, मैकेनिकल टेली-स्क्रीन द्वारा प्रतिस्थापित कर दिया गया है।</div>
+                <div class="summary-paragraph">कहानी की शुरुआत तब होती है जब तेरह वर्षीय टॉमी को अपने घर की अटारी में एक वास्तविक, कागज की किताब मिलती है। वह इस खोज को ग्यारह वर्षीय मार्गी के साथ साझा करता है। दोनों बच्चों को यह देखकर गहरा आश्चर्य होता है कि स्क्रीन के विपरीत इस भौतिक पुस्तक के शब्द पूरी तरह से स्थिर हैं।</div>
+                <div class="summary-paragraph">किताब को गहराई से पढ़ने पर, मार्गी को सदियों पुरानी स्कूल प्रणालियों के बारे में पता चलता है, जहाँ आसपास के सभी बच्चे एक साथ एक साझा इमारत (स्कूल) में जाते थे और उन्हें इंसानी शिक्षकों द्वारा एक समान पाठ पढ़ाया जाता था। मार्गी अपनी एकाकी और नीरस रोबोटिक पढ़ाई को देखकर पुरानी यादों में खो जाती है और सोचने लगती है कि उस समय के बच्चे कितना आनंद लेते होंगे ("The Fun They Had")।</div>
+            `
+        };
+
+        // Static Local Environment Sync Engine (Reads from core app state without exposing toggles)
+        function syncLocalThemeContext() {
+            try {
+                const state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+                document.documentElement.dataset.theme = state.theme || "light";
+            } catch (e) {
+                document.documentElement.dataset.theme = "light";
+            }
+        }
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        // Execution Core Trigger
+        document.addEventListener("DOMContentLoaded", () => {
+            syncLocalThemeContext();
+            switchSummaryLanguage('en', null);
+        });
+    </script>
+</body>
+
+</html>
