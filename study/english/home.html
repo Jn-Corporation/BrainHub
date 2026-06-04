@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-<script src="/../pwa-init.js"></script>
+
     <style>
         :root {
             --bg: #eef3f8;
@@ -501,28 +501,27 @@
                 transform: translateY(0);
             }
         }
+         /* Text selection disable */
+*{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-        /* Text selection disable */
-        * {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+    -webkit-touch-callout: none;
+}
 
-            -webkit-touch-callout: none;
-        }
+/* Mobile tap highlight remove */
+*{
+    -webkit-tap-highlight-color: transparent;
+}
 
-        /* Mobile tap highlight remove */
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Images drag disable */
-        img {
-            -webkit-user-drag: none;
-            /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
-            pointer-events: none;
-        }
+/* Images drag disable */
+img{
+    -webkit-user-drag: none;
+    /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
+    pointer-events: none;
+}
     </style>
 </head>
 
