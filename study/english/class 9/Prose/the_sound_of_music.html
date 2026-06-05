@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Sound of the Music - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 2 • Prose</span>
+            <h2>The Sound of Music</h2>
+            <p>The Sound of Music shows how music can help people achieve success despite challenges. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who was the first person in the world to gain fame as a
+                        solo percussionist?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Bismillah Khan</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Evelyn Glennie</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Ali Bux</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Ron Forbes</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Evelyn Glennie belonged to which country?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> England</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Scotland</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Ireland</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Wales</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> At what age did Evelyn's hearing become severely
+                        impaired?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> 8 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 10 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 11 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 13 years</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Who guided Evelyn to feel music through vibrations?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Ali Bux</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Ron Forbes</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Bismillah Khan</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> James Blades</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Which prestigious institution did Evelyn join?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> Oxford University</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Cambridge University</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Royal Academy of Music</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Trinity College</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Which instrument category is associated with Evelyn
+                        Glennie?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> String Instruments</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Wind Instruments</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Percussion Instruments</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Keyboard Instruments</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Bismillah Khan was associated with which musical
+                        instrument?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Flute</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Tabla</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Shehnai</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Sitar</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> In which state was Bismillah Khan born?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Uttar Pradesh</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Bihar</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Madhya Pradesh</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Rajasthan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Who trained Bismillah Khan in playing the shehnai?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> His father</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Ali Bux</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Ron Forbes</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Ustad Vilayat Khan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> At which temple did Ali Bux play the shehnai?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Golden Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Vishwanath Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Jagannath Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Somnath Temple</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Which river was closely associated with Bismillah Khan's
+                        practice sessions?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Yamuna</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Godavari</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Ganga</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Narmada</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> On which historic occasion did Bismillah Khan perform at
+                        the Red Fort?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> Republic Day 1950</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Independence Day 1947</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Quit India Movement</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Gandhi Jayanti</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Which is India's highest civilian award received by
+                        Bismillah Khan?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Padma Shri</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Padma Bhushan</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Bharat Ratna</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Padma Vibhushan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What helped Evelyn recognize different musical notes?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Hearing Aid</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Reading Music Books</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Feeling Vibrations</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Watching Videos</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What is the central theme of Evelyn Glennie's story?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Importance of Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Overcoming Disabilities Through
+                            Determination</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Power of Technology</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Importance of Travel</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Which city became Bismillah Khan's home and musical
+                        centre?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Delhi</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Lucknow</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Varanasi</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Patna</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What did Bismillah Khan bring to the shehnai?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Decline in popularity</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> International Recognition</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Electronic Features</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> New Technology</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What quality was common to both Evelyn Glennie and
+                        Bismillah Khan?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Laziness</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Dedication and Hard Work</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Interest in Science</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Political Leadership</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Which chapter of Class 9 English is "The Sound of
+                        Music"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Chapter 1</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Chapter 2</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Chapter 3</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Chapter 4</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> What lesson does "The Sound of Music" teach us?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Never Study Hard</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Success Comes Through Determination
+                            and Dedication</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Music is Only a Hobby</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Technology is Everything</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Evelyn Glennie was born in Scotland.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Evelyn Glennie became completely deaf at the age of
+                        eleven.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Evelyn gave up music after losing her hearing ability.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Ron Forbes encouraged Evelyn to feel music through
+                        vibrations.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Evelyn Glennie became a famous solo percussionist.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Evelyn studied at the Royal Academy of Music in London.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Bismillah Khan was a famous tabla player.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Bismillah Khan was born in Bihar.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Ali Bux was Bismillah Khan's maternal uncle.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Ali Bux played the shehnai at the Vishwanath Temple.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Bismillah Khan practiced music regularly on the banks of
+                        the Ganga.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The shehnai was originally considered a classical
+                        concert instrument.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Bismillah Khan helped popularize the shehnai worldwide.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Bismillah Khan performed at the Red Fort on 15 August
+                        1947.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Bismillah Khan received the Bharat Ratna award.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Evelyn Glennie believed that deafness was a barrier to
+                        success.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Bismillah Khan loved Banaras and never wanted to settle
+                        permanently abroad.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Both Evelyn Glennie and Bismillah Khan achieved success
+                        through dedication and hard work.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Evelyn Glennie learned to identify musical notes through
+                        body vibrations.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The chapter "The Sound of Music" teaches that
+                        determination can help overcome challenges.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Evelyn Glennie was born in ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Evelyn Glennie became profoundly deaf by the age of
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Evelyn learned to feel music through ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Evelyn's mentor was ________ Forbes.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Evelyn studied at the Royal Academy of Music in ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Evelyn became a world-famous solo ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Bismillah Khan was a master of the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Bismillah Khan was born in the state of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Bismillah Khan received training from his uncle ________
+                        Bux.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Ali Bux played the shehnai at the ________ Temple in
+                        Banaras.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Bismillah Khan practiced music on the banks of the river
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Bismillah Khan performed at the Red Fort on ________
+                        August 1947.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> India's highest civilian award is the ________ Ratna.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The shehnai was traditionally played at weddings and
+                        ________ ceremonies.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Evelyn listened to music through different parts of her
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Bismillah Khan brought the shehnai to the world of
+                        ________ music.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Evelyn proved that physical ________ cannot stop
+                        success.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Bismillah Khan was deeply attached to ________
+                        (Banaras/Varanasi).</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The chapter "The Sound of Music" is divided into
+                        ________ parts.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Both Evelyn Glennie and Bismillah Khan achieved success
+                        through hard work and ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who was Evelyn Glennie?</div>
+                    <div class="qa-answer">Evelyn Glennie was a famous Scottish percussionist who became one of the
+                        world's greatest musicians despite being profoundly deaf.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> At what age did Evelyn lose her hearing?</div>
+                    <div class="qa-answer">Evelyn's hearing became severely impaired by the age of eleven due to gradual
+                        nerve damage.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Who helped Evelyn understand music through vibrations?
+                    </div>
+                    <div class="qa-answer">Ron Forbes, her percussion teacher, helped her learn to feel music through
+                        vibrations instead of hearing it.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> Which institution did Evelyn join for music education?
+                    </div>
+                    <div class="qa-answer">Evelyn joined the prestigious Royal Academy of Music in London to pursue her
+                        musical career.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> What instrument made Bismillah Khan famous?</div>
+                    <div class="qa-answer">Bismillah Khan became famous for his mastery over the shehnai, a traditional
+                        Indian musical instrument.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> Where was Bismillah Khan born?</div>
+                    <div class="qa-answer">Bismillah Khan was born in Dumraon, Bihar, in a family of musicians.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Who trained Bismillah Khan in shehnai?</div>
+                    <div class="qa-answer">His maternal uncle, Ali Bux, trained him in playing the shehnai.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What award was given to Bismillah Khan?</div>
+                    <div class="qa-answer">Bismillah Khan received the Bharat Ratna, India's highest civilian award.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> Why is Evelyn Glennie an inspiration?</div>
+                    <div class="qa-answer">She is an inspiration because she achieved worldwide success despite being
+                        deaf.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What does "The Sound of Music" teach us?</div>
+                    <div class="qa-answer">The chapter teaches that determination, dedication, and hard work can help
+                        overcome any obstacle.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> How did Evelyn Glennie overcome her disability?</div>
+                    <div class="qa-answer">Evelyn Glennie overcame her disability through determination, hard work, and
+                        a positive attitude. Although she lost her hearing at a young age, she did not give up her dream
+                        of becoming a musician. Under the guidance of Ron Forbes, she learned to feel musical vibrations
+                        through different parts of her body. This unique method helped her become a world-famous
+                        percussionist.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> Describe the role of Ron Forbes in Evelyn's success.
+                    </div>
+                    <div class="qa-answer">Ron Forbes played a crucial role in Evelyn's life. He encouraged her to
+                        listen to music through vibrations rather than ears. He recognized her talent and taught her to
+                        feel different notes through various parts of her body. His guidance gave Evelyn confidence and
+                        helped her develop her musical abilities, eventually leading her to international success.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> How did Evelyn learn to hear music despite being deaf?
+                    </div>
+                    <div class="qa-answer">Evelyn learned to hear music by sensing vibrations throughout her body. She
+                        discovered that different musical notes created different vibrations. High notes could be felt
+                        in certain areas while lower notes were sensed elsewhere. Through constant practice, she trained
+                        herself to recognize these vibrations and interpret them as music, allowing her to perform
+                        professionally.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> Why is Bismillah Khan remembered as a legendary musician?
+                    </div>
+                    <div class="qa-answer">Bismillah Khan is remembered as a legendary musician because he brought the
+                        shehnai to the international stage. Through years of dedication and practice, he transformed the
+                        instrument from a traditional ceremonial instrument into one respected in classical music. His
+                        performances earned worldwide appreciation, and he became one of India's most respected
+                        musicians.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> Describe Bismillah Khan's early life and musical
+                        training.</div>
+                    <div class="qa-answer">Bismillah Khan was born into a family of musicians in Bihar. From childhood,
+                        he was surrounded by music and developed a deep interest in the shehnai. His maternal uncle, Ali
+                        Bux, trained him at the Vishwanath Temple in Banaras. Through regular practice and dedication,
+                        he mastered the instrument and laid the foundation for his successful musical career.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> What was Bismillah Khan's contribution to Indian music?
+                    </div>
+                    <div class="qa-answer">Bismillah Khan's greatest contribution was popularizing the shehnai as a
+                        respected classical instrument. Before him, it was mainly played at weddings and religious
+                        ceremonies. Through his exceptional performances and devotion, he elevated its status and
+                        introduced it to audiences around the world. His efforts brought international recognition to
+                        Indian classical music.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Why was Bismillah Khan deeply attached to Banaras?</div>
+                    <div class="qa-answer">Bismillah Khan was deeply attached to Banaras because it was the city where
+                        he received his musical training and spent most of his life. The Ganga River, temples, and
+                        cultural atmosphere inspired his music. Even after receiving opportunities abroad, he preferred
+                        staying in Banaras because of his emotional connection to the city and its traditions.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> What qualities made Evelyn Glennie successful?</div>
+                    <div class="qa-answer">Evelyn Glennie's success resulted from her determination, perseverance,
+                        confidence, and passion for music. She refused to let her deafness become a limitation. Instead,
+                        she adapted by learning to feel vibrations and practiced tirelessly. Her strong willpower and
+                        dedication enabled her to overcome challenges and become one of the most celebrated
+                        percussionists in the world.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> Compare Evelyn Glennie and Bismillah Khan.</div>
+                    <div class="qa-answer">Both Evelyn Glennie and Bismillah Khan achieved greatness through dedication
+                        and hard work. Evelyn overcame deafness to become a world-famous percussionist, while Bismillah
+                        Khan popularized the shehnai worldwide. Both faced challenges, remained committed to music, and
+                        inspired millions through their achievements. Their lives demonstrate the power of determination
+                        and passion.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> What is the central message of "The Sound of Music"?
+                    </div>
+                    <div class="qa-answer">The central message of "The Sound of Music" is that determination,
+                        dedication, and love for one's passion can help overcome any obstacle. The chapter highlights
+                        the inspiring lives of Evelyn Glennie and Bismillah Khan, showing that success is achieved
+                        through hard work, perseverance, and commitment rather than physical abilities or circumstances.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Character Sketch of Evelyn Glennie</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Evelyn Glennie is one of the most inspiring personalities in "The Sound of Music".
+                        She is a Scottish percussionist who achieved worldwide fame despite being
+                        profoundly deaf. Her life story is a symbol of courage, determination, and
+                        perseverance.
+                        <br><br>
+
+                        <strong>Determined and Hardworking:</strong><br>
+                        Evelyn never allowed her disability to stop her from pursuing her dream. Even
+                        after losing her hearing at a young age, she continued practicing music with
+                        great dedication and determination.
+                        <br><br>
+
+                        <strong>Passionate About Music:</strong><br>
+                        Her love for music was so strong that she learned to feel musical notes through
+                        vibrations in different parts of her body. This extraordinary ability helped her
+                        become a successful musician.
+                        <br><br>
+
+                        <strong>Inspiring Personality:</strong><br>
+                        Evelyn's achievements inspire millions of people around the world. She teaches us
+                        that physical disabilities cannot prevent success if a person has confidence and
+                        determination.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Evelyn Glennie is a remarkable example of courage, dedication, and hard work. Her
+                        life proves that determination can help overcome even the greatest challenges.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Character Sketch of Bismillah Khan</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Bismillah Khan was one of India's greatest musicians and the most famous shehnai
+                        player in history. He dedicated his entire life to music and earned worldwide
+                        recognition through his talent and devotion.
+                        <br><br>
+
+                        <strong>Dedicated Musician:</strong><br>
+                        From childhood, Bismillah Khan practiced the shehnai with complete dedication.
+                        His tireless efforts helped him master the instrument and become a legendary
+                        artist.
+                        <br><br>
+
+                        <strong>Simple and Humble:</strong><br>
+                        Despite achieving international fame, Bismillah Khan remained humble and deeply
+                        connected to his roots. He loved Banaras and valued Indian culture and
+                        traditions.
+                        <br><br>
+
+                        <strong>Patriot and Cultural Ambassador:</strong><br>
+                        His performance at the Red Fort on India's Independence Day became historic. He
+                        introduced the beauty of Indian classical music to audiences across the world.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Bismillah Khan was a dedicated, humble, and patriotic musician whose contribution
+                        to Indian music remains unforgettable.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Character Sketch of Ron Forbes</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Ron Forbes was Evelyn Glennie's percussion teacher. Although he appears briefly
+                        in the chapter, he played a vital role in shaping Evelyn's musical career.
+                        <br><br>
+
+                        <strong>Supportive Mentor:</strong><br>
+                        Ron Forbes recognized Evelyn's talent when many others doubted her abilities. He
+                        encouraged her to continue pursuing music despite her hearing disability.
+                        <br><br>
+
+                        <strong>Innovative Teacher:</strong><br>
+                        Instead of focusing on Evelyn's weakness, he taught her a unique way to
+                        understand music through vibrations. His teaching methods were creative and
+                        effective.
+                        <br><br>
+
+                        <strong>Motivational Personality:</strong><br>
+                        He constantly motivated Evelyn and helped her build confidence. His guidance
+                        transformed her disability into a source of strength.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Ron Forbes was an inspiring teacher whose encouragement and wisdom played a major
+                        role in Evelyn Glennie's success.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> Describe Evelyn Glennie's Journey from Disability to
+                        Success</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Evelyn Glennie's life story is one of the most inspiring examples of courage and
+                        determination. Despite losing her hearing, she achieved extraordinary success in
+                        the world of music.
+                        <br><br>
+
+                        <strong>The Challenge:</strong><br>
+                        By the age of eleven, Evelyn had become profoundly deaf. Many people believed
+                        that a deaf person could never become a musician.
+                        <br><br>
+
+                        <strong>Finding a New Way:</strong><br>
+                        With the help of Ron Forbes, Evelyn learned to feel music through vibrations.
+                        She trained herself to identify notes by sensing vibrations through different
+                        parts of her body.
+                        <br><br>
+
+                        <strong>Achievement and Recognition:</strong><br>
+                        Her hard work earned her admission to the Royal Academy of Music in London.
+                        Eventually, she became one of the world's leading solo percussionists and
+                        received numerous awards and honors.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Evelyn's journey teaches us that determination, confidence, and perseverance can
+                        help us overcome even the most difficult obstacles.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> Discuss the Theme and Message of "The Sound of Music"
+                    </div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        "The Sound of Music" is an inspiring chapter that presents the lives of Evelyn
+                        Glennie and Bismillah Khan. Both stories highlight the power of dedication and
+                        perseverance.
+                        <br><br>
+
+                        <strong>Power of Determination:</strong><br>
+                        Evelyn Glennie's story demonstrates that physical disabilities cannot stop a
+                        person from achieving success if they remain determined and focused.
+                        <br><br>
+
+                        <strong>Importance of Dedication:</strong><br>
+                        Bismillah Khan's life shows how years of sincere practice and devotion can bring
+                        excellence and recognition. His commitment transformed the shehnai into a
+                        respected classical instrument.
+                        <br><br>
+
+                        <strong>Love for Art and Culture:</strong><br>
+                        The chapter also emphasizes respect for music, culture, and traditions. Both
+                        musicians devoted their lives to their art and inspired generations.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The chapter teaches that success comes through hard work, determination,
+                        dedication, and passion. It encourages readers to follow their dreams regardless
+                        of the challenges they face.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Isaac Asimov</h4>
+                    <p>Isaac Asimov (1920–1992) was an exceptionally prolific American writer and professor of
+                        biochemistry, famously recognized as one of the founding pillars of hard science fiction
+                        literature. His stories elegantly speculate on technological paradigms, robotic controls, and
+                        future human adaptations.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Part I – Evelyn Glennie:</strong> The first part of the chapter tells the inspiring story of Evelyn Glennie, a Scottish girl who became one of the world's greatest percussionists despite being profoundly deaf. From an early age, Evelyn showed a deep interest in music, but gradually lost her hearing due to nerve damage. By the age of eleven, she was almost completely deaf.</div>
+
+        <div class="summary-paragraph"><strong>Overcoming a Major Challenge:</strong> Many people believed that Evelyn's dream of becoming a musician was impossible. However, she refused to give up. Her percussion teacher, Ron Forbes, helped her understand that music could be felt through vibrations rather than only heard through ears. Evelyn learned to sense different musical notes through various parts of her body.</div>
+
+        <div class="summary-paragraph"><strong>Journey to Success:</strong> Through hard work, determination, and confidence, Evelyn gained admission to the prestigious Royal Academy of Music in London. She practiced tirelessly and soon became one of the most successful solo percussionists in the world. Her achievements proved that physical disabilities cannot stop a person from reaching great heights if they possess courage and dedication.</div>
+
+        <div class="summary-paragraph"><strong>Part II – Bismillah Khan:</strong> The second part focuses on the life of Bismillah Khan, the legendary Indian shehnai player. Born into a family of musicians in Bihar, he was introduced to music at an early age. He received training from his maternal uncle, Ali Bux, who was a respected shehnai player at the Vishwanath Temple in Banaras.</div>
+
+        <div class="summary-paragraph"><strong>Love for Music and Dedication:</strong> Bismillah Khan practiced for hours every day and dedicated his entire life to mastering the shehnai. At a time when the shehnai was mainly played at weddings and traditional ceremonies, he worked hard to bring it to the classical music stage and earn it national and international recognition.</div>
+
+        <div class="summary-paragraph"><strong>National and International Fame:</strong> Bismillah Khan's talent earned him great respect across the world. He performed at prestigious events, including India's Independence Day celebrations at the Red Fort in 1947. His contribution to Indian music was recognized with several awards, including the Bharat Ratna, India's highest civilian award.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The chapter highlights the lives of two extraordinary musicians who overcame challenges and achieved greatness through dedication, passion, and perseverance. Evelyn Glennie teaches us that disabilities cannot limit success, while Bismillah Khan shows the importance of devotion to one's art and cultural heritage.</div>
+    `,
+            hi: `
+        <div class="summary-paragraph"><strong>भाग 1 – एवलिन ग्लेनी:</strong> अध्याय का पहला भाग स्कॉटलैंड की प्रसिद्ध संगीतकार एवलिन ग्लेनी की प्रेरणादायक कहानी बताता है। बचपन से ही उन्हें संगीत में गहरी रुचि थी, लेकिन धीरे-धीरे उनकी सुनने की शक्ति कम होने लगी। ग्यारह वर्ष की आयु तक वे लगभग पूरी तरह बहरी हो गई थीं।</div>
+
+        <div class="summary-paragraph"><strong>चुनौतियों पर विजय:</strong> अधिकांश लोगों को लगता था कि एक बहरी लड़की कभी सफल संगीतकार नहीं बन सकती। लेकिन एवलिन ने हार नहीं मानी। उनके शिक्षक रॉन फोर्ब्स ने उन्हें सिखाया कि संगीत केवल कानों से नहीं बल्कि शरीर द्वारा महसूस की जाने वाली कंपनियों के माध्यम से भी समझा जा सकता है। उन्होंने पूरे शरीर से संगीत को महसूस करना सीख लिया।</div>
+
+        <div class="summary-paragraph"><strong>सफलता की यात्रा:</strong> कठिन परिश्रम और दृढ़ निश्चय के बल पर एवलिन को लंदन की प्रतिष्ठित रॉयल अकादमी ऑफ म्यूजिक में प्रवेश मिला। लगातार अभ्यास और समर्पण के कारण वे विश्व की सबसे प्रसिद्ध सोलो परकशन वादकों में से एक बन गईं। उनकी सफलता यह सिद्ध करती है कि शारीरिक कमजोरी सफलता के मार्ग में बाधा नहीं बन सकती।</div>
+
+        <div class="summary-paragraph"><strong>भाग 2 – बिस्मिल्लाह खान:</strong> अध्याय का दूसरा भाग महान शहनाई वादक बिस्मिल्लाह खान के जीवन पर आधारित है। उनका जन्म बिहार के एक संगीतकार परिवार में हुआ था। उन्होंने अपने मामा अली बख्श से शहनाई बजाना सीखा, जो बनारस के विश्वनाथ मंदिर में शहनाई वादक थे।</div>
+
+        <div class="summary-paragraph"><strong>संगीत के प्रति समर्पण:</strong> बिस्मिल्लाह खान ने अपना पूरा जीवन शहनाई को समर्पित कर दिया। उस समय शहनाई मुख्य रूप से विवाह और धार्मिक समारोहों में बजाई जाती थी, लेकिन उन्होंने अपने अथक प्रयासों से इसे भारतीय शास्त्रीय संगीत में एक सम्मानजनक स्थान दिलाया।</div>
+
+        <div class="summary-paragraph"><strong>विश्वव्यापी सम्मान:</strong> उनकी कला ने उन्हें राष्ट्रीय और अंतरराष्ट्रीय ख्याति दिलाई। उन्होंने 15 अगस्त 1947 को लाल किले से ऐतिहासिक शहनाई वादन किया। भारतीय संगीत में उनके योगदान के लिए उन्हें भारत रत्न सहित अनेक सम्मान प्राप्त हुए।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह अध्याय दो महान संगीतकारों की प्रेरणादायक कहानियों को प्रस्तुत करता है। एवलिन ग्लेनी हमें सिखाती हैं कि दृढ़ इच्छाशक्ति से किसी भी बाधा को पार किया जा सकता है, जबकि बिस्मिल्लाह खान हमें अपनी कला, संस्कृति और परंपराओं के प्रति समर्पण का महत्व बताते हैं।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+    </script>
+</body>
+
+</html>

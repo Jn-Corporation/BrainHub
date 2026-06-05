@@ -10,7 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-        
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="BrainHub">
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            });
+        }
+
+        // In-app Install prompt handler code 
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // can show custom custom UI download button if required
+            console.log("'beforeinstallprompt' event triggered and captured.");
+        });
+
+        // App update listener logic
+        window.addEventListener('appinstalled', (evt) => {
+            showToast("BrainHub Installed Successfully!");
+            deferredPrompt = null;
+        });
+    </script>
     <style>
         :root {
             --bg: #eef3f8;
@@ -505,9 +534,12 @@
             background: var(--primary-2);
         }
 
+        /* Purane '.feature h4' ko isse replace karein (Line ~335 ke aas-paas) */
         .feature h4 {
             font-size: 15px;
             line-height: 1.25;
+            color: var(--text);
+            /* Dark theme me white aur light theme me dark automatic handle karega */
         }
 
         .feature p {
@@ -2448,7 +2480,12 @@
 
 
 
-
+        function applyTheme() {
+            document.documentElement.dataset.theme = state.theme === "dark" ? "dark" : "light";
+            $("#themeBtn i").className = `fa-solid ${state.theme === "dark" ? "fa-sun" : "fa-moon"}`;
+            // Meta tag color dynamically switch karne ke liye
+            $('meta[name="theme-color"]').setAttribute('content', state.theme === "dark" ? "#121722" : "#2563eb");
+        }
     </script>
 </body>
 
