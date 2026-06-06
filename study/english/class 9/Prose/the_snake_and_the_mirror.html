@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Snake and the Mirror - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 5 • Prose</span>
+            <h2>The Snake and the Mirror</h2>
+            <p>The Snake and the Mirror is a captivating tale that delves into the themes of self-reflection, fear, and
+                the quest for identity. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the narrator of "The Snake and the Mirror"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> A farmer</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> A doctor</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> A teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> A policeman</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Where was the doctor living?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> In a large bungalow</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> In a rented room</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> In a hostel</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> In a village hut</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> What was the doctor’s financial condition?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Very rich</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Moderately wealthy</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Poor</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Businessman</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> How many rupees did the doctor have in his pocket?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Sixty rupees</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Ten rupees</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Two rupees</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Five rupees</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> What was hanging on the wall of the doctor's room?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> A clock</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> A mirror</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> A painting</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> A calendar</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What did the doctor admire about himself in the mirror?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> His eyes</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> His smile and appearance</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> His beard</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> His height</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> What decision did the doctor make while looking into the
+                        mirror?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> To buy a car</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> To get married</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> To leave the town</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> To become rich</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What kind of wife did the doctor dream of having?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> A rich woman</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> A fat woman doctor</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> A teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> A singer</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What suddenly fell on the doctor's shoulder?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> A lizard</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A rat</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A snake</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A bird</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Where did the snake finally coil itself?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Around the doctor's neck</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Around his arm</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> On the floor</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> On the table</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> How did the doctor feel when the snake coiled around his
+                        neck?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Happy</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Relaxed</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Terrified</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Excited</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Why could the doctor not move?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> He was sleeping</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> He was frozen with fear</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> He was injured</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> He was tied up</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> What did the doctor pray for while the snake was around
+                        his neck?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> A second life</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Courage and safety</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Fame</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What attracted the snake's attention?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> The doctor's face</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> The mirror</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> The lamp</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> The chair</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What did the snake do after seeing itself in the mirror?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Attacked the mirror</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Moved toward the mirror</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Went to sleep</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Left the room immediately</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> What did the doctor do when the snake moved away?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> He screamed loudly</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He ran out of the room</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He caught the snake</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He called the police</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What happened when the doctor returned later?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Everything was safe</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> His room had been robbed</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> The snake was still there</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> The landlord was waiting</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What was the only thing left behind by the thief?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> The mirror</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> The vest</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> A dirty towel</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> The lamp</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What is the main theme of the story?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Adventure</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Fear, vanity, and presence of
+                            mind</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Friendship</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Sports</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Who is the author of "The Snake and the Mirror"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Ruskin Bond</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Vaikom Muhammad Basheer</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> R.K. Narayan</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Mulk Raj Anand</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The narrator of the story was a young doctor.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The doctor lived in a luxurious bungalow.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The doctor had only sixty rupees in his suitcase.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> There was a large mirror hanging on the wall of the
+                        doctor's room.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The doctor admired his appearance while looking into the
+                        mirror.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The doctor decided never to marry.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The doctor wanted to marry a rich and fat woman doctor.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> A snake suddenly fell onto the doctor's shoulder.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The snake coiled itself around the doctor's neck.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The doctor remained calm and fearless throughout the
+                        incident.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The doctor could not move because he was frozen with
+                        fear.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The doctor prayed to God while the snake was around his
+                        neck.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The snake was attracted by its reflection in the mirror.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The snake attacked the doctor before leaving.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The snake moved toward the mirror after leaving the
+                        doctor's body.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The doctor quietly ran out of the room when he got the
+                        chance.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> When the doctor returned, all his belongings were safe.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> A thief had stolen most of the doctor's belongings.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The thief left behind only the dirty vest.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story highlights fear, vanity, and the
+                        unpredictability of life.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The narrator of the story was a young ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The doctor lived in a small ________ room.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The doctor had only ________ rupees in his pocket.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> There was a large ________ hanging on the wall.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The doctor looked at himself in the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The doctor decided to grow a thin ________ to look
+                        handsome.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The doctor planned to marry a fat woman ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Suddenly, a ________ fell onto the doctor's shoulder.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The snake coiled around the doctor's ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The doctor was frozen with ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The snake rested its head near the doctor's ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The doctor silently prayed to ________ for help.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The snake became attracted to its reflection in the
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The snake moved towards the ________ after leaving the
+                        doctor's body.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Taking advantage of the situation, the doctor ran out of
+                        the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> When the doctor returned, he found that a ________ had
+                        stolen his belongings.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The thief left behind only a dirty ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The story was written by Vaikom Muhammad ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The story teaches us about fear, vanity, and the
+                        unpredictability of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> "The Snake and the Mirror" is a humorous and ________
+                        story.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who was the narrator of "The Snake and the Mirror"?</div>
+                    <div class="qa-answer">The narrator was a young homeopathic doctor who lived alone in a small rented
+                        room. He later narrated his frightening yet humorous experience with a snake.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Where did the doctor live?</div>
+                    <div class="qa-answer">The doctor lived in a small rented room that was poorly furnished and
+                        surrounded by trees. It was an old house with many rats.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> What was the doctor's financial condition?</div>
+                    <div class="qa-answer">The doctor was not financially well-off. He had only sixty rupees in his
+                        suitcase and a few coins in his pocket.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What was hanging on the wall of the doctor's room?</div>
+                    <div class="qa-answer">A large mirror was hanging on the wall above a small table. The doctor often
+                        looked into it and admired himself.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> What did the doctor decide while looking into the mirror?
+                    </div>
+                    <div class="qa-answer">The doctor decided to shave daily, grow a thin moustache, and look more
+                        handsome. He also planned to marry a rich and fat woman doctor.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> Why did the doctor want to marry a fat woman doctor?</div>
+                    <div class="qa-answer">He thought a fat woman would not be able to run after him and catch him if he
+                        made a mistake after marriage.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> What suddenly fell on the doctor's shoulder?</div>
+                    <div class="qa-answer">A snake suddenly fell from the roof onto the doctor's shoulder while he was
+                        sitting near the table.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> Where did the snake settle itself?</div>
+                    <div class="qa-answer">The snake coiled around the doctor's left arm and neck and rested its head
+                        near his shoulder.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> How did the doctor feel when he saw the snake?</div>
+                    <div class="qa-answer">The doctor was terrified. His body became stiff, and he could not move
+                        because he feared that any movement might provoke the snake.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> Why could the doctor not move?</div>
+                    <div class="qa-answer">The doctor could not move because he was frozen with fear. He knew that even
+                        a slight movement could cause the snake to bite him.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> What did the doctor think about himself during the
+                        incident?</div>
+                    <div class="qa-answer">The doctor realized how powerless and insignificant he was before nature. His
+                        pride and self-admiration disappeared completely.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> What did the doctor pray for?</div>
+                    <div class="qa-answer">The doctor silently prayed to God for safety and promised to become a better
+                        person if he survived the dangerous situation.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> What attracted the snake toward the mirror?</div>
+                    <div class="qa-answer">The snake was attracted by its own reflection in the mirror. It seemed
+                        fascinated by the image it saw.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> What did the snake do after seeing its reflection?</div>
+                    <div class="qa-answer">The snake slowly moved away from the doctor's body and slithered toward the
+                        mirror to look at its reflection.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> How did the doctor escape from the room?</div>
+                    <div class="qa-answer">As soon as the snake moved toward the mirror, the doctor quietly jumped up
+                        and ran out of the room as fast as he could.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> What happened when the doctor returned to his room?</div>
+                    <div class="qa-answer">When the doctor returned later with friends, he discovered that a thief had
+                        stolen almost all of his belongings.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> What was the only thing left in the room?</div>
+                    <div class="qa-answer">The thief had taken everything except a dirty vest, which was considered
+                        worthless.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> Why is the story considered humorous?</div>
+                    <div class="qa-answer">The story is humorous because of the doctor's vanity, his funny thoughts
+                        about marriage, and the ironic situations that occur throughout the incident.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What lesson does the story teach?</div>
+                    <div class="qa-answer">The story teaches that pride can disappear in moments of danger and that life
+                        is unpredictable. It also highlights the power of nature.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> Who wrote "The Snake and the Mirror"?</div>
+                    <div class="qa-answer">"The Snake and the Mirror" was written by Vaikom Muhammad Basheer, a famous
+                        Malayalam writer known for his humorous and realistic stories.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Character Sketch of the Doctor.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        The doctor is the central character and narrator of the story "The Snake and the Mirror." He is
+                        a young, unmarried homeopathic doctor who lives alone in a small rented room. Through his
+                        actions and thoughts, readers get a clear picture of his personality.
+                        <br><br>
+
+                        <b>Young and Ambitious:</b><br>
+                        The doctor was at the beginning of his career and dreamed of a successful future. Although he
+                        was poor at that time, he hoped to become wealthy and respected one day.
+                        <br><br>
+
+                        <b>Vain and Self-Admiring:</b><br>
+                        He was very conscious of his appearance. He spent time looking into the mirror, admiring
+                        himself, and planning to improve his looks by shaving regularly and growing a thin moustache.
+                        <br><br>
+
+                        <b>Humorous and Imaginative:</b><br>
+                        The doctor had a good sense of humor. His thoughts about marrying a fat woman doctor who would
+                        not be able to chase him reveal his playful and imaginative nature.
+                        <br><br>
+
+                        <b>Fearful but Wise:</b><br>
+                        When the snake coiled around his neck, he was terrified. However, he remained completely still
+                        and avoided making any sudden movements, which ultimately saved his life.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        The doctor is an interesting blend of vanity, humor, intelligence, and fear. His experience with
+                        the snake teaches him humility and helps him understand the unpredictability of life.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Describe the Snake Incident in Detail.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        The snake incident forms the most exciting and dramatic part of the story. It completely changes
+                        the doctor's mood and outlook within a few moments.
+                        <br><br>
+
+                        <b>Before the Incident:</b><br>
+                        One hot summer night, the doctor was sitting in his room. He was admiring himself in the mirror
+                        and making plans about his future appearance and marriage.
+                        <br><br>
+
+                        <b>The Arrival of the Snake:</b><br>
+                        Suddenly, a snake fell from the roof onto his shoulder. Within moments, it coiled itself around
+                        his arm and neck. The doctor was shocked and frozen with fear.
+                        <br><br>
+
+                        <b>The Doctor's Fear:</b><br>
+                        The doctor realized that even a small movement could provoke the snake to bite him. He remained
+                        motionless and silently prayed for his safety while thinking about his mistakes and weaknesses.
+                        <br><br>
+
+                        <b>The Escape:</b><br>
+                        The snake eventually became interested in its reflection in the mirror. It slowly moved away
+                        from the doctor's body and slithered toward the mirror. Seizing the opportunity, the doctor
+                        rushed out of the room and escaped.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        The incident was both frightening and humorous. It demonstrated the doctor's vulnerability and
+                        highlighted how quickly circumstances can change in life.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Theme, Message, and Central Idea of "The Snake and the
+                        Mirror".</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        "The Snake and the Mirror" is an entertaining story that combines humor, suspense, and valuable
+                        life lessons. Through a simple incident, the author conveys several important messages.
+                        <br><br>
+
+                        <b>Human Vanity:</b><br>
+                        One of the major themes of the story is vanity. Before the snake appeared, the doctor was busy
+                        admiring his appearance and dreaming about his future. His pride disappeared the moment he faced
+                        danger.
+                        <br><br>
+
+                        <b>Fear and Survival:</b><br>
+                        The story shows how fear affects human behavior. The doctor became completely still and obedient
+                        to the situation because his survival depended on remaining calm.
+                        <br><br>
+
+                        <b>Power of Nature:</b><br>
+                        The snake symbolizes the power of nature. Despite being educated and intelligent, the doctor
+                        became helpless in front of a small creature.
+                        <br><br>
+
+                        <b>Unpredictability of Life:</b><br>
+                        Life can change suddenly and unexpectedly. One moment the doctor was dreaming about his future,
+                        and the next moment he was facing a life-threatening situation.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        The story teaches us to remain humble, respect nature, and understand that life is full of
+                        unexpected events that can change our perspective instantly.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> How Does the Author Create Humor and Suspense in the
+                        Story?</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        Vaikom Muhammad Basheer skillfully combines humor and suspense to make the story interesting and
+                        memorable. Readers experience laughter and tension at the same time.
+                        <br><br>
+
+                        <b>Humorous Elements:</b><br>
+                        The doctor's admiration for his appearance and his funny plans about marrying a fat woman doctor
+                        create humor. His confidence and vanity make readers smile.
+                        <br><br>
+
+                        <b>Suspenseful Situation:</b><br>
+                        The suspense begins when the snake suddenly falls onto the doctor's shoulder. Readers become
+                        anxious because they do not know whether the doctor will survive.
+                        <br><br>
+
+                        <b>Emotional Contrast:</b><br>
+                        The contrast between the doctor's earlier confidence and his later helplessness increases both
+                        humor and suspense. His sudden transformation is highly dramatic.
+                        <br><br>
+
+                        <b>Unexpected Ending:</b><br>
+                        The snake's fascination with its reflection and the theft that occurs afterward create an ironic
+                        and amusing conclusion.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        Through clever narration, irony, and unexpected events, the author successfully blends humor and
+                        suspense, making the story both entertaining and meaningful.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> Explain the Significance of the Title "The Snake and the
+                        Mirror".</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        The title "The Snake and the Mirror" is highly appropriate because both the snake and the mirror
+                        play important roles in the story and contribute to its deeper meaning.
+                        <br><br>
+
+                        <b>Importance of the Mirror:</b><br>
+                        The mirror symbolizes vanity and self-admiration. Before the snake appears, the doctor spends
+                        time admiring his appearance and dreaming about becoming more attractive.
+                        <br><br>
+
+                        <b>Importance of the Snake:</b><br>
+                        The snake symbolizes danger, fear, and the unpredictable forces of nature. Its sudden appearance
+                        completely changes the doctor's thoughts and behavior.
+                        <br><br>
+
+                        <b>Connection Between the Two:</b><br>
+                        Ironically, the same mirror that encouraged the doctor's vanity later saves his life. The snake
+                        becomes fascinated by its own reflection, allowing the doctor to escape.
+                        <br><br>
+
+                        <b>Symbolic Meaning:</b><br>
+                        Together, the snake and the mirror represent the contrast between human pride and reality. The
+                        doctor learns that life is uncertain and that pride can disappear instantly when faced with
+                        danger.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        The title perfectly captures the central events and themes of the story. It highlights vanity,
+                        fear, self-realization, and the unpredictable nature of life, making it meaningful and
+                        memorable.
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Vaikom Muhammad Basheer</h4>
+                    <p>Vaikom Muhammad Basheer (1908–1994) was one of the most celebrated writers in Malayalam
+                        literature and is widely regarded as a pioneer of modern Indian storytelling. Born in Vaikom,
+                        Kerala, he actively participated in India's freedom movement and spent several years traveling
+                        across the country, gaining rich life experiences that later influenced his writings. Basheer's
+                        works are admired for their simplicity, humor, realism, and deep understanding of human nature.
+                        He wrote about ordinary people, their struggles, emotions, relationships, and everyday life in a
+                        unique and engaging style. Some of his most famous works include <i>Balyakalasakhi</i>,
+                        <i>Pathummayude Aadu</i>, <i>Mathilukal</i>, and <i>Ntuppuppakkoranendarnnu</i>. The story
+                        <i>"The Snake and the Mirror"</i> beautifully showcases his talent for blending humor, suspense,
+                        and life lessons while exploring themes such as vanity, fear, self-realization, and the
+                        unpredictable nature of life.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "The Snake and the Mirror" is a humorous and suspenseful story written by Vaikom Muhammad Basheer. It narrates a frightening experience of a young doctor who comes face to face with a snake. The story highlights human vanity, fear, and the unpredictable nature of life.</div>
+
+        <div class="summary-paragraph"><strong>The Young Doctor and His Room:</strong> The narrator was a young homeopathic doctor living alone in a small rented room. He was not financially well-off and possessed only a few belongings. His room contained a table, a chair, some books, and a large mirror hanging on the wall.</div>
+
+        <div class="summary-paragraph"><strong>Admiring Himself in the Mirror:</strong> One hot summer night, the doctor sat in front of the mirror admiring his appearance. He felt proud of his looks and decided to shave regularly and grow a thin moustache to appear more handsome. He also dreamed about marrying a rich, fat woman doctor who would not be able to run after him if he made mistakes.</div>
+
+        <div class="summary-paragraph"><strong>The Sudden Arrival of the Snake:</strong> While the doctor was lost in his thoughts, he heard a strange noise. Suddenly, a snake fell from the roof onto his shoulder. Within moments, it coiled itself around his left arm and neck. The doctor became terrified and remained completely motionless.</div>
+
+        <div class="summary-paragraph"><strong>Fear and Realization:</strong> As the snake rested on him, the doctor realized how helpless he was before nature. His pride and self-confidence disappeared instantly. He silently prayed to God and thought deeply about his life, mistakes, and future.</div>
+
+        <div class="summary-paragraph"><strong>The Mirror Saves the Doctor:</strong> After some time, the snake noticed its reflection in the mirror. Fascinated by the image, it slowly moved away from the doctor's body and slithered toward the mirror. The doctor immediately seized the opportunity and rushed out of the room as quickly as possible.</div>
+
+        <div class="summary-paragraph"><strong>An Unexpected Twist:</strong> Later, the doctor returned to the room with some friends. To his surprise, he found that a thief had stolen almost all of his belongings. The only thing left behind was a dirty vest, which even the thief did not want to take.</div>
+
+        <div class="summary-paragraph"><strong>Humor and Irony:</strong> The story contains several humorous elements. The doctor's vanity before the snake incident and the ironic fact that the mirror attracted the snake and saved his life make the story both entertaining and memorable.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The story teaches valuable lessons about humility, fear, and the uncertainty of life. It shows that pride can vanish in a moment of danger and reminds us that nature is far more powerful than human beings. Through humor and suspense, Basheer presents a meaningful reflection on human nature.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "The Snake and the Mirror" वैकोम मुहम्मद बशीर द्वारा लिखी गई एक रोचक, हास्यपूर्ण और रोमांचक कहानी है। यह एक युवा डॉक्टर के जीवन की वास्तविक घटना पर आधारित है जिसमें उसका सामना एक साँप से होता है। कहानी मानव अहंकार, भय और जीवन की अनिश्चितताओं को दर्शाती है।</div>
+
+        <div class="summary-paragraph"><strong>युवा डॉक्टर और उसका कमरा:</strong> कहानी का कथावाचक एक युवा होम्योपैथिक डॉक्टर है जो एक छोटे से किराए के कमरे में अकेला रहता था। वह आर्थिक रूप से संपन्न नहीं था और उसके पास बहुत कम सामान था। उसके कमरे में एक मेज, एक कुर्सी, कुछ किताबें और दीवार पर टंगा एक बड़ा दर्पण था।</div>
+
+        <div class="summary-paragraph"><strong>दर्पण के सामने आत्ममुग्धता:</strong> एक गर्मी की रात डॉक्टर दर्पण के सामने बैठकर अपनी सुंदरता को निहार रहा था। वह नियमित रूप से शेव करने और पतली मूंछ रखने का निर्णय करता है ताकि और अधिक आकर्षक दिखाई दे। वह एक मोटी और अमीर महिला डॉक्टर से विवाह करने का सपना भी देखता है।</div>
+
+        <div class="summary-paragraph"><strong>साँप का अचानक आगमन:</strong> जब डॉक्टर अपने विचारों में खोया हुआ था, तभी अचानक छत से एक साँप उसके कंधे पर गिर गया। कुछ ही क्षणों में वह उसके हाथ और गर्दन के चारों ओर लिपट गया। डॉक्टर भय से जड़ हो गया और बिल्कुल स्थिर बैठा रहा।</div>
+
+        <div class="summary-paragraph"><strong>भय और आत्मबोध:</strong> साँप के लिपटने के बाद डॉक्टर को अपनी असहायता का एहसास हुआ। उसका सारा घमंड और आत्मविश्वास पल भर में समाप्त हो गया। उसने मन ही मन भगवान से प्रार्थना की और अपने जीवन के बारे में गंभीरता से सोचने लगा।</div>
+
+        <div class="summary-paragraph"><strong>दर्पण ने बचाई जान:</strong> कुछ समय बाद साँप की नजर दर्पण में दिखाई दे रही अपनी परछाईं पर पड़ी। वह अपनी छवि से आकर्षित हो गया और धीरे-धीरे डॉक्टर के शरीर से उतरकर दर्पण की ओर बढ़ गया। इसी अवसर का लाभ उठाकर डॉक्टर तुरंत कमरे से भाग निकला।</div>
+
+        <div class="summary-paragraph"><strong>अप्रत्याशित मोड़:</strong> बाद में जब डॉक्टर अपने मित्रों के साथ कमरे में लौटा, तो उसने पाया कि एक चोर उसका लगभग सारा सामान चुरा ले गया था। केवल एक गंदी बनियान ही बची थी, जिसे चोर भी ले जाना उचित नहीं समझा।</div>
+
+        <div class="summary-paragraph"><strong>हास्य और विडंबना:</strong> कहानी में अनेक हास्यपूर्ण प्रसंग हैं। डॉक्टर की आत्ममुग्धता, विवाह संबंधी मजेदार कल्पनाएँ, और वही दर्पण जो पहले उसके अहंकार का प्रतीक था, बाद में उसकी जान बचाने का कारण बनता है।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी हमें विनम्रता, साहस और जीवन की अनिश्चितताओं का महत्वपूर्ण संदेश देती है। यह दिखाती है कि खतरे के समय मनुष्य का घमंड तुरंत समाप्त हो सकता है। हास्य और रोमांच के माध्यम से लेखक ने मानव स्वभाव और जीवन की सच्चाइयों को प्रभावशाली ढंग से प्रस्तुत किया है।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

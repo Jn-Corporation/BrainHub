@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>A Truly Beautiful Mind - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 4 • Prose</span>
+            <h2>A Truly Beautigul Mind</h2>
+            <p>A Truly Beautiful Mind is an inspiring biography of Albert Einstein that highlights his extraordinary
+                intelligence, scientific achievements, humanitarian values, and his vision for peace, proving that true
+                greatness lies in both brilliance and compassion. 🧠✨</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the main personality discussed in "A Truly
+                        Beautiful Mind"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Isaac Newton</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Albert Einstein</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Thomas Edison</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Galileo Galilei</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> In which country was Albert Einstein born?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> France</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Germany</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Italy</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> England</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Einstein did not speak until he was about</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Two and a half years old</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Five years old</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Seven years old</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> One year old</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> What gift from his father fascinated Einstein as a child?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Telescope</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Toy Train</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Compass</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Microscope</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Einstein hated the school's system because it was</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> Too easy</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Too modern</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Based on rote learning and
+                            discipline</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Too expensive</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Which subject attracted Einstein the most?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> History</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Mathematics</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Literature</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Geography</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Einstein completed his education in</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Germany</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Switzerland</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> France</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Austria</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What was the name of Einstein's first wife?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Elsa Einstein</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Marie Curie</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Mileva Marić</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Anna Smith</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Einstein worked at a patent office in</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Zurich</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Bern</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Berlin</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Munich</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> In which year did Einstein publish his Special Theory of
+                        Relativity?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> 1900</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> 1905</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> 1915</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> 1921</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Which famous equation was developed by Einstein?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> F = ma</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> E = mc²</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> a² + b² = c²</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> PV = nRT</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Einstein received the Nobel Prize in</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> Physics</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Chemistry</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Literature</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Peace</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Einstein was awarded the Nobel Prize in which year?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> 1905</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> 1915</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> 1921</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> 1933</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Why did Einstein leave Germany?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> For higher studies</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Due to Nazi policies</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> For a vacation</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> To join the army</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Which country did Einstein settle in after leaving
+                        Germany?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Russia</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> United States</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Canada</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Japan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Einstein was deeply concerned about</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Sports</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> World peace</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Business</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Politics only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Einstein wrote a letter to the American President
+                        regarding</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Education reforms</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Space research</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Atomic bomb development</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Trade policies</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What quality made Einstein truly great according to the
+                        chapter?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Political power</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Scientific brilliance and
+                            humanity</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Physical strength</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Einstein died in</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> 1945</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> 1955</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> 1965</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> 1975</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The title "A Truly Beautiful Mind" refers to Einstein's
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Physical appearance</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Wealth and fame</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Intelligence and compassionate
+                            nature</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Political career</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Albert Einstein was born in Germany.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Einstein started speaking at a very early age.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> A compass given by his father fascinated Einstein during
+                        childhood.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Einstein loved the strict discipline of his school.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Mathematics and Physics were Einstein's favorite
+                        subjects.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Einstein completed his education in Switzerland.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Mileva Marić was Einstein's first wife.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Einstein worked as a teacher immediately after completing
+                        his studies.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Einstein worked at a patent office in Bern.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Einstein published the Special Theory of Relativity in
+                        1905.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Einstein's famous equation is E = mc².</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Einstein won the Nobel Prize for Chemistry.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Einstein received the Nobel Prize in 1921.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Einstein supported war and violence throughout his life.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Einstein left Germany because of the rise of Nazism.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Einstein later settled in the United States.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Einstein wrote to the American President about the
+                        danger of atomic weapons.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Einstein was only a scientist and had no concern for
+                        humanity.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Einstein died in 1955.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The chapter presents Einstein as both a great scientist
+                        and a compassionate human being.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Albert Einstein was born in ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Einstein was born in the year ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Einstein did not begin speaking until he was about
+                        ________ years old.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> A ________ given by his father fascinated Einstein during
+                        childhood.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Einstein disliked the system of ________ learning at
+                        school.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Einstein was especially interested in ________ and
+                        Physics.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Einstein completed his higher education in ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Einstein's first wife was ________ Marić.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Einstein worked in a patent office located in ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Einstein published the Special Theory of Relativity in
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Einstein's famous equation is ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Einstein received the Nobel Prize in the field of
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Einstein was awarded the Nobel Prize in ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The rise of ________ forced Einstein to leave Germany.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> After leaving Germany, Einstein settled in the ________
+                        States.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Einstein was deeply concerned about world ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Einstein warned the American President about the
+                        possibility of an ________ bomb.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Einstein was not only a scientist but also a great
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Albert Einstein died in the year ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The chapter "A Truly Beautiful Mind" is based on the
+                        life of ________ Einstein.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who was Albert Einstein?</div>
+                    <div class="qa-answer">Albert Einstein was one of the greatest scientists in the world. He is best
+                        known for developing the Theory of Relativity and making important contributions to modern
+                        physics.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Where was Albert Einstein born?</div>
+                    <div class="qa-answer">Albert Einstein was born in Ulm, Germany, on 14 March 1879.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Why did Einstein's mother think he was strange?</div>
+                    <div class="qa-answer">Einstein's mother thought he was strange because his head seemed unusually
+                        large at birth and he started speaking much later than other children.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What fascinated Einstein when he was a child?</div>
+                    <div class="qa-answer">A compass given by his father fascinated Einstein. He was amazed that the
+                        needle always pointed in one direction due to an unseen force.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Why did Einstein dislike school?</div>
+                    <div class="qa-answer">Einstein disliked school because he hated the rigid discipline and
+                        rote-learning methods followed by his teachers.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> Which subjects interested Einstein the most?</div>
+                    <div class="qa-answer">Einstein was particularly interested in Mathematics and Physics from an early
+                        age.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Where did Einstein complete his education?</div>
+                    <div class="qa-answer">Einstein completed his education in Switzerland, where he studied at the
+                        Swiss Federal Polytechnic in Zurich.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> Who was Mileva Marić?</div>
+                    <div class="qa-answer">Mileva Marić was Einstein's classmate at Zurich Polytechnic and later became
+                        his first wife.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> Where did Einstein work after completing his studies?
+                    </div>
+                    <div class="qa-answer">After completing his studies, Einstein worked as a technical expert in a
+                        patent office in Bern, Switzerland.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What happened in Einstein's life in 1905?</div>
+                    <div class="qa-answer">In 1905, Einstein published several important scientific papers, including
+                        the Special Theory of Relativity, which brought him worldwide recognition.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> What is Einstein's famous equation?</div>
+                    <div class="qa-answer">Einstein's famous equation is E = mc², which shows the relationship between
+                        energy and mass.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> For which achievement did Einstein receive the Nobel
+                        Prize?</div>
+                    <div class="qa-answer">Einstein received the Nobel Prize in Physics in 1921 for his contribution to
+                        theoretical physics, especially his work on the photoelectric effect.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> Why did Einstein leave Germany?</div>
+                    <div class="qa-answer">Einstein left Germany because the Nazi government came to power and its
+                        policies threatened Jews and intellectuals.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> Where did Einstein settle after leaving Germany?</div>
+                    <div class="qa-answer">After leaving Germany, Einstein settled in the United States, where he
+                        continued his scientific work.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> Why did Einstein write a letter to President Roosevelt?
+                    </div>
+                    <div class="qa-answer">Einstein wrote a letter to President Roosevelt warning him about the
+                        possibility of Germany developing atomic weapons.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> What was Einstein's attitude toward war?</div>
+                    <div class="qa-answer">Einstein believed in peace and opposed violence. He was deeply concerned
+                        about the destruction caused by wars.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Why is Einstein called a humanitarian?</div>
+                    <div class="qa-answer">Einstein is called a humanitarian because he cared about humanity, supported
+                        peace, and spoke against injustice and war.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> When did Albert Einstein die?</div>
+                    <div class="qa-answer">Albert Einstein died on 18 April 1955 in Princeton, New Jersey, USA.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What does the title "A Truly Beautiful Mind" suggest?
+                    </div>
+                    <div class="qa-answer">The title suggests that Einstein was not only a brilliant scientist but also
+                        a compassionate and thoughtful human being.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> What lesson do we learn from Einstein's life?</div>
+                    <div class="qa-answer">We learn that curiosity, hard work, creativity, and concern for humanity can
+                        help a person achieve greatness.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Describe Albert Einstein's childhood and early education.
+                    </div>
+                    <div class="qa-answer">Albert Einstein had an unusual childhood. He started speaking later than most
+                        children, which worried his parents. As a child, he was curious and loved asking questions. A
+                        compass given by his father fascinated him and sparked his interest in science. He disliked the
+                        strict discipline and rote-learning methods used in school but showed exceptional talent in
+                        Mathematics and Physics. His curiosity and independent thinking later helped him become one of
+                        the greatest scientists in history.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Explain Einstein's scientific achievements.</div>
+                    <div class="qa-answer">Albert Einstein made revolutionary contributions to science. In 1905, known
+                        as his "Miracle Year," he published important scientific papers that transformed Physics. His
+                        Special Theory of Relativity introduced new ideas about space and time. He also developed the
+                        famous equation E = mc², which explained the relationship between mass and energy. In 1921, he
+                        received the Nobel Prize in Physics. His discoveries laid the foundation for many modern
+                        scientific developments and changed humanity's understanding of the universe.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Why is Albert Einstein considered a humanitarian?</div>
+                    <div class="qa-answer">Albert Einstein was not only a great scientist but also a compassionate human
+                        being. He strongly supported peace, human rights, and social justice. He opposed war and
+                        violence and was deeply concerned about the suffering caused by conflicts. Although he warned
+                        the United States about the danger of atomic weapons, he later worked for nuclear disarmament
+                        and world peace. His concern for humanity, along with his scientific achievements, makes him a
+                        true humanitarian.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> Why did Einstein leave Germany and what happened
+                        afterward?</div>
+                    <div class="qa-answer">Einstein left Germany when Adolf Hitler and the Nazi Party came to power.
+                        Being a Jew, he faced danger under the Nazi regime. He moved to the United States, where he
+                        continued his research and teaching. During World War II, he became concerned about Germany's
+                        efforts to develop atomic weapons. Later, he worked tirelessly to promote peace and prevent the
+                        misuse of scientific discoveries. His move to America marked an important chapter in his life
+                        and career.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> Write the character sketch of Albert Einstein.</div>
+                    <div class="qa-answer">Albert Einstein was an intelligent, curious, hardworking, and imaginative
+                        scientist. From childhood, he displayed a strong desire to understand the mysteries of nature.
+                        He was independent in his thinking and disliked blind obedience and rote learning. Despite
+                        becoming world-famous, he remained humble and deeply concerned about humanity. He supported
+                        peace, justice, and human rights. His scientific brilliance, combined with his kindness and
+                        compassion, made him a truly beautiful mind and one of the most respected personalities in
+                        history.</div>
+                </div>
+
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q26.</span> Character Sketch of Albert Einstein.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        Albert Einstein was one of the greatest scientists in human history. He is remembered not only
+                        for his extraordinary scientific achievements but also for his humanitarian values and concern
+                        for world peace. His life serves as an inspiration to millions of people across the world.
+                        <br><br>
+
+                        <b>Highly Intelligent and Curious:</b><br>
+                        Einstein possessed an exceptional intellect from a young age. He was deeply curious about the
+                        mysteries of nature and constantly asked questions. The compass given by his father fascinated
+                        him and encouraged him to explore scientific ideas. His curiosity later led to revolutionary
+                        discoveries in Physics.
+                        <br><br>
+
+                        <b>Independent Thinker:</b><br>
+                        Einstein disliked rote learning and rigid discipline. He preferred logical thinking and
+                        understanding concepts rather than memorizing facts. This independent approach helped him
+                        develop original theories that transformed modern science.
+                        <br><br>
+
+                        <b>Hardworking and Determined:</b><br>
+                        Despite facing difficulties in his early career, Einstein never gave up. While working at a
+                        patent office, he continued his scientific research and eventually published groundbreaking
+                        papers that earned him worldwide recognition.
+                        <br><br>
+
+                        <b>Humanitarian and Peace Lover:</b><br>
+                        Einstein was deeply concerned about humanity. He opposed war, violence, and injustice. He
+                        advocated peace and worked toward preventing the misuse of scientific discoveries for
+                        destructive purposes.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        Albert Einstein was a brilliant scientist, a visionary thinker, and a compassionate human being.
+                        His life proves that true greatness lies not only in intelligence but also in kindness,
+                        responsibility, and concern for others.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q27.</span> Describe Albert Einstein's Childhood, Education, and
+                        Early Life.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        Albert Einstein's early life played a significant role in shaping his future as a scientist. His
+                        childhood was marked by curiosity, independent thinking, and a strong desire to understand the
+                        world around him.
+                        <br><br>
+
+                        <b>Early Childhood:</b><br>
+                        Einstein was born on 14 March 1879 in Ulm, Germany. As a child, he was different from other
+                        children. He began speaking relatively late, which worried his parents. However, he displayed
+                        remarkable curiosity and intelligence from an early age.
+                        <br><br>
+
+                        <b>Interest in Science:</b><br>
+                        A turning point came when his father showed him a compass. Einstein was fascinated by the
+                        invisible force that moved the needle. This experience sparked his lifelong interest in science
+                        and natural phenomena.
+                        <br><br>
+
+                        <b>School Life:</b><br>
+                        Einstein disliked the strict discipline and rote-learning methods used in schools. He often
+                        questioned authority and preferred understanding concepts through reasoning. His independent
+                        nature sometimes brought him into conflict with teachers.
+                        <br><br>
+
+                        <b>Higher Education:</b><br>
+                        He later moved to Switzerland and studied at the Swiss Federal Polytechnic in Zurich. There he
+                        developed a deep interest in Mathematics and Physics and met Mileva Marić, who later became his
+                        wife.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        Einstein's childhood and education reveal the importance of curiosity, independent thinking, and
+                        perseverance. These qualities laid the foundation for his extraordinary scientific achievements.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q28.</span> Explain Albert Einstein's Scientific Achievements and
+                        Contributions.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        Albert Einstein is regarded as one of the most influential scientists of all time. His
+                        discoveries revolutionized Physics and changed humanity's understanding of the universe.
+                        <br><br>
+
+                        <b>The Miracle Year of 1905:</b><br>
+                        In 1905, while working at a patent office in Bern, Einstein published several groundbreaking
+                        research papers. This year is often referred to as his "Miracle Year" because of the
+                        extraordinary impact of his work.
+                        <br><br>
+
+                        <b>Theory of Relativity:</b><br>
+                        Einstein's Special Theory of Relativity introduced revolutionary ideas about space, time, and
+                        motion. It challenged traditional scientific beliefs and became one of the foundations of modern
+                        Physics.
+                        <br><br>
+
+                        <b>Mass-Energy Relationship:</b><br>
+                        He developed the famous equation:
+                        <br>
+                        E = mc²
+                        <br>
+                        This equation demonstrated the relationship between mass and energy and became one of the most
+                        recognized formulas in science.
+                        <br><br>
+
+                        <b>Nobel Prize:</b><br>
+                        Einstein received the Nobel Prize in Physics in 1921 for his work on the photoelectric effect,
+                        which contributed significantly to the development of Quantum Theory.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        Einstein's contributions transformed modern science and continue to influence technology, space
+                        research, and scientific understanding even today.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q29.</span> Discuss Einstein's Role as a Humanitarian and Peace
+                        Advocate.</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        Although Albert Einstein is best known as a scientist, he was also a committed humanitarian who
+                        cared deeply about the future of humanity.
+                        <br><br>
+
+                        <b>Concern for Human Welfare:</b><br>
+                        Einstein believed that scientific progress should benefit society. He felt that scientists had a
+                        responsibility to ensure that their discoveries were used for constructive purposes.
+                        <br><br>
+
+                        <b>Opposition to War:</b><br>
+                        Einstein strongly opposed violence and warfare. The destruction caused by global conflicts
+                        deeply troubled him, and he consistently advocated peaceful solutions to international disputes.
+                        <br><br>
+
+                        <b>Atomic Weapons Issue:</b><br>
+                        During World War II, Einstein warned the United States government about the possibility of Nazi
+                        Germany developing atomic weapons. However, after witnessing the devastating consequences of
+                        nuclear technology, he became a strong supporter of nuclear disarmament.
+                        <br><br>
+
+                        <b>Champion of Human Rights:</b><br>
+                        Einstein spoke out against racism, discrimination, and injustice. He supported equality and
+                        believed that all human beings deserved dignity and respect.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        Einstein's humanitarian efforts demonstrate that true greatness involves not only intellectual
+                        achievement but also a commitment to improving the lives of others and promoting peace.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q30.</span> Theme, Message, and Central Idea of "A Truly Beautiful
+                        Mind".</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b><br>
+                        "A Truly Beautiful Mind" is an inspiring biographical chapter that presents the life and
+                        achievements of Albert Einstein. It highlights both his scientific brilliance and his
+                        compassionate nature.
+                        <br><br>
+
+                        <b>Power of Curiosity:</b><br>
+                        One of the central themes of the chapter is curiosity. Einstein's desire to understand the world
+                        around him motivated him to explore scientific ideas and make groundbreaking discoveries.
+                        <br><br>
+
+                        <b>Importance of Independent Thinking:</b><br>
+                        The chapter emphasizes the value of questioning accepted beliefs and thinking independently.
+                        Einstein's success was largely due to his ability to look beyond conventional ideas.
+                        <br><br>
+
+                        <b>Humanitarian Values:</b><br>
+                        Another important theme is compassion and responsibility. Einstein used his influence to
+                        advocate peace, oppose war, and support human rights.
+                        <br><br>
+
+                        <b>True Meaning of Greatness:</b><br>
+                        The title suggests that true beauty lies in the mind and character of a person. Einstein's
+                        greatness came not only from his intelligence but also from his kindness, humility, and concern
+                        for humanity.
+                        <br><br>
+
+                        <b>Conclusion:</b><br>
+                        The chapter teaches that knowledge should be combined with wisdom and compassion. It encourages
+                        readers to remain curious, work hard, think independently, and contribute positively to society.
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Patrick Pringle</h4>
+                    <p>Patrick Pringle (1920–1999) was a distinguished British journalist, historian, and biographer
+                        known for his engaging writing style and well-researched biographical works. He wrote
+                        extensively on the lives of famous personalities, historical events, science, and world affairs.
+                        Pringle had a remarkable ability to present complex subjects in a simple and interesting manner,
+                        making them accessible to young readers. His writings often focused on the achievements,
+                        struggles, and contributions of influential individuals. In the chapter <i>"A Truly Beautiful
+                            Mind"</i>, he presents the inspiring life of Albert Einstein, highlighting not only his
+                        extraordinary scientific genius but also his humanitarian values, compassion, and dedication to
+                        world peace. Through this chapter, Pringle encourages readers to admire intelligence that is
+                        combined with kindness, responsibility, and concern for humanity.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "A Truly Beautiful Mind" is a biographical chapter that presents the life and achievements of Albert Einstein, one of the greatest scientists in history. Written by Patrick Pringle, the chapter highlights Einstein's extraordinary intelligence, scientific contributions, and humanitarian values. It shows that true greatness lies not only in knowledge but also in compassion and concern for humanity.</div>
+
+        <div class="summary-paragraph"><strong>Early Life and Childhood:</strong> Albert Einstein was born on 14 March 1879 in Ulm, Germany. As a child, he was considered unusual because he began speaking much later than other children. His parents worried about him, but he displayed exceptional curiosity and intelligence from an early age. A compass given by his father fascinated him and inspired his interest in science and the mysteries of nature.</div>
+
+        <div class="summary-paragraph"><strong>Education and Interest in Science:</strong> Einstein disliked the rigid discipline and rote-learning methods used in schools. He preferred understanding concepts through logic and reasoning rather than memorizing facts. His favorite subjects were Mathematics and Physics. He later moved to Switzerland, where he completed his education and developed a strong foundation in scientific thinking.</div>
+
+        <div class="summary-paragraph"><strong>Marriage and Early Career:</strong> During his studies in Zurich, Einstein met Mileva Marić, a fellow student who later became his wife. After completing his education, he struggled to find a teaching job and eventually worked as a technical expert in a patent office in Bern, Switzerland. Despite his busy job, he continued conducting scientific research in his spare time.</div>
+
+        <div class="summary-paragraph"><strong>The Miracle Year of 1905:</strong> The year 1905 became famous as Einstein's "Miracle Year." During this period, he published several revolutionary scientific papers that transformed the field of Physics. One of his most important achievements was the Special Theory of Relativity, which introduced new ideas about space, time, and motion.</div>
+
+        <div class="summary-paragraph"><strong>Famous Discoveries and Nobel Prize:</strong> Einstein developed the famous equation E = mc², which explained the relationship between mass and energy. His groundbreaking work earned him worldwide recognition. In 1921, he was awarded the Nobel Prize in Physics for his contribution to theoretical physics and his explanation of the photoelectric effect.</div>
+
+        <div class="summary-paragraph"><strong>Einstein and World Peace:</strong> Einstein was not only a scientist but also a humanitarian. He strongly believed in peace, justice, and human rights. During the rise of Nazism in Germany, he left his homeland and settled in the United States. Although he warned the American government about the possibility of atomic weapons being developed by Germany, he later became deeply concerned about the dangers of nuclear warfare.</div>
+
+        <div class="summary-paragraph"><strong>Humanitarian Values:</strong> Einstein used his fame and influence to promote peace and social justice. He opposed war, racism, and discrimination. He believed that scientific knowledge should be used for the welfare of humanity rather than for destruction and violence.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The chapter portrays Albert Einstein as a truly beautiful mind whose greatness came not only from his scientific brilliance but also from his compassion, humility, and concern for humanity. His life teaches us the importance of curiosity, hard work, independent thinking, and social responsibility.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "A Truly Beautiful Mind" एक जीवनी आधारित अध्याय है जो महान वैज्ञानिक अल्बर्ट आइंस्टीन के जीवन और उपलब्धियों का वर्णन करता है। पैट्रिक प्रिंगल द्वारा लिखित यह अध्याय आइंस्टीन की असाधारण बुद्धिमत्ता, वैज्ञानिक योगदान और मानवीय मूल्यों को उजागर करता है। यह बताता है कि सच्ची महानता केवल ज्ञान में नहीं बल्कि मानवता और करुणा में भी होती है।</div>
+
+        <div class="summary-paragraph"><strong>प्रारंभिक जीवन और बचपन:</strong> अल्बर्ट आइंस्टीन का जन्म 14 मार्च 1879 को जर्मनी के उल्म नगर में हुआ था। बचपन में वे अन्य बच्चों की तुलना में देर से बोलना शुरू हुए, जिसके कारण उनके माता-पिता चिंतित रहते थे। हालांकि, उनमें बचपन से ही गहरी जिज्ञासा और असाधारण बुद्धिमत्ता थी। उनके पिता द्वारा दिया गया कंपास उनके जीवन का महत्वपूर्ण प्रेरणास्रोत बना।</div>
+
+        <div class="summary-paragraph"><strong>शिक्षा और विज्ञान में रुचि:</strong> आइंस्टीन को स्कूलों की कठोर अनुशासन व्यवस्था और रटने वाली शिक्षा पसंद नहीं थी। वे तर्क और समझ के आधार पर सीखना चाहते थे। गणित और भौतिकी उनके प्रिय विषय थे। बाद में उन्होंने स्विट्जरलैंड में अपनी उच्च शिक्षा पूरी की और वैज्ञानिक सोच को विकसित किया।</div>
+
+        <div class="summary-paragraph"><strong>विवाह और प्रारंभिक करियर:</strong> ज्यूरिख में पढ़ाई के दौरान उनकी मुलाकात मिलेवा मेरिक से हुई, जो बाद में उनकी पत्नी बनीं। पढ़ाई पूरी करने के बाद उन्हें नौकरी पाने में कठिनाई हुई और अंततः वे बर्न के एक पेटेंट कार्यालय में कार्य करने लगे। नौकरी के साथ-साथ उन्होंने अपने वैज्ञानिक अनुसंधान जारी रखे।</div>
+
+        <div class="summary-paragraph"><strong>1905 – चमत्कारी वर्ष:</strong> वर्ष 1905 आइंस्टीन के जीवन का "चमत्कारी वर्ष" माना जाता है। इस वर्ष उन्होंने कई महत्वपूर्ण शोध-पत्र प्रकाशित किए जिन्होंने भौतिकी की दुनिया को बदल दिया। इसी दौरान उन्होंने विशेष सापेक्षता सिद्धांत (Special Theory of Relativity) प्रस्तुत किया।</div>
+
+        <div class="summary-paragraph"><strong>महान खोजें और नोबेल पुरस्कार:</strong> आइंस्टीन ने प्रसिद्ध समीकरण E = mc² दिया, जिसने द्रव्यमान और ऊर्जा के बीच संबंध को स्पष्ट किया। उनकी वैज्ञानिक उपलब्धियों ने उन्हें विश्वभर में प्रसिद्धि दिलाई। 1921 में उन्हें भौतिकी का नोबेल पुरस्कार प्रदान किया गया।</div>
+
+        <div class="summary-paragraph"><strong>विश्व शांति के समर्थक:</strong> आइंस्टीन केवल वैज्ञानिक ही नहीं बल्कि एक महान मानवतावादी भी थे। वे शांति, न्याय और मानवाधिकारों के समर्थक थे। जर्मनी में नाज़ीवाद के उदय के बाद वे अमेरिका चले गए। बाद में उन्होंने परमाणु हथियारों के खतरों के प्रति लोगों को जागरूक करने का प्रयास किया।</div>
+
+        <div class="summary-paragraph"><strong>मानवीय दृष्टिकोण:</strong> आइंस्टीन ने युद्ध, नस्लवाद और भेदभाव का विरोध किया। उनका मानना था कि विज्ञान का उपयोग मानव कल्याण के लिए होना चाहिए, न कि विनाश के लिए। उन्होंने अपने जीवनभर मानवता की सेवा और विश्व शांति के लिए कार्य किया।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह अध्याय अल्बर्ट आइंस्टीन को एक ऐसे व्यक्ति के रूप में प्रस्तुत करता है जिसकी महानता केवल उसकी वैज्ञानिक प्रतिभा में नहीं बल्कि उसके मानवीय गुणों में भी निहित थी। उनका जीवन हमें जिज्ञासा, परिश्रम, स्वतंत्र सोच और समाज के प्रति जिम्मेदारी का संदेश देता है।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -10,15 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-<link rel="manifest" href="../../../../manifest.json">
-<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
 
-<link rel="manifest" href="../../../../manifest.json">
-<link rel="apple-touch-icon" href="../../../../icon-192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
 
     <style>
         :root {
@@ -1338,11 +1338,25 @@
                     <i class="fa-solid fa-feather-pointed"></i>
                 </div>
                 <div class="writer-bio-text">
-                    <h4>Isaac Asimov</h4>
-                    <p>Isaac Asimov (1920–1992) was an exceptionally prolific American writer and professor of
-                        biochemistry, famously recognized as one of the founding pillars of hard science fiction
-                        literature. His stories elegantly speculate on technological paradigms, robotic controls, and
-                        future human adaptations.</p>
+                    <h4>Deborah Cowley</h4>
+                    <p>Deborah Cowley is a Canadian author, journalist, and documentary filmmaker known for her engaging
+                        biographical and non-fiction writing. She has written extensively on remarkable personalities,
+                        human achievements, and inspiring life stories. Her work often highlights determination,
+                        courage, and the ability to overcome challenges. In the chapter <i>"The Sound of Music"</i>
+                        (Part I), Deborah Cowley presents the inspiring life of Evelyn Glennie, a world-famous
+                        percussionist who achieved extraordinary success despite being profoundly deaf. Through her
+                        writing, Cowley encourages readers to believe in perseverance, hard work, and the power of
+                        self-confidence in overcoming obstacles.</p>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Profile Based on Ustad Bismillah Khan</h4>
+                    <p>The second part of <i>"The Sound of Music"</i> is a biographical profile of the legendary shehnai
+                        maestro Ustad Bismillah Khan. This section narrates his contribution to Indian classical music
+                        and his role in bringing the shehnai to the international stage. It highlights his dedication to
+                        music, deep attachment to Indian culture, and lifelong commitment to preserving the rich
+                        heritage of classical traditions. The profile serves as an inspiring account of how talent,
+                        discipline, and devotion can transform a traditional instrument into a symbol of national pride.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1396,55 +1410,55 @@
         });
         function applyThemeFromBrainHub() {
 
-    const data = JSON.parse(
-        localStorage.getItem("brainhub.app.v2") || "{}"
-    );
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
 
-    const theme = data.theme || "light";
+            const theme = data.theme || "light";
 
-    document.documentElement.dataset.theme =
-        theme;
+            document.documentElement.dataset.theme =
+                theme;
 
-    const metaTheme = document.querySelector(
-        'meta[name="theme-color"]'
-    );
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
 
-    if (metaTheme) {
-        metaTheme.setAttribute(
-            "content",
-            theme === "dark"
-                ? "#121722"
-                : "#2563eb"
-        );
-    }
-}
-
-document.addEventListener(
-    "DOMContentLoaded",
-    applyThemeFromBrainHub
-);
-
-window.addEventListener("storage", (e) => {
-    if (e.key === "brainhub.app.v2") {
-        applyThemeFromBrainHub();
-    }
-});
-
-/* Same tab sync */
-setInterval(applyThemeFromBrainHub, 500);
-// Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
-function updateMetaThemeColor(isDark) {
-    const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
-    metaTheme.forEach(meta => {
-        if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
-            // Agar dark mode hai
-            if (isDark) meta.setAttribute('content', '#121722');
-        } else {
-            // Agar light mode hai toh pure white dikhega
-            meta.setAttribute('content', '#ffffff');
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
         }
-    });
-}
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
     </script>
 </body>
 
