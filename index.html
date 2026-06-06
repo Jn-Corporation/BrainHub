@@ -17,6 +17,18 @@
     <meta name="apple-mobile-web-app-title" content="BrainHub">
     <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BrainHub - Learn. Create. Track.</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="BrainHub">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
     <script>
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
@@ -2707,19 +2719,18 @@
             }
         });
         // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
-        function updateMetaThemeColor(isDark) {
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if (metaTheme) {
-                metaTheme.setAttribute('content', isDark ? '#121722' : '#2563eb');
-            }
+       function updateMetaThemeColor(isDark) {
+    const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+    metaTheme.forEach(meta => {
+        if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+            // Agar dark mode hai
+            if (isDark) meta.setAttribute('content', '#121722');
+        } else {
+            // Agar light mode hai toh pure white dikhega
+            meta.setAttribute('content', '#ffffff');
         }
-
-        // Example integration inside your theme click event:
-        themeBtn.addEventListener('click', () => {
-            // ... aapka purana theme toggling logic ...
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark');
-            updateMetaThemeColor(isDark);
-        });
+    });
+}
     </script>
 </body>
 
