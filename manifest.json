@@ -5,12 +5,12 @@
   "description": "Study notes, GK quiz, shayari, stories, tools, and your daily planner in one fast local app.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#eef3f8",
-  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "theme_colors": [
     {
       "media": "(prefers-color-scheme: light)",
-      "color": "#2563eb"
+      "color": "#ffffff"
     },
     {
       "media": "(prefers-color-scheme: dark)",
