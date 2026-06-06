@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="manifest" href="../../../../manifest.json">
-<meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
 
     <style>
         :root {
@@ -1367,6 +1368,20 @@ window.addEventListener("storage", (e) => {
 
 /* Same tab sync */
 setInterval(applyThemeFromBrainHub, 500);
+// Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+function updateMetaThemeColor(isDark) {
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+        metaTheme.setAttribute('content', isDark ? '#121722' : '#2563eb');
+    }
+}
+
+// Example integration inside your theme click event:
+themeBtn.addEventListener('click', () => {
+    // ... aapka purana theme toggling logic ...
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark');
+    updateMetaThemeColor(isDark);
+});
     </script>
 </body>
 

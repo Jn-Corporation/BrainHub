@@ -11,11 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#2563eb">
-    <meta name="theme-color" content="#2563eb">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="BrainHub">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
     <script>
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
@@ -2704,6 +2705,20 @@
                     fabMenu.classList.remove("show");
                 }
             }
+        });
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) {
+                metaTheme.setAttribute('content', isDark ? '#121722' : '#2563eb');
+            }
+        }
+
+        // Example integration inside your theme click event:
+        themeBtn.addEventListener('click', () => {
+            // ... aapka purana theme toggling logic ...
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark');
+            updateMetaThemeColor(isDark);
         });
     </script>
 </body>

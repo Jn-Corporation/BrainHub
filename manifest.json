@@ -7,6 +7,16 @@
   "display": "standalone",
   "background_color": "#eef3f8",
   "theme_color": "#2563eb",
+  "theme_colors": [
+    {
+      "media": "(prefers-color-scheme: light)",
+      "color": "#2563eb"
+    },
+    {
+      "media": "(prefers-color-scheme: dark)",
+      "color": "#121722"
+    }
+  ],
   "orientation": "portrait",
   "categories": [
     "education",
