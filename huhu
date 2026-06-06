@@ -1,307 +1,1289 @@
-<h5>📘 Chapter 1: Number Systems</h5>
-
-<p>
-A Number System is one of the most fundamental concepts in Mathematics.
-Every calculation, measurement, scientific formula, engineering design,
-computer program, and financial transaction is based on numbers.
-The study of number systems helps us understand different types of numbers,
-their properties, and how they are related to each other.
-</p>
-
-<p>
-From counting objects in daily life to solving complex mathematical
-equations, numbers play a crucial role. Number systems provide a
-structured way to represent, classify, compare, and perform operations
-on numbers.
-</p>
-
-<h5>🌍 Real-Life Importance of Number Systems</h5>
-
-<ul>
-<li>Used in counting and measuring quantities.</li>
-<li>Forms the foundation of Algebra and Geometry.</li>
-<li>Essential for Physics, Chemistry, and Engineering.</li>
-<li>Used in Computer Science and Programming.</li>
-<li>Helps in solving real-world mathematical problems.</li>
-<li>Important for competitive examinations and higher studies.</li>
-</ul>
-
-<h5>🎯 Learning Objectives</h5>
-
-<p>
-After studying this chapter, students will be able to:
-</p>
-
-<ul>
-<li>Understand different categories of numbers.</li>
-<li>Differentiate between rational and irrational numbers.</li>
-<li>Represent numbers on a number line.</li>
-<li>Understand decimal representations.</li>
-<li>Apply laws of exponents.</li>
-<li>Solve mathematical problems involving real numbers.</li>
-</ul>
-
-<h5>📚 Introduction to Number Systems</h5>
-
-<p>
-Over time, mathematicians developed various sets of numbers to solve
-different kinds of problems. Each set includes the previous one and
-extends it further.
-</p>
-
-<div class="formula-card">
-Natural Numbers ⊂ Whole Numbers ⊂ Integers ⊂ Rational Numbers ⊂ Real Numbers
-</div>
-
-<p>
-Understanding this hierarchy makes it easier to classify any given number.
-</p>
-
-<h5>1️⃣ Natural Numbers (N)</h5>
-
-<p>
-Natural Numbers are the counting numbers used in everyday life.
-Whenever we count objects such as books, pens, students, or cars,
-we use natural numbers.
-</p>
-
-<div class="formula-card">
-N = {1, 2, 3, 4, 5, 6, 7, ...}
-</div>
-
-<h5>Examples</h5>
-
-<ul>
-<li>1 student</li>
-<li>5 apples</li>
-<li>20 books</li>
-<li>100 people</li>
-</ul>
-
-<p>
-Natural numbers begin with 1 and continue infinitely.
-There is no largest natural number because we can always add 1 to obtain a larger number.
-</p>
-
-<h5>Key Properties of Natural Numbers</h5>
-
-<ul>
-<li>Smallest Natural Number = 1</li>
-<li>No largest Natural Number exists.</li>
-<li>All Natural Numbers are positive.</li>
-<li>0 is not considered a Natural Number.</li>
-</ul>
-
-<h5>2️⃣ Whole Numbers (W)</h5>
-
-<p>
-Whole Numbers are obtained by adding zero to the set of Natural Numbers.
-They are used when counting can include nothing or zero quantity.
-</p>
-
-<div class="formula-card">
-W = {0, 1, 2, 3, 4, 5, 6, ...}
-</div>
-
-<p>
-For example, if a basket contains no apples, the number of apples is represented by 0.
-</p>
-
-<h5>Examples</h5>
-
-<div class="formula-card">
-0, 4, 15, 100, 500
-</div>
-
-<h5>Properties of Whole Numbers</h5>
-
-<ul>
-<li>Smallest Whole Number = 0</li>
-<li>No largest Whole Number exists.</li>
-<li>Every Natural Number is a Whole Number.</li>
-<li>0 belongs only to Whole Numbers and higher sets.</li>
-</ul>
-
-<h5>3️⃣ Integers (Z)</h5>
-
-<p>
-Integers include positive numbers, negative numbers, and zero.
-They are useful in representing gains, losses, temperatures,
-elevations, and many real-life situations.
-</p>
-
-<div class="formula-card">
-Z = {..., -3, -2, -1, 0, 1, 2, 3, ...}
-</div>
-
-<h5>Types of Integers</h5>
-
-<ul>
-<li>Positive Integers → 1, 2, 3, 4...</li>
-<li>Negative Integers → -1, -2, -3, -4...</li>
-<li>Zero → 0</li>
-</ul>
-
-<h5>Real-Life Examples</h5>
-
-<ul>
-<li>Temperature below 0°C → -5°C</li>
-<li>Bank debt → -₹500</li>
-<li>Profit → +₹500</li>
-<li>Sea level reference → +50m, -20m</li>
-</ul>
-
-<h5>4️⃣ Rational Numbers (Q)</h5>
-
-<p>
-A Rational Number is any number that can be expressed in the form p/q,
-where p and q are integers and q ≠ 0.
-</p>
-
-<div class="formula-card">
-p/q , q ≠ 0
-</div>
-
-<p>
-The word "rational" comes from the word "ratio."
-</p>
-
-<h5>Examples</h5>
-
-<div class="formula-card">
-1/2
-
-3/5
-
--7/8
-
-5 = 5/1
-
-0 = 0/1
-</div>
-
-<p>
-Every integer can be written in the form p/q and is therefore a rational number.
-</p>
-
-<h5>Decimal Representation of Rational Numbers</h5>
-
-<p>
-The decimal expansion of rational numbers is always either terminating
-or non-terminating recurring (repeating).
-</p>
-
-<div class="formula-card">
-1/2 = 0.5
-
-3/4 = 0.75
-
-1/8 = 0.125
-
-1/3 = 0.333333...
-
-2/11 = 0.181818...
-</div>
-
-<h5>5️⃣ Irrational Numbers</h5>
-
-<p>
-Numbers that cannot be expressed in the form p/q are called irrational numbers.
-Their decimal expansion is non-terminating and non-repeating.
-</p>
-
-<div class="formula-card">
-√2
-
-√3
-
-√5
-
-π
-</div>
-
-<p>
-No matter how far the decimal expansion continues,
-it never ends and never follows a repeating pattern.
-</p>
-
-<div class="formula-card">
-π = 3.14159265358979323846...
-</div>
-
-<h5>Interesting Fact</h5>
-
-<p>
-The value of π has been calculated to trillions of decimal places,
-yet no repeating pattern has been discovered.
-</p>
-
-<h5>6️⃣ Real Numbers (R)</h5>
-
-<p>
-The collection of all rational and irrational numbers is called the set of Real Numbers.
-Every point on the number line represents a real number.
-</p>
-
-<div class="formula-card">
-Real Numbers = Rational Numbers + Irrational Numbers
-</div>
-
-<h5>Relationship Between Number Sets</h5>
-
-<div class="formula-card">
-Natural Numbers ⊂ Whole Numbers
-
-Whole Numbers ⊂ Integers
-
-Integers ⊂ Rational Numbers
-
-Rational Numbers ⊂ Real Numbers
-</div>
-
-<h5>📏 Number Line</h5>
-
-<p>
-A number line is a straight horizontal line used to represent numbers visually.
-Numbers increase as we move towards the right and decrease as we move towards the left.
-</p>
-
-<div class="formula-card">
-← -5 -4 -3 -2 -1 0 1 2 3 4 5 →
-</div>
-
-<ul>
-<li>0 is called the origin.</li>
-<li>Positive numbers lie on the right side.</li>
-<li>Negative numbers lie on the left side.</li>
-</ul>
-
-<h5>🔍 Comparing Numbers</h5>
-
-<p>
-On a number line, the number located farther to the right is always greater.
-</p>
-
-<div class="formula-card">
-8 > 5
-
-0 > -1
-
--2 > -5
-
-15 > 7
-</div>
-
-<h5>📝 Quick Summary</h5>
-
-<ul>
-<li>Natural Numbers start from 1.</li>
-<li>Whole Numbers start from 0.</li>
-<li>Integers include negative numbers.</li>
-<li>Rational Numbers can be written as p/q.</li>
-<li>Irrational Numbers cannot be written as p/q.</li>
-<li>Real Numbers include both Rational and Irrational Numbers.</li>
-<li>π and √2 are Irrational Numbers.</li>
-<li>Every Integer is Rational.</li>
-<li>Every Rational Number is Real.</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Fun They Had - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 1 • Prose</span>
+            <h2>The Fun They Had</h2>
+            <p>A futuristic insight into computerized mechanics versus the nostalgia of traditional real schooling
+                assets.</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> On which date did Margie write about finding the book?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> 17 May 2157</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> 17 May 2057</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> 15 May 2157</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> 20 May 2157</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Who found the old book?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Margie</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Tommy</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> County Inspector</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Margie's Mother</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> How old was Tommy?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> 11 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 12 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 13 years</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> 15 years</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> How old was Margie?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> 9 years</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> 10 years</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> 11 years</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> 12 years</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Where did Tommy find the book?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> In a library</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> In the attic</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> In a school</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> In a shop</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Why did Margie hate school?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> She disliked books</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> The mechanical teacher gave many
+                            tests</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> She had no friends</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> She was lazy</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> What kind of teacher did Margie have?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Human teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Mechanical teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Virtual teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Robot assistant</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Where was Margie's school located?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> In a public building</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> In her house</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Underground</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> In a library</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What subject was Margie struggling with?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Science</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Geography</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> History</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Mathematics</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Who repaired Margie's mechanical teacher?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Tommy</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Her father</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> County Inspector</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> School Principal</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> What was strange about the old book?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> It was digital</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> The words stayed still on
+                            pages</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> It had videos</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> It talked</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> What did Tommy call the television screen used for
+                        learning?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> Computer</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Mechanical Teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Telebook</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Smart Board</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> According to Tommy, how were schools in the past?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Fully online</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Students learned at home
+                            alone</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Children went together to a
+                            building</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Taught by robots</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Why did Margie find old schools interesting?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Children studied together</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> No homework was given</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> There were no teachers</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Schools were free</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What was inserted into the mechanical teacher?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Homework sheets</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Punch codes and homework</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Books</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Pens</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Who wrote 'The Fun They Had'?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> H.G. Wells</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Isaac Asimov</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Ruskin Bond</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> R.K. Narayan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What did Margie think about human teachers?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> They were boring</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> They were unnecessary</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> They knew a lot and taught children
+                            together</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> They were robots</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What was Margie doing at the end of the story?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Reading the old book</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Playing outside</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Thinking about old schools while
+                            studying</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Talking to Tommy</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What theme is highlighted in the story?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Space Travel</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Importance of traditional schooling
+                            and social learning</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> War and Peace</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Environmental Protection</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Why is the chapter titled "The Fun They Had"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Because children played games all
+                            day</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Because old schools allowed
+                            students to learn together and enjoy school life</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Because teachers never gave
+                            homework</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Because machines taught
+                            better</label>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>21.</span> Who found a real book in the attic?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Tommy</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Margie</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> County Inspector</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Margie's Mother</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Margie was eleven years old.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Tommy was thirteen years old.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Tommy found the old book in his attic.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Margie loved her mechanical teacher very much.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The story takes place in the year 2157.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The old book had moving words on a screen.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Margie found it strange that the words in the book stayed
+                        in the same place.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Margie's school was located in a special school building.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Margie studied at home using a mechanical teacher.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The County Inspector repaired Margie's teacher.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Margie was doing poorly in Geography.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The County Inspector slowed down the Geography sector of
+                        the teacher.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Tommy said that in the old days teachers were robots.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> In the old schools, children of the same age studied
+                        together.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Margie believed that human teachers could not teach as
+                        well as machines.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Students in the future submitted homework using punch
+                        codes.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Margie thought old schools must have been fun.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The mechanical teacher gave lessons only once a week.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Isaac Asimov is the author of "The Fun They Had".</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> At the end of the story, Margie was thinking about the
+                        fun children had in old schools.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>21.</span> Tommy thought old physical paper books were a complete
+                        waste.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The story "The Fun They Had" was written by ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Margie was ________ years old.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Tommy was ________ years old.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Tommy found a real ________ in the attic.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Margie wrote about the book in her ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The story is set in the year ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Margie hated studying ________ the most.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Margie studied with a ________ teacher.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The County Inspector adjusted the ________ sector of
+                        Margie's teacher.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Margie's school was right next to her ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The old book had ________ pages.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The words in the printed book did not ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> In the future, lessons were displayed on a large
+                        ________ screen.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Students submitted homework through ________ code
+                        lessons.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> In old schools, children learned and played ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The old schools had ________ teachers.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Tommy said that teachers once were actual ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Margie thought that children in old schools had a lot of
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The old book was found by ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> At the end of the story, Margie imagined the fun
+                        children had in the ________ schools.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>21.</span> The round little man with a red face was the ________
+                        Inspector.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> What kind of schools did Margie and Tommy have in the
+                        story?</div>
+                    <div class="qa-answer">Margie and Tommy had personalized automated mechanical schools right inside
+                        their homes. They didn't have human classmates or normal teachers; instead, they were taught by
+                        mechanical tele-screen systems customized to their learning speeds.</div>
+                </div>
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Why did Margie hate her mechanical school setups?</div>
+                    <div class="qa-answer">Margie hated it because it was lonely and highly systematic. The geography
+                        sector was running too fast, repeatedly tracking low performance, and she particularly despised
+                        the slot where she had to feed her punched homework slips.</div>
+                </div>
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> What did the County Inspector do to fix the automated
+                        teacher?</div>
+                    <div class="qa-answer">The County Inspector dismantled the mechanical system and slowed down its
+                        geography sector processing speed to average it out to an optimal 10-year-old child's cognitive
+                        learning standard level.</div>
+                </div>
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What features of the old school model attracted Margie?
+                    </div>
+                    <div class="qa-answer">Margie was deeply attracted by the human connection: kids from different
+                        households coming together, learning the same concept simultaneously, sitting together in
+                        classrooms, and being guided by real human teachers instead of lifeless robotic modules.</div>
+                </div>
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Why was Margie surprised when she saw the old printed
+                        book?</div>
+                    <div class="qa-answer">Margie was surprised because she had never seen a real printed book before.
+                        In her time, all books were digital and displayed on screens. She found it strange that the
+                        words on the pages did not move and remained exactly the same every time they were read. This
+                        made the old book seem unusual and fascinating to her.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> How was the education system in the future different from
+                        the old schools?</div>
+                    <div class="qa-answer">The future education system was completely computerized and personalized.
+                        Students learned at home through mechanical teachers and television screens. There were no
+                        classrooms, human teachers, or classmates. In contrast, old schools had buildings where children
+                        studied together under the guidance of human teachers, making learning more interactive and
+                        enjoyable.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Why did Tommy think the old book was funny?</div>
+                    <div class="qa-answer">Tommy thought the old book was funny because it was printed on paper instead
+                        of being displayed on a screen. He found it amusing that once a person finished reading it, the
+                        same words remained on the pages. Unlike digital books that could store millions of texts, the
+                        printed book seemed outdated and inefficient to him.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What did Margie learn about schools of the past from
+                        Tommy?</div>
+                    <div class="qa-answer">Margie learned that schools of the past were very different from her own.
+                        Children went to a special school building, studied together in classrooms, and were taught by
+                        human teachers. They could interact with classmates, ask questions, and enjoy group activities.
+                        This made old schools seem much more exciting and enjoyable than her mechanical school.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> Why did Margie dislike the slot where she had to put her
+                        homework?</div>
+                    <div class="qa-answer">Margie disliked the homework slot because she had to insert her assignments
+                        and test papers into it regularly. The mechanical teacher would immediately check her work and
+                        provide scores. She found this process boring and frustrating, especially because the machine
+                        kept giving her poor results in Geography, which made her dislike school even more.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> Describe the role of the County Inspector in the story.
+                    </div>
+                    <div class="qa-answer">The County Inspector was a technician responsible for repairing and adjusting
+                        mechanical teachers. When Margie's Geography scores became very low, he examined her teacher and
+                        discovered that the Geography sector was functioning too quickly. He slowed it down to match the
+                        level of an average ten-year-old student and reassured Margie that the problem was not her
+                        fault.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> What does the story suggest about the importance of human
+                        interaction in education?</div>
+                    <div class="qa-answer">The story highlights that human interaction plays an important role in
+                        education. Learning with classmates allows students to share ideas, discuss lessons, and enjoy
+                        social experiences. Human teachers can understand emotions and provide personal guidance.
+                        Through Margie's thoughts, the story suggests that technology cannot completely replace the joy
+                        and benefits of learning together.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> Why did Margie think children in old schools had more
+                        fun?</div>
+                    <div class="qa-answer">Margie believed children in old schools had more fun because they studied and
+                        played together. They could make friends, discuss lessons, and help each other learn. Unlike her
+                        lonely experience with a mechanical teacher at home, old schools offered a lively environment
+                        filled with social interaction. This made school life seem much more enjoyable and exciting.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> What message does Isaac Asimov convey through "The Fun
+                        They Had"?</div>
+                    <div class="qa-answer">Isaac Asimov conveys that while technology can improve education, it should
+                        not completely replace human relationships and social learning. The story encourages readers to
+                        value traditional classrooms, friendships, and human teachers. It reminds us that education is
+                        not only about gaining knowledge but also about sharing experiences and developing social skills
+                        with others.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> Explain the significance of the title "The Fun They Had".
+                    </div>
+                    <div class="qa-answer">The title refers to the enjoyable experiences children had in traditional
+                        schools. After learning about classrooms, human teachers, and group learning, Margie imagines
+                        how much fun students of the past must have had. The title emphasizes the contrast between her
+                        lonely, technology-based education and the lively social environment of old schools,
+                        highlighting the value of shared learning experiences.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> Character Sketch of Margie</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Margie is the central character of "The Fun They Had". She is an eleven-year-old
+                        girl living in the year 2157. She studies at home with the help of a mechanical
+                        teacher instead of attending a traditional school.
+                        <br><br>
+
+                        <strong>Curious Nature:</strong><br>
+                        Margie is very curious and eager to learn new things. When Tommy finds an old
+                        printed book, she becomes interested in knowing about the schools of the past.
+                        Her curiosity helps her imagine how children studied together in classrooms.
+                        <br><br>
+
+                        <strong>Dislikes Mechanical School:</strong><br>
+                        She does not enjoy her computerized education system. The mechanical teacher
+                        gives her frequent tests and makes learning feel lonely and boring. She
+                        especially dislikes Geography because she often scores poorly in it.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Margie is intelligent, imaginative, and thoughtful. Through her character,
+                        Isaac Asimov highlights the importance of human interaction and friendship in
+                        education.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> Character Sketch of Tommy</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Tommy is a thirteen-year-old boy and Margie's friend. He plays an important role
+                        in the story because he discovers the old printed book.
+                        <br><br>
+
+                        <strong>Knowledgeable and Confident:</strong><br>
+                        Tommy is more informed than Margie about the schools of the past. He explains
+                        many things to her confidently and helps her understand how children were taught
+                        in earlier times.
+                        <br><br>
+
+                        <strong>Curious and Intelligent:</strong><br>
+                        Tommy enjoys reading and learning new information. His interest in the old book
+                        shows his curiosity and intelligence. He carefully studies the book and shares
+                        its contents with Margie.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Tommy is an intelligent, curious, and confident boy. Through his character, the
+                        author introduces the idea of traditional schools and compares them with future
+                        education systems.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Describe the Education System in the Year 2157</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        The story presents a futuristic education system where technology has completely
+                        replaced traditional schools and human teachers.
+                        <br><br>
+
+                        <strong>Mechanical Teachers:</strong><br>
+                        Every child studies at home using a mechanical teacher. Lessons are displayed on
+                        a large screen, and homework is submitted through special slots using punch
+                        codes.
+                        <br><br>
+
+                        <strong>Individual Learning:</strong><br>
+                        The system is personalized according to the needs of each student. However,
+                        children study alone without classmates, making learning less enjoyable.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Although the system is technologically advanced, it lacks social interaction,
+                        friendship, and the excitement of learning together in a classroom.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> Why Did Margie Think the Old Schools Were Better?</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        After learning about traditional schools from Tommy, Margie began comparing them
+                        with her own mechanical school.
+                        <br><br>
+
+                        <strong>Learning Together:</strong><br>
+                        In old schools, children studied together in classrooms. They could discuss
+                        lessons, play games, and help one another in studies.
+                        <br><br>
+
+                        <strong>Human Teachers:</strong><br>
+                        Students were taught by human teachers who could understand their problems and
+                        guide them personally. This made learning more effective and enjoyable.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Margie felt that old schools were better because they offered friendship, fun,
+                        and human interaction. She imagined how much fun children must have had while
+                        learning together.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Isaac Asimov</h4>
+                    <p>Isaac Asimov (1920–1992) was an exceptionally prolific American writer and professor of
+                        biochemistry, famously recognized as one of the founding pillars of hard science fiction
+                        literature. His stories elegantly speculate on technological paradigms, robotic controls, and
+                        future human adaptations.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+                <div class="summary-paragraph"><strong>Introduction to a Digital Era:</strong> The story is structured around the year 2157, where the conventional schooling framework has turned into an obsolete phenomenon. Education is individualistic, completely computerized, and completely managed via specialized technical servers stationed right inside residential spaces.</div>
+                <div class="summary-paragraph"><strong>The Discovery:</strong> The actual conflict of thoughts begins when thirteen-year-old Tommy unearths an ancient physical book made of real paper inside his home attic. He immediately shows it to eleven-year-old Margie. To both children, whose learning revolves around moving tele-text lines on screens, a book whose text remains completely fixed and static when pages turn appears extremely eccentric and marvelous.</div>
+                <div class="summary-paragraph"><strong>The Discontent with AI:</strong> Margie's relationship with her automated teacher is heavily strained. The mechanical device had been malfunctioning, throwing heavy geography test suites at her faster than her learning rate, which required an administrative intervention by the County Inspector. This continuous friction makes Margie highly critical of her automated educational setup.</div>
+                <div class="summary-paragraph"><strong>The Nostalgic Realization:</strong> As Tommy describes that schools of the past were separate public architecture units operated by real human professors, Margie falls into deep contemplation. The idea that children played together, studied identical concepts, and collectively assisted each other with homework fills her with nostalgic yearning. The story ends beautifully as Margie sits in front of her mechanical teacher, losing herself in thinking about the absolute joy and 'the fun they had' in ancient human setups.</div>
+            `,
+            hi: `
+                <div class="summary-paragraph"><strong>एक डिजिटल युग की शुरुआत:</strong> यह कहानी भविष्य के वर्ष 2157 पर आधारित है, जहाँ पारंपरिक स्कूल पूरी तरह समाप्त हो चुके हैं। शिक्षा पूरी तरह से व्यक्तिगत, कंप्यूटरीकृत और छात्रों के घरों के भीतर रोबोटिक मॉनिटर्स के द्वारा संचालित होती है।</div>
+                <div class="summary-paragraph"><strong>एक वास्तविक खोज:</strong> कहानी में वैचारिक मोड़ तब आता है जब तेरह वर्षीय टॉमी को अपने घर की अटारी से कागज की एक पुरानी वास्तविक किताब मिलती है। वह इसे ग्यारह वर्षीय मार्गी को दिखाता है। दोनों बच्चों के लिए, जो स्क्रीन पर चलने वाले शब्दों को देखने के आदी हैं, एक ऐसी पुस्तक देखना जिसके शब्द स्थिर हैं, बेहद अजीब और विस्मयकारी था।</div>
+                <div class="summary-paragraph"><strong>मशीनी शिक्षा से निराशा:</strong> मार्गी अपनी रोबोटिक पढ़ाई से काफी परेशान है। उसका मैकेनिकल शिक्षक भूगोल के कठिन टेस्ट इतनी तेजी से दे रहा था कि मार्गी का प्रदर्शन लगातार गिरता जा रहा था, जिसके लिए काउंटी इंस्पेक्टर को बुलाकर रोबोट की गति को धीमा करना पड़ा। यह नीरसता मार्गी को अपनी मशीनी व्यवस्था से दूर करती है।</div>
+                <div class="summary-paragraph"><strong>पुरानी यादों का एहसास:</strong> जब टॉमी उसे बताता है कि पुराने समय में स्कूल एक अलग साझा इमारत में होते थे जहाँ हाड़-मांस के इंसानी शिक्षक पढ़ाते थे, तो मार्गी विचारों में खो जाती है। यह सोचकर कि सभी बच्चे एक साथ हंसते-खेलते होंगे, एक जैसा पाठ पढ़ते होंगे और गृहकार्य में एक-दूसरे की मदद करते होंगे, उसका मन रोमांचित हो उठता है। कहानी के अंत में मार्गी अपने मैकेनिकल टीचर के सामने बैठी है, और सोच रही है कि पुराने जमाने के बच्चों को पढ़ाई में कितना आनंद आता होगा ("The Fun They Had")।</div>
+            `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+    </script>
+</body>
+
+</html>

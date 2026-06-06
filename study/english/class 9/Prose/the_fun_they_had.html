@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <meta name="theme-color" content="#2563eb">
 
     <style>
         :root {
@@ -1257,32 +1258,114 @@
     </div>
 
     <script>
+        const THEME_KEY = "brainhub_theme";
+
         const summaryDataAsset = {
             en: `
-                <div class="summary-paragraph"><strong>Introduction to a Digital Era:</strong> The story is structured around the year 2157, where the conventional schooling framework has turned into an obsolete phenomenon. Education is individualistic, completely computerized, and completely managed via specialized technical servers stationed right inside residential spaces.</div>
-                <div class="summary-paragraph"><strong>The Discovery:</strong> The actual conflict of thoughts begins when thirteen-year-old Tommy unearths an ancient physical book made of real paper inside his home attic. He immediately shows it to eleven-year-old Margie. To both children, whose learning revolves around moving tele-text lines on screens, a book whose text remains completely fixed and static when pages turn appears extremely eccentric and marvelous.</div>
-                <div class="summary-paragraph"><strong>The Discontent with AI:</strong> Margie's relationship with her automated teacher is heavily strained. The mechanical device had been malfunctioning, throwing heavy geography test suites at her faster than her learning rate, which required an administrative intervention by the County Inspector. This continuous friction makes Margie highly critical of her automated educational setup.</div>
-                <div class="summary-paragraph"><strong>The Nostalgic Realization:</strong> As Tommy describes that schools of the past were separate public architecture units operated by real human professors, Margie falls into deep contemplation. The idea that children played together, studied identical concepts, and collectively assisted each other with homework fills her with nostalgic yearning. The story ends beautifully as Margie sits in front of her mechanical teacher, losing herself in thinking about the absolute joy and 'the fun they had' in ancient human setups.</div>
-            `,
+            <div class="summary-paragraph"><strong>Introduction to a Digital Era:</strong> The story is structured around the year 2157, where the conventional schooling framework has turned into an obsolete phenomenon. Education is individualistic, completely computerized, and completely managed via specialized technical servers stationed right inside residential spaces.</div>
+            <div class="summary-paragraph"><strong>The Discovery:</strong> The actual conflict of thoughts begins when thirteen-year-old Tommy unearths an ancient physical book made of real paper inside his home attic. He immediately shows it to eleven-year-old Margie. To both children, whose learning revolves around moving tele-text lines on screens, a book whose text remains completely fixed and static when pages turn appears extremely eccentric and marvelous.</div>
+            <div class="summary-paragraph"><strong>The Discontent with AI:</strong> Margie's relationship with her automated teacher is heavily strained. The mechanical device had been malfunctioning, throwing heavy geography test suites at her faster than her learning rate, which required an administrative intervention by the County Inspector. This continuous friction makes Margie highly critical of her automated educational setup.</div>
+            <div class="summary-paragraph"><strong>The Nostalgic Realization:</strong> As Tommy describes that schools of the past were separate public architecture units operated by real human professors, Margie falls into deep contemplation. The idea that children played together, studied identical concepts, and collectively assisted each other with homework fills her with nostalgic yearning. The story ends beautifully as Margie sits in front of her mechanical teacher, losing herself in thinking about the absolute joy and 'the fun they had' in ancient human setups.</div>
+        `,
             hi: `
-                <div class="summary-paragraph"><strong>एक डिजिटल युग की शुरुआत:</strong> यह कहानी भविष्य के वर्ष 2157 पर आधारित है, जहाँ पारंपरिक स्कूल पूरी तरह समाप्त हो चुके हैं। शिक्षा पूरी तरह से व्यक्तिगत, कंप्यूटरीकृत और छात्रों के घरों के भीतर रोबोटिक मॉनिटर्स के द्वारा संचालित होती है।</div>
-                <div class="summary-paragraph"><strong>एक वास्तविक खोज:</strong> कहानी में वैचारिक मोड़ तब आता है जब तेरह वर्षीय टॉमी को अपने घर की अटारी से कागज की एक पुरानी वास्तविक किताब मिलती है। वह इसे ग्यारह वर्षीय मार्गी को दिखाता है। दोनों बच्चों के लिए, जो स्क्रीन पर चलने वाले शब्दों को देखने के आदी हैं, एक ऐसी पुस्तक देखना जिसके शब्द स्थिर हैं, बेहद अजीब और विस्मयकारी था।</div>
-                <div class="summary-paragraph"><strong>मशीनी शिक्षा से निराशा:</strong> मार्गी अपनी रोबोटिक पढ़ाई से काफी परेशान है। उसका मैकेनिकल शिक्षक भूगोल के कठिन टेस्ट इतनी तेजी से दे रहा था कि मार्गी का प्रदर्शन लगातार गिरता जा रहा था, जिसके लिए काउंटी इंस्पेक्टर को बुलाकर रोबोट की गति को धीमा करना पड़ा। यह नीरसता मार्गी को अपनी मशीनी व्यवस्था से दूर करती है।</div>
-                <div class="summary-paragraph"><strong>पुरानी यादों का एहसास:</strong> जब टॉमी उसे बताता है कि पुराने समय में स्कूल एक अलग साझा इमारत में होते थे जहाँ हाड़-मांस के इंसानी शिक्षक पढ़ाते थे, तो मार्गी विचारों में खो जाती है। यह सोचकर कि सभी बच्चे एक साथ हंसते-खेलते होंगे, एक जैसा पाठ पढ़ते होंगे और गृहकार्य में एक-दूसरे की मदद करते होंगे, उसका मन रोमांचित हो उठता है। कहानी के अंत में मार्गी अपने मैकेनिकल टीचर के सामने बैठी है, और सोच रही है कि पुराने जमाने के बच्चों को पढ़ाई में कितना आनंद आता होगा ("The Fun They Had")।</div>
-            `
+            <div class="summary-paragraph"><strong>एक डिजिटल युग की शुरुआत:</strong> यह कहानी भविष्य के वर्ष 2157 पर आधारित है, जहाँ पारंपरिक स्कूल पूरी तरह समाप्त हो चुके हैं। शिक्षा पूरी तरह से व्यक्तिगत, कंप्यूटरीकृत और छात्रों के घरों के भीतर रोबोटिक मॉनिटर्स के द्वारा संचालित होती है।</div>
+            <div class="summary-paragraph"><strong>एक वास्तविक खोज:</strong> कहानी में वैचारिक मोड़ तब आता है जब तेरह वर्षीय टॉमी को अपने घर की अटारी से कागज की एक पुरानी वास्तविक किताब मिलती है। वह इसे ग्यारह वर्षीय मार्गी को दिखाता है। दोनों बच्चों के लिए, जो स्क्रीन पर चलने वाले शब्दों को देखने के आदी हैं, एक ऐसी पुस्तक देखना जिसके शब्द स्थिर हैं, बेहद अजीब और विस्मयकारी था।</div>
+            <div class="summary-paragraph"><strong>मशीनी शिक्षा से निराशा:</strong> मार्गी अपनी रोबोटिक पढ़ाई से काफी परेशान है। उसका मैकेनिकल शिक्षक भूगोल के कठिन टेस्ट इतनी तेजी से दे रहा था कि मार्गी का प्रदर्शन लगातार गिरता जा रहा था, जिसके लिए काउंटी इंस्पेक्टर को बुलाकर रोबोट की गति को धीमा करना पड़ा। यह नीरसता मार्गी को अपनी मशीनी व्यवस्था से दूर करती है।</div>
+            <div class="summary-paragraph"><strong>पुरानी यादों का एहसास:</strong> जब टॉमी उसे बताता है कि पुराने समय में स्कूल एक अलग साझा इमारत में होते थे जहाँ हाड़-मांस के इंसानी शिक्षक पढ़ाते थे, तो मार्गी विचारों में खो जाती है। यह सोचकर कि सभी बच्चे एक साथ हंसते-खेलते होंगे, एक जैसा पाठ पढ़ते होंगे और गृहकार्य में एक-दूसरे की मदद करते होंगे, उसका मन रोमांचित हो उठता है। कहानी के अंत में मार्गी अपने मैकेनिकल टीचर के सामने बैठी है, और सोच रही है कि पुराने जमाने के बच्चों को पढ़ाई में कितना आनंद आता होगा ("The Fun They Had")।</div>
+        `
         };
 
-        function switchSummaryLanguage(langKey, elementRef) {
-            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
-            if (elementRef) elementRef.classList.add("active");
+        function applyTheme() {
+            const savedTheme =
+                localStorage.getItem(THEME_KEY) || "light";
 
-            const viewport = document.getElementById("summaryViewPort");
-            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+            document.documentElement.dataset.theme =
+                savedTheme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    savedTheme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            switchSummaryLanguage('en', null);
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn")
+                .forEach(btn => btn.classList.remove("active"));
+
+            if (elementRef)
+                elementRef.classList.add("active");
+
+            const viewport =
+                document.getElementById("summaryViewPort");
+
+            viewport.innerHTML =
+                summaryDataAsset[langKey] ||
+                summaryDataAsset.en;
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                applyTheme();
+                switchSummaryLanguage("en", null);
+            }
+        );
+
+        /* Theme Sync Across Pages */
+        window.addEventListener("storage", (e) => {
+            if (e.key === THEME_KEY) {
+                applyTheme();
+            }
         });
+
+        /* Same Tab Update */
+        setInterval(applyTheme, 500);
+        function applyThemeFromBrainHub() {
+
+    const data = JSON.parse(
+        localStorage.getItem("brainhub.app.v2") || "{}"
+    );
+
+    const theme = data.theme || "light";
+
+    document.documentElement.dataset.theme =
+        theme;
+
+    const metaTheme = document.querySelector(
+        'meta[name="theme-color"]'
+    );
+
+    if (metaTheme) {
+        metaTheme.setAttribute(
+            "content",
+            theme === "dark"
+                ? "#121722"
+                : "#2563eb"
+        );
+    }
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    applyThemeFromBrainHub
+);
+
+window.addEventListener("storage", (e) => {
+    if (e.key === "brainhub.app.v2") {
+        applyThemeFromBrainHub();
+    }
+});
+
+/* Same tab sync */
+setInterval(applyThemeFromBrainHub, 500);
     </script>
 </body>
 

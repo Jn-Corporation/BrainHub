@@ -1385,6 +1385,44 @@
         document.addEventListener("DOMContentLoaded", () => {
             switchSummaryLanguage('en', null);
         });
+        function applyThemeFromBrainHub() {
+
+    const data = JSON.parse(
+        localStorage.getItem("brainhub.app.v2") || "{}"
+    );
+
+    const theme = data.theme || "light";
+
+    document.documentElement.dataset.theme =
+        theme;
+
+    const metaTheme = document.querySelector(
+        'meta[name="theme-color"]'
+    );
+
+    if (metaTheme) {
+        metaTheme.setAttribute(
+            "content",
+            theme === "dark"
+                ? "#121722"
+                : "#2563eb"
+        );
+    }
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    applyThemeFromBrainHub
+);
+
+window.addEventListener("storage", (e) => {
+    if (e.key === "brainhub.app.v2") {
+        applyThemeFromBrainHub();
+    }
+});
+
+/* Same tab sync */
+setInterval(applyThemeFromBrainHub, 500);
     </script>
 </body>
 
