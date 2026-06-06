@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#2563eb">
     <meta name="theme-color" content="#2563eb">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -1161,6 +1162,78 @@
             /* 'user-drag' is non-standard and removed to avoid unknown-property errors */
             pointer-events: none;
         }
+
+        /* Center Layout Alignment for FAB Menu Ring */
+        .fab-menu {
+            position: fixed;
+            /* Horizontally Screen Ke Center Me Box Lock Karne Ke Liye */
+            left: 50%;
+            /* More Button Ke Theek Center Coordinate Par Translate */
+            transform: translateX(-50%);
+            /* Bottom Navigation Se Bilkul Balanced Gap */
+            bottom: max(10px, env(safe-area-inset-bottom)) !important;
+            width: 62px;
+            /* Bottom center button ki core width size */
+            height: 62px;
+            z-index: 71;
+            pointer-events: none;
+        }
+
+        .fab-action {
+            position: absolute;
+            /* More Button ke behind hide and absolute center point */
+            top: 50%;
+            left: 50%;
+            width: 52px;
+            height: 52px;
+            margin-top: -26px;
+            /* Perfect vertical radius offset tracking */
+            margin-left: -26px;
+            /* Perfect horizontal center tracking */
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: var(--primary);
+            box-shadow: var(--soft);
+            opacity: 0;
+            transform: scale(0.4);
+            transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.24s ease-out;
+        }
+
+        .fab-menu.show {
+            pointer-events: auto;
+        }
+
+        .fab-menu.show .fab-action {
+            opacity: 1;
+        }
+
+        /* Premium Middle Symmetric Ring Coordinates Arc */
+        /* Sub-Buttons automatically central More icon ke upar ek semicircular dome format balance karenge */
+        .fab-menu.show .fab-action:nth-child(1) {
+            /* Extreme Left Option - Balanced Arc */
+            transform: translate(-76px, -52px) scale(1);
+            background: var(--rose);
+        }
+
+        .fab-menu.show .fab-action:nth-child(2) {
+            /* Mid Left Option - Upward Arc */
+            transform: translate(-28px, -104px) scale(1);
+            background: var(--green);
+        }
+
+        .fab-menu.show .fab-action:nth-child(3) {
+            /* Mid Right Option - Upward Arc */
+            transform: translate(28px, -104px) scale(1);
+            background: var(--amber);
+        }
+
+        .fab-menu.show .fab-action:nth-child(4) {
+            /* Extreme Right Option - Balanced Arc */
+            transform: translate(76px, -52px) scale(1);
+            background: var(--violet);
+        }
     </style>
 </head>
 
@@ -1503,6 +1576,113 @@
                     </div>
                 </div>
             </section>
+
+            <section class="screen" data-screen="about">
+                <div class="grid">
+                    <div class="panel wide">
+                        <div class="panel-head">
+                            <div class="panel-title">
+                                <i class="fa-solid fa-address-card" style="color: var(--primary);"></i>
+                                <h3>About BrainHub Platform</h3>
+                                <p>Comprehensive Ecosystem Overview — Version 1.0.0</p>
+                            </div>
+                        </div>
+                        <div class="item" style="line-height: 1.7; padding: 18px; color: var(--text);">
+                            <p style="margin-bottom: 12px;"><strong>BrainHub</strong> is engineered as an elite personal
+                                productivity suite and lightweight micro-learning platform built exclusively for
+                                high-performing students, developers, and tech enthusiasts. In an era dominated by
+                                heavy, ad-cluttered web structures, BrainHub delivers an ultra-responsive, secure, and
+                                completely distraction-free workspace.</p>
+                            <p>The platform seamlessly consolidates complex educational systems like <em>Study Flow</em>
+                                (custom-tailored for systematic entrance exam tracking), dynamic general knowledge
+                                evaluation matrices, localized text hubs, and a suite of offline performance utilities
+                                into a single unified client-side application layer.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-head">
+                            <div class="panel-title">
+                                <i class="fa-solid fa-microchip" style="color: var(--amber);"></i>
+                                <h3>Technical Architecture</h3>
+                                <p>Under the hood optimization specs</p>
+                            </div>
+                        </div>
+                        <div class="list">
+                            <div class="item">
+                                <strong><i class="fa-solid fa-bolt" style="color: var(--amber); margin-right: 6px;"></i>
+                                    Glassmorphic Design Token</strong>
+                                <p>Utilizes dynamic Material Design 3 guidelines alongside Glassmorphic and Neumorphic
+                                    (Soft UI) shadow properties for continuous tactile interactive feedback on
+                                    Android-first mobile screens.</p>
+                            </div>
+                            <div class="item">
+                                <strong><i class="fa-solid fa-wifi-slash"
+                                        style="color: var(--green); margin-right: 6px;"></i> Full PWA & Background
+                                    Caching</strong>
+                                <p>Integrated with high-performance Web App Manifest modules and a native Service Worker
+                                    script (sw.js) that intercepts active network layer updates to ensure instantaneous,
+                                    100% offline functionality.</p>
+                            </div>
+                            <div class="item">
+                                <strong><i class="fa-solid fa-server"
+                                        style="color: var(--primary); margin-right: 6px;"></i> Isolated State
+                                    Management</strong>
+                                <p>Ditches complex external databases in favor of secure, client-controlled localStorage
+                                    states, preventing memory leaks while keeping user parameters and custom notes
+                                    instantly accessible.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-head">
+                            <div class="panel-title">
+                                <i class="fa-solid fa-building-gear" style="color: var(--violet);"></i>
+                                <h3>JNR Corporations Workspace</h3>
+                                <p>Corporate organization and technical leadership</p>
+                            </div>
+                        </div>
+                        <div class="list">
+                            <div class="item"
+                                style="background: var(--panel-2); border-radius: var(--radius-sm); padding: 10px; margin-bottom: 8px;">
+                                <strong style="color: var(--text); font-size: 13.5px;"><i class="fa-solid fa-building"
+                                        style="color: var(--violet); margin-right: 6px;"></i> Corporate Vision</strong>
+                                <p style="margin-top: 4px; font-size: 12px; line-height: 1.5;"><strong>JNR
+                                        Corporations</strong> is an agile software engineering enterprise specializing
+                                    in premium system configurations, fluid web architecture design patterns, and
+                                    cross-platform application design. Our objective is building clean, privacy-centric
+                                    microservice tools that maximize device performance.</p>
+                            </div>
+
+                            <div class="item"
+                                style="border-left: 3px solid var(--primary); padding-left: 12px; margin-bottom: 8px;">
+                                <strong style="font-size: 13.5px; color: var(--text);">Raj Verma</strong>
+                                <span
+                                    style="display: block; font-size: 11px; color: var(--primary); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Lead
+                                    Developer & Web Architect</span>
+                                <p style="font-size: 12px; line-height: 1.5; color: var(--muted);">Directs core
+                                    application logic, software framework performance, and backend state models. Raj
+                                    specializes in asynchronous client-side scripts, Progressive Web App
+                                    implementations, custom service worker setups, and high-velocity UI architecture
+                                    compilation.</p>
+                            </div>
+
+                            <div class="item" style="border-left: 3px solid var(--teal); padding-left: 12px;">
+                                <strong style="font-size: 13.5px; color: var(--text);">Yogendra Verma</strong>
+                                <span
+                                    style="display: block; font-size: 11px; color: var(--teal); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Principal
+                                    UI/UX Designer</span>
+                                <p style="font-size: 12px; line-height: 1.5; color: var(--muted);">Oversees visual
+                                    frameworks, branding components, and design systems tokenization. Yogendra focuses
+                                    on drafting responsive interaction layers, optimizing dark/light design mechanics,
+                                    structural depth layout patterns, and maintaining neat component scaling over mobile
+                                    screens.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -1516,9 +1696,10 @@
     <nav class="bottom-nav" aria-label="Bottom navigation">
         <button class="bottom-btn active" data-bottom="home"><i class="fa-solid fa-house"></i><span>Home</span></button>
         <button class="bottom-btn" data-bottom="study"><i class="fa-solid fa-book-open"></i><span>Study</span></button>
-        <button class="bottom-btn" data-bottom="gk"><i class="fa-solid fa-brain"></i><span>GK</span></button>
-        <button class="bottom-btn" data-bottom="tools"><i class="fa-solid fa-wrench"></i><span>Tools</span></button>
         <button class="bottom-btn more" id="moreBtn"><i class="fa-solid fa-grip"></i><span>More</span></button>
+
+        <button class="bottom-btn" data-bottom="tools"><i class="fa-solid fa-wrench"></i><span>Tools</span></button>
+        <button class="bottom-btn" data-bottom="gk"><i class="fa-solid fa-brain"></i><span>GK</span></button>
     </nav>
 
     <div class="toast" id="toast">Saved</div>
@@ -1533,6 +1714,7 @@
             { id: "shayari", label: "Shayari", icon: "fa-feather" },
             { id: "stories", label: "Stories", icon: "fa-book" },
             { id: "tools", label: "Tools", icon: "fa-wrench" },
+            { id: "about", label: "About", icon: "fa-address-card" },
             { id: "settings", label: "Settings", icon: "fa-gear" }
         ];
 
@@ -2486,6 +2668,43 @@
             // Meta tag color dynamically switch karne ke liye
             $('meta[name="theme-color"]').setAttribute('content', state.theme === "dark" ? "#121722" : "#2563eb");
         }
+        // Global toggle aur close control handler for Central FAB Menu
+        function toggleFab(event) {
+            if (event) event.stopPropagation(); // Prevents instant document click conflict
+
+            const fabMenu = document.querySelector(".fab-menu");
+            const centerMoreBtn = document.getElementById("centerMoreBtn") || document.getElementById("moreBtn");
+
+            if (!fabMenu) return;
+
+            // Check mapping screen logic or toggle active classes
+            if (fabMenu.classList.contains("show")) {
+                // If already open, then close it cleanly
+                fabMenu.classList.remove("show");
+            } else {
+                // If closed, open it with active fluid ring animation
+                fabMenu.classList.add("show");
+
+                if (centerMoreBtn) {
+                    centerMoreBtn.classList.remove("ring-active");
+                    void centerMoreBtn.offsetWidth; // Force hardware reflow rendering state
+                    centerMoreBtn.classList.add("ring-active");
+                }
+            }
+        }
+
+        // Global Document Listener - Screen par kahin bhi click hone se auto-close hoga
+        document.addEventListener("click", (event) => {
+            const fabMenu = document.querySelector(".fab-menu");
+            const centerMoreBtn = document.getElementById("centerMoreBtn") || document.getElementById("moreBtn");
+
+            // Agar menu open hai aur click more button ya menu items ke andar nahi hua hai
+            if (fabMenu && fabMenu.classList.contains("show")) {
+                if (!fabMenu.contains(event.target) && !centerMoreBtn.contains(event.target)) {
+                    fabMenu.classList.remove("show");
+                }
+            }
+        });
     </script>
 </body>
 

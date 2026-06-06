@@ -1,31 +1,45 @@
 {
-    "name": "BrainHub - Learn. Create. Track.",
-    "short_name": "BrainHub",
-    "description": "Study notes, GK quiz, shayari, stories, tools, and your daily planner in one fast local app.",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#eef3f8",
-    "theme_color": "#2563eb",
-    "orientation": "portrait-primary",
-    "categories": ["education", "utilities", "productivity"],
-    "icons": [
-        {
-            "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'><rect width='192' height='192' rx='48' fill='url(%23grad)'/><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232563eb'/><stop offset='100%' stop-color='%230f766e'/></linearGradient></defs><text x='50%' y='65%' font-family='sans-serif' font-weight='800' font-size='96' fill='white' text-anchor='middle'>B</text></svg>",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='url(%23grad)'/><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232563eb'/><stop offset='100%' stop-color='%230f766e'/></linearGradient></defs><text x='50%' y='65%' font-family='sans-serif' font-weight='800' font-size='256' fill='white' text-anchor='middle'>B</text></svg>",
-            "sizes": "512x512",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'><rect width='192' height='192' rx='48' fill='url(%23grad)'/><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232563eb'/><stop offset='100%' stop-color='%230f766e'/></linearGradient></defs><circle cx='96' cy='96' r='64' fill='none' stroke='white' stroke-width='12'/><text x='50%' y='64%' font-family='sans-serif' font-weight='800' font-size='80' fill='white' text-anchor='middle'>B</text></svg>",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "maskable"
-        }
-    ]
+  "id": "/brainhub-app",
+  "name": "BrainHub - Learn. Create. Track.",
+  "short_name": "BrainHub",
+  "description": "Study notes, GK quiz, shayari, stories, tools, and your daily planner in one fast local app.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eef3f8",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "categories": [
+    "education",
+    "utilities",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "1080x2400",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "BrainHub Dashboard View"
+    }
+  ]
 }
