@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Little Girl - Brain Hub</title>
+    <title>The Adventures of Toto - Brain Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -442,17 +442,17 @@
     <div class="container">
 
         <div class="chapter-hero">
-            <span class="meta-badge">Class 9 • Chapter 3 • Poetry</span>
-            <h2>The Little Girl</h2>
-            <p>The Little Girl is a poignant story that explores the relationship between a father and his daughter,
-                highlighting themes of love, understanding, and the innocence of childhood. 🎵</p>
+            <span class="meta-badge">Class 9 • Chapter 19 • Supplementary</span>
+            <h2>The Adventures of Toto</h2>
+            <p>The Adventures of Toto is a delightful story that follows the escapades of a mischievous monkey named Toto,
+                highlighting themes of friendship, loyalty, and the joy of childhood. 🎵</p>
         </div>
 
         <div class="panel" style="grid-column: span 2;">
             <div class="panel-header">
                 <div class="panel-title">
                     <i class="fa-solid fa-file-invoice"></i>
-                    <h3>Central Idea of the Poem</h3>
+                    <h3>Extended Chapter Summary</h3>
                 </div>
                 <div class="lang-switch-box">
                     <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
@@ -577,14 +577,38 @@
 
     <script>
         const summaryDataAsset = {
-    en: `
-        <div class="summary-paragraph"><strong>Central Idea:</strong> "No Men Are Foreign" by James Kirkup conveys the powerful message of universal brotherhood and human unity. The poet emphasizes that all people, regardless of their nationality, race, religion, or language, are fundamentally the same. We share the same earth, breathe the same air, and experience similar joys, sorrows, needs, and emotions. Through the poem, Kirkup warns against hatred, discrimination, and war, explaining that harming others ultimately means harming ourselves. He encourages people to recognize their common humanity and live with peace, understanding, and mutual respect. The poem inspires readers to rise above narrow boundaries and work towards a world united by love, harmony, and compassion.</div>
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "The Adventure of Toto" is a humorous short story written by Ruskin Bond. It revolves around a mischievous monkey named Toto and shows how keeping wild animals as pets can lead to unexpected troubles. The story is light-hearted but also carries an important message about nature and responsibility.</div>
+
+        <div class="summary-paragraph"><strong>Toto’s Arrival:</strong> The story begins when Grandfather buys a baby monkey named Toto from a tonga driver in Saharanpur. Being fond of animals, he decides to keep Toto in his private zoo at home. At first, the family is curious and amused by the new pet.</div>
+
+        <div class="summary-paragraph"><strong>Mischievous Nature:</strong> Very soon, Toto reveals his naughty and destructive behaviour. He tears clothes, breaks dishes, and creates chaos in the house. He is extremely restless and cannot sit quietly, which makes him difficult to control.</div>
+
+        <div class="summary-paragraph"><strong>Problems at Home:</strong> Toto’s behaviour creates constant problems in the household. His mischief disturbs daily life and causes damage to household items. Grandmother is unhappy with him, and the family finds it hard to manage his uncontrollable actions.</div>
+
+        <div class="summary-paragraph"><strong>Journey to Dehradun:</strong> Later, Grandfather takes Toto to Dehradun. During the journey, Toto continues his mischief and does not behave properly. His restless and destructive nature makes the journey difficult for everyone.</div>
+
+        <div class="summary-paragraph"><strong>Final Decision:</strong> Eventually, the family realizes that Toto is too wild and cannot be kept as a pet. His behaviour becomes unmanageable, and they understand that he does not belong in a domestic environment.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The story highlights that wild animals cannot be easily domesticated. It teaches that animals should live in their natural habitat and that humans should respect their true nature instead of trying to control them.</div>
     `,
 
-    hi: `
-        <div class="summary-paragraph"><strong>केंद्रीय विचार:</strong> "No Men Are Foreign" जेम्स किर्कप की एक प्रेरणादायक कविता है, जो विश्व-बंधुत्व और मानव एकता का संदेश देती है। कवि बताता है कि सभी मनुष्य, चाहे वे किसी भी देश, जाति, धर्म या भाषा के हों, मूल रूप से एक समान हैं। हम सभी एक ही पृथ्वी पर रहते हैं, एक ही हवा में सांस लेते हैं और समान भावनाओं, आवश्यकताओं तथा अनुभवों को साझा करते हैं। कविता घृणा, भेदभाव और युद्ध का विरोध करती है तथा यह समझाती है कि दूसरों को नुकसान पहुँचाना वास्तव में स्वयं मानवता को नुकसान पहुँचाना है। कवि लोगों से आग्रह करता है कि वे अपने साझा मानवत्व को पहचानें और प्रेम, शांति, सहिष्णुता तथा आपसी सम्मान के साथ जीवन व्यतीत करें। यह कविता हमें संकीर्ण सोच से ऊपर उठकर एकता, सद्भाव और करुणा से भरे विश्व के निर्माण की प्रेरणा देती है।</div>
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "The Adventure of Toto" एक हास्यपूर्ण लघु कहानी है जिसे रस्किन बॉन्ड ने लिखा है। यह कहानी एक शरारती बंदर टोटो के बारे में है और दिखाती है कि जंगली जानवरों को पालतू बनाना कितनी समस्याएँ पैदा कर सकता है।</div>
+
+        <div class="summary-paragraph"><strong>टोटो का आगमन:</strong> कहानी की शुरुआत में दादाजी एक तांगे वाले से टोटो नाम का छोटा बंदर खरीदते हैं। वे जानवरों से बहुत प्रेम करते हैं और उसे अपने निजी चिड़ियाघर में रख लेते हैं।</div>
+
+        <div class="summary-paragraph"><strong>शरारती स्वभाव:</strong> टोटो बहुत ही शरारती और चंचल होता है। वह कपड़े फाड़ता है, बर्तन तोड़ता है और घर में लगातार उथल-पुथल मचाता रहता है।</div>
+
+        <div class="summary-paragraph"><strong>घर में समस्याएँ:</strong> टोटो की शरारतों के कारण घर में लगातार परेशानियाँ होने लगती हैं। परिवार के लोग उससे परेशान हो जाते हैं और दादी भी उसके व्यवहार से खुश नहीं होतीं।</div>
+
+        <div class="summary-paragraph"><strong>देहरादून यात्रा:</strong> बाद में दादाजी टोटो को देहरादून ले जाते हैं, लेकिन वहाँ भी उसका शरारती स्वभाव नहीं बदलता। वह यात्रा के दौरान भी परेशानियाँ पैदा करता है।</div>
+
+        <div class="summary-paragraph"><strong>अंतिम निर्णय:</strong> अंत में परिवार समझ जाता है कि टोटो को पालतू बनाकर रखना संभव नहीं है क्योंकि वह बहुत जंगली और अनियंत्रित है।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी सिखाती है कि जंगली जानवरों को उनके प्राकृतिक वातावरण में ही रहना चाहिए और उन्हें घर में पालतू बनाना सही नहीं है।</div>
     `
-};
+        };
         function switchSummaryLanguage(langKey, elementRef) {
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
             if (elementRef) elementRef.classList.add("active");

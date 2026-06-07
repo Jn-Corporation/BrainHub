@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Iswaran the Storyteller - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 20 • Supplementary</span>
+            <h2>Iswaran the Storyteller</h2>
+            <p>Iswaran the Storyteller is a captivating tale that revolves around a skilled storyteller named Iswaran,
+                showcasing the power of imagination, creativity, and the art of storytelling. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>1.</span> Who is Iswaran in the story?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq1"> Cook</label>
+                            <label class="option-item"><input type="radio" name="mcq1"> Driver</label>
+                            <label class="option-item"><input type="radio" name="mcq1"> Teacher</label>
+                            <label class="option-item"><input type="radio" name="mcq1"> Gardener</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>2.</span> Who is the narrator in the story?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq2"> Mahendra</label>
+                            <label class="option-item"><input type="radio" name="mcq2"> Iswaran</label>
+                            <label class="option-item"><input type="radio" name="mcq2"> Ravi</label>
+                            <label class="option-item"><input type="radio" name="mcq2"> Shankar</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>3.</span> What was Iswaran famous for?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq3"> Cooking</label>
+                            <label class="option-item"><input type="radio" name="mcq3"> Storytelling</label>
+                            <label class="option-item"><input type="radio" name="mcq3"> Painting</label>
+                            <label class="option-item"><input type="radio" name="mcq3"> Singing</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>4.</span> What type of stories did Iswaran tell?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq4"> Funny stories</label>
+                            <label class="option-item"><input type="radio" name="mcq4"> Ghost and dramatic
+                                stories</label>
+                            <label class="option-item"><input type="radio" name="mcq4"> Science stories</label>
+                            <label class="option-item"><input type="radio" name="mcq4"> Sports stories</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>5.</span> Where did Iswaran work?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq5"> School</label>
+                            <label class="option-item"><input type="radio" name="mcq5"> Office</label>
+                            <label class="option-item"><input type="radio" name="mcq5"> Construction site /
+                                camps</label>
+                            <label class="option-item"><input type="radio" name="mcq5"> Hotel</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>6.</span> What was Iswaran’s personality like?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq6"> Silent and dull</label>
+                            <label class="option-item"><input type="radio" name="mcq6"> Energetic and dramatic</label>
+                            <label class="option-item"><input type="radio" name="mcq6"> Angry and rude</label>
+                            <label class="option-item"><input type="radio" name="mcq6"> Lazy</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>7.</span> What was Mahendra’s profession?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq7"> Teacher</label>
+                            <label class="option-item"><input type="radio" name="mcq7"> Junior supervisor</label>
+                            <label class="option-item"><input type="radio" name="mcq7"> Doctor</label>
+                            <label class="option-item"><input type="radio" name="mcq7"> Engineer</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>8.</span> What was Iswaran’s special talent?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq8"> Dancing</label>
+                            <label class="option-item"><input type="radio" name="mcq8"> Cooking</label>
+                            <label class="option-item"><input type="radio" name="mcq8"> Storytelling and
+                                narration</label>
+                            <label class="option-item"><input type="radio" name="mcq8"> Driving</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>9.</span> What made Iswaran’s stories interesting?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq9"> Logic</label>
+                            <label class="option-item"><input type="radio" name="mcq9"> Dramatic expressions and
+                                imagination</label>
+                            <label class="option-item"><input type="radio" name="mcq9"> Facts only</label>
+                            <label class="option-item"><input type="radio" name="mcq9"> Short length</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>10.</span> What kind of animal did Iswaran describe in his
+                            stories?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq10"> Tigers and elephants</label>
+                            <label class="option-item"><input type="radio" name="mcq10"> Dogs</label>
+                            <label class="option-item"><input type="radio" name="mcq10"> Birds</label>
+                            <label class="option-item"><input type="radio" name="mcq10"> Cats</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>11.</span> Where did Iswaran claim to have seen a tiger?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq11"> Jungle road</label>
+                            <label class="option-item"><input type="radio" name="mcq11"> Market</label>
+                            <label class="option-item"><input type="radio" name="mcq11"> City</label>
+                            <label class="option-item"><input type="radio" name="mcq11"> School</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>12.</span> How did Iswaran describe the tiger?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq12"> Small and weak</label>
+                            <label class="option-item"><input type="radio" name="mcq12"> Huge and terrifying</label>
+                            <label class="option-item"><input type="radio" name="mcq12"> Friendly</label>
+                            <label class="option-item"><input type="radio" name="mcq12"> Sleeping</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>13.</span> What was Mahendra’s reaction to Iswaran’s stories?
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq13"> He believed everything</label>
+                            <label class="option-item"><input type="radio" name="mcq13"> He ignored them</label>
+                            <label class="option-item"><input type="radio" name="mcq13"> He laughed only</label>
+                            <label class="option-item"><input type="radio" name="mcq13"> He got angry</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>14.</span> What did Iswaran love to do after work?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq14"> Read books</label>
+                            <label class="option-item"><input type="radio" name="mcq14"> Cook and tell stories</label>
+                            <label class="option-item"><input type="radio" name="mcq14"> Sleep</label>
+                            <label class="option-item"><input type="radio" name="mcq14"> Travel</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>15.</span> What made Mahendra uneasy eventually?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq15"> Iswaran’s cooking</label>
+                            <label class="option-item"><input type="radio" name="mcq15"> Iswaran’s ghost stories</label>
+                            <label class="option-item"><input type="radio" name="mcq15"> Work pressure</label>
+                            <label class="option-item"><input type="radio" name="mcq15"> Rain</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>16.</span> What type of tone did Iswaran use while telling
+                            stories?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq16"> Flat</label>
+                            <label class="option-item"><input type="radio" name="mcq16"> Dramatic and emotional</label>
+                            <label class="option-item"><input type="radio" name="mcq16"> Boring</label>
+                            <label class="option-item"><input type="radio" name="mcq16"> Silent</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>17.</span> What did Iswaran claim about the supernatural?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq17"> It does not exist</label>
+                            <label class="option-item"><input type="radio" name="mcq17"> He often included ghost
+                                elements</label>
+                            <label class="option-item"><input type="radio" name="mcq17"> It is scientific</label>
+                            <label class="option-item"><input type="radio" name="mcq17"> It is funny</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>18.</span> What was the main theme of Iswaran’s stories?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq18"> Reality only</label>
+                            <label class="option-item"><input type="radio" name="mcq18"> Drama and imagination</label>
+                            <label class="option-item"><input type="radio" name="mcq18"> Sports</label>
+                            <label class="option-item"><input type="radio" name="mcq18"> Science</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>19.</span> What is Mahendra’s relationship with Iswaran?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq19"> Employer and servant</label>
+                            <label class="option-item"><input type="radio" name="mcq19"> Friends</label>
+                            <label class="option-item"><input type="radio" name="mcq19"> Brothers</label>
+                            <label class="option-item"><input type="radio" name="mcq19"> Neighbours</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>20.</span> What is the central idea of the story?</div>
+                        <div class="options-grid">
+                            <label class="option-item"><input type="radio" name="mcq20"> Importance of money</label>
+                            <label class="option-item"><input type="radio" name="mcq20"> Power of storytelling and
+                                imagination</label>
+                            <label class="option-item"><input type="radio" name="mcq20"> Sports life</label>
+                            <label class="option-item"><input type="radio" name="mcq20"> School life</label>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>True / False Section</h3>
+                    </div>
+                </div>
+                <div class="quiz-stack">
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>1.</span> Iswaran was famous for his storytelling skills.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf1"> True</label>
+                            <label class="option-item"><input type="radio" name="tf1"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>2.</span> Mahendra was a cook in the story.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf2"> True</label>
+                            <label class="option-item"><input type="radio" name="tf2"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>3.</span> Iswaran worked as a helper for Mahendra.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf3"> True</label>
+                            <label class="option-item"><input type="radio" name="tf3"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>4.</span> Iswaran’s stories were always realistic and simple.
+                        </div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf4"> True</label>
+                            <label class="option-item"><input type="radio" name="tf4"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>5.</span> Mahendra liked listening to Iswaran’s stories.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf5"> True</label>
+                            <label class="option-item"><input type="radio" name="tf5"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>6.</span> Iswaran used to tell ghost stories.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf6"> True</label>
+                            <label class="option-item"><input type="radio" name="tf6"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>7.</span> Mahendra believed all of Iswaran’s stories
+                            completely.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf7"> True</label>
+                            <label class="option-item"><input type="radio" name="tf7"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>8.</span> Iswaran could cook food very well.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf8"> True</label>
+                            <label class="option-item"><input type="radio" name="tf8"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>9.</span> Iswaran worked in a school as a teacher.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf9"> True</label>
+                            <label class="option-item"><input type="radio" name="tf9"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>10.</span> Mahendra was a junior supervisor at worksite camps.
+                        </div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf10"> True</label>
+                            <label class="option-item"><input type="radio" name="tf10"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>11.</span> Iswaran’s stories were dull and boring.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf11"> True</label>
+                            <label class="option-item"><input type="radio" name="tf11"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>12.</span> Iswaran described a tiger in one of his stories.
+                        </div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf12"> True</label>
+                            <label class="option-item"><input type="radio" name="tf12"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>13.</span> The tiger in Iswaran’s story was described as
+                            harmless.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf13"> True</label>
+                            <label class="option-item"><input type="radio" name="tf13"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>14.</span> Mahendra enjoyed Iswaran’s dramatic storytelling
+                            style.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf14"> True</label>
+                            <label class="option-item"><input type="radio" name="tf14"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>15.</span> Iswaran never exaggerated his stories.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf15"> True</label>
+                            <label class="option-item"><input type="radio" name="tf15"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>16.</span> The story shows the importance of imagination.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf16"> True</label>
+                            <label class="option-item"><input type="radio" name="tf16"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>17.</span> Iswaran and Mahendra were close friends.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf17"> True</label>
+                            <label class="option-item"><input type="radio" name="tf17"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>18.</span> Iswaran often scared Mahendra with ghost stories.
+                        </div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf18"> True</label>
+                            <label class="option-item"><input type="radio" name="tf18"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>19.</span> Mahendra always stayed calm during Iswaran’s
+                            stories.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf19"> True</label>
+                            <label class="option-item"><input type="radio" name="tf19"> False</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>20.</span> The central idea of the story is storytelling and
+                            imagination.</div>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <label class="option-item"><input type="radio" name="tf20"> True</label>
+                            <label class="option-item"><input type="radio" name="tf20"> False</label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fa-solid fa-pen-clip"></i>
+                        <h3>Fill in the Blanks</h3>
+                    </div>
+                </div>
+                <div class="quiz-stack">
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>1.</span> Iswaran was famous for his ________ skills.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>2.</span> Mahendra worked as a junior ________ at worksite
+                            camps.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>3.</span> Iswaran used to tell ________ stories.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>4.</span> Mahendra was very fond of reading ________ books.
+                        </div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>5.</span> Iswaran worked as a ________ for Mahendra.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>6.</span> Iswaran was also a good ________.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>7.</span> The story shows the power of ________ and
+                            imagination.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>8.</span> Iswaran described a ________ in one of his stories.
+                        </div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>9.</span> The tiger in the story was described as very
+                            ________.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>10.</span> Mahendra often listened to Iswaran’s ________
+                            stories.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>11.</span> Iswaran added a lot of ________ to his storytelling.
+                        </div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>12.</span> Mahendra was sometimes ________ by Iswaran’s
+                            stories.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>13.</span> Iswaran had a very ________ imagination.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>14.</span> The story highlights the importance of ________
+                            storytelling.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>15.</span> Mahendra and Iswaran lived in ________ camps.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>16.</span> Iswaran often narrated ________ stories after
+                            dinner.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>17.</span> Mahendra was a ________ person by nature.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>18.</span> Iswaran’s stories were full of ________ and
+                            suspense.</div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>19.</span> The story reflects the power of ________ expression.
+                        </div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-question"><span>20.</span> Iswaran the Storyteller is written by ________.
+                        </div>
+                        <input type="text" class="fill-input" placeholder="Type your answer...">
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h3>Conceptual Q&A Matrix</h3>
+                    </div>
+                </div>
+                <div class="qa-stack">
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q1.</span> Who was Iswaran?</div>
+                        <div class="qa-answer">Iswaran was a loyal and imaginative assistant of Mahendra. He worked as a
+                            cook and helper at worksite camps. He was famous for his storytelling skills and dramatic
+                            narration style that made every story interesting and engaging.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q2.</span> Who was Mahendra?</div>
+                        <div class="qa-answer">Mahendra was a junior supervisor who worked at various worksite camps. He
+                            was a simple and practical man who depended on Iswaran for cooking and daily needs while
+                            staying away from home.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q3.</span> What was Iswaran famous for?</div>
+                        <div class="qa-answer">Iswaran was famous for his storytelling ability. He could turn simple
+                            incidents into dramatic and thrilling stories filled with imagination, suspense, and
+                            emotional expressions that fascinated everyone who listened to him.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q4.</span> How did Iswaran support Mahendra?</div>
+                        <div class="qa-answer">Iswaran supported Mahendra by cooking food, managing daily chores, and
+                            staying with him at isolated worksite camps. He also kept Mahendra entertained with his
+                            imaginative and dramatic storytelling skills.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q5.</span> What type of stories did Iswaran tell?</div>
+                        <div class="qa-answer">Iswaran told ghost stories, adventure tales, and dramatic incidents. He
+                            used expressive language and gestures, making even ordinary events sound mysterious,
+                            exciting, and full of suspense for his listeners.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q6.</span> How was Mahendra as a person?</div>
+                        <div class="qa-answer">Mahendra was a calm, simple, and hardworking person. He did not believe
+                            in superstitions and preferred to live a peaceful life, though he sometimes got influenced
+                            by Iswaran’s scary and imaginative stories.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q7.</span> Why did Mahendra hire Iswaran?</div>
+                        <div class="qa-answer">Mahendra hired Iswaran as a cook and helper because he needed someone to
+                            manage daily tasks at isolated worksite camps. Iswaran was reliable and also provided
+                            company through his storytelling.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q8.</span> What made Iswaran’s storytelling special?</div>
+                        <div class="qa-answer">Iswaran’s storytelling was special because of his dramatic style,
+                            emotional expressions, and ability to add suspense. He used imagination to make simple
+                            events sound thrilling, which kept his listener fully engaged.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q9.</span> How did Mahendra react to stories initially?</div>
+                        <div class="qa-answer">Initially, Mahendra enjoyed listening to Iswaran’s stories. He found them
+                            entertaining and interesting, though he did not always believe them completely, as he was a
+                            practical and logical thinker.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q10.</span> What was the central idea of Iswaran’s stories?</div>
+                        <div class="qa-answer">The central idea of Iswaran’s stories was imagination and drama. He
+                            transformed simple incidents into exciting tales filled with suspense, showing how
+                            storytelling can influence emotions and perception.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q11.</span> Describe Iswaran’s storytelling style in detail.
+                        </div>
+                        <div class="qa-answer">Iswaran’s storytelling style was highly dramatic and expressive. He used
+                            gestures, voice modulation, and vivid descriptions to bring stories to life. Even ordinary
+                            events became thrilling adventures filled with suspense and imagination, making listeners
+                            completely engaged and sometimes even scared.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q12.</span> How did Iswaran influence Mahendra?</div>
+                        <div class="qa-answer">Iswaran influenced Mahendra through his powerful storytelling. Although
+                            Mahendra was logical, repeated exposure to ghost stories and dramatic narration slowly
+                            affected his thoughts, making him feel uneasy at times, especially when he was alone in
+                            isolated camps.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q13.</span> What role did imagination play in the story?</div>
+                        <div class="qa-answer">Imagination played a very important role in the story. Iswaran used it to
+                            create thrilling and emotional narratives. His imaginative storytelling made simple
+                            incidents seem supernatural and exciting, showing how powerful imagination can influence
+                            human perception.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q14.</span> Why did Mahendra stay in isolated camps?</div>
+                        <div class="qa-answer">Mahendra stayed in isolated worksite camps because of his job as a junior
+                            supervisor. These camps were away from towns and cities, which made them quiet and lonely,
+                            increasing his dependence on Iswaran for company and entertainment.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q15.</span> How did Iswaran describe the tiger incident?</div>
+                        <div class="qa-answer">Iswaran described the tiger incident in a highly dramatic way, making it
+                            sound terrifying and real. He used suspenseful narration and exaggerated details, turning a
+                            simple encounter into a thrilling story that impressed and frightened listeners.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q16.</span> What effect did stories have on Mahendra?</div>
+                        <div class="qa-answer">Iswaran’s stories had a psychological effect on Mahendra. Although he
+                            tried to stay rational, the vivid descriptions of ghosts and supernatural events sometimes
+                            made him uneasy, especially during nights in the lonely camps.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q17.</span> How is Iswaran different from Mahendra?</div>
+                        <div class="qa-answer">Iswaran is imaginative, expressive, and dramatic, while Mahendra is
+                            practical, logical, and calm. Their contrasting personalities create an interesting dynamic,
+                            where storytelling meets rational thinking in the isolated environment they live in.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q18.</span> What does the story teach about storytelling?</div>
+                        <div class="qa-answer">The story teaches that storytelling has the power to influence emotions
+                            and imagination. A good storyteller can make simple events seem extraordinary, but excessive
+                            imagination can sometimes blur the line between reality and fiction.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q19.</span> Why is Iswaran an important character?</div>
+                        <div class="qa-answer">Iswaran is important because he represents imagination and creativity.
+                            His storytelling ability adds depth and excitement to the story, showing how one person’s
+                            words can change the mood and thinking of others.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q20.</span> What is the central message of the story?</div>
+                        <div class="qa-answer">The central message of the story is that imagination is powerful and can
+                            strongly influence human emotions. It also shows the balance between reality and fiction,
+                            and how storytelling can shape perception and thinking.</div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q21.</span> Character Sketch of Iswaran</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Iswaran is a central character in the story “Iswaran the Storyteller”
+                            written by R.K. Laxman.<br><br>
+                            <b>Personality:</b> He is imaginative, energetic, and extremely skilled in storytelling. He
+                            works as a cook and helper but is more famous for his dramatic narration style.<br><br>
+                            <b>Storytelling Talent:</b> He can turn simple events into thrilling, suspenseful stories
+                            filled with emotion and imagination.<br><br>
+                            <b>Conclusion:</b> Iswaran is a creative personality whose storytelling deeply influences
+                            those around him.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q22.</span> Character Sketch of Mahendra</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Mahendra is a junior supervisor who works at isolated worksite
+                            camps.<br><br>
+                            <b>Nature:</b> He is practical, simple, and logical. He does not easily believe in
+                            superstitions or exaggerated stories.<br><br>
+                            <b>Behaviour:</b> He enjoys listening to Iswaran but remains doubtful about his imaginative
+                            tales.<br><br>
+                            <b>Conclusion:</b> Mahendra represents a rational thinker who struggles between logic and
+                            imagination.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q23.</span> Iswaran’s Storytelling Style</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Iswaran’s storytelling is the most interesting part of the
+                            story.<br><br>
+                            <b>Style:</b> He uses dramatic expressions, body movements, and emotional voice modulation
+                            to make stories engaging.<br><br>
+                            <b>Impact:</b> Even simple incidents become thrilling ghost or adventure stories in his
+                            narration.<br><br>
+                            <b>Conclusion:</b> His storytelling shows the power of imagination and expressive
+                            communication.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q24.</span> Importance of Imagination in the Story</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Imagination plays a major role in “Iswaran the Storyteller”.<br><br>
+                            <b>Role:</b> Iswaran uses imagination to transform ordinary events into exciting and
+                            mysterious stories filled with suspense.<br><br>
+                            <b>Effect:</b> His imagination influences Mahendra’s thoughts and sometimes creates fear in
+                            his mind.<br><br>
+                            <b>Conclusion:</b> The story shows how imagination can be both entertaining and powerful in
+                            shaping perception.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q25.</span> Central Idea of the Story</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> “Iswaran the Storyteller” highlights the relationship between reality
+                            and imagination.<br><br>
+                            <b>Theme:</b> The story shows how storytelling can turn simple events into dramatic
+                            experiences and influence human emotions.<br><br>
+                            <b>Message:</b> It also reflects the contrast between a logical thinker like Mahendra and an
+                            imaginative storyteller like Iswaran.<br><br>
+                            <b>Conclusion:</b> The story teaches the power of narration and imagination in everyday
+                            life.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q26.</span> Character Sketch of Iswaran</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Iswaran is one of the most memorable characters in “Iswaran the
+                            Storyteller” written by R.K. Laxman.<br><br>
+
+                            <b>Personality:</b> He is imaginative, energetic, and highly expressive. Although he works
+                            as a cook and helper for Mahendra, his real strength lies in his storytelling talent. He has
+                            a natural ability to capture attention and turn simple incidents into dramatic
+                            experiences.<br><br>
+
+                            <b>Storytelling Style:</b> Iswaran uses gestures, facial expressions, voice modulation, and
+                            suspense-building techniques to make his stories extremely engaging. Even ordinary events
+                            become thrilling ghost or adventure stories in his narration.<br><br>
+
+                            <b>Conclusion:</b> He represents creativity and imagination, showing how powerful
+                            storytelling can influence emotions and thinking.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q27.</span> Character Sketch of Mahendra</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Mahendra is a junior supervisor working at isolated worksite camps in
+                            the story.<br><br>
+
+                            <b>Personality:</b> He is practical, calm, and rational in nature. He does not believe in
+                            superstitions and prefers to think logically about situations. He leads a simple life and
+                            depends on Iswaran for cooking and companionship.<br><br>
+
+                            <b>Behaviour:</b> Although he enjoys Iswaran’s stories, he does not fully trust them.
+                            However, due to the lonely environment and repeated exposure to ghost stories, he sometimes
+                            feels uneasy and emotionally affected.<br><br>
+
+                            <b>Conclusion:</b> Mahendra represents a logical thinker whose mind is slowly influenced by
+                            imagination.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q28.</span> Role of Imagination in the Story</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Imagination plays a very important role in “Iswaran the
+                            Storyteller”.<br><br>
+
+                            <b>Development of Stories:</b> Iswaran uses his imagination to transform simple real-life
+                            incidents into dramatic, suspense-filled stories. He adds supernatural elements, emotional
+                            depth, and excitement to make them more engaging.<br><br>
+
+                            <b>Impact on Listener:</b> His imaginative storytelling strongly affects Mahendra’s
+                            thoughts. Even though Mahendra is logical, he sometimes begins to feel fear and confusion,
+                            especially in lonely and isolated camps.<br><br>
+
+                            <b>Conclusion:</b> The story shows that imagination is powerful and can both entertain and
+                            influence human psychology deeply.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q29.</span> Iswaran’s Storytelling Style</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> Iswaran’s storytelling style is the most unique aspect of the
+                            story.<br><br>
+
+                            <b>Techniques:</b> He uses dramatic expressions, emotional voice changes, and physical
+                            gestures to make his narration lively. He carefully builds suspense and keeps his listener
+                            engaged throughout the story.<br><br>
+
+                            <b>Effect:</b> His storytelling transforms ordinary incidents into thrilling and sometimes
+                            frightening experiences. His audience feels as if they are witnessing events in real
+                            life.<br><br>
+
+                            <b>Conclusion:</b> His style highlights how creativity and expression can make storytelling
+                            powerful and unforgettable.
+                        </div>
+                    </div>
+
+                    <div class="qa-card">
+                        <div class="qa-question"><span>Q30.</span> Central Idea of the Story</div>
+                        <div class="qa-answer">
+                            <b>Introduction:</b> “Iswaran the Storyteller” explores the themes of imagination,
+                            storytelling, and perception of reality.<br><br>
+
+                            <b>Main Theme:</b> The story shows how a talented storyteller like Iswaran can turn simple
+                            incidents into dramatic and exciting narratives using imagination and expression.<br><br>
+
+                            <b>Contrast:</b> It also highlights the difference between Iswaran’s imaginative nature and
+                            Mahendra’s logical thinking, creating an interesting balance between reality and
+                            fiction.<br><br>
+
+                            <b>Conclusion:</b> The story teaches that imagination is powerful and storytelling can
+                            deeply influence human emotions and thoughts.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel writer-panel">
+                <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                    <div class="panel-title">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <h3>About the Writer</h3>
+                    </div>
+                </div>
+                <div class="writer-profile-box">
+                    <div class="writer-avatar-circle">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <div class="writer-bio-text">
+                        <h4>R.K. Laxman</h4>
+                        <p>
+                            R.K. Laxman (1921–2015) was one of India’s most famous cartoonists, illustrators, and
+                            writers. He is best known for creating the iconic character “The Common Man,” which appeared
+                            in his daily newspaper cartoon series “You Said It” in The Times of India. His work
+                            beautifully captured the everyday struggles, humour, and irony of Indian society.<br><br>
+
+                            Apart from cartoons, Laxman also wrote short stories that reflected humour, imagination, and
+                            human behaviour. His writing style is simple, witty, and deeply observant of people’s
+                            personalities and actions. He had a unique ability to present serious social issues in a
+                            light and humorous way.<br><br>
+
+                            The story <i>“Iswaran the Storyteller”</i> reflects his talent for humour and storytelling,
+                            showing how imagination and exaggeration can turn ordinary life into something entertaining
+                            and memorable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            const summaryDataAsset = {
+                en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "Iswaran the Storyteller" is a humorous and engaging short story written by R.K. Laxman. It revolves around the character of Iswaran, a cook and assistant, who is famous for his imaginative and dramatic storytelling. The story highlights how imagination can turn ordinary events into exciting narratives.</div>
+
+        <div class="summary-paragraph"><strong>Iswaran’s Role:</strong> Iswaran works as a helper for Mahendra, a junior supervisor at isolated worksite camps. Along with his daily duties, he entertains Mahendra by narrating interesting and often exaggerated stories filled with suspense and drama.</div>
+
+        <div class="summary-paragraph"><strong>Storytelling Style:</strong> Iswaran has a unique style of storytelling. He uses expressive gestures, voice modulation, and vivid descriptions to make his stories more engaging. His tales often include ghosts, tigers, and supernatural elements, making them thrilling for listeners.</div>
+
+        <div class="summary-paragraph"><strong>Impact on Mahendra:</strong> Although Mahendra is a logical and practical person, Iswaran’s stories sometimes influence his thoughts. The repeated ghost stories create a sense of fear and imagination in his mind, especially in lonely surroundings.</div>
+
+        <div class="summary-paragraph"><strong>Imagination vs Reality:</strong> The story beautifully presents the contrast between imagination and reality. Iswaran’s creative storytelling makes simple incidents appear dramatic, while Mahendra tries to stay grounded in logic and reality.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The story shows the power of imagination and storytelling. It teaches that storytelling can strongly influence emotions and perception, and highlights the thin line between reality and imagination.</div>
+    `,
+
+                hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "Iswaran the Storyteller" एक हास्यपूर्ण और रोचक कहानी है जिसे रस्किन बॉन्ड ने लिखा है। यह कहानी इस्वरण नाम के एक रसोइए और सहायक के इर्द-गिर्द घूमती है, जो अपनी कल्पनाशील और नाटकीय कहानियों के लिए प्रसिद्ध है।</div>
+
+        <div class="summary-paragraph"><strong>इस्वरण की भूमिका:</strong> इस्वरण महेंद्र का सहायक है, जो दूरस्थ कार्यस्थलों पर जूनियर सुपरवाइज़र के रूप में काम करता है। वह अपने काम के साथ-साथ महेंद्र का मनोरंजन अपनी कहानियों से करता है।</div>
+
+        <div class="summary-paragraph"><strong>कहानी सुनाने का तरीका:</strong> इस्वरण अपनी कहानियों को बहुत ही नाटकीय ढंग से सुनाता है। वह हाव-भाव, आवाज़ में उतार-चढ़ाव और विस्तारपूर्ण वर्णन का उपयोग करता है जिससे उसकी कहानियाँ बहुत रोचक बन जाती हैं।</div>
+
+        <div class="summary-paragraph"><strong>महेंद्र पर प्रभाव:</strong> महेंद्र एक तार्किक व्यक्ति है, लेकिन इस्वरण की डरावनी कहानियाँ कभी-कभी उसके मन पर प्रभाव डालती हैं और उसे असहज महसूस कराती हैं।</div>
+
+        <div class="summary-paragraph"><strong>कल्पना और वास्तविकता:</strong> यह कहानी कल्पना और वास्तविकता के बीच के अंतर को दर्शाती है। इस्वरण की कल्पनाएँ साधारण घटनाओं को भी रोमांचक बना देती हैं।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी हमें बताती है कि कहानी सुनाने की कला बहुत शक्तिशाली होती है और यह लोगों की भावनाओं और सोच को प्रभावित कर सकती है।</div>
+    `
+            };
+            function switchSummaryLanguage(langKey, elementRef) {
+                document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+                if (elementRef) elementRef.classList.add("active");
+
+                const viewport = document.getElementById("summaryViewPort");
+                viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                switchSummaryLanguage('en', null);
+            });
+            function applyThemeFromBrainHub() {
+
+                const data = JSON.parse(
+                    localStorage.getItem("brainhub.app.v2") || "{}"
+                );
+
+                const theme = data.theme || "light";
+
+                document.documentElement.dataset.theme =
+                    theme;
+
+                const metaTheme = document.querySelector(
+                    'meta[name="theme-color"]'
+                );
+
+                if (metaTheme) {
+                    metaTheme.setAttribute(
+                        "content",
+                        theme === "dark"
+                            ? "#121722"
+                            : "#2563eb"
+                    );
+                }
+            }
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                applyThemeFromBrainHub
+            );
+
+            window.addEventListener("storage", (e) => {
+                if (e.key === "brainhub.app.v2") {
+                    applyThemeFromBrainHub();
+                }
+            });
+
+            /* Same tab sync */
+            setInterval(applyThemeFromBrainHub, 500);
+            // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+            function updateMetaThemeColor(isDark) {
+                const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+                metaTheme.forEach(meta => {
+                    if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                        // Agar dark mode hai
+                        if (isDark) meta.setAttribute('content', '#121722');
+                    } else {
+                        // Agar light mode hai toh pure white dikhega
+                        meta.setAttribute('content', '#ffffff');
+                    }
+                });
+            }
+        </script>
+</body>
+
+</html>

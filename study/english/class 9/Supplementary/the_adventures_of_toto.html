@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Adventures of Toto - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 19 • Supplementary</span>
+            <h2>The Adventures of Toto</h2>
+            <p>The Adventures of Toto is a delightful story that follows the escapades of a mischievous monkey named
+                Toto,
+                highlighting themes of friendship, loyalty, and the joy of childhood. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> What type of animal was Toto?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Dog</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Monkey</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Cat</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Parrot</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Who bought Toto?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Grandfather</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Grandmother</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Narrator</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Uncle</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> From where was Toto bought?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Railway station</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Saharanpur</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Delhi zoo</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Market</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> What was Toto’s full type/species?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Rhesus monkey</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Capuchin monkey</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Spider monkey</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Baboon</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Where was Toto first kept at home?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> Kitchen</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Stable</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Bedroom</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Garden</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Why was Toto kept hidden initially?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> He was injured</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Grandfather was not allowed
+                            pets</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> He was sick</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> He was very old</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> What did Toto do with the dishes?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Cleaned them</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Broke them</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Sold them</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Hid them</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Where did Toto sleep in the beginning?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Tree</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Bed</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Closet</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Stable</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What was Toto’s favourite habit?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Sleeping all day</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Making mischief</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Studying</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Singing</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> What did Toto do in the bathroom?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Took a bath calmly</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Created chaos and broke
+                            things</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Slept there</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Ate food</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Who took Toto to Dehradun?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Grandmother</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Grandfather</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Narrator</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Driver</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> How was Toto carried to Dehradun?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> In a cage</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> In a sack</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> On a horse</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> In a basket</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> What did Toto eat in Dehradun?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Fruits only</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Everything he could find</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Grass</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Milk only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What happened to Toto at the railway platform?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> He slept</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> He caused trouble</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> He ran away and was never
+                            found</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> He was sold</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What did Toto like to throw?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Stones</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Clothes and utensils</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Books</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Flowers</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Why did grandfather finally sell Toto?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> He became friendly</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He was too mischievous</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He was sick</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> He grew old</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Where was Toto finally sent?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Zoo</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Jungle</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> School</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Farm</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What was Toto’s nature?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Calm and quiet</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Naughty and playful</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Lazy</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Angry</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What did Toto use to break things?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> His tail</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> His hands</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> His feet</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> His voice</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story "The Adventure of Toto" is about:</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> A dog’s journey</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> A mischievous monkey’s
+                            adventures</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> A bird’s flight</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> A cat’s life</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Toto was a mischievous monkey.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Grandfather bought Toto from a Saharanpur seller.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Toto was a very calm and peaceful animal.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Toto liked creating trouble in the house.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Grandmother loved Toto’s behaviour.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Toto destroyed dishes and utensils in the house.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Toto was kept safely in a zoo from the beginning.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Toto used to bite and throw things around.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Toto was taken to Dehradun in a cage.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Toto behaved very politely during the journey.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Toto enjoyed tearing clothes and fabrics.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Grandfather was always angry with Toto.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Toto once tried to escape many times.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Toto liked sitting quietly in one place.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Toto created chaos at the railway station.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Toto was fond of water and bathing.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Toto never caused any trouble in the house.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Toto finally became impossible to manage.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Toto was sold because of his mischief.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story shows Toto as a harmless and quiet pet.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Toto was a small ________ monkey.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Grandfather bought Toto from a tonga driver in ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Toto was kept in a ________ at first.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Toto’s eyes were bright and ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Toto liked to create ________ in the house.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Grandfather kept Toto in a ________ basket while
+                        travelling.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Toto broke plates and other ________ items.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Toto enjoyed jumping from ________ to ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Toto was taken to ________ by Grandfather.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Toto used his tail and ________ to cause trouble.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Toto loved tearing ________ and clothes.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Grandmother was not happy with Toto’s ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Toto was a very ________ animal.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Toto once escaped from his ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Toto’s journey to Dehradun was full of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Toto liked to eat almost ________ he found.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Toto was finally considered too ________ to keep.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Toto often disturbed other ________ in the house.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Toto’s behaviour was very ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story “The Adventure of Toto” shows a ________
+                        monkey’s life.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who was Toto?</div>
+                    <div class="qa-answer">Toto was a mischievous rhesus monkey bought by Grandfather. He was playful,
+                        clever, and often created trouble in the house, which made him both interesting and difficult to
+                        handle.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Where did Grandfather buy Toto from?</div>
+                    <div class="qa-answer">Grandfather bought Toto from a tonga driver in Saharanpur. He paid a small
+                        amount for the monkey and decided to bring him home as a pet despite knowing he was very
+                        naughty.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> How did Toto behave in the house?</div>
+                    <div class="qa-answer">Toto behaved very naughtily in the house. He broke dishes, tore clothes, and
+                        created chaos everywhere. His behaviour made it difficult for the family to manage him
+                        peacefully.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> Where was Toto kept initially?</div>
+                    <div class="qa-answer">Initially, Toto was kept in a little closet or cage by Grandfather. This was
+                        done to control his mischievous activities and prevent him from damaging household items.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Why was Toto considered a troublesome pet?</div>
+                    <div class="qa-answer">Toto was considered troublesome because he was highly mischievous. He broke
+                        household items, disturbed other pets, and could not stay calm, making it difficult for the
+                        family to manage him properly.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> What did Toto do during bath time?</div>
+                    <div class="qa-answer">During bath time, Toto created chaos in the bathroom. He jumped around, broke
+                        things, and made the place messy instead of behaving calmly like a normal pet.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> How did Grandmother feel about Toto?</div>
+                    <div class="qa-answer">Grandmother was unhappy with Toto’s behaviour. She disliked the damage he
+                        caused in the house and often complained about his constant mischief and destruction of
+                        household items.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> Where was Toto taken later?</div>
+                    <div class="qa-answer">Later, Toto was taken to Dehradun by Grandfather. He was carried carefully,
+                        but his mischievous behaviour continued during the journey, making things difficult for everyone
+                        involved.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What is the main nature of Toto?</div>
+                    <div class="qa-answer">Toto’s main nature was playful and mischievous. He loved creating trouble,
+                        breaking things, and disturbing everyone around him, which made him a very lively but difficult
+                        pet.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> Why did Grandfather keep Toto as a pet?</div>
+                    <div class="qa-answer">Grandfather kept Toto as a pet because he was fond of animals and found Toto
+                        interesting and amusing. Despite his mischief, he enjoyed Toto’s playful behaviour and unusual
+                        personality.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> Describe Toto’s behaviour in detail.</div>
+                    <div class="qa-answer">Toto was extremely mischievous and energetic. He would tear clothes, break
+                        utensils, and disturb everyone in the house. His actions often caused chaos, but he also
+                        entertained the family with his clever tricks and playful attitude, making him unforgettable.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> How was Toto transported to Dehradun?</div>
+                    <div class="qa-answer">Toto was transported to Dehradun in a large basket or cage. Grandfather tried
+                        to keep him safe during the journey, but Toto’s restless nature made the trip difficult as he
+                        kept moving, jumping, and causing disturbance throughout.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> Why was Toto hidden from others initially?</div>
+                    <div class="qa-answer">Toto was initially hidden because Grandfather did not want others to know
+                        about him. He feared that the family might not approve of keeping a monkey at home, especially
+                        due to his mischievous and destructive behaviour.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> What problems did Toto create in the house?</div>
+                    <div class="qa-answer">Toto created many problems in the house by breaking dishes, tearing clothes,
+                        and disturbing other pets. His constant mischief made the house chaotic and difficult to manage
+                        for the family members.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> How did Toto react to new surroundings?</div>
+                    <div class="qa-answer">Toto reacted to new surroundings with curiosity and excitement. He explored
+                        everything by touching, jumping, and sometimes breaking things, showing his restless and
+                        adventurous nature in every new place he visited.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> Why was Toto finally removed from the house?</div>
+                    <div class="qa-answer">Toto was finally removed from the house because his mischief became
+                        uncontrollable. He caused too much damage to household items and disturbed everyone, making it
+                        impossible for the family to keep him safely.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> What does Toto’s story teach us?</div>
+                    <div class="qa-answer">Toto’s story teaches us that wild animals are not suitable as pets. They
+                        require natural habitats and freedom, and keeping them at home can lead to problems for both
+                        humans and the animals themselves.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> How did Toto behave during meals?</div>
+                    <div class="qa-answer">During meals, Toto behaved very badly. He would snatch food, eat quickly, and
+                        sometimes create mess around the dining area, making it difficult for others to enjoy their
+                        meals peacefully.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What kind of animal was Toto according to the story?
+                    </div>
+                    <div class="qa-answer">According to the story, Toto was a rhesus monkey known for its intelligence
+                        and mischievous behaviour. He was clever, energetic, and always ready to create trouble wherever
+                        he went.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> Why is Toto remembered in the story?</div>
+                    <div class="qa-answer">Toto is remembered because of his unique personality and constant mischief.
+                        His playful actions and adventurous behaviour made him an unforgettable character in the story,
+                        leaving a lasting impression on the family.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Character Sketch of Toto</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b> Toto was a rhesus monkey bought by Grandfather in the story “The Adventure
+                        of Toto”. He is one of the most memorable characters due to his playful and mischievous
+                        nature.<br><br>
+
+                        <b>Physical Appearance:</b> Toto had bright, sparkling eyes and a lively face. His movements
+                        were quick and energetic, showing his alert and restless personality.<br><br>
+
+                        <b>Nature and Behaviour:</b> Toto was extremely mischievous and intelligent. He constantly
+                        created trouble by breaking utensils, tearing clothes, and disturbing everyone in the house. He
+                        could not sit quietly in one place and always looked for something to play with or
+                        destroy.<br><br>
+
+                        <b>Habits:</b> He had strange habits like throwing objects, biting things, and escaping from
+                        confinement. He enjoyed chaos and reacted strongly to new environments.<br><br>
+
+                        <b>Conclusion:</b> Toto was a lively but uncontrollable pet whose behaviour made him both
+                        entertaining and troublesome.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Grandfather’s Character Sketch</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b> Grandfather in “The Adventure of Toto” is portrayed as an animal lover who
+                        enjoys keeping pets, even unusual ones like Toto.<br><br>
+
+                        <b>Animal Lover Nature:</b> He had a deep affection for animals and could not resist bringing
+                        home Toto despite knowing his mischievous nature.<br><br>
+
+                        <b>Decision Making:</b> Grandfather was impulsive in his decisions. He bought Toto from a tonga
+                        driver without thinking about the consequences.<br><br>
+
+                        <b>Patience Level:</b> Initially, he tried to manage Toto’s behaviour, but as the monkey became
+                        more destructive, his patience decreased.<br><br>
+
+                        <b>Conclusion:</b> Grandfather is shown as kind-hearted but slightly careless, whose love for
+                        animals sometimes leads to problems.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Toto’s Mischievous Nature in Detail</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b> Toto’s mischievous behaviour is the central theme of the story “The
+                        Adventure of Toto”.<br><br>
+
+                        <b>Destructive Activities:</b> Toto frequently broke dishes, tore clothes, and damaged household
+                        items. His actions created chaos in the house.<br><br>
+
+                        <b>Restless Behaviour:</b> He could not stay calm in one place and always jumped from one object
+                        to another, disturbing everything around him.<br><br>
+
+                        <b>Reaction to Environment:</b> In new surroundings, Toto became even more active and
+                        destructive, showing curiosity mixed with mischief.<br><br>
+
+                        <b>Conclusion:</b> His behaviour made him entertaining but impossible to manage as a domestic
+                        pet.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> Problems Created by Toto in the Household</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b> Toto caused many problems in the household due to his uncontrollable
+                        behaviour.<br><br>
+
+                        <b>Damage to Property:</b> He broke plates, glasses, and other household items, causing
+                        financial loss and inconvenience.<br><br>
+
+                        <b>Disturbance to Family:</b> His constant movement and mischief disturbed all family members,
+                        making it difficult to maintain peace at home.<br><br>
+
+                        <b>Uncontrollable Nature:</b> Toto could not be trained or controlled, which increased
+                        frustration among family members.<br><br>
+
+                        <b>Conclusion:</b> His presence made the house lively but chaotic, proving that wild animals are
+                        not suitable pets.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Moral of the Story “The Adventure of Toto”</div>
+                    <div class="qa-answer">
+                        <b>Introduction:</b> The story “The Adventure of Toto” conveys an important message about
+                        keeping wild animals as pets.<br><br>
+
+                        <b>Lesson on Animal Nature:</b> Wild animals like monkeys cannot be fully domesticated, no
+                        matter how much care is given.<br><br>
+
+                        <b>Human Responsibility:</b> Humans must understand their responsibility before bringing animals
+                        into their homes.<br><br>
+
+                        <b>Impact of Wrong Decision:</b> Grandfather’s decision to keep Toto leads to chaos, showing the
+                        consequences of impulsive choices.<br><br>
+
+                        <b>Conclusion:</b> The story teaches that animals belong in their natural habitat and should not
+                        be forced into domestic life.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Ruskin Bond</h4>
+                    <p>
+                        Ruskin Bond (born 1934) is a famous Indian author known for his simple, heart-touching, and
+                        nature-based stories.
+                        He is one of the most loved writers in Indian English literature, especially for children and
+                        young readers.
+                        Born in Kasauli, Himachal Pradesh, he spent most of his life in the hill stations of India,
+                        which strongly influence his writing style.<br><br>
+
+                        Bond is celebrated for his ability to bring everyday life, nature, animals, and human emotions
+                        alive through his stories.
+                        His writing style is simple, warm, and deeply engaging, making even ordinary events feel special
+                        and meaningful.<br><br>
+
+                        Some of his well-known works include <i>The Blue Umbrella</i>, <i>The Room on the Roof</i>,
+                        <i>Rusty series</i>, and many short stories for children.
+                        In the chapter <i>"The Adventure of Toto"</i>, he humorously presents the mischievous nature of
+                        a monkey and highlights the fun as well as problems of keeping wild animals as pets.
+                    </p>
+                </div>
+            </div>
+        </div>
+<div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key (NCERT Verified)</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 15px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--primary); font-weight: 700;">
+                        <i class="fa-solid fa-list-check" style="margin-right: 5px;"></i> MCQs Key
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> A tonga-driver</div>
+                        <div><b>2.</b> Five rupees</div>
+                        <div><b>3.</b> Bright and mischievous</div>
+                        <div><b>4.</b> Deep-set eyebrows</div>
+                        <div><b>5.</b> Pearly white</div>
+                        <div><b>6.</b> Anglo-Indian ladies</div>
+                        <div><b>7.</b> A third hand</div>
+                        <div><b>8.</b> Fussed or made a fuss</div>
+                        <div><b>9.</b> A little closet / bedroom</div>
+                        <div><b>10.</b> Torn into shreds</div>
+                        <div><b>11.</b> Saharanpur</div>
+                        <div><b>12.</b> Black canvas kit-bag</div>
+                        <div><b>13.</b> A dog</div>
+                        <div><b>14.</b> Three rupees</div>
+                        <div><b>15.</b> Nana (the donkey)</div>
+                        <div><b>16.</b> Large kettle</div>
+                        <div><b>17.</b> Pulling down curtains</div>
+                        <div><b>18.</b> Dish of pullao</div>
+                        <div><b>19.</b> Jackfruit tree</div>
+                        <div><b>20.</b> Sold him back</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--accent-green); font-weight: 700;">
+                        <i class="fa-solid fa-circle-check" style="margin-right: 5px;"></i> True / False Key
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> False</div>
+                        <div><b>4.</b> True</div>
+                        <div><b>5.</b> False</div>
+                        <div><b>6.</b> True</div>
+                        <div><b>7.</b> False</div>
+                        <div><b>8.</b> True</div>
+                        <div><b>9.</b> False</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> False</div>
+                        <div><b>13.</b> True</div>
+                        <div><b>14.</b> False</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> True</div>
+                        <div><b>17.</b> False</div>
+                        <div><b>18.</b> True</div>
+                        <div><b>19.</b> True</div>
+                        <div><b>20.</b> False</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--accent-orange); font-weight: 700;">
+                        <i class="fa-solid fa-pen-clip" style="margin-right: 5px;"></i> Fill in the Blanks
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> pretty / red</div>
+                        <div><b>2.</b> five rupees</div>
+                        <div><b>3.</b> closet / small bedroom</div>
+                        <div><b>4.</b> mischievous</div>
+                        <div><b>5.</b> mischief / havoc</div>
+                        <div><b>6.</b> black canvas kit-bag</div>
+                        <div><b>7.</b> ceramic / household</div>
+                        <div><b>8.</b> branch / tree</div>
+                        <div><b>9.</b> Saharanpur / Dehradun</div>
+                        <div><b>10.</b> paws / hands</div>
+                        <div><b>11.</b> curtains / wallpaper</div>
+                        <div><b>12.</b> presence / arrival</div>
+                        <div><b>13.</b> mischievous / wild</div>
+                        <div><b>14.</b> peg / fastenings</div>
+                        <div><b>15.</b> surprises / chaos</div>
+                        <div><b>16.</b> everything</div>
+                        <div><b>17.</b> expensive / unmanageable</div>
+                        <div><b>18.</b> pets / animals</div>
+                        <div><b>19.</b> unpredictable / destructive</div>
+                        <div><b>20.</b> mischievous</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "The Adventure of Toto" is a humorous short story written by Ruskin Bond. It revolves around a mischievous monkey named Toto and shows how keeping wild animals as pets can lead to unexpected troubles. The story is light-hearted but also carries an important message about nature and responsibility.</div>
+
+        <div class="summary-paragraph"><strong>Toto’s Arrival:</strong> The story begins when Grandfather buys a baby monkey named Toto from a tonga driver in Saharanpur. Being fond of animals, he decides to keep Toto in his private zoo at home. At first, the family is curious and amused by the new pet.</div>
+
+        <div class="summary-paragraph"><strong>Mischievous Nature:</strong> Very soon, Toto reveals his naughty and destructive behaviour. He tears clothes, breaks dishes, and creates chaos in the house. He is extremely restless and cannot sit quietly, which makes him difficult to control.</div>
+
+        <div class="summary-paragraph"><strong>Problems at Home:</strong> Toto’s behaviour creates constant problems in the household. His mischief disturbs daily life and causes damage to household items. Grandmother is unhappy with him, and the family finds it hard to manage his uncontrollable actions.</div>
+
+        <div class="summary-paragraph"><strong>Journey to Dehradun:</strong> Later, Grandfather takes Toto to Dehradun. During the journey, Toto continues his mischief and does not behave properly. His restless and destructive nature makes the journey difficult for everyone.</div>
+
+        <div class="summary-paragraph"><strong>Final Decision:</strong> Eventually, the family realizes that Toto is too wild and cannot be kept as a pet. His behaviour becomes unmanageable, and they understand that he does not belong in a domestic environment.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The story highlights that wild animals cannot be easily domesticated. It teaches that animals should live in their natural habitat and that humans should respect their true nature instead of trying to control them.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "The Adventure of Toto" एक हास्यपूर्ण लघु कहानी है जिसे रस्किन बॉन्ड ने लिखा है। यह कहानी एक शरारती बंदर टोटो के बारे में है और दिखाती है कि जंगली जानवरों को पालतू बनाना कितनी समस्याएँ पैदा कर सकता है।</div>
+
+        <div class="summary-paragraph"><strong>टोटो का आगमन:</strong> कहानी की शुरुआत में दादाजी एक तांगे वाले से टोटो नाम का छोटा बंदर खरीदते हैं। वे जानवरों से बहुत प्रेम करते हैं और उसे अपने निजी चिड़ियाघर में रख लेते हैं।</div>
+
+        <div class="summary-paragraph"><strong>शरारती स्वभाव:</strong> टोटो बहुत ही शरारती और चंचल होता है। वह कपड़े फाड़ता है, बर्तन तोड़ता है और घर में लगातार उथल-पुथल मचाता रहता है।</div>
+
+        <div class="summary-paragraph"><strong>घर में समस्याएँ:</strong> टोटो की शरारतों के कारण घर में लगातार परेशानियाँ होने लगती हैं। परिवार के लोग उससे परेशान हो जाते हैं और दादी भी उसके व्यवहार से खुश नहीं होतीं।</div>
+
+        <div class="summary-paragraph"><strong>देहरादून यात्रा:</strong> बाद में दादाजी टोटो को देहरादून ले जाते हैं, लेकिन वहाँ भी उसका शरारती स्वभाव नहीं बदलता। वह यात्रा के दौरान भी परेशानियाँ पैदा करता है।</div>
+
+        <div class="summary-paragraph"><strong>अंतिम निर्णय:</strong> अंत में परिवार समझ जाता है कि टोटो को पालतू बनाकर रखना संभव नहीं है क्योंकि वह बहुत जंगली और अनियंत्रित है।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी सिखाती है कि जंगली जानवरों को उनके प्राकृतिक वातावरण में ही रहना चाहिए और उन्हें घर में पालतू बनाना सही नहीं है।</div>
+    `
+        };
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
