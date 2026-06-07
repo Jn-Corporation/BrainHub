@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>If I were You - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 9 • Prose</span>
+            <h2>If I Were You</h2>
+            <p>If I Were You is a play that revolves around the theme of mistaken identity and the cleverness of the
+                protagonist, Gerrard, who outwits an intruder. 🎭</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the author of the play "If I Were You"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Anton Chekhov</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Douglas James</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Vikram Seth</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Katherine Mansfield</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> What was Gerrard doing when the intruder entered?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Sleeping</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Packing a bag</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Reading a book</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Cooking food</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Who entered Gerrard's cottage unexpectedly?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> A policeman</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> A neighbour</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> An intruder</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> A friend</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> What was the intruder carrying?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> A knife</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> A revolver</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> A stick</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> A rope</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Why did the intruder want to kill Gerrard?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> For revenge</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> To steal money</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> To take his identity</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> To frighten him</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What profession did Gerrard claim to have?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> Doctor</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Playwright</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Engineer</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> How did Gerrard react to the intruder's threats?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> He cried</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> He remained calm</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> He ran away</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> He called neighbours</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The intruder believed Gerrard looked similar to whom?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Himself</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> A police officer</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> His brother</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> A neighbour</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What kind of person was Gerrard?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Timid</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Clever and witty</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Lazy</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Arrogant</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Why was the intruder hiding from the police?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> He was a thief</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He had committed a murder</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He escaped from jail</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He was innocent</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> What did Gerrard say about his unusual lifestyle?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> He was a spy</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> He often traveled
+                            mysteriously</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> He lived with friends</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> He worked abroad</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> What did Gerrard use to trick the intruder?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> A fake story</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> A telephone</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> A knife</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> A neighbour</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Where did Gerrard finally trap the intruder?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Kitchen</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Bedroom</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Cupboard</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Garage</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What did the intruder want besides Gerrard's identity?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> His house</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> His clothes and belongings</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> His car</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> His money only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Which quality helped Gerrard save himself?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Strength</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Intelligence</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Luck</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> What genre is "If I Were You"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Poem</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Drama/Play</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Biography</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Essay</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> How many main characters are there in the play?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> One</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Two</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Three</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Four</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What does the intruder represent in the play?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Courage</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Crime and greed</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Honesty</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Kindness</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What lesson does the play teach?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Money is power</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Intelligence can overcome
+                            danger</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Crime always pays</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Fear is necessary</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> What happened to the intruder at the end of the play?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> He escaped</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> He became Gerrard</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> He was trapped and handed over to
+                            the police</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> He ran away successfully</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Gerrard lived alone in a small cottage.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The intruder entered Gerrard's house through the front
+                        door with permission.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Gerrard immediately became frightened and begged for
+                        mercy.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The intruder had been hiding from the police for a long
+                        time.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Gerrard told the intruder that he was expecting visitors
+                        soon.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The intruder wanted to steal Gerrard's identity to escape
+                        arrest.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Gerrard claimed that he was also involved in illegal
+                        activities.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The intruder was smarter than Gerrard throughout the
+                        play.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Gerrard used his quick thinking to control the situation.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The intruder trusted Gerrard's story completely.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Gerrard pretended that the police were already searching
+                        for him.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The play takes place in a busy marketplace.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Gerrard convinced the intruder to enter a cupboard-like
+                        room.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The intruder escaped successfully at the end of the
+                        play.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Gerrard remained confident even when threatened with a
+                        gun.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The intruder wanted Gerrard's identity because they
+                        looked different.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The play highlights the importance of intelligence over
+                        physical strength.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Gerrard was a professional actor in the play.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The intruder underestimated Gerrard's intelligence.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> "If I Were You" is a suspenseful one-act play.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The play "If I Were You" was written by ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Gerrard was busy packing a ________ when the intruder
+                        arrived.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The intruder entered Gerrard's cottage carrying a
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The intruder wanted to take over Gerrard's ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Gerrard remained calm and showed great ________ during
+                        the conversation.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The intruder was hiding from the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Gerrard claimed that he was involved in mysterious
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> According to the intruder, Gerrard looked very similar to
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The intruder planned to kill Gerrard and live under his
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Gerrard told the intruder that the police might arrive
+                        at any ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The entire action of the play takes place inside
+                        Gerrard's ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Gerrard cleverly invented a false ________ to confuse
+                        the intruder.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The intruder believed that Gerrard was also a ________
+                        like him.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Gerrard pushed the intruder into a ________ at the end
+                        of the play.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The play teaches that quick ________ can help overcome
+                        danger.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Gerrard's clever conversation gradually made the
+                        intruder feel ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The intruder was a wanted ________ who feared arrest.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> "If I Were You" is a one-act ________ full of suspense
+                        and humor.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Gerrard won the battle through his intelligence rather
+                        than physical ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The main conflict in the play is between Gerrard and the
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <h3>📘 Short Answer Questions</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who was Gerrard?</div>
+                    <div class="qa-answer">Gerrard was a clever and confident playwright who lived alone in a cottage.
+                        He remained calm even when an armed intruder threatened to kill him.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Why did the intruder enter Gerrard's cottage?</div>
+                    <div class="qa-answer">The intruder entered Gerrard's cottage because he wanted to kill Gerrard and
+                        take over his identity to escape from the police.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Why was the intruder hiding from the police?</div>
+                    <div class="qa-answer">The intruder was hiding from the police because he had committed a murder and
+                        was a wanted criminal.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What similarity did the intruder notice between himself
+                        and Gerrard?</div>
+                    <div class="qa-answer">The intruder noticed that he and Gerrard were of similar height and
+                        appearance, which made it easier for him to plan to assume Gerrard's identity.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> How did Gerrard react when the intruder threatened him?
+                    </div>
+                    <div class="qa-answer">Gerrard stayed calm and composed. Instead of panicking, he used his
+                        intelligence and sense of humor to handle the dangerous situation.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> What false story did Gerrard tell the intruder?</div>
+                    <div class="qa-answer">Gerrard told the intruder that he himself was a criminal hiding from the
+                        police and that taking his identity would be dangerous.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> How did Gerrard trap the intruder?</div>
+                    <div class="qa-answer">Gerrard tricked the intruder into entering a cupboard-like room and then
+                        locked him inside, preventing him from escaping.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What qualities of Gerrard helped him survive?</div>
+                    <div class="qa-answer">Gerrard's intelligence, presence of mind, confidence, and quick
+                        decision-making helped him outsmart the intruder and save his life.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What is the main theme of the play?</div>
+                    <div class="qa-answer">The main theme of the play is that intelligence and quick thinking are more
+                        powerful than physical strength and violence.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> Why is the play called "If I Were You"?</div>
+                    <div class="qa-answer">The title refers to the intruder's desire to become Gerrard and live under
+                        his identity, believing it would help him avoid arrest.</div>
+                </div>
+
+                <h3>📘 Long Answer Questions (60–70 Words)</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> Describe the character of Gerrard.</div>
+                    <div class="qa-answer">Gerrard is an intelligent, calm, and resourceful person. Even when faced with
+                        a dangerous criminal carrying a gun, he does not lose his composure. Instead of using force, he
+                        relies on his quick thinking and clever conversation. His confidence and presence of mind allow
+                        him to turn a life-threatening situation in his favor and ultimately defeat the intruder.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> Why did the intruder want to kill Gerrard?</div>
+                    <div class="qa-answer">The intruder wanted to kill Gerrard because he believed they looked similar.
+                        Since he was wanted by the police for murder, he planned to assume Gerrard's identity after
+                        killing him. He thought that by living as Gerrard, he could escape detection and continue his
+                        life without being caught by law enforcement authorities.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> How did Gerrard outsmart the intruder?</div>
+                    <div class="qa-answer">Gerrard carefully studied the intruder's intentions and weaknesses. He
+                        invented a convincing story that he too was a criminal being chased by the police. This created
+                        confusion and fear in the intruder's mind. Once the intruder trusted him, Gerrard tricked him
+                        into entering a cupboard and locked him inside, ensuring his capture.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> Describe the intruder's personality.</div>
+                    <div class="qa-answer">The intruder was a dangerous criminal who was selfish, arrogant, and greedy.
+                        He believed that violence was the easiest way to solve problems. Although he was physically
+                        threatening, he lacked intelligence and judgment. His overconfidence caused him to trust
+                        Gerrard's fabricated story, which ultimately led to his defeat and capture.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> Why is the play full of suspense?</div>
+                    <div class="qa-answer">The play creates suspense because an armed criminal suddenly enters Gerrard's
+                        cottage and threatens to kill him. Readers wonder whether Gerrard will survive or not. The
+                        tension increases as the two characters engage in a battle of wits. The unexpected ending, where
+                        Gerrard traps the intruder, makes the play exciting and suspenseful.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> What lesson does the play teach readers?</div>
+                    <div class="qa-answer">The play teaches that intelligence, courage, and presence of mind are often
+                        more effective than physical power. Gerrard's cleverness helps him overcome a dangerous criminal
+                        without violence. The story also warns against greed and crime, showing that dishonest plans
+                        eventually fail. It encourages readers to stay calm and think wisely during difficult
+                        situations.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Explain the significance of the title "If I Were You".
+                    </div>
+                    <div class="qa-answer">The title reflects the intruder's desire to replace Gerrard and live under
+                        his identity. He believes that becoming Gerrard will help him escape from the police. However,
+                        the title also becomes ironic because the intruder never succeeds. Instead, Gerrard proves far
+                        more intelligent and turns the entire situation against him, making the title meaningful.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> How does Gerrard maintain control during the encounter?
+                    </div>
+                    <div class="qa-answer">Gerrard maintains control by remaining calm and refusing to panic. He speaks
+                        confidently, asks questions, and gradually gains the intruder's trust. His ability to think
+                        quickly allows him to create a believable story that confuses the criminal. Through careful
+                        planning and clever conversation, he successfully gains the upper hand in the situation.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> Why does the intruder fail in his plan?</div>
+                    <div class="qa-answer">The intruder fails because he underestimates Gerrard's intelligence. He
+                        assumes that Gerrard will be frightened and helpless. Instead, Gerrard remains composed and
+                        manipulates the intruder through a fabricated story. The criminal becomes confused and trusts
+                        Gerrard, allowing himself to be trapped. His lack of careful thinking causes the complete
+                        failure of his plan.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> Describe the ending of the play.</div>
+                    <div class="qa-answer">The ending of the play is dramatic and satisfying. Gerrard convinces the
+                        intruder that they must escape together because the police are after him as well. When the
+                        intruder follows him into a cupboard-like room, Gerrard suddenly locks him inside. The clever
+                        playwright then contacts the authorities, ensuring that the criminal is captured and punished.
+                    </div>
+                </div>
+
+                <h3>⭐ Very Long Answer Questions</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Character Sketch of Gerrard.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Gerrard is the central character of the play "If I Were You." He is a playwright who lives alone
+                        in a cottage and becomes the target of a dangerous criminal.
+                        <br><br>
+
+                        <strong>Intelligent and Quick-Witted:</strong><br>
+                        Gerrard possesses remarkable intelligence and presence of mind. Even when threatened with a
+                        revolver, he does not panic. Instead, he carefully analyzes the situation and plans a way to
+                        save himself.
+                        <br><br>
+
+                        <strong>Calm and Confident:</strong><br>
+                        Throughout the play, Gerrard remains calm and composed. His confidence allows him to control the
+                        conversation and prevent the intruder from gaining complete control over him.
+                        <br><br>
+
+                        <strong>Excellent Actor and Storyteller:</strong><br>
+                        Gerrard's ability to invent a convincing story helps him deceive the intruder. He uses his
+                        acting skills and imagination to make the criminal believe that he too is hiding from the
+                        police.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Gerrard represents intelligence, courage, and presence of mind. His character teaches us that
+                        wisdom and quick thinking can overcome even the most dangerous situations.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Character Sketch of the Intruder.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        The intruder is the antagonist of the play. He is a wanted criminal who enters Gerrard's cottage
+                        with the intention of killing him and assuming his identity.
+                        <br><br>
+
+                        <strong>Criminal Nature:</strong><br>
+                        The intruder is involved in serious crimes, including murder. He is constantly hiding from the
+                        police and is willing to commit another crime to save himself.
+                        <br><br>
+
+                        <strong>Greedy and Selfish:</strong><br>
+                        Instead of accepting responsibility for his actions, he chooses the easy path by planning to
+                        steal another person's identity. His selfishness drives the entire conflict of the play.
+                        <br><br>
+
+                        <strong>Overconfident and Foolish:</strong><br>
+                        Although he believes himself to be clever, he underestimates Gerrard's intelligence. His
+                        overconfidence makes him trust Gerrard's false story and ultimately leads to his downfall.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The intruder symbolizes crime, greed, and arrogance. His failure shows that dishonest plans and
+                        criminal behavior eventually lead to defeat.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> How did Gerrard save himself from the intruder?</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        The most exciting part of the play is the way Gerrard escapes from a dangerous criminal. His
+                        survival is not based on physical strength but on intelligence and clever planning.
+                        <br><br>
+
+                        <strong>Understanding the Situation:</strong><br>
+                        When the intruder entered with a gun, Gerrard quickly realized that fighting physically would be
+                        risky. Therefore, he decided to use his mind instead of force.
+                        <br><br>
+
+                        <strong>Creating a Clever Story:</strong><br>
+                        Gerrard invented a story that he himself was a criminal hiding from the police. He described his
+                        unusual lifestyle and convinced the intruder that taking his identity would be dangerous.
+                        <br><br>
+
+                        <strong>Trapping the Criminal:</strong><br>
+                        After gaining the intruder's trust, Gerrard led him toward a cupboard-like room. At the right
+                        moment, he pushed the intruder inside and locked the door.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Gerrard's cleverness, courage, and quick thinking helped him defeat the intruder. His actions
+                        prove that intelligence is often more powerful than physical strength.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> Discuss the theme of intelligence versus violence in the
+                        play.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        One of the most important themes of "If I Were You" is the victory of intelligence over
+                        violence. The play clearly demonstrates how wisdom can defeat brute force.
+                        <br><br>
+
+                        <strong>The Intruder's Dependence on Violence:</strong><br>
+                        The intruder relies entirely on his revolver and threats. He believes that fear and violence
+                        will help him achieve his goals and control others.
+                        <br><br>
+
+                        <strong>Gerrard's Use of Intelligence:</strong><br>
+                        Gerrard chooses a different approach. He remains calm, thinks logically, and carefully
+                        manipulates the intruder through conversation and deception.
+                        <br><br>
+
+                        <strong>The Final Outcome:</strong><br>
+                        Although the intruder has a weapon, he loses because he cannot match Gerrard's intelligence. The
+                        clever playwright successfully traps him without using any violence.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The play teaches that intelligence, patience, and presence of mind are often more effective than
+                        aggression and physical power.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> What moral lessons do you learn from the play "If I Were
+                        You"?</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        "If I Were You" is not only an entertaining play but also a source of valuable life lessons.
+                        Through its characters and events, it conveys important messages to readers.
+                        <br><br>
+
+                        <strong>Importance of Presence of Mind:</strong><br>
+                        Gerrard's success shows that remaining calm and thinking clearly during difficult situations can
+                        help solve serious problems.
+                        <br><br>
+
+                        <strong>Crime Never Pays:</strong><br>
+                        The intruder's failure demonstrates that criminal activities eventually lead to trouble and
+                        punishment. Dishonesty can never provide lasting success.
+                        <br><br>
+
+                        <strong>Confidence and Courage:</strong><br>
+                        Gerrard's confidence helps him face danger without fear. The play encourages readers to be brave
+                        and trust their abilities.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The play teaches that intelligence, honesty, courage, and quick thinking are essential qualities
+                        for success in life. It inspires readers to rely on wisdom rather than force.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Douglas James</h4>
+                    <p>Douglas James was a British playwright and author known for writing engaging one-act plays that
+                        combine suspense, humor, and clever dialogue. His works often focus on ordinary people facing
+                        unusual situations and highlight the importance of intelligence, confidence, and presence of
+                        mind. Through realistic characters and fast-moving plots, James creates dramatic stories that
+                        keep readers interested while conveying meaningful life lessons. The play <i>"If I Were You"</i>
+                        is one of his most popular works. It presents a thrilling encounter between Gerrard and an
+                        intruder, demonstrating how quick thinking and wit can overcome danger. The play remains widely
+                        appreciated for its suspenseful storyline, memorable characters, and powerful message about the
+                        triumph of intelligence over violence.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);"><i class="fa-solid fa-list-check"></i> MCQs</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Douglas James</div>
+                        <div><b>2.</b> Packing a bag</div>
+                        <div><b>3.</b> An intruder</div>
+                        <div><b>4.</b> A revolver</div>
+                        <div><b>5.</b> To take his identity</div>
+                        <div><b>6.</b> Playwright</div>
+                        <div><b>7.</b> He remained calm</div>
+                        <div><b>8.</b> Himself</div>
+                        <div><b>9.</b> Clever and witty</div>
+                        <div><b>10.</b> He had committed a murder</div>
+                        <div><b>11.</b> He often traveled mysteriously</div>
+                        <div><b>12.</b> A fake story</div>
+                        <div><b>13.</b> Cupboard</div>
+                        <div><b>14.</b> His clothes and belongings</div>
+                        <div><b>15.</b> Intelligence</div>
+                        <div><b>16.</b> Drama/Play</div>
+                        <div><b>17.</b> Two</div>
+                        <div><b>18.</b> Crime and greed</div>
+                        <div><b>19.</b> Intelligence can overcome danger</div>
+                        <div><b>20.</b> He was trapped and handed over</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> True / False</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> False</div>
+                        <div><b>4.</b> True</div>
+                        <div><b>5.</b> True</div>
+                        <div><b>6.</b> True</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> False</div>
+                        <div><b>9.</b> True</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> False</div>
+                        <div><b>13.</b> True</div>
+                        <div><b>14.</b> False</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> False</div>
+                        <div><b>17.</b> True</div>
+                        <div><b>18.</b> False</div>
+                        <div><b>19.</b> True</div>
+                        <div><b>20.</b> True</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);"><i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Douglas James</div>
+                        <div><b>2.</b> bag / traveling bag</div>
+                        <div><b>3.</b> revolver</div>
+                        <div><b>4.</b> identity / place</div>
+                        <div><b>5.</b> patience / presence of mind</div>
+                        <div><b>6.</b> police</div>
+                        <div><b>7.</b> activities / mystery</div>
+                        <div><b>8.</b> him (Gerrard)</div>
+                        <div><b>9.</b> name / identity</div>
+                        <div><b>10.</b> minute / moment</div>
+                        <div><b>11.</b> cottage / room</div>
+                        <div><b>12.</b> story / identity</div>
+                        <div><b>13.</b> criminal / wanted person</div>
+                        <div><b>14.</b> cupboard / room</div>
+                        <div><b>15.</b> thinking / wit</div>
+                        <div><b>16.</b> comfortable / confident</div>
+                        <div><b>17.</b> criminal / murderer</div>
+                        <div><b>18.</b> play / drama</div>
+                        <div><b>19.</b> strength / power</div>
+                        <div><b>20.</b> intruder</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "If I Were You" by Douglas James is an exciting one-act play filled with suspense, wit, and clever dialogue. The story revolves around Gerrard, a quick-witted playwright, and an intruder who plans to kill him and steal his identity.</div>
+
+        <div class="summary-paragraph"><strong>The Intruder's Arrival:</strong> The play begins in Gerrard's cottage. While Gerrard is busy packing a bag, an armed intruder suddenly enters. The intruder is a dangerous criminal who is hiding from the police and has come with a deadly plan.</div>
+
+        <div class="summary-paragraph"><strong>The Intruder's Plan:</strong> The intruder reveals that he wants to kill Gerrard and assume his identity. He believes that they look similar enough for him to successfully live as Gerrard and escape from the police who are searching for him.</div>
+
+        <div class="summary-paragraph"><strong>Gerrard's Calm Behavior:</strong> Instead of panicking, Gerrard remains calm and confident. He carefully listens to the intruder and begins a conversation with him. His cool attitude surprises the criminal and gradually shifts control of the situation.</div>
+
+        <div class="summary-paragraph"><strong>A Clever Story:</strong> Gerrard invents a clever story and claims that he too is a criminal hiding from the police. He explains his unusual lifestyle, mysterious phone calls, and frequent travels as proof of his secret activities. The intruder begins to believe him.</div>
+
+        <div class="summary-paragraph"><strong>The Intruder Gets Confused:</strong> Gerrard convinces the intruder that taking his identity would be a terrible mistake because the police are already looking for him. The intruder becomes confused and starts doubting his original plan.</div>
+
+        <div class="summary-paragraph"><strong>Gerrard's Brilliant Escape:</strong> Taking advantage of the intruder's confusion, Gerrard leads him toward a cupboard-like room, pretending that it is a safe escape route. As soon as the intruder enters, Gerrard pushes him inside and locks the door.</div>
+
+        <div class="summary-paragraph"><strong>The Intruder's Defeat:</strong> The criminal realizes too late that he has been tricked. Gerrard successfully traps him and prepares to hand him over to the police. The intruder's plan completely fails because he underestimated Gerrard's intelligence.</div>
+
+        <div class="summary-paragraph"><strong>The Theme of the Play:</strong> The play highlights the importance of intelligence, courage, confidence, and presence of mind. It shows that quick thinking can often overcome physical strength and violence.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> "If I Were You" is a thrilling and entertaining play that teaches valuable life lessons. Through Gerrard's cleverness and the intruder's failure, Douglas James shows that wisdom, calmness, and intelligence are powerful tools in overcoming danger and solving difficult problems.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "If I Were You" डगलस जेम्स द्वारा लिखित एक रोचक एकांकी नाटक है। यह नाटक रोमांच, बुद्धिमत्ता और हास्य से भरपूर है। कहानी एक चतुर नाटककार गेरार्ड और एक खतरनाक अपराधी के बीच होने वाली घटनाओं पर आधारित है।</div>
+
+        <div class="summary-paragraph"><strong>घुसपैठिए का आगमन:</strong> कहानी की शुरुआत गेरार्ड के कॉटेज से होती है। जब वह अपना बैग पैक कर रहा होता है, तभी एक सशस्त्र घुसपैठिया अचानक अंदर आ जाता है। वह पुलिस से छिपा हुआ अपराधी होता है।</div>
+
+        <div class="summary-paragraph"><strong>घुसपैठिए की योजना:</strong> घुसपैठिया गेरार्ड को बताता है कि वह उसे मारकर उसकी पहचान अपनाना चाहता है। उसका मानना है कि दोनों की शक्ल और कद-काठी मिलती-जुलती है, इसलिए वह आसानी से गेरार्ड बनकर रह सकता है।</div>
+
+        <div class="summary-paragraph"><strong>गेरार्ड का शांत स्वभाव:</strong> गेरार्ड बिल्कुल भी नहीं घबराता। वह पूरे आत्मविश्वास और धैर्य के साथ घुसपैठिए से बातचीत करता है। उसका शांत व्यवहार अपराधी को आश्चर्यचकित कर देता है।</div>
+
+        <div class="summary-paragraph"><strong>चतुराई से बनाई गई कहानी:</strong> गेरार्ड एक झूठी कहानी गढ़ता है कि वह भी पुलिस से बचने वाला अपराधी है। वह अपने रहस्यमय जीवन, देर रात आने वाले फोन और यात्राओं का उल्लेख करके अपनी बात को विश्वसनीय बना देता है।</div>
+
+        <div class="summary-paragraph"><strong>घुसपैठिए की उलझन:</strong> गेरार्ड उसे विश्वास दिलाता है कि यदि वह उसकी पहचान अपनाएगा तो वह भी पुलिस के जाल में फँस जाएगा। यह सुनकर घुसपैठिया भ्रमित हो जाता है और अपनी योजना पर संदेह करने लगता है।</div>
+
+        <div class="summary-paragraph"><strong>गेरार्ड की शानदार योजना:</strong> अवसर का लाभ उठाकर गेरार्ड घुसपैठिए को एक अलमारीनुमा कमरे की ओर ले जाता है और उसे वहाँ प्रवेश करने के लिए कहता है। जैसे ही वह अंदर जाता है, गेरार्ड उसे बंद कर देता है।</div>
+
+        <div class="summary-paragraph"><strong>घुसपैठिए की हार:</strong> अपराधी को बहुत देर से समझ आता है कि वह धोखा खा चुका है। गेरार्ड उसे सफलतापूर्वक बंद कर देता है और पुलिस को सौंपने की तैयारी करता है।</div>
+
+        <div class="summary-paragraph"><strong>नाटक का मुख्य विषय:</strong> यह नाटक दिखाता है कि बुद्धिमत्ता, आत्मविश्वास और सूझबूझ किसी भी कठिन परिस्थिति में हिंसा और शारीरिक शक्ति से अधिक प्रभावशाली हो सकती है।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> "If I Were You" एक रोमांचक और शिक्षाप्रद नाटक है। यह हमें सिखाता है कि संकट के समय घबराने के बजाय शांत रहकर बुद्धिमानी से काम लेना चाहिए। गेरार्ड की चतुराई यह साबित करती है कि बुद्धि हमेशा बल पर विजय प्राप्त कर सकती है।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

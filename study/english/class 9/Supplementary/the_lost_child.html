@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Lost Child - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 18 • Supplementary</span>
+            <h2>The Lost Child</h2>
+            <p>
+                “The Lost Child” is a touching story about a young boy who gets separated from his parents at a village
+                fair and realizes that nothing in the world matters more than their love.
+            </p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Where did the child go with his parents?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Village fair</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> School</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> City market</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Park</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> What attracted the child the most at the fair?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Toys and sweets</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Books</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Clothes</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Animals</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> What did the child first ask for?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Toy balloon</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Sweetmeat</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Ice cream</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Garlands</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> What did the child want to ride?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Merry-go-round</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Train</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Boat</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Cycle</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> What did the child want to see at the snake charmer?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> Snake</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Tiger</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Monkey</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Parrot</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What happened to the child in the fair?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> He got lost</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> He fell asleep</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> He went home</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> He got hurt</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Who helped the lost child?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> A kind man</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Police officer</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Shopkeeper</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Teacher</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What did the child keep asking for?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> His parents</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Toys</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Food</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Money</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What was the child’s final emotion?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Fear and sadness</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Happiness</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Anger</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Excitement</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> What does the story mainly show?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Love of parents</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Importance of money</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> School life</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Games</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Where did the child go missing?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Near roundabout</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Home</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> River</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> School</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> What did the parents do when child was lost?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> Searched for him</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Ignored him</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Left him</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Called friends</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> What did the child refuse at the end?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> All attractions</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Water</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Food</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Clothes</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What did the man try to give the child?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> All things he wanted
+                            earlier</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Money only</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Books</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Toys only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What did the child finally want?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> His parents</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Balloon</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Ice cream</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Toy</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> What is the tone of the story?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Emotional</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Funny</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Horror</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Mystery</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What does the fair represent?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Attraction and temptation</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> School life</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> War</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Study</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What does the child symbolize?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Innocence</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Power</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Greed</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Fear</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What did the man give the child in the end?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Emotional support</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Money</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Gifts</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Toys</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story teaches us the importance of?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Family love</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Money</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Games</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Toys</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The child went to the fair with his parents.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The child was excited about the fair attractions.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The child never got separated from his parents.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The man in the story tries to comfort the lost child.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The child refused all things in the end except his
+                        parents.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The fair was completely boring for the child.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The child cried loudly when he realized he was lost.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The parents were careless and left the child
+                        intentionally.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The stranger tries to distract the child with various
+                        offers.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The child values toys more than his parents in the end.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The child went to the fair with his parents.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The child was not interested in toys and sweets.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The child got lost in the fair.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The stranger ignored the lost child.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The child only wanted his parents after getting lost.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The fair was a dull and empty place.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The child cried when he realized he was lost.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The parents were careless and left the child
+                        intentionally.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The stranger tried to comfort the child.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The child finally forgets his parents and enjoys the
+                        fair.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The child went to a ________ with his parents.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The story “The Lost Child” is written by ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The child was attracted to toys and ________ at the fair.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The child wanted a toy ________ at first.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The child also wanted to ride the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The child got separated from his ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The fair was full of ________ and excitement.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The man tried to ________ the lost child.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The child repeatedly asked for his ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The child became ________ when he realized he was lost.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The story shows the importance of ________ love.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The child was fascinated by a snake ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The child refused everything except his ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The fair took place in a ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The child felt ________ when he was lost.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The parents were searching for the ________ child.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The child loved sweet ________ at the fair.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The man carried the child in his ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The child cried for his ________ and mother.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The story highlights innocence and ________ of
+                        childhood.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Where did the child go with his parents?</div>
+                    <div class="qa-answer">The child went to a village fair with his parents.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Who wrote “The Lost Child”?</div>
+                    <div class="qa-answer">It is written by Mulk Raj Anand.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> What attracted the child at the fair?</div>
+                    <div class="qa-answer">The child was attracted to toys, sweets, and fair attractions.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What did the child want first?</div>
+                    <div class="qa-answer">The child first wanted a toy balloon.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> What ride did the child want?</div>
+                    <div class="qa-answer">The child wanted to ride the merry-go-round.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> What happened to the child in the fair?</div>
+                    <div class="qa-answer">The child got lost from his parents in the fair.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Who helped the lost child?</div>
+                    <div class="qa-answer">A kind man helped the lost child.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What did the child ask for repeatedly?</div>
+                    <div class="qa-answer">He kept asking for his parents.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What did the man try to give the child?</div>
+                    <div class="qa-answer">The man tried to distract him with toys and sweets.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What is the main theme of the story?</div>
+                    <div class="qa-answer">The main theme is love and importance of parents.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> Describe what attracted the child in the fair.</div>
+                    <div class="qa-answer">The child was deeply attracted by the colorful and joyful atmosphere of the
+                        fair. He wanted toys, sweets, balloons, and rides like the merry-go-round. Everything looked
+                        exciting to him, and he kept stopping to look at different things, forgetting that his parents
+                        were walking ahead. His curiosity and innocence made him want everything he saw.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> Why did the child get lost?</div>
+                    <div class="qa-answer">The child got lost because he was busy looking at the fair attractions and
+                        moved away from his parents. His attention kept shifting from one thing to another, and he did
+                        not notice when he was separated. In the crowded fair, he could not find his parents again,
+                        which made him scared and helpless.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> How did the child react after getting lost?</div>
+                    <div class="qa-answer">After getting lost, the child became very frightened and started crying. He
+                        ran around searching for his parents and called out for them. All the joy of the fair
+                        disappeared, and he refused every attraction offered to him. His only desire was to find his
+                        parents and feel safe again.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> How did the stranger try to help the child?</div>
+                    <div class="qa-answer">The stranger tried to calm the child by offering him toys, sweets, balloons,
+                        and rides that he had earlier desired. However, the child refused everything because he only
+                        wanted his parents. The man realized that the child’s emotional pain was deeper than material
+                        attractions and tried to comfort him gently.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> What message does the story give?</div>
+                    <div class="qa-answer">The story teaches that parental love is the most important thing in a child’s
+                        life. Material things like toys, sweets, and rides cannot replace the comfort and security given
+                        by parents. It shows the innocence of childhood and how children realize the true value of their
+                        parents only when they are separated from them.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> How is the fair described in the story?</div>
+                    <div class="qa-answer">The fair is described as a lively and colorful place full of excitement,
+                        noise, and crowd. There are many attractions like toys, sweets, balloons, and rides. It creates
+                        a joyful atmosphere for children, but at the same time, it is so crowded that it becomes easy
+                        for someone to get separated from their family.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Why did the child refuse all offers after getting lost?
+                    </div>
+                    <div class="qa-answer">After getting lost, the child refused all offers because his emotional state
+                        had changed completely. Earlier he wanted toys and sweets, but now he was scared and only wanted
+                        his parents. His fear and separation made him lose interest in all material things, showing the
+                        strong bond between child and parents.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> What role does innocence play in the story?</div>
+                    <div class="qa-answer">Innocence plays a very important role in the story. The child is innocent and
+                        easily attracted to beautiful things in the fair. He does not understand danger or separation
+                        initially. However, his innocence also shows his deep emotional need for his parents, which
+                        becomes clear when he gets lost and feels helpless.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What does the stranger realize about the child?</div>
+                    <div class="qa-answer">The stranger realizes that the child is not interested in toys or sweets
+                        anymore because he is emotionally disturbed. The child only wants his parents. The stranger
+                        understands that emotional security is more important than material things and shows kindness by
+                        trying to comfort and protect the child in the crowd.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> What is the central idea of the story?</div>
+                    <div class="qa-answer">The central idea of the story is the deep love and emotional bond between
+                        parents and children. It shows that no attraction in the world can replace the comfort of
+                        parents. The story highlights how children often realize the true value of their parents only
+                        when they are separated from them in difficult situations.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Character Sketch of the Lost Child</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The child in the story is a symbol of innocence and
+                        curiosity.<br><br>
+
+                        <strong>Nature:</strong> He is innocent, sensitive, and easily attracted to colorful things in
+                        the fair. He gets excited by toys, sweets, and rides, showing his childlike nature.<br><br>
+
+                        <strong>Emotional Side:</strong> When he gets separated from his parents, he becomes extremely
+                        scared and emotional. All his desires vanish, and he only wants his parents back.<br><br>
+
+                        <strong>Conclusion:</strong> The child represents pure innocence and shows that parental love is
+                        the most important need in life.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Character Sketch of the Parents</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The parents play a silent but powerful role in the story.<br><br>
+
+                        <strong>Nature:</strong> They are caring, responsible, and protective towards their child. They
+                        take him to the fair and keep him close initially.<br><br>
+
+                        <strong>Role in Story:</strong> Even though they are not shown much directly after the child
+                        gets lost, their importance increases. The child’s fear shows how much he depends on
+                        them.<br><br>
+
+                        <strong>Conclusion:</strong> They represent safety, love, and emotional security in a child’s
+                        life.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Character Sketch of the Kind Stranger</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The stranger is a minor but important character in the
+                        story.<br><br>
+
+                        <strong>Nature:</strong> He is kind, helpful, and understanding. He notices the lost child and
+                        tries to help him calmly.<br><br>
+
+                        <strong>Actions:</strong> He offers the child toys, sweets, and other attractions to distract
+                        him. However, he realizes that the child only wants his parents.<br><br>
+
+                        <strong>Conclusion:</strong> He represents human kindness and emotional understanding in
+                        society.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> The Theme of “The Lost Child”</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The story revolves around a simple but powerful theme of love and
+                        separation.<br><br>
+
+                        <strong>Main Idea:</strong> It shows that children are easily attracted to material things like
+                        toys, sweets, and fairs, but their real emotional need is their parents.<br><br>
+
+                        <strong>Message:</strong> The story teaches that no attraction in the world can replace parental
+                        love and security. It also highlights innocence and emotional dependence.<br><br>
+
+                        <strong>Conclusion:</strong> The theme strongly focuses on family bonding and emotional
+                        importance of parents.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> The Fair as a Symbol in the Story</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The fair in the story is not just a place, but a symbol of
+                        attraction and temptation.<br><br>
+
+                        <strong>Description:</strong> It is full of colorful stalls, toys, sweets, rides, and noise,
+                        representing excitement and joy for children.<br><br>
+
+                        <strong>Symbolism:</strong> It symbolizes worldly attractions that distract humans from real
+                        priorities. The child gets lost because of these distractions.<br><br>
+
+                        <strong>Conclusion:</strong> The fair represents life’s temptations, while the child’s final
+                        realization shows the importance of emotional bonds over material things.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q26.</span> Character Sketch of the Lost Child</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The lost child is the central character of the story and
+                        represents innocence and emotional purity.<br><br>
+
+                        <strong>Nature and Personality:</strong> He is a young, innocent, and curious child who gets
+                        easily attracted to the colorful attractions of the fair. His mind is full of excitement as he
+                        sees toys, sweets, balloons, and rides. He behaves like a typical child who wants to enjoy
+                        everything around him without understanding consequences.<br><br>
+
+                        <strong>Emotional Transformation:</strong> When he gets separated from his parents, his entire
+                        behavior changes. He forgets all attractions and becomes scared, helpless, and emotionally
+                        disturbed. His only desire is to find his parents again.<br><br>
+
+                        <strong>Conclusion:</strong> The child symbolizes pure innocence and shows that parental love
+                        and security are more important than any material attraction in the world.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q27.</span> Character Sketch of the Parents</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The parents in the story play a quiet but extremely important
+                        role in shaping the emotional depth of the narrative.<br><br>
+
+                        <strong>Nature and Behavior:</strong> They are caring, responsible, and protective towards their
+                        child. They take him to the fair with love and attention, ensuring he stays close to them in the
+                        beginning. Their presence represents safety and emotional security for the child.<br><br>
+
+                        <strong>Importance in Story:</strong> Although they are not directly shown after the child gets
+                        lost, their importance becomes stronger through the child’s fear and desperation. The child’s
+                        repeated cries for them show his deep dependence on them.<br><br>
+
+                        <strong>Conclusion:</strong> The parents symbolize unconditional love, protection, and emotional
+                        stability in a child’s life, highlighting the strong bond between family members.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q28.</span> Character Sketch of the Kind Stranger</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The stranger is a minor but meaningful character who represents
+                        kindness and humanity in the story.<br><br>
+
+                        <strong>Nature and Personality:</strong> He is observant, gentle, and compassionate. When he
+                        notices the lost child crying in panic, he immediately steps forward to help him without
+                        expecting anything in return. His behavior shows empathy and responsibility towards a helpless
+                        child.<br><br>
+
+                        <strong>Actions:</strong> He tries to comfort the child by offering him toys, sweets, balloons,
+                        and rides that earlier attracted him. However, he soon realizes that the child is emotionally
+                        distressed and only wants his parents, not material things.<br><br>
+
+                        <strong>Conclusion:</strong> The stranger symbolizes human kindness and emotional understanding,
+                        showing that compassion exists even among unknown people in society.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q29.</span> The Central Theme of “The Lost Child”</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The story “The Lost Child” revolves around a simple incident but
+                        carries a deep emotional and moral message.<br><br>
+
+                        <strong>Main Idea:</strong> The central theme focuses on the contrast between material
+                        attractions and emotional needs. The child is initially attracted to toys, sweets, and fair
+                        activities, but when he gets lost, all these desires disappear, and he only longs for his
+                        parents.<br><br>
+
+                        <strong>Message:</strong> The story beautifully conveys that parental love is the strongest
+                        emotional bond and cannot be replaced by any worldly attraction. It also highlights innocence
+                        and dependency of children.<br><br>
+
+                        <strong>Conclusion:</strong> The theme teaches that real happiness lies in love, safety, and
+                        family bonding rather than material enjoyment.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q30.</span> The Fair as a Symbol and Its Importance in the Story
+                    </div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong> The fair in “The Lost Child” is not just a physical place but a
+                        powerful symbol used by the author to convey deeper meaning.<br><br>
+
+                        <strong>Description:</strong> The fair is full of colors, noise, excitement, and attractions
+                        such as toys, sweets, balloons, and rides. It represents joy and entertainment, especially for
+                        children.<br><br>
+
+                        <strong>Symbolism:</strong> The fair symbolizes worldly temptations and material distractions
+                        that easily attract human attention. The child’s distraction and eventual separation from his
+                        parents show how easily one can lose focus in such environments.<br><br>
+
+                        <strong>Conclusion:</strong> The fair ultimately represents life’s distractions, while the
+                        child’s realization shows that emotional bonds are far more important than temporary
+                        attractions.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Mulk Raj Anand</h4>
+                    <p>Mulk Raj Anand (1905–2004) was one of the pioneering Indian English writers and a major figure in
+                        modern Indian literature. He is widely known for his realistic and socially conscious writing
+                        style that highlights the struggles of common people. Anand strongly focused on themes like
+                        poverty, inequality, human emotions, and social injustice. His works often reflect deep empathy
+                        for the underprivileged and bring attention to human values and relationships. Some of his
+                        famous works include <i>Untouchable</i>, <i>Coolie</i>, and <i>Two Leaves and a Bud</i>. The
+                        chapter <i>“The Lost Child”</i> showcases his ability to express deep emotional experiences
+                        through the innocent perspective of a child, highlighting love, separation, and the importance
+                        of parents in a child’s life.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key </h3>
+                </div>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 15px;">
+
+                <div>
+                    <h4
+                        style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--primary); font-weight: 700;">
+                        <i class="fa-solid fa-list-check" style="margin-right: 5px;"></i> MCQs Key
+                    </h4>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> A spring fair</div>
+                        <div><b>2.</b> Toys, sweets, and balloons</div>
+                        <div><b>3.</b> Toys and sweets</div>
+                        <div><b>4.</b> The roundabout</div>
+                        <div><b>5.</b> Snake charming / flute music</div>
+                        <div><b>6.</b> Separated from parents</div>
+                        <div><b>7.</b> A kind stranger</div>
+                        <div><b>8.</b> His father and mother</div>
+                        <div><b>9.</b> Extreme fear and longing</div>
+                        <div><b>10.</b> Unmatched value of parents</div>
+                        <div><b>11.</b> Near the roundabout ride</div>
+                        <div><b>12.</b> Searched for him anxiously</div>
+                        <div><b>13.</b> Toys, sweets, and rides</div>
+                        <div><b>14.</b> Balloons, sweets, and toys</div>
+                        <div><b>15.</b> His parents only</div>
+                        <div><b>16.</b> Emotional and heartwarming</div>
+                        <div><b>17.</b> Earthly desires and attractions</div>
+                        <div><b>18.</b> Human desire and innocence</div>
+                        <div><b>19.</b> Comfort and kind console</div>
+                        <div><b>20.</b> Parental bond and care</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4
+                        style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--accent-green); font-weight: 700;">
+                        <i class="fa-solid fa-circle-check" style="margin-right: 5px;"></i> True / False Key
+                    </h4>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> True</div>
+                        <div><b>3.</b> False</div>
+                        <div><b>4.</b> True</div>
+                        <div><b>5.</b> True</div>
+                        <div><b>6.</b> False</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> False</div>
+                        <div><b>9.</b> True</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> False</div>
+                        <div><b>13.</b> True</div>
+                        <div><b>14.</b> False</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> False</div>
+                        <div><b>17.</b> True</div>
+                        <div><b>18.</b> False</div>
+                        <div><b>19.</b> True</div>
+                        <div><b>20.</b> False</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4
+                        style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; color: var(--accent-orange); font-weight: 700;">
+                        <i class="fa-solid fa-pen-clip" style="margin-right: 5px;"></i> Fill in the Blanks (NCERT)
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> spring fair</div>
+                        <div><b>2.</b> Mulk Raj Anand</div>
+                        <div><b>3.</b> sweets / balloons</div>
+                        <div><b>4.</b> lined up in the shops</div>
+                        <div><b>5.</b> roundabout</div>
+                        <div><b>6.</b> parents</div>
+                        <div><b>7.</b> humanity / crowd</div>
+                        <div><b>8.</b> soothe / comfort</div>
+                        <div><b>9.</b> father and mother</div>
+                        <div><b>10.</b> panic-stricken / terrified</div>
+                        <div><b>11.</b> parental / maternal</div>
+                        <div><b>12.</b> charmer</div>
+                        <div><b>13.</b> father and mother</div>
+                        <div><b>14.</b> village / festive lane</div>
+                        <div><b>15.</b> helpless / lost</div>
+                        <div><b>16.</b> lost / missing</div>
+                        <div><b>17.</b> burfi</div>
+                        <div><b>18.</b> arms</div>
+                        <div><b>19.</b> father</div>
+                        <div><b>20.</b> vulnerability</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "The Lost Child" is a short emotional story written by Mulk Raj Anand. It beautifully highlights the innocence of a child and the strong bond between parents and children. The story shows how material attractions can temporarily distract a child, but real happiness always lies with family love and security.</div>
+
+        <div class="summary-paragraph"><strong>Visit to the Fair:</strong> The story begins with a young child going to a village fair with his parents. The fair is full of excitement, colors, noise, toys, sweets, and rides. The child is very happy and curious, and he keeps getting attracted to different things. However, his parents guide him and try to keep him close in the crowd.</div>
+
+        <div class="summary-paragraph"><strong>Child’s Attraction:</strong> As they move through the fair, the child gets fascinated by many things like toys, balloons, sweets, and the merry-go-round. He demands all these things, but his parents refuse gently. The child’s innocence is shown through his excitement and desire for every attractive object he sees.</div>
+
+        <div class="summary-paragraph"><strong>Separation from Parents:</strong> In the crowd, the child gets distracted while looking at various attractions and gets separated from his parents. He suddenly realizes that he is lost and becomes frightened. The joy of the fair instantly turns into fear and sadness.</div>
+
+        <div class="summary-paragraph"><strong>Stranger’s Help:</strong> A kind stranger finds the crying child and tries to comfort him. He offers him toys, sweets, and other things that the child had earlier wanted. However, the child refuses everything because his only concern now is finding his parents.</div>
+
+        <div class="summary-paragraph"><strong>Emotional Realization:</strong> The child cries continuously and repeatedly asks for his parents. He no longer cares about the fair attractions. His emotional pain shows how deeply he depends on his parents for love, safety, and comfort.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The story highlights the importance of parental love and emotional bonding. It teaches that material things cannot replace the comfort of parents. The child’s experience in the fair shows that true happiness lies in family love, not in worldly attractions.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "The Lost Child" एक भावनात्मक लघु कहानी है जिसे मुल्क राज आनंद ने लिखा है। यह कहानी एक बच्चे की मासूमियत और माता-पिता के साथ उसके गहरे संबंध को दर्शाती है। यह बताती है कि भौतिक आकर्षण अस्थायी होते हैं, लेकिन असली खुशी परिवार के साथ ही मिलती है।</div>
+
+        <div class="summary-paragraph"><strong>मेले की यात्रा:</strong> कहानी की शुरुआत एक छोटे बच्चे और उसके माता-पिता के मेले जाने से होती है। मेला रंगीन, शोरगुल भरा और आकर्षणों से भरा होता है। बच्चा बहुत उत्साहित होता है और हर चीज को देखने और पाने की इच्छा रखता है। उसके माता-पिता उसे सावधानी से साथ रखते हैं।</div>
+
+        <div class="summary-paragraph"><strong>बच्चे का आकर्षण:</strong> मेले में बच्चा खिलौनों, मिठाइयों, गुब्बारों और झूले से बहुत आकर्षित होता है। वह हर चीज की मांग करता है, लेकिन उसके माता-पिता उसे धीरे से मना कर देते हैं। उसकी मासूमियत उसके व्यवहार में साफ दिखाई देती है।</div>
+
+        <div class="summary-paragraph"><strong>माता-पिता से बिछड़ना:</strong> भीड़ में बच्चा अपने माता-पिता से बिछड़ जाता है। वह अचानक खुद को अकेला और डरा हुआ महसूस करता है। मेले की सारी खुशी डर और घबराहट में बदल जाती है।</div>
+
+        <div class="summary-paragraph"><strong>अजनबी की मदद:</strong> एक दयालु व्यक्ति बच्चे की मदद करता है और उसे शांत करने की कोशिश करता है। वह उसे खिलौने और मिठाइयाँ देता है, लेकिन बच्चा उन्हें स्वीकार नहीं करता क्योंकि वह सिर्फ अपने माता-पिता को चाहता है।</div>
+
+        <div class="summary-paragraph"><strong>भावनात्मक एहसास:</strong> बच्चा लगातार रोता रहता है और अपने माता-पिता को पुकारता है। उसे अब किसी भी चीज़ में रुचि नहीं रहती। यह उसकी भावनात्मक निर्भरता और प्यार को दर्शाता है।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी बताती है कि माता-पिता का प्यार दुनिया की किसी भी चीज़ से अधिक महत्वपूर्ण है। यह हमें सिखाती है कि सच्ची खुशी परिवार के साथ होती है, न कि भौतिक चीज़ों में।</div>
+    `
+        };
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

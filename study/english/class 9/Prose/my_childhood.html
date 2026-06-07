@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>My Childhood Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 6 • Prose</span>
+            <h2>My Childhood</h2>
+            <p>My Childhood is an inspiring autobiographical account that highlights the values of hard work, religious
+                harmony, family support, and the experiences that shaped A.P.J. Abdul Kalam's character and future
+                success. 🚀</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Where was A.P.J. Abdul Kalam born?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Chennai</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Madurai</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Rameswaram</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Trichy</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> What was Kalam's father's name?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> Jainulabdeen</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Pakir</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Samsuddin</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Mustafa</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> What was Kalam's father's profession?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Teacher</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Boat owner</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Doctor</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Shopkeeper</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Which newspaper did Kalam help distribute?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> The Hindu</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Dinamani</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Indian Express</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Times of India</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Who was Kalam's cousin who distributed newspapers?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> Jalaluddin</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Mustafa</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Samsuddin</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Shastri</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Which World War was going on during Kalam's childhood?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> First World War</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Second World War</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Cold War</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Gulf War</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> What did Kalam collect and sell during the war?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Coconut shells</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Tamarind seeds</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Mango seeds</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Groundnuts</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Who was Kalam's close friend from a priest's family?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Mustafa</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Ramanadha Sastry</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Arun</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Jalaluddin</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Why did a new teacher ask Kalam to sit on the back bench?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> He was late</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> He was weak in studies</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Because he was a Muslim</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> He was talking in class</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Who opposed the teacher's discriminatory action?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Kalam's father</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Ramanadha Sastry's father</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Samsuddin</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Jalaluddin</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> What was the name of the science teacher who invited
+                        Kalam home?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Sivasubramania Iyer</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Ramanadha Sastry</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Lakshmana Sastry</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Mustafa Kamal</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Why did Iyer's wife refuse to serve Kalam food
+                        initially?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> She was busy</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> She disliked guests</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Religious prejudice</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Food was insufficient</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Who eventually served Kalam food during his second
+                        visit?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Iyer himself</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> A servant</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Iyer's wife</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Jalaluddin</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Who inspired Kalam with stories about science and
+                        literature?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Jalaluddin</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Mustafa</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Ramanadha Sastry</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Iyer</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What quality of Kalam's father impressed him most?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Physical strength</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Honesty and wisdom</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Political influence</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> What message does the chapter mainly convey?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Importance of wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Religious harmony and hard
+                            work</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Importance of sports</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Political leadership</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Which religious place was associated with Ramanadha
+                        Sastry's family?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Church</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Mosque</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Monastery</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What did Kalam learn from his childhood experiences?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> To avoid challenges</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> To respect all religions and work
+                            hard</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> To become a businessman</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> To settle abroad</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What was Kalam's first earning from selling tamarind
+                        seeds?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> One rupee</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> One anna</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Two rupees</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Four annas</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Which title is most suitable for the chapter?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> A Scientist's Childhood</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> A Village Story</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Life in Chennai</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> The Great Teacher</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> A.P.J. Abdul Kalam was born in Rameswaram, Tamil Nadu.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Kalam's father was a wealthy businessman.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Kalam's father owned boats that carried pilgrims between
+                        Rameswaram and Dhanushkodi.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Kalam helped his cousin distribute newspapers during his
+                        childhood.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The events described in the chapter took place during the
+                        First World War.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Kalam earned his first money by collecting and selling
+                        tamarind seeds.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Ramanadha Sastry was one of Kalam's closest friends.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Ramanadha Sastry belonged to a priest's family.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> A new teacher asked Kalam to sit in the front row because
+                        he was intelligent.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Lakshmana Sastry strongly opposed discrimination in the
+                        classroom.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Sivasubramania Iyer was Kalam's science teacher.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Iyer's wife happily served food to Kalam during his
+                        first visit.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Despite opposition, Iyer personally served food to
+                        Kalam.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> During Kalam's second visit, Iyer's wife served him food
+                        herself.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Jalaluddin encouraged Kalam to dream big and learn about
+                        the world.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Kalam believed that all religions should be respected
+                        equally.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Kalam's childhood was free from any social or religious
+                        discrimination.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> Kalam's father was known for his honesty, wisdom, and
+                        simplicity.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The chapter highlights the importance of communal
+                        harmony and hard work.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Kalam's childhood experiences played an important role
+                        in shaping his future personality.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> "My Childhood" is an extract from the autobiography
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Kalam was born into a ________ family.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Kalam's house was built with ________ and limestone.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The island town of Rameswaram is famous for its ________
+                        temple.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Kalam's mother used to serve food on ________ leaves.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Kalam's father avoided all forms of unnecessary ________
+                        and luxury.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The three close friends of Kalam belonged to ________
+                        Hindu families.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The priest of the Rameswaram Temple was Pakshi ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Kalam wore a ________ cap as a child.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Ramanadha Sastry wore a ________ thread across his
+                        chest.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The new teacher could not accept a Muslim boy sitting
+                        with a ________ boy.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Lakshmana Sastry summoned the teacher and asked him to
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Sivasubramania Iyer wanted to break down social
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> According to Iyer, the young generation must face the
+                        ________ of change.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Ahmed Jalaluddin was much older than Kalam but treated
+                        him like a ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> Jalaluddin and Kalam often discussed science and
+                        ________ developments.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Kalam's father believed that every person is a specific
+                        element within the whole of the ________ universe.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> People visited Kalam's father seeking help for their
+                        ________ and troubles.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Kalam learned from his father the importance of humility
+                        and ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The chapter promotes the values of unity, tolerance and
+                        religious ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <h3>📘 Short Answer Questions (20–30 Words)</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Where was A.P.J. Abdul Kalam born?</div>
+                    <div class="qa-answer">A.P.J. Abdul Kalam was born in Rameswaram, a small island town in Tamil Nadu.
+                        It was famous for its religious and cultural harmony.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> What was the profession of Kalam's father?</div>
+                    <div class="qa-answer">Kalam's father, Jainulabdeen, owned boats that carried pilgrims between
+                        Rameswaram and Dhanushkodi. He was respected for his wisdom and simplicity.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Who was Ahmed Jalaluddin?</div>
+                    <div class="qa-answer">Ahmed Jalaluddin was Kalam's close friend and relative who inspired him by
+                        discussing science, literature, and the outside world.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> How did Kalam earn his first wages?</div>
+                    <div class="qa-answer">Kalam earned his first wages by helping his cousin Samsuddin distribute
+                        newspapers during the Second World War.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Who was Ramanadha Sastry?</div>
+                    <div class="qa-answer">Ramanadha Sastry was Kalam's close friend and the son of the chief priest of
+                        the Rameswaram Temple.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> Why was Kalam asked to sit on the back bench?</div>
+                    <div class="qa-answer">A new teacher considered it inappropriate for a Muslim boy to sit beside a
+                        Hindu priest's son and shifted Kalam to the back bench.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Who was Sivasubramania Iyer?</div>
+                    <div class="qa-answer">Sivasubramania Iyer was Kalam's science teacher who encouraged scientific
+                        thinking and fought against social discrimination.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> How did Lakshmana Sastry react to the teacher's behavior?
+                    </div>
+                    <div class="qa-answer">Lakshmana Sastry strongly criticized the teacher and asked him to apologize
+                        for spreading social discrimination among children.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What values did Kalam learn from his father?</div>
+                    <div class="qa-answer">Kalam learned honesty, simplicity, self-discipline, faith in God, and respect
+                        for all human beings from his father.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What is the central message of "My Childhood"?</div>
+                    <div class="qa-answer">The chapter teaches the importance of religious harmony, tolerance, equality,
+                        hard work, and good values in life.</div>
+                </div>
+
+
+
+                <h3>📝 Long Answer Questions (60–70 Words)</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> Describe Kalam's family background.</div>
+                    <div class="qa-answer">A.P.J. Abdul Kalam was born into a middle-class Tamil Muslim family in
+                        Rameswaram. His father, Jainulabdeen, was a boat owner known for his wisdom and simplicity. His
+                        mother, Ashiamma, was kind and caring. Though the family was not wealthy, they lived a
+                        comfortable life based on strong moral values, honesty, hard work, and religious faith.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> How did Ahmed Jalaluddin influence Kalam's life?</div>
+                    <div class="qa-answer">Ahmed Jalaluddin played a significant role in shaping Kalam's thinking. He
+                        encouraged him to dream big and look beyond the small world of Rameswaram. Their discussions
+                        about science, literature, and global events broadened Kalam's knowledge and curiosity.
+                        Jalaluddin inspired him to believe in education and progress, which later helped him achieve
+                        great success.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> Explain the incident of discrimination in Kalam's
+                        classroom.</div>
+                    <div class="qa-answer">One day, a new teacher noticed Kalam, a Muslim boy, sitting beside Ramanadha
+                        Sastry, a Hindu priest's son. The teacher disapproved and asked Kalam to move to the back bench.
+                        This hurt both boys deeply. When Lakshmana Sastry learned about the incident, he scolded the
+                        teacher and forced him to apologize, teaching a valuable lesson against discrimination.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> How did Sivasubramania Iyer help Kalam overcome social
+                        barriers?</div>
+                    <div class="qa-answer">Sivasubramania Iyer was a progressive science teacher who believed in
+                        equality. He invited Kalam to his home for a meal despite social prejudices. When his wife
+                        refused to serve Kalam because of his religion, Iyer personally served him. Later, his wife
+                        changed her attitude and served Kalam herself. This experience taught Kalam the importance of
+                        social reform and courage.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> What lessons did Kalam learn from his childhood?</div>
+                    <div class="qa-answer">Kalam learned valuable lessons from his childhood experiences. He understood
+                        the importance of hard work, discipline, honesty, and faith. He also learned to respect all
+                        religions and cultures. The support of his family, teachers, and friends helped him develop
+                        confidence and determination. These lessons became the foundation of his success as a scientist
+                        and national leader.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> Describe the communal harmony in Rameswaram.</div>
+                    <div class="qa-answer">Rameswaram was a place where people of different religions lived together
+                        peacefully. Kalam's father, the temple priest Pakshi Lakshmana Sastry, and a church priest
+                        shared mutual respect and friendship. Children from different religious backgrounds studied and
+                        played together. This atmosphere of unity and cooperation deeply influenced Kalam and taught him
+                        the values of tolerance and harmony.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Why is "My Childhood" an inspiring chapter?</div>
+                    <div class="qa-answer">The chapter is inspiring because it shows how a simple boy from a modest
+                        family achieved greatness through hard work and determination. Kalam overcame social barriers
+                        and financial limitations with the help of supportive family members, friends, and teachers. His
+                        story motivates students to dream big, work sincerely, and remain humble regardless of success.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> Discuss the role of teachers in Kalam's life.</div>
+                    <div class="qa-answer">Teachers played an important role in Kalam's development. While one teacher
+                        showed prejudice, others like Sivasubramania Iyer guided and inspired him. Iyer encouraged
+                        scientific thinking and challenged social discrimination. These experiences taught Kalam
+                        important lessons about equality, education, and perseverance. His teachers helped shape his
+                        character and future achievements.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> How did Kalam's parents influence his character?</div>
+                    <div class="qa-answer">Kalam's parents greatly influenced his personality. His father taught him
+                        honesty, simplicity, and faith, while his mother showed kindness and compassion. Their values
+                        created a strong moral foundation for him. Through their example, Kalam learned to respect
+                        others, remain humble, and face life's challenges with courage and determination.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> What qualities helped Kalam become successful in life?
+                    </div>
+                    <div class="qa-answer">Kalam's success was built on hard work, discipline, curiosity, determination,
+                        and positive thinking. He remained dedicated to learning and never allowed difficulties to
+                        discourage him. The guidance of his family, friends, and teachers strengthened his character.
+                        His commitment to knowledge and service eventually helped him become a renowned scientist and
+                        President of India.</div>
+                </div>
+
+
+
+                <h3>⭐ Very Long Answer Questions</h3>
+
+                <h4>Character Sketch Questions</h4>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Character Sketch of A.P.J. Abdul Kalam.</div>
+                    <div class="qa-answer">A.P.J. Abdul Kalam was a hardworking, humble, curious, and determined child.
+                        He respected all religions and valued education greatly. Despite belonging to a modest family,
+                        he dreamed big and worked sincerely to achieve his goals. Influenced by his parents, teachers,
+                        and friends, he developed qualities such as honesty, discipline, perseverance, and compassion.
+                        These traits later helped him become one of India's most respected scientists and leaders.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Character Sketch of Jainulabdeen (Kalam's Father).</div>
+                    <div class="qa-answer">Jainulabdeen was a wise, simple, honest, and deeply spiritual person. Though
+                        not formally educated, he possessed great practical wisdom. He believed in helping others and
+                        living a disciplined life. He taught Kalam important values such as humility, faith, honesty,
+                        and self-respect. His calm nature and strong moral principles greatly influenced Kalam's
+                        personality and future success.</div>
+                </div>
+
+                <h4>Theme-Based Questions</h4>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Discuss the theme of religious harmony in "My Childhood".
+                    </div>
+                    <div class="qa-answer">Religious harmony is one of the central themes of the chapter. People from
+                        different religions in Rameswaram respected and supported one another. Kalam's father, the
+                        temple priest, and the church priest maintained close friendships. Even when discrimination
+                        appeared, wise elders corrected it. Through these experiences, Kalam learned that humanity is
+                        more important than religious differences and that unity strengthens society.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> How do family, friends, and teachers contribute to
+                        Kalam's success?</div>
+                    <div class="qa-answer">Kalam's success was the result of support from many people. His parents gave
+                        him strong moral values. Jalaluddin inspired him to dream beyond his surroundings. Friends
+                        taught him cooperation and understanding, while teachers encouraged scientific thinking and
+                        equality. Together, these influences shaped his character, broadened his knowledge, and
+                        motivated him to achieve excellence in life.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> What life lessons can students learn from "My Childhood"?
+                    </div>
+                    <div class="qa-answer">Students can learn many valuable lessons from the chapter. They should
+                        respect all religions, work hard, remain disciplined, and never stop learning. The chapter
+                        teaches that success comes from determination, good values, and positive guidance. It also
+                        emphasizes the importance of equality, tolerance, and strong character. Kalam's life proves that
+                        even a child from a simple background can achieve extraordinary success.</div>
+                </div>
+
+                <h3>⭐ Very Long Answer Questions</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q26.</span> Character Sketch of A.P.J. Abdul Kalam.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        A.P.J. Abdul Kalam was the author of the chapter "My Childhood". He later became one of India's
+                        greatest scientists and the 11th President of India. His childhood experiences played an
+                        important role in shaping his personality and future success.
+                        <br><br>
+
+                        <strong>Hardworking and Determined:</strong><br>
+                        Kalam was hardworking from a young age. He helped his cousin distribute newspapers and earned
+                        money by selling tamarind seeds. These experiences taught him the value of hard work and
+                        responsibility.
+                        <br><br>
+
+                        <strong>Curious and Intelligent:</strong><br>
+                        He had a deep interest in learning. He loved discussing science, literature, and world events
+                        with Ahmed Jalaluddin. His curiosity helped him gain knowledge beyond textbooks.
+                        <br><br>
+
+                        <strong>Respectful and Humble:</strong><br>
+                        Kalam respected people of all religions and backgrounds. Even after becoming successful, he
+                        remained humble and never forgot the lessons of his childhood.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        A.P.J. Abdul Kalam was a disciplined, determined, and kind-hearted person whose strong values
+                        and hard work helped him achieve great success in life.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q27.</span> Character Sketch of Jainulabdeen (Kalam's Father).</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Jainulabdeen was Kalam's father and one of the most influential people in his life. Though he
+                        was not highly educated, he possessed great wisdom and moral strength.
+                        <br><br>
+
+                        <strong>Simple and Honest:</strong><br>
+                        He lived a simple life and believed in honesty and self-discipline. He never chased wealth or
+                        luxury and was satisfied with a modest lifestyle.
+                        <br><br>
+
+                        <strong>Wise and Spiritual:</strong><br>
+                        People from different communities came to him for advice and blessings. His spiritual outlook
+                        helped him guide others during difficult times.
+                        <br><br>
+
+                        <strong>Supportive Father:</strong><br>
+                        He taught Kalam valuable lessons about faith, hard work, humility, and self-confidence. His
+                        teachings became the foundation of Kalam's character.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Jainulabdeen was a wise, honest, and compassionate man whose values greatly influenced Kalam's
+                        life and future achievements.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q28.</span> Describe the Theme of Religious Harmony in "My
+                        Childhood".</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Religious harmony is the most important theme of the chapter. The chapter shows how people from
+                        different religions lived together peacefully in Rameswaram.
+                        <br><br>
+
+                        <strong>Unity Among Different Communities:</strong><br>
+                        Kalam's father, the chief priest of the Rameswaram Temple, and the church priest were close
+                        friends. They respected each other's beliefs and worked together for the welfare of society.
+                        <br><br>
+
+                        <strong>Friendship Beyond Religion:</strong><br>
+                        Kalam, a Muslim boy, shared a strong friendship with Ramanadha Sastry, who belonged to a Hindu
+                        priest's family. Their friendship reflected the spirit of equality and mutual respect.
+                        <br><br>
+
+                        <strong>Fight Against Discrimination:</strong><br>
+                        When a teacher discriminated against Kalam, Lakshmana Sastry strongly opposed such behavior and
+                        ensured that justice was done.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The chapter teaches that humanity is above all religious differences and that mutual respect is
+                        essential for a peaceful society.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q29.</span> Explain the Role of Teachers and Mentors in Shaping
+                        Kalam's Life.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Teachers and mentors played a significant role in Kalam's development. They inspired him,
+                        broadened his thinking, and encouraged him to dream big.
+                        <br><br>
+
+                        <strong>Ahmed Jalaluddin's Influence:</strong><br>
+                        Ahmed Jalaluddin encouraged Kalam to learn about science, literature, and world affairs. He
+                        motivated him to think beyond the boundaries of his small town.
+                        <br><br>
+
+                        <strong>Sivasubramania Iyer's Guidance:</strong><br>
+                        Kalam's science teacher, Sivasubramania Iyer, challenged social prejudices and encouraged
+                        scientific thinking. He treated Kalam equally and inspired him to aim high.
+                        <br><br>
+
+                        <strong>Lessons Learned:</strong><br>
+                        Through these mentors, Kalam learned confidence, open-mindedness, determination, and the
+                        importance of education.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The guidance of teachers and mentors helped Kalam build a strong foundation for success and
+                        shaped him into a visionary leader.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q30.</span> What Life Lessons Do You Learn from "My Childhood"?</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        "My Childhood" is not only an autobiography but also a source of valuable life lessons for
+                        students and young readers.
+                        <br><br>
+
+                        <strong>Importance of Hard Work:</strong><br>
+                        Kalam's childhood teaches us that success comes through dedication, effort, and perseverance
+                        rather than luck.
+                        <br><br>
+
+                        <strong>Value of Good Character:</strong><br>
+                        Honesty, humility, discipline, and kindness are essential qualities that help a person earn
+                        respect and achieve success.
+                        <br><br>
+
+                        <strong>Respect for All Religions:</strong><br>
+                        The chapter highlights the importance of communal harmony and teaches us to respect people
+                        regardless of their religion or background.
+                        <br><br>
+
+                        <strong>Power of Education and Guidance:</strong><br>
+                        Supportive parents, teachers, and mentors can transform a child's future by providing proper
+                        guidance and encouragement.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The chapter inspires readers to dream big, work hard, stay humble, and live with values that
+                        contribute to both personal and social development.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Dr. A.P.J. Abdul Kalam</h4>
+                    <p>Dr. A.P.J. Abdul Kalam (1931–2015) was one of India's most respected scientists, authors, and
+                        leaders. His full name was Avul Pakir Jainulabdeen Abdul Kalam. He was born in Rameswaram, Tamil
+                        Nadu, in a humble Muslim family. Known as the "Missile Man of India", he played a key role in
+                        India's missile and space programs and made significant contributions to the country's defense
+                        technology. Dr. Kalam served as the 11th President of India from 2002 to 2007 and was widely
+                        loved as the "People's President". He inspired millions of students through his speeches, books,
+                        and vision for a developed India. Some of his famous works include <i>Wings of Fire</i>,
+                        <i>Ignited Minds</i>, <i>India 2020</i>, and <i>My Journey</i>. The chapter <i>"My
+                            Childhood"</i> is an extract from his autobiography <i>Wings of Fire</i> and reflects his
+                        early life, strong values, religious harmony, and the experiences that shaped his remarkable
+                        personality.
+                    </p>
+                </div>
+            </div>
+        </div>
+<div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);"><i class="fa-solid fa-list-check"></i> MCQs</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Rameswaram</div>
+                        <div><b>2.</b> Jainulabdeen</div>
+                        <div><b>3.</b> Boat owner</div>
+                        <div><b>4.</b> Dinamani</div>
+                        <div><b>5.</b> Samsuddin</div>
+                        <div><b>6.</b> Second World War</div>
+                        <div><b>7.</b> Tamarind seeds</div>
+                        <div><b>8.</b> Ramanadha Sastry</div>
+                        <div><b>9.</b> Because he was a Muslim</div>
+                        <div><b>10.</b> Ramanadha Sastry's father</div>
+                        <div><b>11.</b> Sivasubramania Iyer</div>
+                        <div><b>12.</b> Religious prejudice</div>
+                        <div><b>13.</b> Iyer himself</div>
+                        <div><b>14.</b> Jalaluddin</div>
+                        <div><b>15.</b> Honesty and wisdom</div>
+                        <div><b>16.</b> Religious harmony and hard work</div>
+                        <div><b>17.</b> Temple</div>
+                        <div><b>18.</b> To respect all religions and work hard</div>
+                        <div><b>19.</b> One anna</div>
+                        <div><b>20.</b> A Scientist's Childhood</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> True / False</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> True</div>
+                        <div><b>4.</b> True</div>
+                        <div><b>5.</b> False</div>
+                        <div><b>6.</b> True</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> True</div>
+                        <div><b>9.</b> False</div>
+                        <div><b>10.</b> True</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> False</div>
+                        <div><b>13.</b> True</div>
+                        <div><b>14.</b> True</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> True</div>
+                        <div><b>17.</b> False</div>
+                        <div><b>18.</b> True</div>
+                        <div><b>19.</b> True</div>
+                        <div><b>20.</b> True</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);"><i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Wings of Fire</div>
+                        <div><b>2.</b> middle-class Muslim</div>
+                        <div><b>3.</b> bricks</div>
+                        <div><b>4.</b> Shiva / Rameswaram</div>
+                        <div><b>5.</b> banana</div>
+                        <div><b>6.</b> comforts</div>
+                        <div><b>7.</b> orthodox Brahmin</div>
+                        <div><b>8.</b> Lakshmana Sastry</div>
+                        <div><b>9.</b> prayer / Muslim</div>
+                        <div><b>10.</b> Dinamani</div>
+                        <div><b>11.</b> Samsuddin</div>
+                        <div><b>12.</b> one anna</div>
+                        <div><b>13.</b> Second</div>
+                        <div><b>14.</b> Jalaluddin</div>
+                        <div><b>15.</b> back / last</div>
+                        <div><b>16.</b> Lakshmana Sastry</div>
+                        <div><b>17.</b> Sivasubramania Iyer</div>
+                        <div><b>18.</b> kitchen</div>
+                        <div><b>19.</b> system / social barriers</div>
+                        <div><b>20.</b> Khalil Gibran</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "My Childhood" is an autobiographical chapter written by Dr. A.P.J. Abdul Kalam. It is an extract from his autobiography <i>Wings of Fire</i>. In this chapter, Kalam shares his childhood experiences in Rameswaram and explains how his family, friends, and teachers shaped his character and values.</div>
+
+        <div class="summary-paragraph"><strong>Early Life in Rameswaram:</strong> Abdul Kalam was born into a modest Tamil Muslim family in Rameswaram, a small island town in Tamil Nadu. His father, Jainulabdeen, was a boat owner and a highly respected man known for his wisdom and simplicity. His mother, Ashiamma, was a kind and caring woman. Although the family was not rich, they lived a comfortable and peaceful life based on strong moral values.</div>
+
+        <div class="summary-paragraph"><strong>Influence of His Parents:</strong> Kalam's parents had a deep impact on his personality. His father taught him honesty, discipline, self-confidence, and faith in God. He believed that difficulties were opportunities for self-development. His mother's love and compassion taught him kindness and generosity. These values became the foundation of Kalam's future success.</div>
+
+        <div class="summary-paragraph"><strong>Communal Harmony in Rameswaram:</strong> One of the most important aspects of Kalam's childhood was the atmosphere of religious harmony. His father was friends with Pakshi Lakshmana Sastry, the chief priest of the Rameswaram Temple, and a Christian priest. People of different religions lived together peacefully and respected one another. This environment taught Kalam the importance of unity and tolerance.</div>
+
+        <div class="summary-paragraph"><strong>Friendship and the Classroom Incident:</strong> Kalam's close friends were Ramanadha Sastry, Aravindan, and Sivaprakasan. They belonged to orthodox Hindu families, but religion never affected their friendship. However, a new teacher once asked Kalam to sit on the back bench because he was a Muslim sitting beside a Hindu boy. This incident hurt both children. Later, Lakshmana Sastry strongly condemned the teacher's behavior and taught him an important lesson against discrimination.</div>
+
+        <div class="summary-paragraph"><strong>Role of Sivasubramania Iyer:</strong> Kalam's science teacher, Sivasubramania Iyer, was a progressive and broad-minded person. He encouraged Kalam to think scientifically and overcome social barriers. He invited Kalam to his house for a meal. Although his wife initially refused to serve a Muslim boy, Iyer remained firm in his beliefs. Eventually, his wife changed her attitude and accepted Kalam warmly.</div>
+
+        <div class="summary-paragraph"><strong>Influence of Ahmed Jalaluddin:</strong> Ahmed Jalaluddin was one of Kalam's closest companions and mentors. He encouraged Kalam to dream big and introduced him to the world of science, literature, and current affairs. Their discussions inspired young Kalam to develop curiosity, ambition, and confidence.</div>
+
+        <div class="summary-paragraph"><strong>Hard Work and Early Responsibilities:</strong> During the Second World War, Kalam earned his first wages by helping his cousin Samsuddin distribute newspapers. He also collected and sold tamarind seeds. These experiences taught him the dignity of labor, independence, and the importance of hard work from an early age.</div>
+
+        <div class="summary-paragraph"><strong>Life Lessons Learned:</strong> Through his childhood experiences, Kalam learned valuable lessons about honesty, discipline, hard work, equality, religious tolerance, and perseverance. The guidance of his parents, friends, and teachers helped him develop a positive outlook on life and inspired him to pursue great dreams.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> "My Childhood" is an inspiring account of A.P.J. Abdul Kalam's early years. The chapter highlights how strong values, communal harmony, supportive relationships, and determination can shape a person's future. It encourages readers to respect all religions, work hard, and remain humble while striving for success.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "My Childhood" डॉ. ए.पी.जे. अब्दुल कलाम द्वारा लिखित एक आत्मकथात्मक अध्याय है। यह उनकी प्रसिद्ध आत्मकथा <i>Wings of Fire</i> से लिया गया है। इस अध्याय में उन्होंने अपने बचपन की यादों, परिवार, मित्रों और शिक्षकों के प्रभाव का वर्णन किया है, जिन्होंने उनके व्यक्तित्व को आकार दिया।</div>
+
+        <div class="summary-paragraph"><strong>रामेश्वरम में प्रारंभिक जीवन:</strong> अब्दुल कलाम का जन्म तमिलनाडु के छोटे द्वीप नगर रामेश्वरम में एक साधारण मुस्लिम परिवार में हुआ था। उनके पिता जैनुलाब्दीन नावों के मालिक थे और अपनी सादगी तथा बुद्धिमत्ता के लिए जाने जाते थे। उनकी माता आशियम्मा दयालु और उदार स्वभाव की थीं। परिवार आर्थिक रूप से बहुत समृद्ध नहीं था, फिर भी उनका जीवन सुखी और संतोषपूर्ण था।</div>
+
+        <div class="summary-paragraph"><strong>माता-पिता का प्रभाव:</strong> कलाम के माता-पिता ने उनके जीवन पर गहरा प्रभाव डाला। उनके पिता ने उन्हें ईमानदारी, अनुशासन, आत्मविश्वास और ईश्वर में विश्वास की शिक्षा दी। उनकी माता ने उन्हें प्रेम, दया और उदारता का महत्व सिखाया। ये मूल्य आगे चलकर उनके व्यक्तित्व की नींव बने।</div>
+
+        <div class="summary-paragraph"><strong>धार्मिक सौहार्द का वातावरण:</strong> रामेश्वरम में विभिन्न धर्मों के लोग आपसी प्रेम और सम्मान के साथ रहते थे। कलाम के पिता, मंदिर के मुख्य पुजारी पक्षी लक्ष्मण शास्त्री और एक ईसाई पादरी अच्छे मित्र थे। इस वातावरण ने कलाम को सभी धर्मों का सम्मान करना और एकता में विश्वास रखना सिखाया।</div>
+
+        <div class="summary-paragraph"><strong>मित्रता और कक्षा की घटना:</strong> कलाम के घनिष्ठ मित्र रामानाध शास्त्री, अरविंदन और शिवप्रकाशन थे। वे सभी हिंदू परिवारों से थे, लेकिन धर्म ने उनकी मित्रता को कभी प्रभावित नहीं किया। एक नए शिक्षक ने केवल मुस्लिम होने के कारण कलाम को पीछे बैठने के लिए कहा। यह घटना सभी को दुखी कर गई। बाद में लक्ष्मण शास्त्री ने शिक्षक को फटकार लगाई और समानता का महत्व समझाया।</div>
+
+        <div class="summary-paragraph"><strong>शिक्षक शिवसुब्रमण्यम अय्यर का योगदान:</strong> कलाम के विज्ञान शिक्षक शिवसुब्रमण्यम अय्यर प्रगतिशील विचारों वाले व्यक्ति थे। उन्होंने कलाम को वैज्ञानिक सोच विकसित करने और सामाजिक भेदभाव का विरोध करने की प्रेरणा दी। उन्होंने अपने घर भोजन के लिए बुलाया और सामाजिक रूढ़ियों को चुनौती दी।</div>
+
+        <div class="summary-paragraph"><strong>अहमद जलालुद्दीन का प्रभाव:</strong> अहमद जलालुद्दीन कलाम के सबसे करीबी मार्गदर्शकों में से एक थे। वे उन्हें विज्ञान, साहित्य और विश्व की घटनाओं के बारे में बताते थे। उन्होंने कलाम को बड़े सपने देखने और अपने छोटे से शहर की सीमाओं से आगे सोचने के लिए प्रेरित किया।</div>
+
+        <div class="summary-paragraph"><strong>कड़ी मेहनत और जिम्मेदारियाँ:</strong> द्वितीय विश्व युद्ध के दौरान कलाम ने अपने चचेरे भाई शम्सुद्दीन की समाचार पत्र वितरण में सहायता की और अपनी पहली कमाई की। उन्होंने इमली के बीज भी इकट्ठा करके बेचे। इन अनुभवों ने उन्हें मेहनत, आत्मनिर्भरता और जिम्मेदारी का महत्व सिखाया।</div>
+
+        <div class="summary-paragraph"><strong>सीखे गए जीवन-मूल्य:</strong> अपने बचपन के अनुभवों से कलाम ने ईमानदारी, अनुशासन, कड़ी मेहनत, समानता, धार्मिक सहिष्णुता और दृढ़ संकल्प जैसे महत्वपूर्ण जीवन-मूल्य सीखे। यही मूल्य आगे चलकर उनकी सफलता का आधार बने।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> "My Childhood" केवल एक आत्मकथात्मक अध्याय नहीं है, बल्कि प्रेरणा का स्रोत भी है। यह अध्याय बताता है कि अच्छे संस्कार, धार्मिक सौहार्द, सकारात्मक मार्गदर्शन और कड़ी मेहनत किसी भी व्यक्ति को महान बना सकते हैं। यह हमें सभी धर्मों का सम्मान करने, बड़े सपने देखने और अपने लक्ष्य के लिए निरंतर प्रयास करने की प्रेरणा देता है।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

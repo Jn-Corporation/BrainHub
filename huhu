@@ -442,7 +442,7 @@
     <div class="container">
 
         <div class="chapter-hero">
-            <span class="meta-badge">Class 9 • Chapter 3 • Prose</span>
+            <span class="meta-badge">Class 9 • Chapter 3 • Poetry</span>
             <h2>The Little Girl</h2>
             <p>The Little Girl is a poignant story that explores the relationship between a father and his daughter,
                 highlighting themes of love, understanding, and the innocence of childhood. 🎵</p>
@@ -452,7 +452,7 @@
             <div class="panel-header">
                 <div class="panel-title">
                     <i class="fa-solid fa-file-invoice"></i>
-                    <h3>Extended Chapter Summary</h3>
+                    <h3>Central Idea of the Poem</h3>
                 </div>
                 <div class="lang-switch-box">
                     <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
@@ -577,43 +577,14 @@
 
     <script>
         const summaryDataAsset = {
-            en: `
-        <div class="summary-paragraph"><strong>Introduction:</strong> "The Little Girl" by Katherine Mansfield is a touching story that explores the relationship between a young girl named Kezia and her father. The story highlights how children sometimes misunderstand their parents and fail to recognize the love hidden behind strict behavior.</div>
-
-        <div class="summary-paragraph"><strong>Kezia's Fear of Her Father:</strong> Kezia was a timid and sensitive child who was afraid of her father. He was a strict, serious, and hardworking man who rarely expressed his emotions openly. Whenever he spoke to her, she became nervous and stammered. As a result, she believed that her father was harsh and did not love her.</div>
-
-        <div class="summary-paragraph"><strong>The Pin-Cushion Incident:</strong> Kezia's grandmother encouraged her to become closer to her father. To show her love, Kezia decided to make a pin-cushion as a birthday gift for him. While looking for material to fill it, she tore up some papers from her father's room, unaware that they contained an important speech he had prepared for work. When her father discovered this, he became angry and punished her with a ruler. This incident increased Kezia's fear and resentment toward him.</div>
-
-        <div class="summary-paragraph"><strong>The Macdonald Family:</strong> Living next door was the Macdonald family. Mr. Macdonald was cheerful and affectionate toward his five children. He played with them and openly showed his love. Seeing this, Kezia wished that her own father would behave in a similar manner. She compared the two fathers and felt disappointed by her father's strict nature.</div>
-
-        <div class="summary-paragraph"><strong>The Night of the Nightmare:</strong> One night, when Kezia's mother was ill and her grandmother was away, she had to sleep alone. During the night, she woke up terrified after a frightening nightmare. Crying and trembling with fear, she called for help.</div>
-
-        <div class="summary-paragraph"><strong>Father's Hidden Love:</strong> Hearing her cries, Kezia's father immediately came to her room. He picked her up, carried her to his bed, and comforted her until she felt safe again. For the first time, Kezia experienced her father's warmth and protection. She realized how hard he worked every day and understood that he loved her deeply, even though he did not express it openly.</div>
-
-        <div class="summary-paragraph"><strong>Change in Kezia's Understanding:</strong> After this experience, Kezia's opinion of her father completely changed. She no longer saw him as a cruel giant. Instead, she recognized him as a caring and responsible parent who sacrificed his comfort for the happiness of his family.</div>
-
-        <div class="summary-paragraph"><strong>Conclusion:</strong> The story teaches that parents often express love in different ways. While some show affection openly, others demonstrate their love through hard work, sacrifice, and responsibility. "The Little Girl" emphasizes the importance of understanding family members and looking beyond outward appearances to recognize true love and care.</div>
+    en: `
+        <div class="summary-paragraph"><strong>Central Idea:</strong> "No Men Are Foreign" by James Kirkup conveys the powerful message of universal brotherhood and human unity. The poet emphasizes that all people, regardless of their nationality, race, religion, or language, are fundamentally the same. We share the same earth, breathe the same air, and experience similar joys, sorrows, needs, and emotions. Through the poem, Kirkup warns against hatred, discrimination, and war, explaining that harming others ultimately means harming ourselves. He encourages people to recognize their common humanity and live with peace, understanding, and mutual respect. The poem inspires readers to rise above narrow boundaries and work towards a world united by love, harmony, and compassion.</div>
     `,
 
-            hi: `
-        <div class="summary-paragraph"><strong>परिचय:</strong> "The Little Girl" कैथरीन मैन्सफील्ड द्वारा लिखी गई एक भावनात्मक कहानी है। यह कहानी एक छोटी लड़की केज़िया और उसके पिता के बीच के संबंध को दर्शाती है। कहानी बताती है कि बच्चे अक्सर अपने माता-पिता को गलत समझ लेते हैं और उनके प्यार को पहचान नहीं पाते।</div>
-
-        <div class="summary-paragraph"><strong>केज़िया का अपने पिता से डर:</strong> केज़िया एक संवेदनशील और शर्मीली लड़की थी। उसके पिता बहुत सख्त, गंभीर और अनुशासित स्वभाव के थे। वह उनसे बात करने से डरती थी और उनके सामने घबरा जाती थी। इसलिए उसे लगता था कि उसके पिता उससे प्यार नहीं करते।</div>
-
-        <div class="summary-paragraph"><strong>पिन-कुशन की घटना:</strong> केज़िया की दादी चाहती थीं कि वह अपने पिता के करीब आए। अपने पिता के जन्मदिन पर उपहार देने के लिए उसने एक पिन-कुशन बनाया। उसे भरने के लिए उसने कुछ कागज़ फाड़ दिए, लेकिन उसे नहीं पता था कि वे उसके पिता के महत्वपूर्ण भाषण के कागज़ थे। यह देखकर उसके पिता बहुत नाराज़ हुए और उसे दंड दिया। इससे केज़िया का डर और बढ़ गया।</div>
-
-        <div class="summary-paragraph"><strong>मैकडोनाल्ड परिवार:</strong> केज़िया के पड़ोस में मैकडोनाल्ड परिवार रहता था। श्री मैकडोनाल्ड अपने बच्चों के साथ खेलते, हँसते और खुलकर प्यार जताते थे। केज़िया उन्हें देखकर सोचती थी कि उसके पिता भी ऐसे ही होते। वह अपने पिता की तुलना उनसे करती थी और दुखी हो जाती थी।</div>
-
-        <div class="summary-paragraph"><strong>डरावना सपना:</strong> एक रात उसकी माँ बीमार थीं और दादी घर पर नहीं थीं। केज़िया को अकेले सोना पड़ा। रात में उसे एक भयानक सपना आया और वह डरकर रोने लगी।</div>
-
-        <div class="summary-paragraph"><strong>पिता का छिपा हुआ प्यार:</strong> उसकी आवाज़ सुनकर उसके पिता तुरंत उसके पास आए। उन्होंने उसे गोद में उठाया, अपने कमरे में ले गए और उसे तब तक सांत्वना दी जब तक वह शांत नहीं हो गई। पहली बार केज़िया ने अपने पिता के स्नेह और सुरक्षा को महसूस किया।</div>
-
-        <div class="summary-paragraph"><strong>केज़िया की सोच में बदलाव:</strong> उस रात के बाद केज़िया की अपने पिता के बारे में सोच बदल गई। उसे समझ आया कि उसके पिता उससे बहुत प्यार करते हैं। वे केवल अपनी भावनाएँ खुलकर व्यक्त नहीं कर पाते थे क्योंकि वे परिवार के लिए बहुत मेहनत करते थे।</div>
-
-        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> कहानी का मुख्य संदेश यह है कि माता-पिता का प्यार अलग-अलग रूपों में दिखाई देता है। कुछ लोग प्यार को खुलकर व्यक्त करते हैं, जबकि कुछ अपने कर्तव्यों, त्याग और जिम्मेदारियों के माध्यम से प्यार दिखाते हैं। यह कहानी हमें अपने माता-पिता को समझने और उनके त्याग की सराहना करने की सीख देती है।</div>
+    hi: `
+        <div class="summary-paragraph"><strong>केंद्रीय विचार:</strong> "No Men Are Foreign" जेम्स किर्कप की एक प्रेरणादायक कविता है, जो विश्व-बंधुत्व और मानव एकता का संदेश देती है। कवि बताता है कि सभी मनुष्य, चाहे वे किसी भी देश, जाति, धर्म या भाषा के हों, मूल रूप से एक समान हैं। हम सभी एक ही पृथ्वी पर रहते हैं, एक ही हवा में सांस लेते हैं और समान भावनाओं, आवश्यकताओं तथा अनुभवों को साझा करते हैं। कविता घृणा, भेदभाव और युद्ध का विरोध करती है तथा यह समझाती है कि दूसरों को नुकसान पहुँचाना वास्तव में स्वयं मानवता को नुकसान पहुँचाना है। कवि लोगों से आग्रह करता है कि वे अपने साझा मानवत्व को पहचानें और प्रेम, शांति, सहिष्णुता तथा आपसी सम्मान के साथ जीवन व्यतीत करें। यह कविता हमें संकीर्ण सोच से ऊपर उठकर एकता, सद्भाव और करुणा से भरे विश्व के निर्माण की प्रेरणा देती है।</div>
     `
-        };
-
+};
         function switchSummaryLanguage(langKey, elementRef) {
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
             if (elementRef) elementRef.classList.add("active");

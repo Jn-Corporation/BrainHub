@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Road Not Taken - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 10 • Poetry</span>
+            <h2>The Road Not Taken</h2>
+            <p>The Road Not Taken is a poignant poem by Robert Frost that explores the theme of choices and their
+                consequences. The speaker reflects on a fork in the road and the decision-making process, ultimately
+                highlighting the importance of individual choices in shaping one's life. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Central Idea of the Poem</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the poet of "The Road Not Taken"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> William Wordsworth</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Robert Frost</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> John Keats</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> T.S. Eliot</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Where did the speaker stand in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> At a river bank</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> In a yellow wood</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> On a mountain</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> In a garden</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> How many roads diverged in the wood?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Three</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Four</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Two</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Five</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Why was the speaker sorry?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> He lost his way</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> He could not travel both
+                            roads</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> It started raining</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> He was alone</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Which road did the speaker choose?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> The more traveled road</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> The less traveled road</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> The shortest road</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> The widest road</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What was the condition of the chosen road?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> Rocky and rough</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Grassy and wanted wear</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Covered with snow</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Muddy and wet</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> What does the road symbolize in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> A journey</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Life choices</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Nature</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Friendship</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What season is suggested by the phrase "yellow wood"?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Spring</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Summer</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Autumn</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Winter</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What had not yet happened on the roads that morning?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Rainfall</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Footsteps had worn them
+                            black</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Snowfall</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Sunlight reached them</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> What did the speaker keep for another day?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> His journey</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> The first road</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> His luggage</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> His plans</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Why did the speaker doubt he would ever come back?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> The road was dangerous</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> One way leads on to another</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> He was tired</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> He got lost</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> What feeling does the speaker express while making the
+                        choice?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> Excitement only</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Confusion and hesitation</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Anger</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Fear</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> What literary device is mainly used in the roads?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Metaphor</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Hyperbole</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Alliteration</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Irony</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The poem teaches us that life is full of ______.</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Adventures</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Choices and decisions</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Problems</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Rewards</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What does "diverged" mean?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Joined together</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Separated into different
+                            directions</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Disappeared</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Became narrow</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The speaker looked down one road as far as he could
+                        until it ______.</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Reached a village</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Bent in the undergrowth</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Ended suddenly</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Crossed a river</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What was common about both roads?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Both were equally fair</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Both were muddy</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Both were crowded</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Both ended at the same
+                            place</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> How will the speaker tell his story in the future?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> With laughter</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> With a sigh</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> With tears</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> With anger</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What made all the difference in the speaker's life?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> His hard work</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Taking the road less travelled
+                            by</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> His luck</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> His friends</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> What is the central theme of the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Beauty of nature</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Importance of life choices</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Friendship</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Adventure and travel</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The poet stood at a point where two roads met in a
+                        forest.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The speaker immediately chose a road without thinking
+                        about it.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The poet carefully observed one road before making a
+                        decision.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Both roads were completely different in appearance.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The poem suggests that every decision in life can
+                        influence our future.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The speaker was travelling with his friends in the
+                        forest.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The roads in the poem represent choices available in
+                        life.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The speaker was certain that he would return and walk the
+                        other road later.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The poem highlights the importance of independent
+                        thinking.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The speaker describes the roads as being crowded with
+                        travelers.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The poem is written from the first-person point of view.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The speaker regrets making any choice at all.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The setting of the poem is a natural outdoor
+                        environment.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The speaker compares life to a classroom in the poem.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The poem encourages readers to think carefully before
+                        making important decisions.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The chosen road symbolizes a unique path in life.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The poem suggests that all choices in life have exactly
+                        the same outcomes.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The speaker's final reflection shows that his decision
+                        was significant.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The poem mainly focuses on technology and modern life.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> "The Road Not Taken" is one of Robert Frost's most
+                        famous poems.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The poem "The Road Not Taken" was written by ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The speaker stood where two roads ________ in a wood.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The wood is described as ________ in color.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The speaker was sorry because he could not travel
+                        ________ roads.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> One road bent into the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The chosen road was covered with ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The speaker describes himself as one ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The leaves on both roads had not been stepped on and
+                        turned ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The speaker kept the first road for another ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> One way leads on to another ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The speaker imagines telling his story with a ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The poem uses the roads as a symbol of life's ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The setting of the poem is a ________ environment.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The speaker examined the roads before making a ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The road selected by the speaker seemed less ________ by
+                        travelers.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The poem teaches the importance of making wise ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The speaker looked down one road as far as he ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The final line says the speaker's choice made all the
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The poem belongs to the genre of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The central message of the poem is that our choices
+                        shape our ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who wrote the poem "The Road Not Taken"?</div>
+                    <div class="qa-answer">The poem "The Road Not Taken" was written by Robert Frost, one of America's
+                        most famous poets. He is known for writing poems about nature, life, and human experiences.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Where was the speaker standing in the poem?</div>
+                    <div class="qa-answer">The speaker was standing in a yellow wood where two roads diverged. He had to
+                        choose one of the two paths for his journey.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Why was the speaker sorry?</div>
+                    <div class="qa-answer">The speaker was sorry because he could not travel both roads. He had to make
+                        a choice and leave one path unexplored.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What did the speaker do before choosing a road?</div>
+                    <div class="qa-answer">Before choosing a road, the speaker carefully looked down one path as far as
+                        he could. He wanted to understand where it might lead before making a decision.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> Why did the speaker choose the second road?</div>
+                    <div class="qa-answer">The speaker chose the second road because it appeared grassy and seemed to
+                        have been used less often. It looked slightly different from the other road.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> Were the two roads really very different?</div>
+                    <div class="qa-answer">No, the two roads were actually quite similar. The speaker later realized
+                        that both roads had been worn almost equally by travelers.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> What does the word "diverged" mean?</div>
+                    <div class="qa-answer">The word "diverged" means separated or branched off in different directions.
+                        In the poem, it refers to the two roads splitting from one point.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What does the yellow wood suggest?</div>
+                    <div class="qa-answer">The yellow wood suggests the autumn season. It also creates a beautiful
+                        natural setting for the speaker's important decision.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> Why did the speaker keep the first road for another day?
+                    </div>
+                    <div class="qa-answer">The speaker hoped that he might return and explore the first road another
+                        day. However, he knew that life often moves forward and such opportunities may never come again.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> Why did the speaker doubt he would ever come back?</div>
+                    <div class="qa-answer">The speaker doubted he would return because one choice in life often leads to
+                        another. Once a path is chosen, it becomes difficult to go back and choose differently.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> What does the road symbolize in the poem?</div>
+                    <div class="qa-answer">The road symbolizes the choices and decisions we face in life. Every road
+                        represents a different direction and future.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> What does the traveler symbolize?</div>
+                    <div class="qa-answer">The traveler symbolizes every human being who must make decisions in life.
+                        Like the speaker, everyone faces situations where choices must be made.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> What is the main theme of the poem?</div>
+                    <div class="qa-answer">The main theme of the poem is the importance of choices and decisions in
+                        life. It shows how a single decision can influence a person's future.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> What does the phrase "wanted wear" mean?</div>
+                    <div class="qa-answer">The phrase "wanted wear" means that the road seemed to need more travelers.
+                        It appeared less used than the other path.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> What does the speaker mean by "I shall be telling this
+                        with a sigh"?</div>
+                    <div class="qa-answer">The speaker means that he will remember this decision thoughtfully in the
+                        future. The sigh may express reflection, uncertainty, or satisfaction about the choice he made.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> How does nature contribute to the poem?</div>
+                    <div class="qa-answer">Nature provides the setting for the poem and helps express the speaker's
+                        thoughts. The forest and roads symbolize life's journey and choices.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> What lesson does the poem teach us?</div>
+                    <div class="qa-answer">The poem teaches us that life is full of choices. We should think carefully
+                        before making decisions because they can have lasting effects on our future.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> What made all the difference in the speaker's life?</div>
+                    <div class="qa-answer">The speaker says that choosing the road less traveled by made all the
+                        difference. This highlights the impact of personal choices on one's life journey.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What kind of poem is "The Road Not Taken"?</div>
+                    <div class="qa-answer">"The Road Not Taken" is a reflective and symbolic poem. It uses a simple
+                        journey through a forest to explore deeper ideas about life and decision-making.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> Why is "The Road Not Taken" still relevant today?</div>
+                    <div class="qa-answer">The poem remains relevant because people continue to face important choices
+                        throughout their lives. Its message about decision-making and personal responsibility is
+                        universal and timeless.</div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Robert Frost</h4>
+                    <p>Robert Frost (1874–1963) was one of the most celebrated American poets of the twentieth century.
+                        He is widely known for his simple yet profound poetry that explores nature, rural life, human
+                        emotions, and important life choices. Frost's poems often use everyday situations and natural
+                        settings to convey deeper philosophical meanings. His writing style is admired for its clarity,
+                        symbolism, and reflective tone. Some of his most famous works include <i>The Road Not Taken</i>,
+                        <i>Stopping by Woods on a Snowy Evening</i>, <i>Mending Wall</i>, <i>Birches</i>, and <i>Fire
+                            and Ice</i>. Robert Frost received four Pulitzer Prizes for Poetry and remains one of the
+                        most influential poets in English literature. His poem <i>"The Road Not Taken"</i> beautifully
+                        highlights the significance of decision-making and how choices shape the course of our lives.
+                    </p>
+                </div>
+            </div>
+        </div>
+<div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);"><i class="fa-solid fa-list-check"></i> MCQs</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Robert Frost</div>
+                        <div><b>2.</b> At a fork/intersection in a wood</div>
+                        <div><b>3.</b> Two</div>
+                        <div><b>4.</b> He could not travel both roads</div>
+                        <div><b>5.</b> The less traveled, grassy one</div>
+                        <div><b>6.</b> Grassy and wanted wear</div>
+                        <div><b>7.</b> Life choices and decisions</div>
+                        <div><b>8.</b> Autumn</div>
+                        <div><b>9.</b> No step had trodden leaves black</div>
+                        <div><b>10.</b> The first road</div>
+                        <div><b>11.</b> One road leads to another way</div>
+                        <div><b>12.</b> Doubt and thoughtful hesitation</div>
+                        <div><b>13.</b> Extended Metaphor</div>
+                        <div><b>14.</b> Choices and consequences</div>
+                        <div><b>15.</b> Separated or split into two paths</div>
+                        <div><b>16.</b> Bent in the undergrowth</div>
+                        <div><b>17.</b> Both lay equally covered in leaves</div>
+                        <div><b>18.</b> With a sigh</div>
+                        <div><b>19.</b> Taking the less traveled path</div>
+                        <div><b>20.</b> The impactful nature of life choices</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> True / False</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> True</div>
+                        <div><b>4.</b> False</div>
+                        <div><b>5.</b> True</div>
+                        <div><b>6.</b> False</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> False</div>
+                        <div><b>9.</b> True</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> False</div>
+                        <div><b>13.</b> True</div>
+                        <div><b>14.</b> False</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> True</div>
+                        <div><b>17.</b> False</div>
+                        <div><b>18.</b> True</div>
+                        <div><b>19.</b> False</div>
+                        <div><b>20.</b> True</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);"><i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Robert Frost</div>
+                        <div><b>2.</b> diverged</div>
+                        <div><b>3.</b> yellow</div>
+                        <div><b>4.</b> both</div>
+                        <div><b>5.</b> undergrowth</div>
+                        <div><b>6.</b> grass / leaves</div>
+                        <div><b>7.</b> traveler</div>
+                        <div><b>8.</b> black</div>
+                        <div><b>9.</b> day</div>
+                        <div><b>10.</b> path / way</div>
+                        <div><b>11.</b> sigh</div>
+                        <div><b>12.</b> choices / decisions</div>
+                        <div><b>13.</b> natural / forest</div>
+                        <div><b>14.</b> choice / decision</div>
+                        <div><b>15.</b> traveled / frequented</div>
+                        <div><b>16.</b> choices / decisions</div>
+                        <div><b>17.</b> could</div>
+                        <div><b>18.</b> difference</div>
+                        <div><b>19.</b> poetry / literature</div>
+                        <div><b>20.</b> future / destiny</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Central Idea:</strong> "The Road Not Taken" by Robert Frost explores the importance of choices and decisions in human life. Through the symbol of two diverging roads in a forest, the poet shows that life constantly presents us with different paths and opportunities, but we can choose only one. Every decision we make influences our future and shapes our personality, experiences, and destiny. The poem highlights the uncertainty that accompanies important choices, as we can never know exactly where a chosen path will lead. Frost emphasizes that once a decision is made, it is often difficult or impossible to return and choose differently. Ultimately, the poem encourages readers to make thoughtful decisions, accept their consequences, and move forward with confidence, as the choices we make can have a lasting impact on our lives.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>केंद्रीय विचार:</strong> "The Road Not Taken" रॉबर्ट फ्रॉस्ट की एक प्रेरणादायक और चिंतनशील कविता है, जो जीवन में निर्णयों और विकल्पों के महत्व को दर्शाती है। जंगल में दो अलग-अलग रास्तों का चित्रण जीवन में मिलने वाले विभिन्न अवसरों और विकल्पों का प्रतीक है। कवि बताता है कि मनुष्य एक समय में केवल एक ही मार्ग चुन सकता है, और उसका प्रत्येक निर्णय उसके भविष्य, अनुभवों तथा व्यक्तित्व को प्रभावित करता है। कविता यह भी दर्शाती है कि महत्वपूर्ण निर्णयों के साथ अनिश्चितता जुड़ी होती है क्योंकि हमें पहले से नहीं पता होता कि चुना गया मार्ग हमें कहाँ ले जाएगा। एक बार निर्णय लेने के बाद वापस लौटना कठिन होता है। इसलिए कविता हमें सोच-समझकर निर्णय लेने, उनके परिणामों को स्वीकार करने और आत्मविश्वास के साथ आगे बढ़ने की प्रेरणा देती है, क्योंकि हमारे चुनाव ही हमारे जीवन की दिशा और भाग्य को निर्धारित करते हैं।</div>
+    `
+        };
+
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

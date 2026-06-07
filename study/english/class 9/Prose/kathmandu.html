@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kathmandu - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 8 • Prose</span>
+            <h2>Kathmandu</h2>
+            <p>Kathmandu is a vibrant city that serves as the capital of Nepal, known for its rich history, diverse
+                culture, and stunning architecture. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Extended Chapter Summary</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the author of the chapter "Kathmandu"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Ruskin Bond</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Vikram Seth</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> A.P.J. Abdul Kalam</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> R.K. Narayan</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> In which country is Kathmandu located?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> India</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Bhutan</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Nepal</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> China</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Which temple did the narrator visit first?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> Boudhanath Stupa</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Pashupatinath Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Kedarnath Temple</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> Swayambhunath Temple</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Which deity is worshipped in the Pashupatinath Temple?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Vishnu</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Shiva</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Brahma</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Ganesha</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Who were allowed inside the Pashupatinath Temple?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> All visitors</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Hindus only</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Foreigners only</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> Monks only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What was happening on the banks of the Bagmati River?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> Boat racing</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Funeral ceremonies</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Religious fair</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Fishing competition</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> Which monument did the narrator visit after
+                        Pashupatinath?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> Boudhanath Stupa</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> India Gate</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Charminar</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> Qutub Minar</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What was the atmosphere like at Boudhanath?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Noisy and crowded</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Peaceful and calm</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Dark and silent</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Chaotic and confusing</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> What did the narrator buy in Kathmandu?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> A flute</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A painting</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A watch</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> A camera</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> What was special about the flute seller?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> He was very rich</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He sold only one type of
+                            flute</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He played the flute
+                            melodiously</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> He spoke many languages</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> What material were most flutes made of?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Plastic</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Metal</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Bamboo</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Wood</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> How many temples were described in the chapter?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> One</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Two</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Three</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> Four</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> What does the Bagmati River symbolize for the people of
+                        Kathmandu?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> Entertainment</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> The cycle of life and death</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Trade and business</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Tourism only</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What kind of animals were seen near the temple?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Tigers</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Monkeys</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Elephants</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Horses</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What was the narrator's means of transport while leaving
+                        Kathmandu?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Train</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Bus</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Aeroplane</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Taxi</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> What did the narrator want to buy but could not?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> A flute</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> A newspaper</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> A comic book</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> A radio</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> Which religious structure is associated with Buddhism in
+                        the chapter?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Pashupatinath</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Boudhanath Stupa</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Kedarnath</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Somnath</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What quality of the flute impressed the narrator most?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Its color</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Its simplicity and universal
+                            appeal</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Its high price</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Its size</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> What is the main theme of "Kathmandu"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Adventure sports</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Travel, culture, and
+                            spirituality</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Science and technology</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Political history</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> Which city is the focus of the chapter?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Delhi</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Kathmandu</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Mumbai</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Kolkata</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The narrator visited Kathmandu during a holiday trip in
+                        Nepal.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The entrance of Pashupatinath Temple was open to people
+                        of all religions.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> A crowd of worshippers was present around Pashupatinath
+                        Temple.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The Bagmati River flows beside the Pashupatinath Temple.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The narrator found Boudhanath to be noisy and chaotic.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The stupa of Boudhanath is an important center of
+                        Buddhist worship.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The narrator observed sadhus covered with ash near the
+                        temple.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The narrator disliked the sound of the flute seller.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The flute seller carried flutes of different sizes and
+                        kinds.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The narrator considered the flute to be a modern and
+                        complicated instrument.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Monkeys were seen jumping around the temple premises.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The narrator described Kathmandu as a city rich in
+                        culture and religious traditions.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The narrator traveled back from Kathmandu by train.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> Cremation ceremonies were being performed along the
+                        Bagmati River.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The narrator compared the Bagmati River to the cycle of
+                        life and death.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The chapter focuses mainly on sports and competitions.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The flute seller's music added charm to the busy streets
+                        of Kathmandu.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The narrator found Boudhanath more peaceful than
+                        Pashupatinath.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The chapter presents a vivid picture of Kathmandu's
+                        spiritual atmosphere.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The narrator felt no interest in the people and places
+                        of Kathmandu.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The chapter "Kathmandu" is written by ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Kathmandu is the capital city of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The narrator first visited the ________ Temple.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> Pashupatinath is a famous temple dedicated to Lord
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The ________ River flows beside the Pashupatinath Temple.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> Only ________ were allowed to enter the Pashupatinath
+                        Temple.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The narrator later visited the ________ Stupa.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Boudhanath is an important center of ________ worship.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The narrator saw many ________ jumping and playing around
+                        the temple.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Funeral ceremonies were taking place on the banks of the
+                        ________ River.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The narrator bought a ________ while exploring the
+                        streets of Kathmandu.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Most of the flutes sold by the vendor were made of
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The flute seller played his instrument in a ________
+                        manner.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The narrator returned from Kathmandu by ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The atmosphere at Boudhanath was calm and ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The chapter presents the culture, traditions, and
+                        ________ life of Kathmandu.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The Bagmati River symbolizes the cycle of life and
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The flute is one of the oldest ________ instruments in
+                        the world.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The chapter highlights Kathmandu's rich cultural and
+                        religious ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The narrator admired the simplicity and universal appeal
+                        of the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+
+                <h3>📘 Short Answer Questions (20–30 Words)</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> Who is the author of the chapter "Kathmandu"?</div>
+                    <div class="qa-answer">The chapter "Kathmandu" is written by Vikram Seth. It describes his
+                        experiences and observations during his visit to Kathmandu, Nepal.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Which temple did the narrator visit in Kathmandu?</div>
+                    <div class="qa-answer">The narrator visited the famous Pashupatinath Temple, one of the most
+                        important Hindu temples dedicated to Lord Shiva.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> Why were some people not allowed inside Pashupatinath
+                        Temple?</div>
+                    <div class="qa-answer">Only Hindus were allowed inside the temple. Foreigners and people of other
+                        religions had to remain outside the main entrance.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> What was happening on the banks of the Bagmati River?
+                    </div>
+                    <div class="qa-answer">Funeral rites and cremation ceremonies were being performed on the banks of
+                        the Bagmati River near the temple.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> What did the narrator notice at Boudhanath Stupa?</div>
+                    <div class="qa-answer">The narrator noticed a peaceful atmosphere, devotees moving around the stupa,
+                        and a sense of calm and spirituality.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> What kind of instrument was the flute seller selling?
+                    </div>
+                    <div class="qa-answer">The flute seller was selling bamboo flutes of different sizes and producing
+                        sweet music while walking through the streets.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> Why did the narrator admire the flute?</div>
+                    <div class="qa-answer">The narrator admired the flute because of its simplicity, beauty, and its
+                        ability to create melodious music.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What animals were commonly seen around Pashupatinath
+                        Temple?</div>
+                    <div class="qa-answer">Monkeys were commonly seen jumping, playing, and moving around the temple
+                        premises.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What does the Bagmati River symbolize in the chapter?
+                    </div>
+                    <div class="qa-answer">The Bagmati River symbolizes the continuous cycle of life and death that is
+                        an important part of human existence.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What is the central theme of the chapter?</div>
+                    <div class="qa-answer">The chapter highlights Kathmandu's culture, spirituality, traditions, and the
+                        beauty of simple things like music and travel.</div>
+                </div>
+
+
+                <h3>📝 Long Answer Questions (60–70 Words)</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q11.</span> Describe the atmosphere at Pashupatinath Temple.</div>
+                    <div class="qa-answer">Pashupatinath Temple was crowded with devotees, priests, tourists, and holy
+                        men. The temple was full of religious activities and ceremonies. The narrator observed
+                        worshippers waiting for darshan while funeral rites were being performed on the banks of the
+                        Bagmati River. The presence of monkeys, sadhus, and chanting devotees created a vibrant and
+                        spiritual atmosphere that reflected the religious importance of the temple.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q12.</span> How was Boudhanath different from Pashupatinath?</div>
+                    <div class="qa-answer">While Pashupatinath was crowded, noisy, and full of religious activity,
+                        Boudhanath offered a calm and peaceful environment. The narrator noticed a sense of serenity
+                        around the stupa. Devotees moved quietly in prayer, creating a spiritual atmosphere. This
+                        contrast highlighted the different ways in which people experience and express their religious
+                        beliefs in Kathmandu.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q13.</span> Describe the flute seller and his significance in the
+                        chapter.</div>
+                    <div class="qa-answer">The flute seller was a simple street vendor carrying different kinds of
+                        bamboo flutes. As he walked through the streets, he played beautiful melodies that attracted
+                        people's attention. His music inspired the narrator to reflect on the flute as one of the oldest
+                        and most universal musical instruments. The flute seller represented simplicity, art, and the
+                        timeless appeal of music.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q14.</span> What does the narrator say about the flute?</div>
+                    <div class="qa-answer">The narrator describes the flute as a simple yet magical instrument. It is
+                        inexpensive, easy to carry, and capable of producing beautiful music. The flute is found in many
+                        cultures around the world and has existed for centuries. Its universal popularity demonstrates
+                        how music can connect people regardless of language, nationality, or background.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q15.</span> Explain the significance of the Bagmati River in the
+                        chapter.</div>
+                    <div class="qa-answer">The Bagmati River plays an important role in the chapter because it is
+                        associated with religious rituals and cremation ceremonies. The narrator observes how life and
+                        death coexist along its banks. While worshippers pray in the temple, funeral rites take place
+                        nearby. This symbolizes the continuous cycle of human existence and reflects important cultural
+                        and spiritual beliefs.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q16.</span> How does the chapter present the culture of Kathmandu?
+                    </div>
+                    <div class="qa-answer">The chapter presents Kathmandu as a city rich in culture, religion, and
+                        tradition. Through descriptions of temples, monasteries, festivals, holy men, devotees, and
+                        street vendors, the narrator captures the unique character of the city. The chapter shows how
+                        spirituality is deeply woven into everyday life and highlights Kathmandu's importance as a
+                        cultural center.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q17.</span> Why is "Kathmandu" considered a travelogue?</div>
+                    <div class="qa-answer">"Kathmandu" is considered a travelogue because it records the narrator's
+                        personal experiences and observations during a visit to Kathmandu. The chapter describes
+                        important places, local customs, religious practices, and daily life in the city. Through vivid
+                        details and reflections, the author provides readers with a realistic picture of the destination
+                        and its culture.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q18.</span> What impression of Kathmandu does the narrator create?
+                    </div>
+                    <div class="qa-answer">The narrator creates an impression of Kathmandu as a fascinating city filled
+                        with religious devotion, cultural diversity, and historical significance. The city is portrayed
+                        as both lively and peaceful, depending on the location. Through descriptions of temples, rivers,
+                        and people, the narrator highlights Kathmandu's unique charm and spiritual atmosphere.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q19.</span> What lessons can readers learn from the chapter?</div>
+                    <div class="qa-answer">Readers learn to appreciate cultural diversity, respect different religious
+                        traditions, and recognize the beauty of simple things in life. The chapter also teaches the
+                        importance of observing and understanding different ways of life. Through the narrator's
+                        experiences, readers gain a deeper appreciation for travel, culture, spirituality, and human
+                        connections.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q20.</span> Why is the chapter "Kathmandu" important for students?
+                    </div>
+                    <div class="qa-answer">The chapter is important because it introduces students to the culture and
+                        traditions of Nepal while developing an appreciation for travel literature. It encourages
+                        curiosity about different places and people. The chapter also highlights universal themes such
+                        as spirituality, cultural understanding, and the power of music, making it both educational and
+                        inspiring.</div>
+                </div>
+
+                <h3>⭐ Very Long Answer Questions</h3>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q21.</span> Describe the narrator's visit to Pashupatinath Temple.
+                    </div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        Pashupatinath Temple is one of the most famous Hindu temples in Nepal. During his visit to
+                        Kathmandu, the narrator visited this sacred temple and observed many interesting scenes.
+                        <br><br>
+
+                        <strong>The Temple Atmosphere:</strong><br>
+                        The temple was crowded with worshippers, priests, tourists, and holy men. People had gathered to
+                        offer prayers and seek blessings from Lord Shiva.
+                        <br><br>
+
+                        <strong>Activities Around the Temple:</strong><br>
+                        The narrator saw monkeys jumping around the temple premises and priests conducting religious
+                        ceremonies. Cremation rituals were also taking place on the banks of the Bagmati River.
+                        <br><br>
+
+                        <strong>Religious Importance:</strong><br>
+                        Only Hindus were allowed inside the temple. This reflected the sacred and traditional
+                        significance of the shrine.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The visit to Pashupatinath Temple gave the narrator a deep understanding of Nepal's religious
+                        traditions and spiritual culture.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q22.</span> Compare Pashupatinath Temple and Boudhanath Stupa.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        During his journey in Kathmandu, the narrator visited both Pashupatinath Temple and Boudhanath
+                        Stupa. These places represent two different religious traditions and atmospheres.
+                        <br><br>
+
+                        <strong>Pashupatinath Temple:</strong><br>
+                        Pashupatinath was crowded and full of activity. Worshippers, priests, monkeys, and tourists
+                        filled the area. Religious ceremonies and cremation rituals created a lively environment.
+                        <br><br>
+
+                        <strong>Boudhanath Stupa:</strong><br>
+                        In contrast, Boudhanath was calm, peaceful, and serene. Devotees walked quietly around the
+                        stupa, creating an atmosphere of meditation and tranquility.
+                        <br><br>
+
+                        <strong>Differences:</strong><br>
+                        While Pashupatinath represented active Hindu worship, Boudhanath reflected the peaceful
+                        practices of Buddhism.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        Both places showcase Kathmandu's rich cultural and religious diversity, each offering a unique
+                        spiritual experience.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q23.</span> Describe the significance of the flute in the chapter
+                        "Kathmandu".</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        The flute plays an important symbolic role in the chapter. The narrator's encounter with a flute
+                        seller inspires him to reflect on the beauty and simplicity of this musical instrument.
+                        <br><br>
+
+                        <strong>The Flute Seller:</strong><br>
+                        The flute seller carried several bamboo flutes and played sweet melodies while walking through
+                        the busy streets of Kathmandu.
+                        <br><br>
+
+                        <strong>Importance of the Flute:</strong><br>
+                        The narrator describes the flute as one of the oldest musical instruments in the world. It is
+                        simple, inexpensive, and found in many cultures.
+                        <br><br>
+
+                        <strong>Universal Appeal:</strong><br>
+                        Unlike many modern instruments, the flute can be played by ordinary people and appreciated by
+                        everyone regardless of nationality or culture.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The flute symbolizes simplicity, harmony, and the universal language of music that connects
+                        people across the world.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q24.</span> Discuss the cultural and spiritual richness of Kathmandu
+                        as presented in the chapter.</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        The chapter presents Kathmandu as a city rich in culture, history, and spirituality. Through the
+                        narrator's observations, readers get a vivid picture of life in Nepal's capital.
+                        <br><br>
+
+                        <strong>Religious Diversity:</strong><br>
+                        The city is home to important Hindu and Buddhist sites such as Pashupatinath Temple and
+                        Boudhanath Stupa. These places attract thousands of devotees every year.
+                        <br><br>
+
+                        <strong>Cultural Activities:</strong><br>
+                        Kathmandu's streets are filled with pilgrims, vendors, monks, tourists, and musicians. The city
+                        reflects a blend of ancient traditions and everyday life.
+                        <br><br>
+
+                        <strong>Spiritual Atmosphere:</strong><br>
+                        Religious rituals, prayers, meditation, and sacred ceremonies create a deeply spiritual
+                        environment throughout the city.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The chapter successfully portrays Kathmandu as a unique city where culture, religion, and daily
+                        life exist together in harmony.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q25.</span> What lessons do readers learn from the chapter
+                        "Kathmandu"?</div>
+                    <div class="qa-answer">
+                        <strong>Introduction:</strong><br>
+                        "Kathmandu" is not only a travel account but also a chapter filled with meaningful lessons about
+                        life, culture, and humanity.
+                        <br><br>
+
+                        <strong>Respect for Different Cultures:</strong><br>
+                        The chapter teaches readers to appreciate and respect different religions, customs, and
+                        traditions around the world.
+                        <br><br>
+
+                        <strong>Importance of Observation:</strong><br>
+                        The narrator carefully observes people, places, and events. This encourages readers to become
+                        more aware and thoughtful travelers.
+                        <br><br>
+
+                        <strong>Beauty of Simplicity:</strong><br>
+                        Through the flute seller, the chapter highlights how simple things can bring joy and connect
+                        people across cultures.
+                        <br><br>
+
+                        <strong>Conclusion:</strong><br>
+                        The chapter inspires readers to value cultural diversity, appreciate spirituality, and find
+                        beauty in everyday experiences while exploring the world.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>Vikram Seth</h4>
+                    <p>Vikram Seth (born 1952) is one of India's most celebrated contemporary writers, poets, novelists,
+                        and travel writers. He was born in Kolkata, India, and studied at prestigious institutions such
+                        as Oxford University and Stanford University. Seth is widely admired for his elegant writing
+                        style, vivid descriptions, and deep understanding of different cultures and human experiences.
+                        Some of his most famous works include <i>A Suitable Boy</i>, <i>An Equal Music</i>, <i>The
+                            Golden Gate</i>, and <i>From Heaven Lake</i>. The chapter <i>"Kathmandu"</i> is adapted from
+                        his travel writing and beautifully captures the cultural richness, spiritual atmosphere,
+                        religious diversity, and everyday life of Nepal's capital city. Through his keen observations,
+                        Seth encourages readers to appreciate different cultures, traditions, and the beauty found in
+                        simple experiences.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);"><i class="fa-solid fa-list-check"></i> MCQs</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Vikram Seth</div>
+                        <div><b>2.</b> Nepal</div>
+                        <div><b>3.</b> Pashupatinath Temple</div>
+                        <div><b>4.</b> Shiva</div>
+                        <div><b>5.</b> Hindus only</div>
+                        <div><b>6.</b> Funeral ceremonies</div>
+                        <div><b>7.</b> Boudhanath Stupa</div>
+                        <div><b>8.</b> Peaceful and calm</div>
+                        <div><b>9.</b> A flute</div>
+                        <div><b>10.</b> He played the flute melodiously</div>
+                        <div><b>11.</b> Bamboo</div>
+                        <div><b>12.</b> Two</div>
+                        <div><b>13.</b> The cycle of life and death</div>
+                        <div><b>14.</b> Monkeys</div>
+                        <div><b>15.</b> Aeroplane</div>
+                        <div><b>16.</b> A newspaper</div>
+                        <div><b>17.</b> Boudhanath Stupa</div>
+                        <div><b>18.</b> Its simplicity and universal appeal</div>
+                        <div><b>19.</b> Travel, culture, and spirituality</div>
+                        <div><b>20.</b> Kathmandu</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> True / False</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> True</div>
+                        <div><b>4.</b> True</div>
+                        <div><b>5.</b> False</div>
+                        <div><b>6.</b> True</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> False</div>
+                        <div><b>9.</b> True</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> True</div>
+                        <div><b>13.</b> False</div>
+                        <div><b>14.</b> True</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> False</div>
+                        <div><b>17.</b> True</div>
+                        <div><b>18.</b> True</div>
+                        <div><b>19.</b> True</div>
+                        <div><b>20.</b> False</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);"><i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> Vikram Seth</div>
+                        <div><b>2.</b> Nepal</div>
+                        <div><b>3.</b> Pashupatinath</div>
+                        <div><b>4.</b> Shiva</div>
+                        <div><b>5.</b> Bagmati</div>
+                        <div><b>6.</b> Hindus</div>
+                        <div><b>7.</b> Boudhanath</div>
+                        <div><b>8.</b> Buddhist</div>
+                        <div><b>9.</b> monkeys</div>
+                        <div><b>10.</b> Bagmati</div>
+                        <div><b>11.</b> flute</div>
+                        <div><b>12.</b> bamboo</div>
+                        <div><b>13.</b> melodious / peaceful</div>
+                        <div><b>14.</b> aeroplane (air)</div>
+                        <div><b>15.</b> serene / peaceful</div>
+                        <div><b>16.</b> religious / spiritual</div>
+                        <div><b>17.</b> death</div>
+                        <div><b>18.</b> musical</div>
+                        <div><b>19.</b> heritage / diversity</div>
+                        <div><b>20.</b> flute</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+       </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Introduction:</strong> "Kathmandu" by Vikram Seth is a fascinating travelogue that describes the author's visit to Kathmandu, the capital of Nepal. The chapter presents the city's rich cultural heritage, religious diversity, spiritual atmosphere, and the beauty of everyday life.</div>
+
+        <div class="summary-paragraph"><strong>Visit to Pashupatinath Temple:</strong> The narrator begins his journey by visiting the famous Pashupatinath Temple, a sacred Hindu shrine dedicated to Lord Shiva. The temple is crowded with devotees, priests, tourists, and holy men. Only Hindus are allowed inside the temple, while others watch from outside. The narrator observes the busy religious activities taking place around the temple.</div>
+
+        <div class="summary-paragraph"><strong>The Bagmati River and Funeral Rituals:</strong> Flowing beside the temple is the Bagmati River. The narrator notices funeral ceremonies being performed on its banks. The river symbolizes the cycle of life and death, as worship and cremation take place side by side, reflecting important religious beliefs and traditions.</div>
+
+        <div class="summary-paragraph"><strong>Scenes Around the Temple:</strong> The temple surroundings are lively and colorful. Monkeys jump from one place to another, pilgrims offer prayers, and sadhus sit in meditation. These scenes provide a vivid picture of Nepal's spiritual and cultural life.</div>
+
+        <div class="summary-paragraph"><strong>Visit to Boudhanath Stupa:</strong> After leaving Pashupatinath, the narrator visits Boudhanath, one of the largest Buddhist stupas in the world. Unlike the crowded atmosphere of Pashupatinath, Boudhanath is calm, peaceful, and serene. Devotees quietly walk around the stupa, creating a sense of harmony and spiritual peace.</div>
+
+        <div class="summary-paragraph"><strong>The Flute Seller:</strong> While walking through the streets of Kathmandu, the narrator notices a flute seller carrying a pole filled with flutes of different sizes. The sweet sound of the flute captures his attention and inspires him to reflect on the importance of this simple musical instrument.</div>
+
+        <div class="summary-paragraph"><strong>The Importance of the Flute:</strong> The narrator describes the flute as one of the oldest and most universal musical instruments. It is simple, inexpensive, and found in cultures across the world. Its music brings joy to people regardless of their background, language, or nationality.</div>
+
+        <div class="summary-paragraph"><strong>Kathmandu's Cultural Richness:</strong> Through his observations, the narrator highlights Kathmandu's unique blend of religion, tradition, culture, and daily life. The city is portrayed as a place where Hinduism and Buddhism coexist peacefully, enriching its cultural identity.</div>
+
+        <div class="summary-paragraph"><strong>Conclusion:</strong> The chapter celebrates cultural diversity, spirituality, and the beauty of simple things in life. Through his journey in Kathmandu, Vikram Seth encourages readers to appreciate different traditions, respect cultural heritage, and find joy in ordinary experiences such as music, travel, and human interaction.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>परिचय:</strong> "Kathmandu" विक्रम सेठ द्वारा लिखित एक रोचक यात्रा-वृत्तांत है। इसमें लेखक ने नेपाल की राजधानी काठमांडू की अपनी यात्रा का वर्णन किया है। यह अध्याय शहर की सांस्कृतिक समृद्धि, धार्मिक विविधता और आध्यात्मिक वातावरण को दर्शाता है।</div>
+
+        <div class="summary-paragraph"><strong>पशुपतिनाथ मंदिर की यात्रा:</strong> लेखक सबसे पहले प्रसिद्ध पशुपतिनाथ मंदिर जाते हैं, जो भगवान शिव को समर्पित एक पवित्र हिंदू मंदिर है। मंदिर में भक्तों, पुजारियों, साधुओं और पर्यटकों की भीड़ लगी रहती है। केवल हिंदुओं को मंदिर के भीतर प्रवेश की अनुमति होती है।</div>
+
+        <div class="summary-paragraph"><strong>बागमती नदी और अंतिम संस्कार:</strong> मंदिर के पास बहने वाली बागमती नदी के किनारे अंतिम संस्कार और धार्मिक अनुष्ठान किए जाते हैं। लेखक देखते हैं कि एक ओर पूजा-पाठ चल रहा है और दूसरी ओर अंतिम संस्कार हो रहे हैं। यह जीवन और मृत्यु के चक्र का प्रतीक है।</div>
+
+        <div class="summary-paragraph"><strong>मंदिर के आसपास का दृश्य:</strong> मंदिर के आसपास का वातावरण अत्यंत जीवंत है। बंदर इधर-उधर कूदते हैं, श्रद्धालु पूजा करते हैं और साधु ध्यान में लीन दिखाई देते हैं। यह दृश्य नेपाल की धार्मिक और सांस्कृतिक परंपराओं को दर्शाता है।</div>
+
+        <div class="summary-paragraph"><strong>बौद्धनाथ स्तूप की यात्रा:</strong> इसके बाद लेखक बौद्धनाथ स्तूप जाते हैं, जो विश्व के सबसे बड़े बौद्ध स्तूपों में से एक है। यहां का वातावरण शांत, सौम्य और आध्यात्मिक है। भक्त स्तूप के चारों ओर शांतिपूर्वक घूमते हुए प्रार्थना करते हैं।</div>
+
+        <div class="summary-paragraph"><strong>बांसुरी बेचने वाला व्यक्ति:</strong> काठमांडू की गलियों में लेखक एक बांसुरी विक्रेता को देखते हैं। वह विभिन्न आकारों की बांसुरियां लेकर चलता है और मधुर धुन बजाता है। उसकी बांसुरी की आवाज लेखक को बहुत प्रभावित करती है।</div>
+
+        <div class="summary-paragraph"><strong>बांसुरी का महत्व:</strong> लेखक बांसुरी को दुनिया के सबसे पुराने और लोकप्रिय वाद्य यंत्रों में से एक बताते हैं। यह सरल, सस्ती और लगभग हर संस्कृति में पाई जाती है। इसकी मधुर ध्वनि लोगों को आनंद और शांति प्रदान करती है।</div>
+
+        <div class="summary-paragraph"><strong>काठमांडू की सांस्कृतिक समृद्धि:</strong> अध्याय में काठमांडू को धार्मिक, सांस्कृतिक और ऐतिहासिक दृष्टि से अत्यंत महत्वपूर्ण शहर के रूप में प्रस्तुत किया गया है। यहां हिंदू और बौद्ध परंपराएं साथ-साथ विकसित हुई हैं।</div>
+
+        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह अध्याय सांस्कृतिक विविधता, आध्यात्मिकता और साधारण चीज़ों की सुंदरता का संदेश देता है। लेखक हमें विभिन्न संस्कृतियों का सम्मान करने, यात्रा से सीखने और जीवन के छोटे-छोटे सुखों की सराहना करने की प्रेरणा देते हैं।</div>
+    `
+        };
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

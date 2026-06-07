@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Lake Isle of Innisfree - Brain Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="manifest" href="../../../../manifest.json">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+
+    <link rel="manifest" href="../../../../manifest.json">
+    <link rel="apple-touch-icon" href="../../../../icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+
+    <style>
+        :root {
+            --bg: #eef3f8;
+            --panel: rgba(251, 253, 255, 0.85);
+            --panel-solid: #fbfdff;
+            --panel-2: #f5f8fb;
+            --text: #17202a;
+            --muted: #657282;
+            --line: rgba(26, 42, 58, 0.08);
+            --primary: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.06);
+            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
+            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --nav-h: 56px;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121722;
+            --panel: rgba(26, 34, 48, 0.85);
+            --panel-solid: #1a2230;
+            --panel-2: #111827;
+            --text: #edf2f7;
+            --muted: #9aa8ba;
+            --line: rgba(255, 255, 255, 0.06);
+            --primary: #60a5fa;
+            --primary-light: rgba(96, 165, 250, 0.1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            padding-bottom: 30px;
+        }
+
+        /* Nav Framework */
+        nav {
+            height: var(--nav-h);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--line);
+            transform: translateX(-2px);
+        }
+
+        .nav-left h1 {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        /* Desktop Optimization & Fluid Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Hero Element Setup */
+        .chapter-hero {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 30px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-hero h2 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .chapter-hero p {
+            color: var(--muted);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+
+        /* Core Card Panels Structure */
+        .panel {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .panel-title h3 {
+            font-size: 14.5px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        /* Language Controls Group */
+        .lang-switch-box {
+            display: flex;
+            background: var(--panel-2);
+            padding: 2px;
+            border-radius: 30px;
+            border: 1px solid var(--line);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Text Engine Architecture (Optimized for Android Screens) */
+        .summary-content-area {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .summary-paragraph {
+            margin-bottom: 10px;
+            text-align: justify;
+            animation: textFadeIn 0.25s ease-out;
+        }
+
+        /* Layout Component Stacks */
+        .qa-stack,
+        .quiz-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qa-card,
+        .quiz-card {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .qa-question,
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .qa-question span,
+        .quiz-question span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .qa-answer {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--muted);
+            padding-left: 14px;
+            border-left: 2px solid var(--line);
+        }
+
+        /* --- New Interactive Sections Options Engine --- */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-item input[type="radio"] {
+            accent-color: var(--primary);
+        }
+
+        /* Input Configuration for Fills */
+        .fill-input {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text);
+            width: 100%;
+            max-width: 240px;
+            outline: none;
+            margin-top: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Writer Biography Structure */
+        .writer-profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .writer-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .writer-bio-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .writer-bio-text p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* --- Desktop Viewport Up-Scaling Optimization --- */
+        @media (min-width: 768px) {
+            :root {
+                --nav-h: 64px;
+                --radius: 20px;
+                --radius-sm: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                gap: 20px;
+                /* Side-by-side components grid framework for Desktop view symmetry */
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chapter-hero,
+            .writer-panel {
+                grid-column: span 2;
+            }
+
+            .nav-left h1 {
+                font-size: 18px;
+            }
+
+            .chapter-hero h2 {
+                font-size: 26px;
+            }
+
+            .chapter-hero p {
+                font-size: 14px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fill-input {
+                width: auto;
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../../home.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1>English Library</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="chapter-hero">
+            <span class="meta-badge">Class 9 • Chapter 13 • Poetry</span>
+            <h2>The Lake Isle of Innisfree</h2>
+            <p>The Lake Isle of Innisfree is a beautiful poem by W.B. Yeats that expresses the poet's longing for the
+                peace and tranquility of nature. 🎵</p>
+        </div>
+
+        <div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>Central Idea of the Poem</h3>
+                </div>
+                <div class="lang-switch-box">
+                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
+                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
+                </div>
+            </div>
+            <div class="summary-content-area" id="summaryViewPort">
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Multiple Choice Questions</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> Who is the poet of "The Lake Isle of Innisfree"?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq1"> Robert Frost</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> W.B. Yeats</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> Coates Kinney</label>
+                        <label class="option-item"><input type="radio" name="mcq1"> John Keats</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> Where does the poet want to go?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq2"> London</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Innisfree</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Dublin</label>
+                        <label class="option-item"><input type="radio" name="mcq2"> Scotland</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> What does the poet plan to build at Innisfree?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq3"> A palace</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> A stone cottage</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> A cabin of clay and wattles</label>
+                        <label class="option-item"><input type="radio" name="mcq3"> A wooden hut</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> How many bean-rows will the poet have?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq4"> Seven</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Nine</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Ten</label>
+                        <label class="option-item"><input type="radio" name="mcq4"> Twelve</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> What will the poet keep besides bean-rows?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq5"> A garden</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> A fish pond</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> A hive for the honeybee</label>
+                        <label class="option-item"><input type="radio" name="mcq5"> An orchard</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> What does the poet expect to find at Innisfree?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq6"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Fame</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Peace</label>
+                        <label class="option-item"><input type="radio" name="mcq6"> Adventure</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> From where does peace come dropping?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq7"> From the sky</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> From the veils of the
+                            morning</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> From the lake</label>
+                        <label class="option-item"><input type="radio" name="mcq7"> From the hills</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> What sings there at midnight?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq8"> Birds</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Crickets</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> The linnet</label>
+                        <label class="option-item"><input type="radio" name="mcq8"> Frogs</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> How is midnight described in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq9"> Dark and silent</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> All a glimmer</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Bright and sunny</label>
+                        <label class="option-item"><input type="radio" name="mcq9"> Full of stars</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> What color are the noon skies?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq10"> Blue</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Grey</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Purple</label>
+                        <label class="option-item"><input type="radio" name="mcq10"> Golden</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> What is full of the linnet's wings?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq11"> Evening</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Noon</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Morning</label>
+                        <label class="option-item"><input type="radio" name="mcq11"> Night</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> Where does the poet hear the lake water lapping?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq12"> On the beach</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> By the shore</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> On the road</label>
+                        <label class="option-item"><input type="radio" name="mcq12"> In the forest</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> Where is the poet standing while dreaming of Innisfree?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq13"> In a village</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> On the roadway</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> Near a river</label>
+                        <label class="option-item"><input type="radio" name="mcq13"> In a garden</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> What kind of life does the poet desire?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq14"> Busy city life</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Luxurious life</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Simple and peaceful life</label>
+                        <label class="option-item"><input type="radio" name="mcq14"> Adventurous life</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> What does the poet hear deep in his heart?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq15"> Bird songs</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Lake water lapping</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Wind blowing</label>
+                        <label class="option-item"><input type="radio" name="mcq15"> Bees buzzing</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The word "lapping" means ________.</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq16"> Flowing rapidly</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Making a gentle splashing
+                            sound</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Drying up</label>
+                        <label class="option-item"><input type="radio" name="mcq16"> Freezing</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> What does Innisfree symbolize in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq17"> Wealth</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Peace and natural beauty</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Power</label>
+                        <label class="option-item"><input type="radio" name="mcq17"> Education</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> What contrasts with Innisfree in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq18"> Village life</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Mountain life</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Urban city life</label>
+                        <label class="option-item"><input type="radio" name="mcq18"> Forest life</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> Which bird is mentioned in the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq19"> Sparrow</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Peacock</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Linnet</label>
+                        <label class="option-item"><input type="radio" name="mcq19"> Parrot</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> What is the central theme of the poem?</div>
+                    <div class="options-grid">
+                        <label class="option-item"><input type="radio" name="mcq20"> Love and friendship</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Desire for peace and harmony with
+                            nature</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> War and courage</label>
+                        <label class="option-item"><input type="radio" name="mcq20"> Science and progress</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>True / False Section</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> The poet dreams of living close to nature on the Lake
+                        Isle of Innisfree.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf1"> True</label>
+                        <label class="option-item"><input type="radio" name="tf1"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The poet wishes to spend his life in a crowded city.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf2"> True</label>
+                        <label class="option-item"><input type="radio" name="tf2"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> Innisfree represents peace, solitude, and natural beauty.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf3"> True</label>
+                        <label class="option-item"><input type="radio" name="tf3"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The poet wants to live in a large mansion at Innisfree.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf4"> True</label>
+                        <label class="option-item"><input type="radio" name="tf4"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> Nature provides a sense of calmness and satisfaction to
+                        the poet.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf5"> True</label>
+                        <label class="option-item"><input type="radio" name="tf5"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> The poet dislikes the sounds of water and birds.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf6"> True</label>
+                        <label class="option-item"><input type="radio" name="tf6"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The poem reflects the poet's longing for a peaceful life.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf7"> True</label>
+                        <label class="option-item"><input type="radio" name="tf7"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> The poet feels completely happy with urban life.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf8"> True</label>
+                        <label class="option-item"><input type="radio" name="tf8"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> The imagery in the poem creates a vivid picture of
+                        natural beauty.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf9"> True</label>
+                        <label class="option-item"><input type="radio" name="tf9"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> The poet wants to spend his days working in factories.
+                    </div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf10"> True</label>
+                        <label class="option-item"><input type="radio" name="tf10"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> The poem emphasizes the healing power of nature.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf11"> True</label>
+                        <label class="option-item"><input type="radio" name="tf11"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The poet imagines a life that is simple and
+                        self-sufficient.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf12"> True</label>
+                        <label class="option-item"><input type="radio" name="tf12"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The poet's dream of Innisfree is only about becoming
+                        rich.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf13"> True</label>
+                        <label class="option-item"><input type="radio" name="tf13"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The poem shows a deep appreciation for the natural
+                        world.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf14"> True</label>
+                        <label class="option-item"><input type="radio" name="tf14"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> The poet feels emotionally connected to Innisfree even
+                        when he is away from it.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf15"> True</label>
+                        <label class="option-item"><input type="radio" name="tf15"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The poem presents nature as noisy and unpleasant.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf16"> True</label>
+                        <label class="option-item"><input type="radio" name="tf16"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The poet imagines spending his days surrounded by trees,
+                        water, and birds.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf17"> True</label>
+                        <label class="option-item"><input type="radio" name="tf17"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The poem suggests that inner peace can be found in
+                        nature.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf18"> True</label>
+                        <label class="option-item"><input type="radio" name="tf18"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The poet has no interest in solitude or quiet
+                        surroundings.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf19"> True</label>
+                        <label class="option-item"><input type="radio" name="tf19"> False</label>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The poem contrasts the peace of nature with the busyness
+                        of modern life.</div>
+                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <label class="option-item"><input type="radio" name="tf20"> True</label>
+                        <label class="option-item"><input type="radio" name="tf20"> False</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-pen-clip"></i>
+                    <h3>Fill in the Blanks</h3>
+                </div>
+            </div>
+            <div class="quiz-stack">
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>1.</span> "The Lake Isle of Innisfree" was written by ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>2.</span> The poet wants to go to the Lake Isle of ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>3.</span> The poet plans to build a small ________ there.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>4.</span> The cabin will be made of clay and ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>5.</span> The poet will have nine ________ rows.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>6.</span> He will keep a hive for the ________ bee.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>7.</span> The poet wants to live alone in the bee-loud ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>8.</span> Peace comes dropping slow from the veils of the ________.
+                    </div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>9.</span> Midnight is described as all a ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>10.</span> Noon is a purple ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>11.</span> Evening is full of the linnet's ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>12.</span> The poet hears lake water lapping with low sounds by the
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>13.</span> The poet hears the lake water while standing on the
+                        roadway or on the grey ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>14.</span> The sound of the lake water is heard deep in the poet's
+                        ________ core.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>15.</span> Innisfree symbolizes peace, solitude, and natural
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>16.</span> The poet longs for a simple and ________ life.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>17.</span> The poem contrasts city life with the beauty of
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>18.</span> The bird mentioned in the poem is the ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>19.</span> The poet dreams of escaping the noise and stress of
+                        ________ life.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-question"><span>20.</span> The central theme of the poem is the search for inner
+                        ________.</div>
+                    <input type="text" class="fill-input" placeholder="Type your answer...">
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Conceptual Q&A Matrix</h3>
+                </div>
+            </div>
+            <div class="qa-stack">
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q1.</span> What is the poet's dream in "The Lake Isle of Innisfree"?
+                    </div>
+                    <div class="qa-answer">The poet dreams of going to the Lake Isle of Innisfree and living a peaceful
+                        life close to nature. He wishes to escape the noise and stress of city life and enjoy solitude
+                        and tranquility.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q2.</span> Why does the poet want to go to Innisfree?</div>
+                    <div class="qa-answer">The poet wants to go to Innisfree because it offers peace, natural beauty,
+                        and a simple way of life. He believes that living there will bring him happiness and inner
+                        satisfaction.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q3.</span> What does the poet plan to build at Innisfree?</div>
+                    <div class="qa-answer">The poet plans to build a small cabin made of clay and wattles. He also wants
+                        to grow bean plants and keep a hive for honeybees.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q4.</span> How does the poet describe peace in the poem?</div>
+                    <div class="qa-answer">The poet describes peace as something that "comes dropping slow" from the
+                        veils of the morning. This image suggests that peace gently fills the natural surroundings of
+                        Innisfree.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q5.</span> What natural images are used in the poem?</div>
+                    <div class="qa-answer">The poem contains beautiful natural images such as the lake, honeybees,
+                        bean-rows, glades, morning veils, purple noon, evening skies, and the linnet bird. These images
+                        create a peaceful and attractive picture of nature.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q6.</span> What does the poet hear in his heart?</div>
+                    <div class="qa-answer">The poet hears the gentle sound of lake water lapping against the shore. Even
+                        while standing in the city, this sound remains alive in his imagination and heart.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q7.</span> How does the poem contrast city life and nature?</div>
+                    <div class="qa-answer">The poem contrasts the busy, noisy, and stressful city life with the calm,
+                        peaceful, and beautiful environment of Innisfree. The poet clearly prefers the simplicity of
+                        nature over urban life.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q8.</span> What does Innisfree symbolize in the poem?</div>
+                    <div class="qa-answer">Innisfree symbolizes peace, solitude, harmony, and the beauty of nature. It
+                        represents the poet's ideal place where he can live happily and peacefully.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q9.</span> What is the central theme of "The Lake Isle of Innisfree"?
+                    </div>
+                    <div class="qa-answer">The central theme of the poem is the human desire for peace and a close
+                        connection with nature. It highlights the importance of simplicity, solitude, and inner
+                        happiness.</div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-question"><span>Q10.</span> What message does the poem convey?</div>
+                    <div class="qa-answer">The poem conveys that true happiness and peace can often be found in nature
+                        rather than in the busy material world. It encourages people to appreciate simplicity, natural
+                        beauty, and inner calm.</div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel writer-panel">
+            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
+                <div class="panel-title">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <h3>About the Writer</h3>
+                </div>
+            </div>
+            <div class="writer-profile-box">
+                <div class="writer-avatar-circle">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+                <div class="writer-bio-text">
+                    <h4>W. B. Yeats</h4>
+                    <p>William Butler Yeats (1865–1939) was one of the greatest poets of Ireland and a leading figure in
+                        twentieth-century English literature. He played an important role in the Irish Literary Revival
+                        and was deeply inspired by Irish history, folklore, mythology, and the beauty of nature. Yeats's
+                        poetry is known for its rich imagery, symbolism, musical language, and philosophical depth. Some
+                        of his most famous works include <i>The Lake Isle of Innisfree</i>, <i>Easter 1916</i>,
+                        <i>Sailing to Byzantium</i>, and <i>When You Are Old</i>. In 1923, he was awarded the <i>Nobel
+                            Prize in Literature</i> for his outstanding contribution to poetry. The poem <i>"The Lake
+                            Isle of Innisfree"</i> beautifully reflects his love for nature, peace, solitude, and the
+                        simple joys of life.
+                    </p>
+                </div>
+            </div>
+        </div>
+<div class="panel" style="grid-column: span 2;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <i class="fa-solid fa-key" style="color: var(--accent-orange);"></i>
+                    <h3>Official Answer Key</h3>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px;">
+                
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);"><i class="fa-solid fa-list-check"></i> MCQs</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> W.B. Yeats</div>
+                        <div><b>2.</b> Innisfree</div>
+                        <div><b>3.</b> A small cabin of clay and wattles</div>
+                        <div><b>4.</b> Nine bean-rows</div>
+                        <div><b>5.</b> A hive for the honey-bee</div>
+                        <div><b>6.</b> Peace</div>
+                        <div><b>7.</b> Veils of the morning</div>
+                        <div><b>8.</b> Cricket</div>
+                        <div><b>9.</b> All a glimmer</div>
+                        <div><b>10.</b> A purple glow</div>
+                        <div><b>11.</b> Linnet's wings</div>
+                        <div><b>12.</b> By the shore</div>
+                        <div><b>13.</b> On the roadway / pavements grey</div>
+                        <div><b>14.</b> Simple and peaceful life in nature</div>
+                        <div><b>15.</b> Lake water lapping with low sounds</div>
+                        <div><b>16.</b> Soft washing or splashing sound</div>
+                        <div><b>17.</b> Peace, tranquility, and escape</div>
+                        <div><b>18.</b> Dull, grey pavements of city life</div>
+                        <div><b>19.</b> Linnet</div>
+                        <div><b>20.</b> Longing for peace, nature, and solitude</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);"><i class="fa-solid fa-circle-check"></i> True / False</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> True</div>
+                        <div><b>2.</b> False</div>
+                        <div><b>3.</b> True</div>
+                        <div><b>4.</b> False</div>
+                        <div><b>5.</b> True</div>
+                        <div><b>6.</b> False</div>
+                        <div><b>7.</b> True</div>
+                        <div><b>8.</b> False</div>
+                        <div><b>9.</b> True</div>
+                        <div><b>10.</b> False</div>
+                        <div><b>11.</b> True</div>
+                        <div><b>12.</b> True</div>
+                        <div><b>13.</b> False</div>
+                        <div><b>14.</b> True</div>
+                        <div><b>15.</b> True</div>
+                        <div><b>16.</b> False</div>
+                        <div><b>17.</b> True</div>
+                        <div><b>18.</b> True</div>
+                        <div><b>19.</b> False</div>
+                        <div><b>20.</b> True</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);"><i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
+                        <div><b>1.</b> W.B. Yeats</div>
+                        <div><b>2.</b> Innisfree</div>
+                        <div><b>3.</b> cabin</div>
+                        <div><b>4.</b> wattles</div>
+                        <div><b>5.</b> bean</div>
+                        <div><b>6.</b> honey</div>
+                        <div><b>7.</b> glade</div>
+                        <div><b>8.</b> morning</div>
+                        <div><b>9.</b> glimmer</div>
+                        <div><b>10.</b> glow</div>
+                        <div><b>11.</b> wings</div>
+                        <div><b>12.</b> shore</div>
+                        <div><b>13.</b> pavements</div>
+                        <div><b>14.</b> heart's</div>
+                        <div><b>15.</b> beauty</div>
+                        <div><b>16.</b> solitary / self-sufficient</div>
+                        <div><b>17.</b> nature</div>
+                        <div><b>18.</b> linnet</div>
+                        <div><b>19.</b> urban / city</div>
+                        <div><b>20.</b> peace</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+   
+    </div>
+
+    <script>
+        const summaryDataAsset = {
+            en: `
+        <div class="summary-paragraph"><strong>Central Idea:</strong> "The Lake Isle of Innisfree" by W.B. Yeats expresses the poet's deep longing for peace, simplicity, and a close connection with nature. Tired of the noise and stress of city life, he dreams of living alone on the beautiful island of Innisfree, where he can enjoy a self-sufficient and peaceful existence surrounded by natural beauty. The poem highlights the contrast between the busy urban world and the calm, soothing environment of nature. Through vivid imagery and heartfelt emotions, Yeats shows that true happiness and inner peace can be found in a simple life lived in harmony with nature. Even while living in the city, the memory of Innisfree remains alive in his heart, providing comfort and spiritual satisfaction.</div>
+    `,
+
+            hi: `
+        <div class="summary-paragraph"><strong>केंद्रीय विचार:</strong> "The Lake Isle of Innisfree" डब्ल्यू. बी. यीट्स की एक सुंदर प्रकृति-कविता है, जिसमें कवि की शांति, सादगी और प्रकृति के निकट जीवन जीने की गहरी इच्छा व्यक्त हुई है। शहर के शोर, तनाव और भाग-दौड़ से थककर वह इनिसफ्री द्वीप पर जाकर एक शांत, आत्मनिर्भर और प्राकृतिक जीवन बिताने का सपना देखता है। कविता शहर के कृत्रिम और व्यस्त जीवन तथा प्रकृति की शांत और सुंदर दुनिया के बीच स्पष्ट अंतर को दर्शाती है। कवि मानता है कि सच्ची खुशी, मानसिक शांति और आत्मिक संतोष प्रकृति के साथ सामंजस्य में रहने से प्राप्त होते हैं। यद्यपि वह शहर में रहता है, फिर भी इनिसफ्री की मधुर स्मृतियाँ उसके हृदय में सदैव जीवित रहती हैं और उसे शांति प्रदान करती हैं।</div>
+    `
+        };
+        function switchSummaryLanguage(langKey, elementRef) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            if (elementRef) elementRef.classList.add("active");
+
+            const viewport = document.getElementById("summaryViewPort");
+            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            switchSummaryLanguage('en', null);
+        });
+        function applyThemeFromBrainHub() {
+
+            const data = JSON.parse(
+                localStorage.getItem("brainhub.app.v2") || "{}"
+            );
+
+            const theme = data.theme || "light";
+
+            document.documentElement.dataset.theme =
+                theme;
+
+            const metaTheme = document.querySelector(
+                'meta[name="theme-color"]'
+            );
+
+            if (metaTheme) {
+                metaTheme.setAttribute(
+                    "content",
+                    theme === "dark"
+                        ? "#121722"
+                        : "#2563eb"
+                );
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            applyThemeFromBrainHub
+        );
+
+        window.addEventListener("storage", (e) => {
+            if (e.key === "brainhub.app.v2") {
+                applyThemeFromBrainHub();
+            }
+        });
+
+        /* Same tab sync */
+        setInterval(applyThemeFromBrainHub, 500);
+        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
+        function updateMetaThemeColor(isDark) {
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
+                    // Agar dark mode hai
+                    if (isDark) meta.setAttribute('content', '#121722');
+                } else {
+                    // Agar light mode hai toh pure white dikhega
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
