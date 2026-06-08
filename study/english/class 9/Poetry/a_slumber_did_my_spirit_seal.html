@@ -19,7 +19,17 @@
     <link rel="manifest" href="../../../../manifest.json">
     <link rel="apple-touch-icon" href="../../../../icon-192.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
+    <script>
+        function applySavedTheme() {
+            try {
+                const state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+                document.documentElement.dataset.theme = state.theme || "light";
+            } catch (err) {
+                document.documentElement.dataset.theme = "light";
+            }
+        }
 
+    </script>
     <style>
         :root {
             --bg: #eef3f8;
@@ -1101,7 +1111,8 @@
                 <div>
                     <h4
                         style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--primary);">
-                        <i class="fa-solid fa-list-check"></i> MCQs</h4>
+                        <i class="fa-solid fa-list-check"></i> MCQs
+                    </h4>
                     <div
                         style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
                         <div><b>1.</b> William Wordsworth</div>
@@ -1130,7 +1141,8 @@
                 <div>
                     <h4
                         style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-green);">
-                        <i class="fa-solid fa-circle-check"></i> True / False</h4>
+                        <i class="fa-solid fa-circle-check"></i> True / False
+                    </h4>
                     <div
                         style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; font-size: 12px; color: var(--muted);">
                         <div><b>1.</b> True</div>
@@ -1159,7 +1171,8 @@
                 <div>
                     <h4
                         style="font-size: 13.5px; border-bottom: 2px solid var(--line); padding-bottom: 4px; margin-bottom: 8px; color: var(--accent-orange);">
-                        <i class="fa-solid fa-pen-clip"></i> Fill in the Blanks</h4>
+                        <i class="fa-solid fa-pen-clip"></i> Fill in the Blanks
+                    </h4>
                     <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted);">
                         <div><b>1.</b> William Wordsworth</div>
                         <div><b>2.</b> Poetry / Romanticism</div>

@@ -17,6 +17,17 @@
     <link rel="apple-touch-icon" href="../../icon-192.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../../icon-192.png">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <script>
+        function applySavedTheme() {
+            try {
+                const state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+                document.documentElement.dataset.theme = state.theme || "light";
+            } catch (err) {
+                document.documentElement.dataset.theme = "light";
+            }
+        }
+
+    </script>
     <style>
         :root {
             --bg: #eef3f8;
