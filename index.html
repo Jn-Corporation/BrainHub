@@ -5,28 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>BrainHub - Learn. Create. Track.</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="manifest" href="./manifest.json">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="BrainHub">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>BrainHub - Learn. Create. Track.</title>
-    <link rel="manifest" href="./manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="BrainHub">
     <link rel="apple-touch-icon" href="./icon-192.png">
     <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="BrainHub">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <script>
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
@@ -1335,6 +1331,20 @@
         .modal-footer-btns button {
             flex: 1;
             min-height: 44px;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+            padding-top: env(safe-area-inset-top, 0px);
+            /* iOS notch/status bar area safe karega */
+            background:
+                radial-gradient(circle at 8% 8%, rgba(45, 212, 191, 0.16), transparent 24rem),
+                radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.13), transparent 30rem),
+                var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -2862,6 +2872,33 @@
                     meta.setAttribute('content', '#ffffff');
                 }
             });
+        }
+        function updateMetaThemeColor(isDark) {
+            // 1. Android/Chrome ke liye theme-color badlein
+            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
+            metaTheme.forEach(meta => {
+                if (isDark) {
+                    meta.setAttribute('content', '#121722');
+                } else {
+                    meta.setAttribute('content', '#ffffff');
+                }
+            });
+
+            // 2. iOS ke liye apple-mobile-web-app-status-bar-style ko dynamically toggle karein
+            let appleMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+            if (!appleMeta) {
+                appleMeta = document.createElement('meta');
+                appleMeta.setAttribute('name', 'apple-mobile-web-app-status-bar-style');
+                document.head.appendChild(appleMeta);
+            }
+
+            if (isDark) {
+                // Dark theme mein status bar text white karne ke liye 'black-translucent' ya 'black' use karein
+                appleMeta.setAttribute('content', 'black-translucent');
+            } else {
+                // Light theme mein status bar text black karne ke liye 'default' use karein
+                appleMeta.setAttribute('content', 'default');
+            }
         }
     </script>
 </body>
