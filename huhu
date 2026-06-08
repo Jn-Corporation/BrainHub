@@ -1,677 +1,1312 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Adventures of Toto - Brain Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="manifest" href="../../../../manifest.json">
-    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#121722" media="(prefers-color-scheme: dark)">
-
-    <link rel="manifest" href="../../../../manifest.json">
-    <link rel="apple-touch-icon" href="../../../../icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="../../../../icon-192.png">
-
-    <style>
-        :root {
-            --bg: #eef3f8;
-            --panel: rgba(251, 253, 255, 0.85);
-            --panel-solid: #fbfdff;
-            --panel-2: #f5f8fb;
-            --text: #17202a;
-            --muted: #657282;
-            --line: rgba(26, 42, 58, 0.08);
-            --primary: #2563eb;
-            --primary-light: rgba(37, 99, 235, 0.06);
-            --shadow: 0 16px 36px rgba(31, 45, 61, 0.05);
-            --soft: 0 6px 16px rgba(31, 45, 61, 0.03);
-            --radius: 16px;
-            --radius-sm: 12px;
-            --nav-h: 56px;
-            --accent-green: #10b981;
-            --accent-orange: #f59e0b;
-        }
-
-        [data-theme="dark"] {
-            --bg: #121722;
-            --panel: rgba(26, 34, 48, 0.85);
-            --panel-solid: #1a2230;
-            --panel-2: #111827;
-            --text: #edf2f7;
-            --muted: #9aa8ba;
-            --line: rgba(255, 255, 255, 0.06);
-            --primary: #60a5fa;
-            --primary-light: rgba(96, 165, 250, 0.1);
-            --shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-            --soft: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background: var(--bg);
-            color: var(--text);
-            padding-bottom: 30px;
-        }
-
-        /* Nav Framework */
-        nav {
-            height: var(--nav-h);
-            background: var(--panel);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--line);
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .back-link {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: var(--panel-2);
-            border: 1px solid var(--line);
-            color: var(--text);
-            display: grid;
-            place-items: center;
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.2s ease;
-        }
-
-        .back-link:hover {
-            background: var(--line);
-            transform: translateX(-2px);
-        }
-
-        .nav-left h1 {
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-        }
-
-        /* Desktop Optimization & Fluid Container */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        /* Hero Element Setup */
-        .chapter-hero {
-            background: var(--panel-solid);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 20px 16px;
-            box-shadow: var(--shadow);
-        }
-
-        .meta-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            background: var(--primary-light);
-            color: var(--primary);
-            font-size: 10px;
-            font-weight: 700;
-            border-radius: 30px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .chapter-hero h2 {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            margin-bottom: 6px;
-        }
-
-        .chapter-hero p {
-            color: var(--muted);
-            font-size: 12.5px;
-            line-height: 1.45;
-        }
-
-        /* Core Card Panels Structure */
-        .panel {
-            background: var(--panel-solid);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 16px;
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 8px;
-        }
-
-        .panel-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .panel-title i {
-            font-size: 14px;
-            color: var(--primary);
-        }
-
-        .panel-title h3 {
-            font-size: 14.5px;
-            font-weight: 800;
-            letter-spacing: -0.2px;
-        }
-
-        /* Language Controls Group */
-        .lang-switch-box {
-            display: flex;
-            background: var(--panel-2);
-            padding: 2px;
-            border-radius: 30px;
-            border: 1px solid var(--line);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            padding: 4px 10px;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--muted);
-            cursor: pointer;
-            border-radius: 30px;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--primary);
-            color: #ffffff;
-        }
-
-        /* Text Engine Architecture (Optimized for Android Screens) */
-        .summary-content-area {
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: var(--text);
-        }
-
-        .summary-paragraph {
-            margin-bottom: 10px;
-            text-align: justify;
-            animation: textFadeIn 0.25s ease-out;
-        }
-
-        /* Layout Component Stacks */
-        .qa-stack,
-        .quiz-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .qa-card,
-        .quiz-card {
-            background: var(--panel-2);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 12px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .qa-question,
-        .quiz-question {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--text);
-            display: flex;
-            gap: 6px;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .qa-question span,
-        .quiz-question span {
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        .qa-answer {
-            font-size: 12.5px;
-            line-height: 1.5;
-            color: var(--muted);
-            padding-left: 14px;
-            border-left: 2px solid var(--line);
-        }
-
-        /* --- New Interactive Sections Options Engine --- */
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .option-item {
-            background: var(--panel-solid);
-            border: 1px solid var(--line);
-            padding: 10px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .option-item:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .option-item input[type="radio"] {
-            accent-color: var(--primary);
-        }
-
-        /* Input Configuration for Fills */
-        .fill-input {
-            background: var(--panel-solid);
-            border: 1px solid var(--line);
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 12.5px;
-            color: var(--text);
-            width: 100%;
-            max-width: 240px;
-            outline: none;
-            margin-top: 6px;
-            transition: border-color 0.2s;
-        }
-
-        .fill-input:focus {
-            border-color: var(--primary);
-        }
-
-        /* Writer Biography Structure */
-        .writer-profile-box {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .writer-avatar-circle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            color: var(--primary);
-            display: grid;
-            place-items: center;
-            font-size: 18px;
-            border: 1px solid var(--line);
-            flex-shrink: 0;
-        }
-
-        .writer-bio-text h4 {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .writer-bio-text p {
-            font-size: 12.5px;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-
-        /* --- Desktop Viewport Up-Scaling Optimization --- */
-        @media (min-width: 768px) {
-            :root {
-                --nav-h: 64px;
-                --radius: 20px;
-                --radius-sm: 14px;
-            }
-
-            .container {
-                padding: 20px;
-                gap: 20px;
-                /* Side-by-side components grid framework for Desktop view symmetry */
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .chapter-hero,
-            .writer-panel {
-                grid-column: span 2;
-            }
-
-            .nav-left h1 {
-                font-size: 18px;
-            }
-
-            .chapter-hero h2 {
-                font-size: 26px;
-            }
-
-            .chapter-hero p {
-                font-size: 14px;
-            }
-
-            .options-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .fill-input {
-                width: auto;
-            }
-        }
-
-        @keyframes textFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(2px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        * {
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-touch-callout: none;
-        }
-
-        img {
-            pointer-events: none;
-            -webkit-user-drag: none;
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav>
-        <div class="nav-left">
-            <a href="../../home.html" class="back-link">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <h1>English Library</h1>
-        </div>
-    </nav>
-
-    <div class="container">
-
-        <div class="chapter-hero">
-            <span class="meta-badge">Class 9 • Chapter 19 • Supplementary</span>
-            <h2>The Adventures of Toto</h2>
-            <p>The Adventures of Toto is a delightful story that follows the escapades of a mischievous monkey named Toto,
-                highlighting themes of friendship, loyalty, and the joy of childhood. 🎵</p>
-        </div>
-
-        <div class="panel" style="grid-column: span 2;">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <i class="fa-solid fa-file-invoice"></i>
-                    <h3>Extended Chapter Summary</h3>
-                </div>
-                <div class="lang-switch-box">
-                    <button class="lang-btn active" onclick="switchSummaryLanguage('en', this)">English</button>
-                    <button class="lang-btn" onclick="switchSummaryLanguage('hi', this)">हिंदी</button>
-                </div>
-            </div>
-            <div class="summary-content-area" id="summaryViewPort">
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <i class="fa-solid fa-list-check"></i>
-                    <h3>Multiple Choice Questions</h3>
-                </div>
-            </div>
-            <div class="quiz-stack">
-                <div class="quiz-card">
-                    <div class="quiz-question"><span>1.</span> Who is the little girl in the story?</div>
-                    <div class="options-grid">
-                        <label class="option-item"><input type="radio" name="mcq1"> Alice</label>
-                        <label class="option-item"><input type="radio" name="mcq1"> Kezia</label>
-                        <label class="option-item"><input type="radio" name="mcq1"> Margie</label>
-                        <label class="option-item"><input type="radio" name="mcq1"> Anne</label>
-                    </div>
-                </div>
-
-                
-
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <h3>True / False Section</h3>
-                </div>
-            </div>
-            <div class="quiz-stack">
-                <div class="quiz-card">
-                    <div class="quiz-question"><span>1.</span> Kezia was afraid of her father because he was very strict
-                        and serious.</div>
-                    <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
-                        <label class="option-item"><input type="radio" name="tf1"> True</label>
-                        <label class="option-item"><input type="radio" name="tf1"> False</label>
-                    </div>
-                </div>
-
-               
-
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <i class="fa-solid fa-pen-clip"></i>
-                    <h3>Fill in the Blanks</h3>
-                </div>
-            </div>
-            <div class="quiz-stack">
-                <div class="quiz-card">
-                    <div class="quiz-question"><span>1.</span> The name of the little girl in the story is ________.
-                    </div>
-                    <input type="text" class="fill-input" placeholder="Type your answer...">
-                </div>
-
-                
-
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <h3>Conceptual Q&A Matrix</h3>
-                </div>
-            </div>
-            <div class="qa-stack">
-                <div class="qa-card">
-                    <div class="qa-question"><span>Q1.</span> Who was Kezia?</div>
-                    <div class="qa-answer">Kezia was a little girl who was afraid of her strict and serious father. She
-                        misunderstood his behavior and thought he did not love her, but later she realized that he cared
-                        deeply for her.</div>
-                </div>
-
-                
-
-            </div>
-        </div>
-
-        <div class="panel writer-panel">
-            <div class="panel-header" style="margin-bottom: 10px; padding-bottom: 6px;">
-                <div class="panel-title">
-                    <i class="fa-solid fa-user-pen"></i>
-                    <h3>About the Writer</h3>
-                </div>
-            </div>
-            <div class="writer-profile-box">
-                <div class="writer-avatar-circle">
-                    <i class="fa-solid fa-feather-pointed"></i>
-                </div>
-                <div class="writer-bio-text">
-                    <h4>Katherine Mansfield</h4>
-                    <p>Katherine Mansfield (1888–1923) was a renowned New Zealand-born modernist writer and one of the
-                        most influential short story authors of the twentieth century. Her full name was Kathleen
-                        Mansfield Beauchamp. She is celebrated for her sensitive portrayal of human emotions, family
-                        relationships, childhood experiences, and everyday life. Mansfield's writing is known for its
-                        psychological depth, realistic characters, and vivid descriptions. Some of her most famous works
-                        include <i>The Garden Party</i>, <i>Bliss</i>, <i>Prelude</i>, and <i>The Doll's House</i>. The
-                        chapter <i>"The Little Girl"</i> beautifully reflects her ability to explore the feelings and
-                        perspectives of children while highlighting the importance of understanding and compassion
-                        within families.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        const summaryDataAsset = {
-            en: `
-        <div class="summary-paragraph"><strong>Introduction:</strong> "The Adventure of Toto" is a humorous short story written by Ruskin Bond. It revolves around a mischievous monkey named Toto and shows how keeping wild animals as pets can lead to unexpected troubles. The story is light-hearted but also carries an important message about nature and responsibility.</div>
-
-        <div class="summary-paragraph"><strong>Toto’s Arrival:</strong> The story begins when Grandfather buys a baby monkey named Toto from a tonga driver in Saharanpur. Being fond of animals, he decides to keep Toto in his private zoo at home. At first, the family is curious and amused by the new pet.</div>
-
-        <div class="summary-paragraph"><strong>Mischievous Nature:</strong> Very soon, Toto reveals his naughty and destructive behaviour. He tears clothes, breaks dishes, and creates chaos in the house. He is extremely restless and cannot sit quietly, which makes him difficult to control.</div>
-
-        <div class="summary-paragraph"><strong>Problems at Home:</strong> Toto’s behaviour creates constant problems in the household. His mischief disturbs daily life and causes damage to household items. Grandmother is unhappy with him, and the family finds it hard to manage his uncontrollable actions.</div>
-
-        <div class="summary-paragraph"><strong>Journey to Dehradun:</strong> Later, Grandfather takes Toto to Dehradun. During the journey, Toto continues his mischief and does not behave properly. His restless and destructive nature makes the journey difficult for everyone.</div>
-
-        <div class="summary-paragraph"><strong>Final Decision:</strong> Eventually, the family realizes that Toto is too wild and cannot be kept as a pet. His behaviour becomes unmanageable, and they understand that he does not belong in a domestic environment.</div>
-
-        <div class="summary-paragraph"><strong>Conclusion:</strong> The story highlights that wild animals cannot be easily domesticated. It teaches that animals should live in their natural habitat and that humans should respect their true nature instead of trying to control them.</div>
-    `,
-
-            hi: `
-        <div class="summary-paragraph"><strong>परिचय:</strong> "The Adventure of Toto" एक हास्यपूर्ण लघु कहानी है जिसे रस्किन बॉन्ड ने लिखा है। यह कहानी एक शरारती बंदर टोटो के बारे में है और दिखाती है कि जंगली जानवरों को पालतू बनाना कितनी समस्याएँ पैदा कर सकता है।</div>
-
-        <div class="summary-paragraph"><strong>टोटो का आगमन:</strong> कहानी की शुरुआत में दादाजी एक तांगे वाले से टोटो नाम का छोटा बंदर खरीदते हैं। वे जानवरों से बहुत प्रेम करते हैं और उसे अपने निजी चिड़ियाघर में रख लेते हैं।</div>
-
-        <div class="summary-paragraph"><strong>शरारती स्वभाव:</strong> टोटो बहुत ही शरारती और चंचल होता है। वह कपड़े फाड़ता है, बर्तन तोड़ता है और घर में लगातार उथल-पुथल मचाता रहता है।</div>
-
-        <div class="summary-paragraph"><strong>घर में समस्याएँ:</strong> टोटो की शरारतों के कारण घर में लगातार परेशानियाँ होने लगती हैं। परिवार के लोग उससे परेशान हो जाते हैं और दादी भी उसके व्यवहार से खुश नहीं होतीं।</div>
-
-        <div class="summary-paragraph"><strong>देहरादून यात्रा:</strong> बाद में दादाजी टोटो को देहरादून ले जाते हैं, लेकिन वहाँ भी उसका शरारती स्वभाव नहीं बदलता। वह यात्रा के दौरान भी परेशानियाँ पैदा करता है।</div>
-
-        <div class="summary-paragraph"><strong>अंतिम निर्णय:</strong> अंत में परिवार समझ जाता है कि टोटो को पालतू बनाकर रखना संभव नहीं है क्योंकि वह बहुत जंगली और अनियंत्रित है।</div>
-
-        <div class="summary-paragraph"><strong>निष्कर्ष:</strong> यह कहानी सिखाती है कि जंगली जानवरों को उनके प्राकृतिक वातावरण में ही रहना चाहिए और उन्हें घर में पालतू बनाना सही नहीं है।</div>
-    `
-        };
-        function switchSummaryLanguage(langKey, elementRef) {
-            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
-            if (elementRef) elementRef.classList.add("active");
-
-            const viewport = document.getElementById("summaryViewPort");
-            viewport.innerHTML = summaryDataAsset[langKey] || summaryDataAsset['en'];
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            switchSummaryLanguage('en', null);
-        });
-        function applyThemeFromBrainHub() {
-
-            const data = JSON.parse(
-                localStorage.getItem("brainhub.app.v2") || "{}"
-            );
-
-            const theme = data.theme || "light";
-
-            document.documentElement.dataset.theme =
-                theme;
-
-            const metaTheme = document.querySelector(
-                'meta[name="theme-color"]'
-            );
-
-            if (metaTheme) {
-                metaTheme.setAttribute(
-                    "content",
-                    theme === "dark"
-                        ? "#121722"
-                        : "#2563eb"
-                );
-            }
-        }
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            applyThemeFromBrainHub
-        );
-
-        window.addEventListener("storage", (e) => {
-            if (e.key === "brainhub.app.v2") {
-                applyThemeFromBrainHub();
-            }
-        });
-
-        /* Same tab sync */
-        setInterval(applyThemeFromBrainHub, 500);
-        // Jab bhi theme switch logic trigger ho, tab ye niche ka logic chala dena:
-        function updateMetaThemeColor(isDark) {
-            const metaTheme = document.querySelectorAll('meta[name="theme-color"]');
-            metaTheme.forEach(meta => {
-                if (meta.matches('(prefers-color-scheme: dark)') || isDark) {
-                    // Agar dark mode hai
-                    if (isDark) meta.setAttribute('content', '#121722');
-                } else {
-                    // Agar light mode hai toh pure white dikhega
-                    meta.setAttribute('content', '#ffffff');
-                }
-            });
-        }
-    </script>
-</body>
-
-</html>
+Build a complete production-ready Progressive Web App called "Kalvi".
+
+
+
+IMPORTANT RULES:
+
+
+
+1. Generate only these files:
+
+
+
+/index.html
+
+/manifest.json
+
+/sw.js
+
+
+
+/css/android.css
+
+/css/desktop.css
+
+/js/app.js
+
+/data/classes.json
+
+/data/class9.json
+
+/data/class10.json
+
+
+
+Do NOT create unnecessary files.
+
+Do NOT create frameworks.
+
+Do NOT use React, Vue, Angular, Tailwind, Bootstrap or npm packages.
+
+
+
+Use only:
+
+HTML
+
+CSS
+
+Vanilla JavaScript
+
+
+
+==================================
+
+APP IDENTITY
+
+==================================
+
+
+
+App Name: Kalvi
+
+
+
+Tagline:
+
+Learn • Practice • Achieve
+
+
+
+Purpose:
+
+An offline-first educational super app for Indian students.
+
+
+
+Classes:
+
+Class 9
+
+Class 10
+
+Class 11
+
+Class 12
+
+
+
+Languages:
+
+Hindi
+
+English
+
+
+
+Language switching must work instantly.
+
+
+
+All settings must persist using localStorage.
+
+
+
+==================================
+
+DESIGN SYSTEM
+
+==================================
+
+
+
+Take inspiration from:
+
+
+
+BYJU'S
+
+PW (Physics Wallah)
+
+Khan Academy
+
+Duolingo
+
+
+
+Design Requirements:
+
+
+
+Premium
+
+Modern
+
+Glassmorphism
+
+Material Design 3
+
+Smooth animations
+
+Professional spacing
+
+Rounded cards
+
+Modern gradients
+
+Educational appearance
+
+
+
+Not a website.
+
+
+
+Must feel like a real Android learning app.
+
+
+
+==================================
+
+RESPONSIVE BEHAVIOUR
+
+==================================
+
+
+
+DESKTOP:
+
+
+
+Desktop.css handles desktop only.
+
+
+
+Desktop must look like:
+
+
+
+Professional education portal.
+
+
+
+Permanent left sidebar.
+
+
+
+Large content area.
+
+
+
+Modern dashboard.
+
+
+
+Tablet optimized.
+
+
+
+==================================
+
+
+
+ANDROID:
+
+
+
+android.css handles mobile only.
+
+
+
+Mobile must feel like:
+
+
+
+Native Android app.
+
+
+
+Bottom navigation.
+
+
+
+Slide sidebar.
+
+
+
+Touch optimized.
+
+
+
+Smooth gestures.
+
+
+
+No layout breaking.
+
+
+
+==================================
+
+LOADING EXPERIENCE
+
+==================================
+
+
+
+Every page open must show:
+
+
+
+Premium loading animation.
+
+
+
+Skeleton loading.
+
+
+
+Fade transitions.
+
+
+
+Smooth screen switching.
+
+
+
+No sudden content jumps.
+
+
+
+==================================
+
+PWA REQUIREMENTS
+
+==================================
+
+
+
+manifest.json
+
+
+
+Installable.
+
+
+
+Standalone.
+
+
+
+App icons.
+
+
+
+Theme color.
+
+
+
+Background color.
+
+
+
+App shortcuts.
+
+
+
+==================================
+
+
+
+sw.js
+
+
+
+Offline caching.
+
+
+
+Cache-first strategy.
+
+
+
+Instant loading.
+
+
+
+Offline support.
+
+
+
+No network dependency for content.
+
+
+
+==================================
+
+HOME DASHBOARD
+
+==================================
+
+
+
+Dashboard contains:
+
+
+
+Greeting card
+
+
+
+Continue learning section
+
+
+
+Recent chapters
+
+
+
+Study streak
+
+
+
+Quick actions
+
+
+
+Class selector
+
+
+
+Subject cards
+
+
+
+Progress statistics
+
+
+
+==================================
+
+ACADEMICS STRUCTURE
+
+==================================
+
+
+
+Classes:
+
+
+
+Class 9
+
+Class 10
+
+Class 11
+
+Class 12
+
+
+
+Each class contains:
+
+
+
+Mathematics
+
+Science
+
+Physics
+
+Chemistry
+
+Biology
+
+English
+
+Hindi
+
+History
+
+Geography
+
+Political Science
+
+Economics
+
+Computer Science
+
+
+
+==================================
+
+CHAPTER SYSTEM
+
+==================================
+
+
+
+Content must come from JSON.
+
+
+
+Example structure:
+
+
+
+class
+
+subject
+
+chapter
+
+
+
+Example:
+
+
+
+Class 9
+
+→ Mathematics
+
+→ Number Systems
+
+
+
+Class 10
+
+→ Science
+
+→ Chemical Reactions
+
+
+
+Create ONLY 2 example chapters.
+
+
+
+Example JSON structure:
+
+
+
+{
+
+  "class": "9",
+
+  "subject": "Mathematics",
+
+  "chapters": [
+
+    {
+
+      "id":"number-system",
+
+      "title":"Number Systems",
+
+      "description":"Introduction to real numbers",
+
+      "content":"..."
+
+    }
+
+  ]
+
+}
+
+
+
+==================================
+
+CHAPTER VIEWER
+
+==================================
+
+
+
+Beautiful reading UI.
+
+
+
+Chapter title.
+
+
+
+Description.
+
+
+
+Estimated reading time.
+
+
+
+Bookmark button.
+
+
+
+Progress tracking.
+
+
+
+Last read position.
+
+
+
+Save locally.
+
+
+
+==================================
+
+SEARCH
+
+==================================
+
+
+
+Global search.
+
+
+
+Search:
+
+
+
+Class
+
+
+
+Subject
+
+
+
+Chapter
+
+
+
+Instant results.
+
+
+
+==================================
+
+STUDY TOOLS
+
+==================================
+
+
+
+Dedicated Study Tools page.
+
+
+
+Include:
+
+
+
+Calculator
+
+
+
+Percentage Calculator
+
+
+
+CGPA Calculator
+
+
+
+Unit Converter
+
+
+
+Age Calculator
+
+
+
+Study Timer
+
+
+
+Pomodoro Timer
+
+
+
+Random Quiz Generator
+
+
+
+==================================
+
+SHAYARI PAGE
+
+==================================
+
+
+
+Dedicated Shayari section.
+
+
+
+Categories:
+
+
+
+Motivation
+
+
+
+Success
+
+
+
+Student Life
+
+
+
+Favorites
+
+
+
+Favorites stored locally.
+
+
+
+==================================
+
+SETTINGS PAGE
+
+==================================
+
+
+
+Store everything locally.
+
+
+
+Settings:
+
+
+
+Student Name
+
+
+
+Theme
+
+
+
+Language
+
+
+
+Font Size
+
+
+
+Animation Toggle
+
+
+
+Offline Mode
+
+
+
+Reset Data
+
+
+
+Export Data
+
+
+
+Import Data
+
+
+
+==================================
+
+LOCAL STORAGE
+
+==================================
+
+
+
+Create robust storage architecture.
+
+
+
+Must save:
+
+
+
+Theme
+
+
+
+Language
+
+
+
+Student Name
+
+
+
+Bookmarks
+
+
+
+Reading Progress
+
+
+
+Last Opened Chapter
+
+
+
+Favorites
+
+
+
+Tools Data
+
+
+
+App Preferences
+
+
+
+No data loss.
+
+
+
+Must work perfectly on Android Chrome.
+
+
+
+==================================
+
+PERFORMANCE
+
+==================================
+
+
+
+Use lazy rendering.
+
+
+
+Avoid memory leaks.
+
+
+
+Use event delegation.
+
+
+
+Fast startup.
+
+
+
+Smooth transitions.
+
+
+
+No lag.
+
+
+
+==================================
+
+ACCESSIBILITY
+
+==================================
+
+
+
+Keyboard support.
+
+
+
+Proper ARIA labels.
+
+
+
+Readable typography.
+
+
+
+High contrast.
+
+
+
+==================================
+
+FINAL GOAL
+
+==================================
+
+
+
+Generate a complete educational PWA called Kalvi.
+
+
+
+Must feel comparable to PW or BYJU'S quality.
+
+
+
+Offline-first.
+
+
+
+Fully responsive.
+
+
+
+Professional.
+
+
+
+Modern.
+
+
+
+Smooth.
+
+
+
+Bilingual.
+
+
+
+LocalStorage powered.
+
+
+
+Ready to host directly on GitHub Pages or Netlify.
+
+
+
+Generate complete code for every required file.
+==================================
+ADVANCED CHAPTER SYSTEM
+==================================
+
+All educational content must come from JSON files.
+
+Never hardcode educational content inside HTML or JavaScript.
+
+The UI must automatically generate classes, subjects and chapters from JSON data.
+
+Each chapter must support the following sections:
+
+1. Introduction
+2. Summary
+3. Key Points
+4. Important Definitions
+5. NCERT Questions & Answers
+6. Extra Questions & Answers
+7. Fill in the Blanks
+8. True / False
+9. MCQs
+10. Match the Following
+11. Assertion & Reason
+12. HOTS Questions
+13. Previous Year Questions
+14. Important Formulas (where applicable)
+15. Revision Notes
+16. Practice Test
+17. Chapter Progress Tracking
+
+Example JSON Structure:
+
+{
+  "id":"number-system",
+  "title":"Number Systems",
+  "description":"Introduction to Real Numbers",
+  "readingTime":"10 min",
+
+  "summary":"...",
+
+  "keyPoints":[
+    "...",
+    "..."
+  ],
+
+  "definitions":[
+    {
+      "term":"Real Number",
+      "meaning":"..."
+    }
+  ],
+
+  "qa":[
+    {
+      "question":"What are real numbers?",
+      "answer":"..."
+    }
+  ],
+
+  "fillBlanks":[
+    {
+      "question":"_____ numbers include rational and irrational numbers.",
+      "answer":"Real"
+    }
+  ],
+
+  "trueFalse":[
+    {
+      "question":"Every rational number is a real number.",
+      "answer":true
+    }
+  ],
+
+  "mcqs":[
+    {
+      "question":"Which is irrational?",
+      "options":["2","3","√2","5"],
+      "answer":"√2"
+    }
+  ]
+}
+
+==================================
+INTERACTIVE LEARNING EXPERIENCE
+==================================
+
+Every MCQ must be interactive.
+
+Students can:
+
+Select Answer
+
+Check Answer
+
+See Correct Answer
+
+View Explanation
+
+Track Score
+
+Store Result Locally
+
+Practice mode must work offline.
+
+==================================
+CHAPTER FEATURES
+==================================
+
+Each chapter page must include:
+
+Chapter Banner
+
+Bookmark Button
+
+Share Button
+
+Progress Bar
+
+Estimated Reading Time
+
+Last Read Position
+
+Continue Reading
+
+Quick Navigation Menu
+
+Next Chapter Button
+
+Previous Chapter Button
+
+Mark as Completed Button
+
+Notes Section
+
+Favorite Chapter Button
+
+==================================
+QUIZ SYSTEM
+==================================
+
+Create a professional quiz engine.
+
+Features:
+
+Instant Answer Validation
+
+Score Calculation
+
+Percentage
+
+Correct Answers
+
+Wrong Answers
+
+Result Summary
+
+Retake Quiz
+
+Save Highest Score
+
+Local Progress Tracking
+
+Subject-wise Performance
+
+Chapter-wise Performance
+
+==================================
+STUDENT DASHBOARD
+==================================
+
+Dashboard must display:
+
+Total Chapters Completed
+
+Total Study Time
+
+Quiz Accuracy
+
+Bookmarks Count
+
+Study Streak
+
+Recent Activity
+
+Continue Learning
+
+Daily Goal Progress
+
+==================================
+SMART NOTES
+==================================
+
+Students can create personal notes.
+
+Notes must:
+
+Save Locally
+
+Edit Locally
+
+Delete Locally
+
+Search Notes
+
+Export Notes
+
+==================================
+FAVORITES SYSTEM
+==================================
+
+Students can favorite:
+
+Chapters
+
+Questions
+
+MCQs
+
+Shayari
+
+Tools
+
+All favorites stored in localStorage.
+
+==================================
+DATA BACKUP SYSTEM
+==================================
+
+Settings page must support:
+
+Export Complete App Data
+
+Import Complete App Data
+
+Backup JSON Download
+
+Restore JSON Upload
+
+Must restore:
+
+Bookmarks
+
+Notes
+
+Progress
+
+Settings
+
+Language
+
+Theme
+
+Student Name
+
+Quiz Scores
+
+==================================
+GAMIFICATION
+==================================
+
+Include:
+
+Study Streak
+
+Achievement Badges
+
+Completion Rewards
+
+Chapter Completion Percentage
+
+Subject Completion Percentage
+
+Motivational Messages
+
+==================================
+SEARCH SYSTEM
+==================================
+
+Search must support:
+
+Class
+
+Subject
+
+Chapter
+
+Question
+
+Answer
+
+MCQ
+
+Formula
+
+Definitions
+
+Instant search results.
+
+==================================
+CONTENT VIEWER
+==================================
+
+Chapter reading experience should feel similar to PW and BYJU'S.
+
+Use:
+
+Beautiful typography
+
+Sticky chapter navigation
+
+Smooth scrolling
+
+Collapsible sections
+
+Expandable Question Answers
+
+Accordion UI
+
+Reading progress indicator
+
+==================================
+FUTURE SCALABILITY
+==================================
+
+Architecture must support:
+
+1000+ Chapters
+
+10000+ MCQs
+
+Multiple Subjects
+
+Additional Classes
+
+Without changing application logic.
+
+Adding a new chapter should only require updating JSON files.
+==================================
+DAILY PRACTICE
+==================================
+
+Generate Daily Practice section.
+
+Include:
+
+Daily MCQs
+
+Daily Revision
+
+Daily Challenge
+
+Daily Goal
+
+Daily Progress
+
+Daily Motivation
+
+Track completion locally.
+
+Reset automatically every day.
+
+==================================
+DOUBT BOOK
+==================================
+
+Students can save difficult questions.
+
+Features:
+
+Add Doubt
+
+Edit Doubt
+
+Delete Doubt
+
+Mark Resolved
+
+Search Doubts
+
+Store locally.
+
+All local data must be stored under one root object:
+
+kalviData = {
+  settings:{},
+  progress:{},
+  bookmarks:[],
+  notes:[],
+  favorites:[],
+  quizScores:{},
+  streak:{},
+  tools:{}
+}
+
+Avoid scattered localStorage keys.
+search feature
+Fuzzy Search
+
+Typo Tolerant Search
+
+Search Suggestions
+
+Recent Searches
+
+Search History
+
+==================================
+STRICT DEVELOPMENT RULES
+==================================
+
+Do not generate placeholder UI.
+
+Do not generate lorem ipsum.
+
+Do not leave TODO comments.
+
+Do not create unfinished sections.
+
+Do not generate fake features.
+
+Every button must work.
+
+Every navigation item must work.
+
+Every localStorage feature must work.
+
+Every page must be fully functional.
+
+All generated code must be production-ready.
+
+Code should be clean, modular and maintainable.

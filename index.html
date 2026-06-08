@@ -1245,10 +1245,119 @@
             transform: translate(76px, -52px) scale(1);
             background: var(--violet);
         }
+
+        /* --- Premium Screen Smooth Entry Animation --- */
+        @keyframes smoothEntry {
+            0% {
+                opacity: 0;
+                transform: translateY(-24px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Puri app par initial load pe dynamic smooth entry apply hogi */
+        .app {
+            animation: smoothEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* --- Native Custom In-App Modal Popup Styles --- */
+        .custom-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 10, 18, 0.6);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 999;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .custom-modal-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-modal-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            width: min(420px, 100%);
+            padding: 24px;
+            transform: scale(0.9) translateY(12px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: grid;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .custom-modal-backdrop.show .custom-modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: color-mix(in srgb, var(--rose) 14%, transparent);
+            color: var(--rose);
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+            margin: 0 auto;
+        }
+
+        .custom-modal-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .custom-modal-card p {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .modal-footer-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .modal-footer-btns button {
+            flex: 1;
+            min-height: 44px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="custom-modal-backdrop" id="customConfirmModal">
+        <div class="custom-modal-card">
+            <div class="modal-icon-wrapper">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+                <h4>Reset All Data?</h4>
+                <p>Kya aap sach me saara data clear karna chahte hain? Ye action undo nahi kiya ja sakta aur aapki saari
+                    settings aur saved data remove ho jayega.</p>
+            </div>
+            <div class="modal-footer-btns">
+                <button class="ghost-btn" id="modalCancelBtn" style="border-radius: 14px;">Cancel</button>
+                <button class="primary-btn" id="modalConfirmBtn"
+                    style="background: linear-gradient(135deg, var(--rose), #b91c1c); border-radius: 14px;">Yes,
+                    Reset</button>
+            </div>
+        </div>
+    </div>
     <div class="drawer-backdrop" id="backdrop"></div>
     <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile sidebar">
         <div class="drawer-head">
@@ -2629,14 +2738,39 @@
                 showToast("Data exported");
             });
 
+            // Open In-App Custom Reset Modal instead of browser popup
             $("#resetData").addEventListener("click", () => {
-                if (!confirm("Reset all BrainHub data?")) return;
+                const modal = document.getElementById("customConfirmModal");
+                modal.classList.add("show");
+            });
+
+            // Handle Custom Modal Cancel Button Event
+            document.getElementById("modalCancelBtn").addEventListener("click", () => {
+                const modal = document.getElementById("customConfirmModal");
+                modal.classList.remove("show");
+            });
+
+            // Handle Custom Modal Confirmation Action Event
+            document.getElementById("modalConfirmBtn").addEventListener("click", () => {
+                // Hide the custom modal view
+                const modal = document.getElementById("customConfirmModal");
+                modal.classList.remove("show");
+
+                // Core state reset routine
                 state = { ...defaultState };
                 saveState();
                 init();
-                showToast("Data reset");
+
+                // Feedback presentation
+                showToast("Data reset successfully");
             });
 
+            // Global outside click handler to auto-dismiss modal securely
+            document.getElementById("customConfirmModal").addEventListener("click", (e) => {
+                if (e.target === document.getElementById("customConfirmModal")) {
+                    document.getElementById("customConfirmModal").classList.remove("show");
+                }
+            });
             $("#searchInput").addEventListener("input", (event) => filterSearch(event.target.value));
         }
 
